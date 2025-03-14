@@ -14,6 +14,15 @@ frontier-lobby-frontier-description = Awaken from cryosleep here to:
    - Socialize with other pioneers
  Some of the roles on this station are whitelist-only and require an application in the discord to be accepted.
 
+frontier-lobby-lark-subtext = Main hub for freelancers.
+frontier-lobby-lark-description = Awaken from cryosleep here to:
+   - Start your own crew and become captain
+   - Find a crew to join
+   - Purchase ships
+   - Socialize with other freelancers
+   - Privateer, with style
+ Some of the roles on this station are whitelist-only and require an application in the discord to be accepted.
+
 frontier-lobby-exped-subtext = Where seasoned mercenaries gather.
 frontier-lobby-exped-description = This is base camp for mercenaries and alike. Here you can:
    - Start a mercenary crew
