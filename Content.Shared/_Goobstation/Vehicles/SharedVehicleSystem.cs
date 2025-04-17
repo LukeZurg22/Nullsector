@@ -20,7 +20,8 @@ using Robust.Shared.Network; // Frontier
 using Content.Shared._NF.Vehicle.Components; // Frontier
 using Content.Shared.Movement.Pulling.Events; // Frontier
 
-namespace Content.Shared._Goobstation.Vehicles; // Frontier: migrate under _Goobstation
+namespace Content.Shared._Goobstation.Vehicles;
+// Frontier: migrate under _Goobstation
 
 public abstract partial class SharedVehicleSystem : EntitySystem
 {
@@ -180,7 +181,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         // AddHorns(driver, ent); // Frontier: delay until mounted
     }
 
-    private void OnStrapped(Entity<VehicleComponent> ent, ref StrappedEvent args)
+    public void OnStrapped(Entity<VehicleComponent> ent, ref StrappedEvent args)
     {
         var driver = args.Buckle.Owner;
 
@@ -200,7 +201,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         Mount(driver, ent.Owner);
     }
 
-    private void OnUnstrapped(Entity<VehicleComponent> ent, ref UnstrappedEvent args)
+    public void OnUnstrapped(Entity<VehicleComponent> ent, ref UnstrappedEvent args)
     {
         if (ent.Comp.Driver != args.Buckle.Owner)
             return;
