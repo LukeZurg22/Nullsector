@@ -7,12 +7,12 @@
   - type: Contraband
     severity: Class3Chem
   - type: Sprite
-    sprite: _Mono/Objects/Fun/cassette.rsi
+    sprite: _Null/Objects/Fun/cassette.rsi
     state: player_filled
   - type: Item
     size: Small
   - type: Clothing
-    sprite: _Mono/Objects/Fun/cassette.rsi
+    sprite: _Null/Objects/Fun/cassette.rsi
     slots: [Belt]
   - type: StaticPrice
     price: 3000
@@ -26,21 +26,21 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _Mono/Objects/Fun/cassette.rsi
+    sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_default
   - type: Item
     size: Small
   - type: StaticPrice
     price: 1000
 
-# Cassette Tapes 
+# Standard Blank Cassette Tapes 
 - type: entity
   parent: BaseTape
   id: CassetteTapeDefault
   suffix: plain
   components:
   - type: Sprite
-    sprite: _Mono/Objects/Fun/cassette.rsi
+    sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_default
   
 - type: entity
@@ -49,7 +49,7 @@
   suffix: red
   components:
   - type: Sprite
-    sprite: _Mono/Objects/Fun/cassette.rsi
+    sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_red
     
 - type: entity
@@ -58,7 +58,7 @@
   suffix: green
   components:
   - type: Sprite
-    sprite: _Mono/Objects/Fun/cassette.rsi
+    sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_green
 
 - type: entity
@@ -67,17 +67,21 @@
   suffix: blue
   components:
   - type: Sprite
-    sprite: _Mono/Objects/Fun/cassette.rsi
+    sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_blue
 
+
+# Special Blank Tapes
 - type: entity
   parent: BaseTape
   id: CassetteTapeArmada
-  suffix: green
+  suffix: armada
   components:
   - type: Sprite
-    sprite: _Mono/Objects/Fun/cassette.rsi
+    sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_armada
+  - type: StaticPrice
+    price: 1500
     
 - type: entity
   parent: BaseTape
@@ -85,8 +89,10 @@
   suffix: congress
   components:
   - type: Sprite
-    sprite: _Mono/Objects/Fun/cassette.rsi
+    sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_congress
+  - type: StaticPrice
+    price: 2500
 
 - type: entity
   parent: BaseTape
@@ -94,5 +100,26 @@
   suffix: rogue
   components:
   - type: Sprite
-    sprite: _Mono/Objects/Fun/cassette.rsi
+    sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_rogue
+  - type: StaticPrice
+    price: 3000
+
+
+# Special Music Tapes
+- type: entity
+  parent: CassetteTapeArmada # This stuff's rare.
+  id: TapeOhMahNina
+  suffix: oh mah nina
+  components:
+  - type: StaticPrice
+    price: 3000
+    # create custom cassette tape component
+- type: entity
+  parent: CassetteTapeArmada
+  id: TapePayemPayam
+  suffix: payem payam
+  components:
+  - type: StaticPrice
+    price: 3000
+    # create custom cassette tape component

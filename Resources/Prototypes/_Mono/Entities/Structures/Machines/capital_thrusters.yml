@@ -2,7 +2,7 @@
   id: ThrusterNCMCLarge
   name: thruster
   parent: BaseThruster
-  suffix: NCMC, 2x2
+  suffix: Green, 2x2
   components:
   - type: Destructible
     thresholds:
@@ -69,7 +69,7 @@
   id: ThrusterNCMCCapital
   name: thruster
   parent: BaseThruster
-  suffix: NCMC, 3x3
+  suffix: Green, 3x3
   components:
   - type: Destructible
     thresholds:
