@@ -8,6 +8,7 @@ jobs:
     if: github.actor != 'PJBot' && github.actor != 'FrontierATC' # Frontier
     permissions:
       contents: read
+      issues: write
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
