@@ -1,0 +1,45 @@
+# Abstract Type
+- type: entity
+  id: Monolith
+  parent: BaseStructure
+  name: monolith
+  description: An ancient structure.
+  abstract: true
+  
+# Null Sector : Monolith Implementations
+- type: entity
+  id: MonolithNullith
+  parent: Monolith
+  suffix: nullith
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Null/Objects/Fun/nullith.rsi
+    state: monolith_nullith
+    drawdepth: Mobs
+    offset: "0.0,0.5"
+    
+- type: entity
+  id: MonolithNGC
+  parent: Monolith
+  suffix: NGC
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Null/Objects/Fun/nullith.rsi
+    state: monolith_NGC
+    drawdepth: Mobs
+    offset: "0.0,0.5"
+    
+- type: entity
+  id: MonolithCube
+  parent: Monolith
+  description: The Cube! The Cube! The Cube!
+  suffix: Cube
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Null/Objects/Fun/nullith.rsi
+    state: monolith_cube
+    drawdepth: Mobs
+    offset: "0.0,0.5"

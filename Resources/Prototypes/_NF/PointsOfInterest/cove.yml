@@ -1,6 +1,6 @@
 # Author Info
-# GitHub: starch70
-# Discord: _starch_
+# GitHub: LukeZurg22
+# Discord: lukezurg22
 
 # Maintainer Info
 # GitHub: ???
@@ -8,39 +8,39 @@
 - type: pointOfInterest
   id: Cove
   parent: BasePOI
-  name: Rogue Insurgency Hideout
-  minimumDistance: 7500 # Mono
-  maximumDistance: 12500 # Mono
+  name: Hideout Ruin
+  minimumDistance: 3000 # Null Sector
+  maximumDistance: 5000 # Null Sector
   spawnGamePreset: [ NFPirate ]
   spawnGroup: Required
   gridPath: /Maps/_NF/POI/cove.yml
   hideWarp: true
   addComponents:
   - type: IFF
-    color: "#C83737"
-    flags: [HideLabel]
-    readOnly: false
+    color: "#963737"
+#    flags: [HideLabel] # Null Sector
+#    readOnly: false # Null Sector
 
 - type: gameMap
   id: Cove
-  mapName: 'Rogue Insurgency Hideout'
+  mapName: 'Hideout Ruin'
   mapPath: /Maps/_NF/POI/cove.yml
-  minPlayers: 0
+  minPlayers: 0 # Null Sector : Temporary Removal
   stations:
     Cove:
       stationProto: RecordsFrontierOutpost
       components:
-        - type: StationNameSetup
-          mapNameTemplate: 'Rogue Insurgency Hideout'
-        - type: ExtraStationInformation
-          iconPath: /Textures/_NF/Interface/Pirate/piratelogo.png
-          stationSubtext: 'frontier-lobby-pirate-subtext'
-          stationDescription: 'frontier-lobby-pirate-description'
-        - type: StationJobs
-          availableJobs:
-            PirateCaptain: [ 1, 1 ]
-            PirateFirstMate: [ 2, 2 ] # Mono
-            Pirate: [ 4, 4 ] # Mono
+        # - type: StationNameSetup
+          # mapNameTemplate: 'Rogue Insurgency Hideout'
+        # - type: ExtraStationInformation
+          # iconPath: /Textures/_NF/Interface/Pirate/piratelogo.png
+          # stationSubtext: 'frontier-lobby-pirate-subtext'
+          # stationDescription: 'frontier-lobby-pirate-description'
+        # - type: StationJobs
+          # availableJobs:
+            # PirateCaptain: [ 1, 1 ]
+            # PirateFirstMate: [ 2, 2 ] # Mono
+            # Pirate: [ 4, 4 ] # Mono
         - type: StationDeadDropReporting
           messageSet: Pirate
         - type: StationDeadDropHintExempt

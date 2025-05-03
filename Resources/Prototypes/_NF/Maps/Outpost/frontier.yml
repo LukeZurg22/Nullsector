@@ -1,9 +1,9 @@
 - type: gameMap
   id: Frontier
-  mapName: 'Colonial Outpost'
+  mapName: 'Lark Station'
   mapPath: /Maps/_Mono/Outpost/frontier.yml # Mono
   minPlayers: 0
-  maxPlayers: 100
+  maxPlayers: 32
   randomRotation: false
   maxRandomOffset: 0
   stations:
@@ -11,12 +11,12 @@
       stationProto: StandardFrontierStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Colonial Outpost'
+          mapNameTemplate: 'Lark Station'
 #          nameGenerator:
 #            !type:NanotrasenNameGenerator
 #            prefixCreator: '14'
         - type: ExtraStationInformation
-          iconPath: /Textures/_Mono/Logo/icon/icon-256x256.png # used the biggest one, looks better when downscaling than upscaling
+          iconPath: /Textures/_Null/Logo/icon/icon-256x256.png # used the biggest one, looks better when downscaling than upscaling
           stationSubtext: 'frontier-lobby-frontier-subtext'
           stationDescription: 'frontier-lobby-frontier-description'
           lobbySortOrder: 1

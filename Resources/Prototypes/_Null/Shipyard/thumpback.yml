@@ -1,0 +1,45 @@
+# Author Info
+# GitHub: LukeZurg22
+# Discord: lukezurg22
+
+# Shuttle Notes:
+# Not for the faint of heart. Either new players buy this thing and die on it from
+# a lack of air later-on, or experts get this to build on like its a child's toy.
+#
+# The price is deliberate. The effective cost is just below $7k. This is a bit more expensive.
+
+- type: vessel
+  id: Thumpback
+  parent: BaseVessel
+  name: Thumpback
+  description: A cheap but effective salvage shuttle.
+  price: 30000
+  category: Medium
+  group: Shipyard
+  shuttlePath: /Maps/_Null/Shuttles/thumpback.yml
+  guidebookPage: null
+  class:
+  - Salvage
+  - Cargo
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Thumpback
+  mapName: 'Thumpback'
+  mapPath: /Maps/_Null/Shuttles/thumpback.yml
+  minPlayers: 0
+  stations:
+    Thumpback:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'UNJ Thumpback CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 1, 1 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

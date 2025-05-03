@@ -1,0 +1,26 @@
+- type: entity
+  name: cassette tape spawner
+  id: CassetteTapesSpawner
+  parent: MarkerBase
+  suffix: Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Null/Objects/Fun/cassette.rsi
+      state: tape_default
+  - type: RandomSpawner
+    prototypes:
+    - CassetteTapeDefault
+    - CassetteTapeRed
+    - CassetteTapeGreen
+    - CassetteTapeBlue
+    - CassetteTapeArmada
+    - CassetteTapeCongress
+    - CassetteTapeRogue
+    chance: 0.05
+    #offset: 0.5
+    rarePrototypes:
+      - TapeOhMahNina
+      - TapePayemPayam
+    rareChance: 0.01
