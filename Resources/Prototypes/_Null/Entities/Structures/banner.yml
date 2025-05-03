@@ -1,0 +1,52 @@
+# Vault Station Banners
+- type: entity
+  id: BannerVSRogue
+  parent: BannerBase
+  name: rogue overboss banner
+  description: The banner of the powers that be over the Rogue Sector.
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_vs_rogue
+
+- type: entity
+  id: BannerVSEnvoy
+  parent: BannerBase
+  name: rogue envoy banner
+  description: A banner for the highest authority of the Vault Site.
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_vs_envoy
+
+- type: entity
+  id: BannerVSUnionJ
+  parent: BannerBase
+  name: union j. banner
+  description: A banner of with colors and fancy logo of the Union J. company.
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_vs_unionj
+
+# Antag Banners
+- type: entity
+  id: BannerVSChaosBlue
+  parent: BannerBase
+  name: chaos banner
+  suffix: blue
+  description: A banner with an eight pointed star. It's blue, and kind of moldy.
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_vs_chaos_blue
+
+- type: entity
+  id: BannerArmadan
+  parent: BannerBase
+  name: armada banner
+  description: A banner of the Armadan standard. It's a.. terrifying number seven...?
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_armada
