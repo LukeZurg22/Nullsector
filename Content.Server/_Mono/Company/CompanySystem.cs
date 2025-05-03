@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Content.Shared._Mono.Company;
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
@@ -14,29 +15,22 @@ public sealed class CompanySystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedJobSystem _job = default!;
+    [Dependency] private readonly MetaDataSystem _metaSystem = default!;
 
     // Dictionary to store original company preferences for players
     private readonly Dictionary<string, string> _playerOriginalCompanies = new();
 
-    private readonly HashSet<string> _ngcJobs = new()
-    {
-        "Sheriff",
-        "StationRepresentative",
-        "StationTrafficController",
-        "Bailiff",
-        "SeniorOfficer", // Sergeant
-        "Deputy",
-        "Brigmedic",
-        "NFDetective",
-        "PublicAffairsLiaison",
-        "DirectorOfCare"
-    };
+    private readonly HashSet<string> _ngcJobs =
+    [
+        "DirectorOfCare", // NOTE: NGC doesn't do much here. But humanitarian aid isn't bad.
+    ];
 
-    private readonly HashSet<string> _rogueJobs = new()
-    {
+    private readonly HashSet<string> _rogueJobs =
+    [
         "PirateCaptain",
-        "PirateFirstMate"
-    };
+        "PirateFirstMate",
+        "Pirate",
+    ];
 
     public override void Initialize()
     {
@@ -46,7 +40,7 @@ public sealed class CompanySystem : EntitySystem
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
 
         // Subscribe to examination to show the company on examine
-        SubscribeLocalEvent<Shared._Mono.Company.CompanyComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<CompanyComponent, ExaminedEvent>(OnExamined);
 
         // Subscribe to player detached event to clean up stored preferences
         SubscribeLocalEvent<PlayerDetachedEvent>(OnPlayerDetached);
@@ -61,7 +55,7 @@ public sealed class CompanySystem : EntitySystem
     private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent args)
     {
         // Add the company component with the player's saved company
-        var companyComp = EnsureComp<Shared._Mono.Company.CompanyComponent>(args.Mob);
+        var companyComp = EnsureComp<CompanyComponent>(args.Mob);
 
         var playerId = args.Player.UserId.ToString();
         var profileCompany = args.Profile.Company;
@@ -69,12 +63,11 @@ public sealed class CompanySystem : EntitySystem
         //Lua start: Login support
         foreach (var companyProto in _prototypeManager.EnumeratePrototypes<CompanyPrototype>())
         {
-            if (companyProto.Logins.Contains(args.Player.Name))
-            {
-                companyComp.CompanyName = companyProto.ID;
-                Dirty(args.Mob, companyComp);
-                return;
-            }
+            if (!companyProto.Logins.Contains(args.Player.Name))
+                continue; // Short-circuit
+            companyComp.CompanyName = companyProto.ID;
+            Dirty(args.Mob, companyComp);
+            return;
         }
         //Lua end
 
@@ -98,7 +91,7 @@ public sealed class CompanySystem : EntitySystem
         else if (args.JobId != null && _rogueJobs.Contains(args.JobId))
         {
             // Assign Rogue company
-            companyComp.CompanyName = "Rogue";
+            companyComp.CompanyName = "Rogue"; // WIP: Make this dynamic to each Armadan Subsidiary crew.
         }
         else
         {
@@ -106,11 +99,18 @@ public sealed class CompanySystem : EntitySystem
             companyComp.CompanyName = _playerOriginalCompanies[playerId];
         }
 
+        // Start Null Sector
+        if (companyComp.CompanyName.Equals("UnionJ"))
+        {
+            _metaSystem.SetEntityName(args.Mob, $"John {args.Profile.Name}");
+            // Look man, Union J has its benefits, but it's got its downsides./
+        }
+
         // Ensure the component is networked to clients
         Dirty(args.Mob, companyComp);
     }
 
-    private void OnExamined(EntityUid uid, Shared._Mono.Company.CompanyComponent component, ExaminedEvent args)
+    private void OnExamined(EntityUid uid, CompanyComponent component, ExaminedEvent args)
     {
         // Try to get the prototype for the company
         if (_prototypeManager.TryIndex<CompanyPrototype>(component.CompanyName, out var prototype))
