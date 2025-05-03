@@ -42,7 +42,7 @@
     state: banner_vs_chaos_blue
 
 - type: entity
-  id: BannerVSChaosBlue
+  id: BannerArmadan
   parent: BannerBase
   name: armada banner
   description: A banner of the Armadan standard. It's a.. terrifying number seven...?
