@@ -7,3 +7,13 @@
   license: "CC-BY-4.0"
   copyright: "Bolgarich"
   source: "https://www.youtube.com/watch?v=q7_NFEeeEac"
+
+- files: ["across_the_void.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "-Across The Void by Guillaume David. "
+  source: "https://www.youtube.com/watch?v=qqRsB8t7DDE"
+
+- files: ["scp_isd.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Made by PurpleJester"
+  source: "https://www.youtube.com/watch?v=J_JXKZvLi3Q"
