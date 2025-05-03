@@ -18,7 +18,7 @@ public sealed class CompanySystem : EntitySystem
         SubscribeLocalEvent<Shared._Mono.Company.CompanyComponent, ExaminedEvent>(OnExamined);
     }
 
-    private void OnExamined(EntityUid uid, Shared._Mono.Company.CompanyComponent component, ExaminedEvent args)
+    private void OnExamined(EntityUid uid, CompanyComponent component, ExaminedEvent args)
     {
         // Try to get the prototype for the company
         if (_prototypeManager.TryIndex<CompanyPrototype>(component.CompanyName, out var prototype))
