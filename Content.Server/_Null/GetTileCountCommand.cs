@@ -1,14 +1,10 @@
 using System.Linq;
 using Content.Server.Administration;
-using Content.Server.Atmos.EntitySystems;
-using Content.Server.Mapping;
 using Content.Shared.Administration;
-using Content.Shared.Atmos;
-using Robust.Server.GameObjects;
 using Robust.Shared.Console;
 using Robust.Shared.Map.Components;
 
-namespace Content.Shared._Null
+namespace Content.Server._Null
 {
     [AdminCommand(AdminFlags.Debug)]
     public sealed class GetFileCount : IConsoleCommand
