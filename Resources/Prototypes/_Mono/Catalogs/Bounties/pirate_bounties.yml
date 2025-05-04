@@ -8,15 +8,6 @@
     id: ClothingOuterHardsuitScaf
 
 - type: pirateBounty
-  id: PirateBountyTacsuit
-  reward: 6
-  description: pirate-bounty-description-generic
-  entries:
-  - name: pirate-bounty-item-tsfmc-tacsuit
-    amount: 1
-    id: ClothingOuterHardsuitTacsuit
-
-- type: pirateBounty
   id: PirateBountyHfBlade
   reward: 6
   description: pirate-bounty-description-generic
