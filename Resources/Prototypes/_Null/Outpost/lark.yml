@@ -1,13 +1,13 @@
 - type: gameMap
-  id: Frontier
+  id: Lark
   mapName: 'Lark Station'
-  mapPath: /Maps/_Mono/Outpost/frontier.yml # Mono
+  mapPath: /Maps/_Null/Outpost/lark.yml # Mono
   minPlayers: 0
   maxPlayers: 32
   randomRotation: false
   maxRandomOffset: 0
   stations:
-    Frontier:
+    Lark:
       stationProto: StandardFrontierStation
       components:
         - type: StationNameSetup
@@ -17,18 +17,16 @@
 #            prefixCreator: '14'
         - type: ExtraStationInformation
           iconPath: /Textures/_Null/Logo/icon/icon-256x256.png # used the biggest one, looks better when downscaling than upscaling
-          stationSubtext: 'frontier-lobby-frontier-subtext'
-          stationDescription: 'frontier-lobby-frontier-description'
+          stationSubtext: 'frontier-lobby-lark-subtext'
+          stationDescription: 'frontier-lobby-lark-description'
           lobbySortOrder: 1
         - type: StationJobs
           availableJobs:
             Contractor: [ -1, -1 ]
             Pilot: [ -1, -1 ]
-            Mercenary: [ -1, -1 ]
-            Borg: [ -1, -1 ]
             StationRepresentative: [ 1, 1 ]
-            StationTrafficController: [ 1, 1 ]
-            SecurityGuard: [ 1, 1 ]
+            SecurityGuard: [ 4, 4 ]
+            Detective: [ 1, 1 ]
             Valet: [ 1, 1 ]
             NFJanitor: [ 1, 1 ]
             MailCarrier: [ 1, 1 ]
