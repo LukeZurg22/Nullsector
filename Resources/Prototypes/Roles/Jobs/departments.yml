@@ -12,8 +12,9 @@
   name: department-Civilian
   description: department-NFCivilian-description # Frontier
   color: "#9FED58"
+  editorHidden: true # Null Sector
   weight: -10
-  roles:
+  # roles: # Null Sector
   # - Bartender # Frontier
   # - Botanist # Frontier
   # - Boxer # Frontier
