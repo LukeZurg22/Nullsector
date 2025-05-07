@@ -3,6 +3,7 @@
   name: job-name-bailiff
   description: job-description-bailiff
   playTimeTracker: JobWarden
+  setPreference: false # Null Sector
   requirements: # mono - lowers all of these tbh
     - !type:OverallPlaytimeRequirement
       time: 21600 # 6 hours

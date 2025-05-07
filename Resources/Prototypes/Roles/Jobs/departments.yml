@@ -30,10 +30,10 @@
   # - Visitor # Frontier
   # - Zookeeper # Frontier
   # - ServiceWorker # Frontier
-  - Contractor # Frontier
-  - Mercenary # Frontier
-  - Pilot # Frontier
-  - Borg # Frontier
+  #- Contractor # Frontier
+  #- Mercenary # Frontier
+  #- Pilot # Frontier
+  #- Borg # Frontier
 
 - type: department
   id: CentralCommand
@@ -79,6 +79,7 @@
   - StationRepresentative # Frontier
   - Sheriff  # Frontier
   - StationTrafficController # Frontier
+  - DirectorOfCare # Null Sector
   primary: false
   weight: 100
 
@@ -122,6 +123,8 @@
   - Sheriff # Frontier
   - SeniorOfficer # Frontier
   - PublicAffairsLiaison # Frontier
+  - SecurityGuard # Null Sector (right back to where it came from!)
+  - Mercenary # Frontier
 
 - type: department
   id: Science

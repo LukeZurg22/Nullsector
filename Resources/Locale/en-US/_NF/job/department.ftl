@@ -1,5 +1,5 @@
 # Below: Department name - should match department.ID, may collide with upstream definitions
-department-Antag = Rogue Sector
-department-Command = Central Command
-department-Frontier = NGC Rogue Frontier
-department-Security = New Congressional Marine Corps
+department-Antag = Armadan Subsidiary Crew
+department-Command = Null Sector Command
+department-Frontier = Lark Station
+department-Security = Private Null Sector Militia

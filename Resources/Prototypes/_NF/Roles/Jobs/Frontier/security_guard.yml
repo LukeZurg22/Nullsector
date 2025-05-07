@@ -22,6 +22,8 @@
   - Mercenary
   - Captain
   - Frontier
+  accessGroups: # Null Sector
+  - GeneralNfsdAccess
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
