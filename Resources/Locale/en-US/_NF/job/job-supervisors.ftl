@@ -1,4 +1,4 @@
-job-supervisors-sr = the Colonial Liaison
+job-supervisors-sr = the Militia Coordinator
 job-supervisors-sheriff = the Colonel
 job-supervisors-bailiff = the NCMC Captain
 job-supervisors-sergeant = the Sergeant
