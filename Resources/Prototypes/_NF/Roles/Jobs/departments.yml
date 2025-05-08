@@ -6,13 +6,17 @@
   weight: 50 # accounted for in jobs
   roles:
   - StationRepresentative
-  - DirectorOfCare
+  #- DirectorOfCare # Null Sector
   - StationTrafficController
   - Valet # nyano
   - NFJanitor
   - MailCarrier # nyano
-  - SecurityGuard
-
+  #- SecurityGuard # Null Sector
+  - Prisoner #nyano
+  - Contractor # Frontier
+  - Pilot # Frontier
+  - Borg # Frontier
+  
 - type: department
   id: Antag
   name: department-Antag
@@ -23,4 +27,4 @@
   - PirateCaptain
   - PirateFirstMate
   - Pirate
-  - Prisoner #nyano
+  #- Prisoner #nyano

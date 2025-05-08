@@ -36,5 +36,5 @@ emergency-shuttle-ui-authorizations = Authorizations
 emergency-shuttle-ui-remaining = Remaining: {$remaining}
 
 # Map Misc.
-map-name-centcomm = Central Command
+map-name-centcomm = Rogue Central Relay
 map-name-terminal = Arrivals Terminal

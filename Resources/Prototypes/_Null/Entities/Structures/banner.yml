@@ -29,6 +29,16 @@
     sprite: _Null/Structures/banner.rsi
     state: banner_vs_unionj
 
+- type: entity
+  id: BannerNull
+  parent: BannerBase
+  name: null sector banner
+  description: The official galaxy-recognized symbol of the Null Sector.
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_null
+
 # Antag Banners
 - type: entity
   id: BannerVSChaosBlue
@@ -44,9 +54,65 @@
 - type: entity
   id: BannerArmadan
   parent: BannerBase
-  name: armada banner
+  name: armadan banner
   description: A banner of the Armadan standard. It's a.. terrifying number seven...?
   components:
   - type: Sprite
     sprite: _Null/Structures/banner.rsi
     state: banner_armada
+    
+- type: entity
+  id: BannerSubsidiary
+  description: A banner of an Armadan subsidiary organization.
+  parent: BannerBase
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_subsidiary_blank
+
+- type: entity
+  id: BannerSubsidiaryBT
+  description: A banner of an Armadan subsidiary organization.
+  parent: BannerBase
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_subsidiary_blazingthorns
+    
+- type: entity
+  id: BannerSubsidiaryGC
+  description: A banner of an Armadan subsidiary organization.
+  parent: BannerBase
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_subsidiary_GC
+
+- type: entity
+  id: BannerSubsidiaryNF
+  description: A banner of an Armadan subsidiary organization.
+  parent: BannerBase
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_subsidiary_nebulas
+
+- type: entity
+  id: BannerSubsidiaryRI
+  description: A banner of an Armadan subsidiary organization.
+  parent: BannerBase
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_subsidiary_ronaj
+
+- type: entity
+  id: BannerSubsidiaryVG
+  description: A banner of an Armadan subsidiary organization.
+  parent: BannerBase
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/banner.rsi
+    state: banner_subsidiary_vipergroup
+    
+    

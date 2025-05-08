@@ -3,6 +3,7 @@
   name: job-name-deputy
   description: job-description-deputy
   playTimeTracker: JobSecurityOfficer
+  setPreference: false # Null Sector
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 10800 # 3 hours # mono

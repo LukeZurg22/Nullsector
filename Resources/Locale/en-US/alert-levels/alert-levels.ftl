@@ -37,9 +37,9 @@ alert-level-yellow-announcement = Sector infrastructure has been structurally or
 alert-level-yellow-instructions = Crews are advised to stay away from the threat and cooperate with sector command.
 
 alert-level-gamma = Gamma
-# alert-level-gamma-announcement = Central Command has ordered the Gamma security level on the station. Security is to have weapons equipped at all times, and all civilians are to immediately seek their nearest head for transportation to a secure location.
+# alert-level-gamma-announcement = Gamma security level declared on station. Security is to have weapons equipped at all times, and all civilians are to immediately seek their nearest head for transportation to a secure location.
 # alert-level-gamma-instructions = All civilians are to immediately seek their nearest head for transportation to a secure location.
-alert-level-gamma-announcement = Central Command has ordered the Gamma security level in the sector. NFSD officers are to be on high alert, and crews are to avoid areas of conflict where possible.
+alert-level-gamma-announcement = Rogue Central Relay declares Gamma security level in the sector. All personnel are to be on high alert, and crews are to avoid areas of conflict where possible.
 alert-level-gamma-instructions = Crews are to avoid areas of conflict where possible.
 
 alert-level-delta = Delta
@@ -49,9 +49,9 @@ alert-level-delta-announcement = Sector infrastructure is currently under threat
 alert-level-delta-instructions = Crews are advised to listen to sector command for more information.
 
 alert-level-epsilon = Epsilon
-# alert-level-epsilon-announcement = Central Command has ordered the Epsilon security level on the station. Consider all contracts terminated.
+# alert-level-epsilon-announcement = Rogue Central Relay declares an Epsilon security level on the station. Consider all contracts terminated.
 # alert-level-epsilon-instructions = Consider all contracts terminated.
-alert-level-epsilon-announcement = Central Command has ordered the Epsilon security level in the sector. Consider all contracts terminated.
+alert-level-epsilon-announcement = Rogue Central Relay declares an Epsilon security level in the sector. Consider all contracts terminated.
 alert-level-epsilon-instructions = Consider all contracts terminated.
 
 # End Frontier

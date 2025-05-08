@@ -1,8 +1,8 @@
 - type: entity
   parent: [ ClothingOuterBaseLarge, BaseC2ContrabandUnredeemable ]
   id: ClothingOuterArmorSrCarapace
-  name: "colonial liaison's carapace"
-  description: "A premium armored chest-piece that provides above average protection for its size. It offers maximum mobility and flexibility thanks to the premium composite materials. Issued only to the colonial liaison."
+  name: "militia coordinator's carapace"
+  description: "A premium armored chest-piece that provides above average protection for its size. It offers maximum mobility and flexibility thanks to the premium composite materials. Issued only to the militia coordinator."
   components:
   - type: Sprite
     sprite: _NF/Clothing/OuterClothing/Armor/sr_carapace.rsi

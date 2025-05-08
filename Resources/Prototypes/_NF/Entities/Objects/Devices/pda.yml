@@ -346,8 +346,8 @@
 - type: entity
   parent: [BaseSecurityPDA, BaseCommandContraband]
   id: SrPDA
-  name: colonial liaison PDA
-  description: Looks like it's been clawed on.
+  name: militia coordinator PDA
+  description: Looks like it's left to rust.
   components:
   - type: Pda
     id: SrIDCard

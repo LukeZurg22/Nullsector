@@ -1,5 +1,5 @@
 - type: entity
-  name: colonial liaison's rubber stamp
+  name: militia coordinator's rubber stamp
   parent: [RubberStampHop, BaseCommandContraband]
   id: RubberStampSr
   components:

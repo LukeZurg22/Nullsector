@@ -47,7 +47,7 @@
   components:
   - type: Paper
     content: |2
-      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Congressional Marine Corps[/bold][/color]
+      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]Null Sector Security Militia[/bold][/color]
       [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Search Warrant[/head]
 
@@ -74,7 +74,7 @@
   components:
   - type: Paper
     content: |2
-      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Congressional Marine Corps[/bold][/color]
+      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]Null Sector Security Militia[/bold][/color]
       [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]After Action Report[/head]
 
@@ -118,7 +118,7 @@
   components:
   - type: Paper
     content: |2
-      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Congressional Marine Corps[/bold][/color]
+      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]Null Sector Security Militia[/bold][/color]
       [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Arrest Warrant[/head]
 
@@ -155,7 +155,7 @@
   components:
   - type: Paper
     content: |2
-      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Congressional Marine Corps[/bold][/color]
+      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]Null Sector Security Militia[/bold][/color]
       [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Arrest Report[/head]
 
@@ -192,7 +192,7 @@
   components:
   - type: Paper
     content: |2 # If editing this, edit PaperWrittenFrontierEmployeePayHistory
-      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Congressional Marine Corps[/bold][/color]
+      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]Null Sector Security Militia[/bold][/color]
       [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Duty Log[/head]
 
@@ -229,7 +229,7 @@
   components:
   - type: Paper
     content: |2 # If updating this, update PaperWrittenFrontierContrabandTurnover
-      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Congressional Marine Corps[/bold][/color]
+      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]Null Sector Security Militia[/bold][/color]
       [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Contraband Turnover Receipt[/head]
 
@@ -252,7 +252,7 @@
 
 
 
-      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Sheriff or Colonial Liaison).[/color]
+      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Mercenary or Militia Coordinator).[/color]
 
 - type: entity # Based on form made by Blumbee (Aki Suboshi)
   id: PaperWrittenNfsdContrabandAmnesty
@@ -262,7 +262,7 @@
   components:
   - type: Paper
     content: |2 # If updating this, update PaperWrittenFrontierContrabandAmnesty
-      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Congressional Marine Corps[/bold][/color]
+      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]Null Sector Security Militia[/bold][/color]
       [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Contraband Amnesty Agreement[/head]
 
@@ -282,7 +282,7 @@
 
 
 
-      [color=#AAAAAA]This form is void without the signatures of both Parties and a stamp of Frontier Command (Sheriff or Colonial Liaison).[/color]
+      [color=#AAAAAA]This form is void without the signatures of both Parties and a stamp of Frontier Command (Mercenary or Militia Coordinator).[/color]
 
 - type: entity # Based on form made by Blumbee (Aki Suboshi)
   id: PaperWrittenNfsdContrabandPermit
@@ -292,7 +292,7 @@
   components:
   - type: Paper
     content: |2 # If updating this, update PaperWrittenFrontierContrabandPermit
-      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Congressional Marine Corps[/bold][/color]
+      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]Null Sector Security Militia[/bold][/color]
       [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Class 2 Contraband Permit[/head]
 
@@ -320,7 +320,7 @@
   components:
   - type: Paper
     content: |2 # When updating this, update PaperWrittenFrontierAuthorization
-      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]New Congressional Marine Corps[/bold][/color]
+      [color=#4f6e40]◥[bold]N[/bold]◣ [bold]Null Sector Security Militia[/bold][/color]
       [color=#4f6e40]‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾[/color]
       [head=2]Authorization for Bluespace Threats[/head]
 
@@ -328,9 +328,9 @@
       [bold]Vessel IFF:[/bold]
       [bold]Shift Time:[/bold]
 
-      [bold]Issuing Frontier Command:[/bold]
-          [bullet]XXXXXXXX, Colonial Liaison
-          [bullet]XXXXXXXX, Sheriff
+      [bold]Issuing Command Warrant:[/bold]
+          [bullet]XXXXXXXX, Militia Coordinator
+          [bullet]XXXXXXXX, Mercenary Coordinator
 
       This document authorizes the above vessel and its captain to assist and cooperate with the NCMC and Frontier authorities in neutralizing hostile bluespace threats to Frontier. These include, but are not limited to:
           [bullet] Cultist vessels
@@ -340,12 +340,12 @@
 
       This document does NOT deputize the authorized party. The authorized party is not granted special privileges to arrest, detain, and prosecute individuals associated with Nanotrasen.
 
-      [bold]Any contraband seized during operations aboard hostile vessels must be surrendered, either to the NCMC or the Colonial Liaison, for a cash bounty. Failure to surrender contraband will lead to the forfeiture of this agreement, and the authorized party may be liable for criminal charges.[/bold]
+      [bold]Any contraband seized during operations aboard hostile vessels must be surrendered, either to the NCMC or the Militia Coordinator, for a cash bounty. Failure to surrender contraband will lead to the forfeiture of this agreement, and the authorized party may be liable for criminal charges.[/bold]
 
-      The authorized party is to keep a copy of this document for inspection. The authorized party is expected to maintain contact with NCMC command and/or the Colonial Liaison to minimize casualties.
+      The authorized party is to keep a copy of this document for inspection. The authorized party is expected to maintain contact with NCMC command and/or the Militia Coordinator to minimize casualties.
 
       Before engaging with hostile vessels, the authorized party is expected to follow any instructions given by the NCMC for staging or other preparation prior to boarding.
 
 
 
-      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Sheriff or Colonial Liaison).[/color]
+      [color=#AAAAAA]This Form is void without the signatures of both Parties and a stamp of Frontier Command (Sheriff or Militia Coordinator).[/color]

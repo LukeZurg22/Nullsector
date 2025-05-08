@@ -10,11 +10,11 @@
       department: Security
       time: 43200 # 12 hours # mono
     - !type:RoleTimeRequirement
-      role: JobWarden
+      role: JobSecurityGuard
       time: 10800 # 3 hours # mono
-    - !type:RoleTimeRequirement
-      role: JobSeniorOfficer
-      time: 10800 # 3 hours # mono
+    #- !type:RoleTimeRequirement
+    #  role: JobSeniorOfficer
+    #  time: 10800 # 3 hours # mono
   alternateRequirementSets:
     longerPlaytimeLessSec:
     - !type:OverallPlaytimeRequirement

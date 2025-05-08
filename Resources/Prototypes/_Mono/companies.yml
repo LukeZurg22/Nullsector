@@ -28,6 +28,8 @@
   name: Union J
   description: union-j-description
   color: "#FFB266"
+  # NOTE: Has special mechanics:
+  # - adds "John" to start of name on spawn
 
 - type: company
   id: ArmadanExiles
@@ -42,25 +44,3 @@
   name: Gas New Galactic
   description: gas-new-galactic-description
   color: "#3DA695"
-
-- type: company
-  id: DarkMatterEnterprises
-  form: Protagonist
-  name: Dark Matter Enterprises
-  description: dark-matter-enterprises-description
-  color: "#BF00B9"
-
-- type: company
-  id: SouthernPeakMercenaries
-  form: Protagonist
-  name: The Southern Peaks
-  description: southern-peak-mercenaries-description
-  color: "#020624"
-
-# ====Rogue / Antag. Companies====
-- type: company
-  id: TheViperGroup
-  form: Antagonist
-  name: The Viper Group
-  color: "#D82918"
-

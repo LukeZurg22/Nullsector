@@ -19,6 +19,12 @@ public sealed partial class FTLComponent : Component
     [ViewVariables]
     public FTLState State = FTLState.Available;
 
+    /// <summary>
+    /// If this shuttle is part of a docked group doing FTL, this is the main shuttle controlling the FTL.
+    /// </summary>
+    [DataField("linkedShuttle")]
+    public EntityUid? LinkedShuttle;
+
     [ViewVariables(VVAccess.ReadWrite)]
     public StartEndTime StateTime;
 
@@ -53,7 +59,7 @@ public sealed partial class FTLComponent : Component
     [ViewVariables(VVAccess.ReadWrite), DataField("soundTravel")]
     public SoundSpecifier? TravelSound = new SoundPathSpecifier("/Audio/Effects/Shuttle/hyperspace_progress.ogg")
     {
-        Params = AudioParams.Default.WithVolume(-3f).WithLoop(true)
+        Params = AudioParams.Default.WithVolume(-3f).WithLoop(true),
     };
 
     [DataField]
