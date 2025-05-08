@@ -27,15 +27,15 @@
 - type: entity
   id: BoxFolderNfsdForms
   parent: [FillNfsdForms, BoxFolderPalGreen]
-  name: NCMC form folder
-  description: A folder filled with NCMC paperwork templates.
+  name: Militia form folder
+  description: A folder filled with Militia paperwork templates.
   suffix: Forms, Green
 
 - type: entity
   id: BoxFolderNfsdFormsBrown
   parent: [FillNfsdForms, BoxFolderPalBrown]
-  name: NCMC form folder
-  description: A folder filled with NCMC paperwork templates.
+  name: Militia form folder
+  description: A folder filled with Militia paperwork templates.
   suffix: Forms, Brown
 
 # Forms
@@ -64,7 +64,7 @@
 
 
 
-      [color=#AAAAAA]This Warrant is only valid when requested by an agent of the NCMC and approved, signed, and stamped by a [italic]distinct[/italic] (unless impossible) officer ranked Bailiff or above or a Station Representative.[/color]
+      [color=#AAAAAA]This Warrant is only valid when requested by an agent of the Militia and approved, signed, and stamped by a [italic]distinct[/italic] (unless impossible) officer ranked Bailiff or above or a Station Representative.[/color]
 
 - type: entity # Creator: Starly (Shaw Clifflower)
   id: PaperWrittenNfsdReport
@@ -108,7 +108,7 @@
 
 
 
-      [color=#AAAAAA]I, the [italic]Bailiff or Sheriff[/italic] of the NCMC, or an agent acting on their behalf, certify that everything written in this report is correct and truthful. I am aware of the penalties should anything in this report be proven incorrect, falsified, or exaggerated.[/color]
+      [color=#AAAAAA]I, the [italic]Bailiff or Sheriff[/italic] of the Militia, or an agent acting on their behalf, certify that everything written in this report is correct and truthful. I am aware of the penalties should anything in this report be proven incorrect, falsified, or exaggerated.[/color]
 
 - type: entity
   id: PaperWrittenNfsdArrestWarrant
@@ -145,7 +145,7 @@
 
 
 
-      [color=#AAAAAA]This warrant is only valid when requested by an agent of the NCMC, and approved, signed and stamped by a distinct (unless impossible) officer ranked Bailiff or above, or a Station Representative.[/color]
+      [color=#AAAAAA]This warrant is only valid when requested by an agent of the Militia, and approved, signed and stamped by a distinct (unless impossible) officer ranked Bailiff or above, or a Station Representative.[/color]
 
 - type: entity # Creator: Kwentov (Vica)
   id: PaperWrittenNfsdArrestReport
@@ -218,7 +218,7 @@
       [bold]Sign Off Time:[/bold] 
 
 
-      [color=#AAAAAA]This Form is considered NT Sensitive Data, Class 2, and is for internal NCMC use only.[/color]
+      [color=#AAAAAA]This Form is considered NT Sensitive Data, Class 2, and is for internal Militia use only.[/color]
 
 
 - type: entity # Based on form made by Blumbee (Aki Suboshi)
@@ -332,7 +332,7 @@
           [bullet]XXXXXXXX, Militia Coordinator
           [bullet]XXXXXXXX, Mercenary Coordinator
 
-      This document authorizes the above vessel and its captain to assist and cooperate with the NCMC and Frontier authorities in neutralizing hostile bluespace threats to Frontier. These include, but are not limited to:
+      This document authorizes the above vessel and its captain to assist and cooperate with the Militia and Frontier authorities in neutralizing hostile bluespace threats to Frontier. These include, but are not limited to:
           [bullet] Cultist vessels
           [bullet] Syndicate vessels
           [bullet] Wizard Federation vessels
@@ -340,11 +340,11 @@
 
       This document does NOT deputize the authorized party. The authorized party is not granted special privileges to arrest, detain, and prosecute individuals associated with Nanotrasen.
 
-      [bold]Any contraband seized during operations aboard hostile vessels must be surrendered, either to the NCMC or the Militia Coordinator, for a cash bounty. Failure to surrender contraband will lead to the forfeiture of this agreement, and the authorized party may be liable for criminal charges.[/bold]
+      [bold]Any contraband seized during operations aboard hostile vessels must be surrendered, either to the Militia or the Militia Coordinator, for a cash bounty. Failure to surrender contraband will lead to the forfeiture of this agreement, and the authorized party may be liable for criminal charges.[/bold]
 
-      The authorized party is to keep a copy of this document for inspection. The authorized party is expected to maintain contact with NCMC command and/or the Militia Coordinator to minimize casualties.
+      The authorized party is to keep a copy of this document for inspection. The authorized party is expected to maintain contact with Militia command and/or the Militia Coordinator to minimize casualties.
 
-      Before engaging with hostile vessels, the authorized party is expected to follow any instructions given by the NCMC for staging or other preparation prior to boarding.
+      Before engaging with hostile vessels, the authorized party is expected to follow any instructions given by the Militia for staging or other preparation prior to boarding.
 
 
 

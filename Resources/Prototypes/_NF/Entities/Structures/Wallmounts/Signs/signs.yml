@@ -55,8 +55,8 @@
 - type: entity
   parent: BaseSignDirectionalNF
   id: SignDirectionalNfsd
-  name: NCMC outpost sign
-  description: A direction sign, pointing out which way an NCMC outpost is.
+  name: Militia outpost sign
+  description: A direction sign, pointing out which way an Militia outpost is.
   components:
   - type: Sprite
     state: direction_nfsd
@@ -91,8 +91,8 @@
 - type: entity
   parent: NFBaseSign
   id: SignNfsd
-  name: NCMC sign
-  description: A sign that marks the area beyond as an NCMC area.
+  name: Militia sign
+  description: A sign that marks the area beyond as an Militia area.
   components:
   - type: Sprite
     state: nfsd
@@ -101,7 +101,7 @@
   parent: NFBaseSign
   id: SignNfsdArmoury
   name: armory sign
-  description: A sign that marks the area beyond as an NCMC armory.
+  description: A sign that marks the area beyond as an Militia armory.
   components:
   - type: Sprite
     state: armoury
@@ -110,7 +110,7 @@
   parent: NFBaseSign
   id: SignNfsdBrief
   name: briefing sign
-  description: A sign that marks the area beyond as an NCMC briefing room.
+  description: A sign that marks the area beyond as an Militia briefing room.
   components:
   - type: Sprite
     state: brief
@@ -119,7 +119,7 @@
   parent: NFBaseSign
   id: SignNfsdBrig
   name: brig sign
-  description: A sign that marks the area beyond as an NCMC brig.
+  description: A sign that marks the area beyond as an Militia brig.
   components:
   - type: Sprite
     state: brig
@@ -128,7 +128,7 @@
   parent: NFBaseSign
   id: SignNfsdBrigmed
   name: medbay sign
-  description: A sign that marks the area beyond as an NCMC medbay.
+  description: A sign that marks the area beyond as an Militia medbay.
   components:
   - type: Sprite
     state: brigmed
@@ -137,7 +137,7 @@
   parent: NFBaseSign
   id: SignNfsdDetective
   name: detective sign
-  description: A sign that marks the area beyond as an NCMC detective's office.
+  description: A sign that marks the area beyond as an Militia detective's office.
   components:
   - type: Sprite
     state: detective
@@ -146,7 +146,7 @@
   parent: NFBaseSign
   id: SignNfsdLaw
   name: lawyer sign
-  description: A sign that marks the area beyond as an NCMC lawyer's office.
+  description: A sign that marks the area beyond as an Militia lawyer's office.
   components:
   - type: Sprite
     state: law
@@ -155,7 +155,7 @@
   parent: NFBaseSign
   id: SignNfsdRange
   name: shooting range sign
-  description: A sign that marks the area beyond as an NCMC shooting range.
+  description: A sign that marks the area beyond as an Militia shooting range.
   components:
   - type: Sprite
     state: range
@@ -164,7 +164,7 @@
   parent: NFBaseSign
   id: SignNfsdEvidence
   name: evidence sign
-  description: A sign that marks the area beyond as an NCMC evidence room.
+  description: A sign that marks the area beyond as an Militia evidence room.
   components:
   - type: Sprite
     state: evidence

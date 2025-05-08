@@ -19,7 +19,7 @@
 - type: entity
   parent: EncryptionKey
   id: EncryptionKeyNfsd
-  name: NCMC encryption key
+  name: Militia encryption key
   categories: [ DoNotMap ]
   description: An encryption key for the New Congressional Colonial Marines' channel.
   components:

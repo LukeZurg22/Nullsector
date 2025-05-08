@@ -82,7 +82,7 @@
   id: ComputerShipyardNfsd
   parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, ComputerShipyardBase]
   name: NGC-MC shipyard console
-  description: Used to buy NCMC patrol vessels.
+  description: Used to buy Militia patrol vessels.
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/computers.rsi

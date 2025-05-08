@@ -114,8 +114,8 @@
 - type: entity
   id: NfsdTechFab
   parent: [ BlueprintReceiverBase, SecurityTechFab ]
-  name: NCMC techfab
-  description: Prints equipment for use by NCMC.
+  name: Militia techfab
+  description: Prints equipment for use by Militia.
   components:
   - type: Sprite
     sprite: _NF/Structures/Machines/techfab.rsi

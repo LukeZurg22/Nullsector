@@ -1,7 +1,7 @@
 - type: entity
   id: BannerNfsd
   parent: BannerBase
-  name: NCMC banner
+  name: Militia banner
   description: A banner displaying the colors of the New Congressional Marine Corps' Department.
   components:
   - type: Sprite
@@ -14,7 +14,7 @@
 - type: entity
   id: FlagNfsd
   parent: BannerBase
-  name: NCMC flag
+  name: Militia flag
   description: A flag displaying the colors of the New Congressional Marine Corps.
   components:
   - type: Sprite

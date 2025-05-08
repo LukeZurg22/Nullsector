@@ -1,5 +1,5 @@
 - type: entity
-  name: NCMC energy shield
+  name: Militia energy shield
   parent: [BaseC2ContrabandUnredeemable, EnergyShield]
   id: EnergyShieldNfsd
   components:

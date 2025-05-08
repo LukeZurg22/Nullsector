@@ -1020,7 +1020,7 @@
 - type: entity
   id: NFPouchNfsd
   parent: NFPouchUtility
-  name: NCMC pouch
+  name: Militia pouch
   components:
   - type: Sprite
     layers:
