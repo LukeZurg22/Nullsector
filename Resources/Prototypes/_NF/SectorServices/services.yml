@@ -22,7 +22,7 @@
       Frontier:
         !type:SectorBankAccountInfo
         balance: 8000
-        increasePerSecond: 1 # TODO: move to ~65K per hour (~18/s), about enough for minimum wage for Frontier employees
+        increasePerSecond: 18 # ~65K per hour, about enough for minimum wage for Frontier employees
       Nfsd:
         !type:SectorBankAccountInfo
         balance: 8000
@@ -31,6 +31,10 @@
         !type:SectorBankAccountInfo
         balance: 8000
         increasePerSecond: 6 # 21.6K per hour, a bit over for the DOC MOM's wage.
+      Mercenary: # Nu Sector
+        !type:SectorBankAccountInfo
+        balance: 0
+        increasePerSecond: 2 # 7.2K per hour, most of their money is made from expeditions and contra.
 
  # A global source of character records (DNA, fingerprints, criminal records, etc.)
 - type: sectorService
