@@ -657,6 +657,16 @@
   - type: StationBankATM
     account: Medical
 
+# Null Sector
+- type: entity
+  parent: BaseComputerTabletopStationAdminBankATM
+  id: ComputerTabletopStationAdminBankATMMercenary
+  description: Used to transfer funds from Expeditionary Lodge's bank account
+  suffix: Mercenary, Tabletop
+  components:
+  - type: StationBankATM
+    account: Mercenary
+
 - type: entity
   parent: [BaseStructureIndestructible, BaseStructureComputerTabletop, ComputerContrabandPalletConsole]
   id: ComputerTabletopContrabandPalletConsole
