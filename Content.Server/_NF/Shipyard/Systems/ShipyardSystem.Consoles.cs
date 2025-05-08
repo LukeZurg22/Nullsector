@@ -47,7 +47,10 @@ using Content.Shared.Forensics.Components;
 using Content.Shared.Shuttles.Components;
 using Robust.Server.Player;
 using Robust.Shared.Player;
+using Content.Server.Shuttles.Components;
+using Content.Server.Shuttles.Systems;
 using Robust.Shared.Log;
+using Robust.Shared.Timing;
 
 namespace Content.Server._NF.Shipyard.Systems;
 
@@ -72,6 +75,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly EntityManager _entityManager = default!;
     [Dependency] private readonly ShuttleRecordsSystem _shuttleRecordsSystem = default!;
     [Dependency] private readonly ShuttleConsoleLockSystem _shuttleConsoleLock = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly Regex DeedRegex = new(@"\s*\([^()]*\)");
 
@@ -222,6 +226,15 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             name = Name(shuttleStation.Value);
         }
 
+        // Add FTLLockComponent to the shuttle with Enabled set to true
+        // We need to use the ShuttleConsoleSystem to properly set the Enabled property
+        var ftlLock = EnsureComp<FTLLockComponent>(shuttleUid);
+
+        // Get the ShuttleConsoleSystem which has proper access to modify FTLLockComponent.Enabled
+        var shuttleConsoleSystem = Get<ShuttleConsoleSystem>();
+        var dockedEntities = new List<NetEntity>();
+        shuttleConsoleSystem.ToggleFTLLock(shuttleUid, dockedEntities, true);
+
         if (TryComp<AccessComponent>(targetId, out var newCap))
         {
             var newAccess = newCap.Tags.ToList();
@@ -232,11 +245,11 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var deedID = EnsureComp<ShuttleDeedComponent>(targetId);
 
         var shuttleOwner = Name(player).Trim();
-        AssignShuttleDeedProperties(deedID, shuttleUid, name, shuttleOwner, voucherUsed);
+        AssignShuttleDeedProperties(deedID, shuttleUid, name, shuttleOwner, voucherUsed, voucherUsed ? targetId.ToString() : null);
         deedID.DeedHolder = targetId;
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttleUid);
-        AssignShuttleDeedProperties(deedShuttle, shuttleUid, name, shuttleOwner, voucherUsed);
+        AssignShuttleDeedProperties(deedShuttle, shuttleUid, name, shuttleOwner, voucherUsed, voucherUsed ? targetId.ToString() : null);
 
         // Lock all shuttle consoles on the ship to this deed
         var shuttleConsoleQuery = EntityQueryEnumerator<ShuttleConsoleComponent, TransformComponent>();
@@ -249,6 +262,9 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             // Add lock component and set the shuttle ID
             var lockComp = EnsureComp<ShuttleConsoleLockComponent>(consoleUid);
             _shuttleConsoleLock.SetShuttleId(consoleUid, shuttleUid.ToString(), lockComp);
+
+            // Ensure emergency lock is disabled for newly purchased ships
+            _shuttleConsoleLock.SetEmergencyLock(consoleUid, false);
 
             // Log for debugging
             Log.Debug("Locked shuttle console {0} to shuttle {1} for deed holder {2}", consoleUid, shuttleUid, targetId);
@@ -498,6 +514,21 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         RefreshState(uid, bank.Balance, true, null, 0, refreshId, (ShipyardConsoleUiKey)args.UiKey, voucherUsed);
     }
 
+    /// <summary>
+    /// Checks if a player is currently on the unassign cooldown and returns the remaining time.
+    /// </summary>
+    private TimeSpan? GetRemainingCooldownTime(EntityUid player)
+    {
+        if (!TryComp<ShipyardUnassignCooldownComponent>(player, out var cooldown))
+            return null;
+
+        var currentTime = _timing.CurTime;
+        if (currentTime >= cooldown.NextUnassignTime)
+            return null;
+
+        return cooldown.NextUnassignTime - currentTime;
+    }
+
     private void OnConsoleUIOpened(EntityUid uid, ShipyardConsoleComponent component, BoundUIOpenedEvent args)
     {
         if (!component.Initialized)
@@ -537,6 +568,15 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         var fullName = deed != null ? GetFullName(deed) : null;
+
+        // If the player is on cooldown, disable the unassign button
+        var remainingCooldown = GetRemainingCooldownTime(player);
+        if (remainingCooldown.HasValue)
+        {
+            // TODO: Update UI to show cooldown time on button
+            // For now we'll just let them see the cooldown message when they try to use it
+        }
+
         RefreshState(uid, bank.Balance, true, fullName, sellValue, targetId, (ShipyardConsoleUiKey)args.UiKey, voucherUsed);
     }
 
@@ -821,12 +861,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     }
 
     #region Deed Assignment
-    void AssignShuttleDeedProperties(ShuttleDeedComponent deed, EntityUid? shuttleUid, string? shuttleName, string? shuttleOwner, bool purchasedWithVoucher)
+    void AssignShuttleDeedProperties(ShuttleDeedComponent deed, EntityUid? shuttleUid, string? shuttleName, string? shuttleOwner, bool purchasedWithVoucher, string? purchaseVoucherUid = null)
     {
         deed.ShuttleUid = shuttleUid;
         TryParseShuttleName(deed, shuttleName!);
         deed.ShuttleOwner = shuttleOwner;
         deed.PurchasedWithVoucher = purchasedWithVoucher;
+        deed.PurchaseVoucherUid = purchaseVoucherUid;
     }
 
     private void OnInitDeedSpawner(EntityUid uid, StationDeedSpawnerComponent component, MapInitEvent args)
@@ -845,7 +886,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         _idSystem.TryChangeFullName(uid, output); // Update the card with owner name
 
         var deedID = EnsureComp<ShuttleDeedComponent>(uid);
-        AssignShuttleDeedProperties(deedID, shuttleDeed.ShuttleUid, shuttleDeed.ShuttleName, shuttleDeed.ShuttleOwner, shuttleDeed.PurchasedWithVoucher);
+        AssignShuttleDeedProperties(deedID, shuttleDeed.ShuttleUid, shuttleDeed.ShuttleName, shuttleDeed.ShuttleOwner, shuttleDeed.PurchasedWithVoucher, shuttleDeed.PurchaseVoucherUid);
     }
     #endregion
 
@@ -899,4 +940,69 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         return 0;
     }
     #endregion Ship Pricing
+
+    public void OnUnassignDeedMessage(EntityUid uid, ShipyardConsoleComponent component, ShipyardConsoleUnassignDeedMessage args)
+    {
+        if (args.Actor is not { Valid: true } player)
+            return;
+
+        if (component.TargetIdSlot.ContainerSlot?.ContainedEntity is not { Valid: true } targetId)
+        {
+            ConsolePopup(player, Loc.GetString("shipyard-console-no-idcard"));
+            PlayDenySound(player, uid, component);
+            return;
+        }
+
+        if (!TryComp<ShuttleDeedComponent>(targetId, out var deed) || deed.ShuttleUid == null)
+        {
+            ConsolePopup(player, Loc.GetString("shipyard-console-no-deed"));
+            PlayDenySound(player, uid, component);
+            return;
+        }
+
+        // Check if the player is on cooldown
+        var cooldown = EnsureComp<ShipyardUnassignCooldownComponent>(player);
+        var currentTime = _timing.CurTime;
+
+        if (currentTime < cooldown.NextUnassignTime)
+        {
+            // Calculate remaining time
+            var timeRemaining = cooldown.NextUnassignTime - currentTime;
+            var hoursRemaining = (int)timeRemaining.TotalHours;
+            var minutesRemaining = (int)timeRemaining.TotalMinutes % 60;
+
+            // Display cooldown message
+            var cooldownMessage = Loc.GetString(
+                "shipyard-console-unassign-cooldown",
+                ("hours", hoursRemaining),
+                ("minutes", minutesRemaining)
+            );
+            ConsolePopup(player, cooldownMessage);
+            PlayDenySound(player, uid, component);
+            return;
+        }
+
+        // Get the name of the ship before we remove the component
+        var shipName = GetFullName(deed);
+
+        // Remove the deed component from the ID card
+        RemComp<ShuttleDeedComponent>(targetId);
+
+        // Set the cooldown
+        cooldown.NextUnassignTime = currentTime + cooldown.CooldownDuration;
+
+        ConsolePopup(player, Loc.GetString("shipyard-console-deed-unassigned"));
+        PlayConfirmSound(player, uid, component);
+
+        // Get the player's balance or use 0 if they don't have a bank account
+        int balance = 0;
+        if (TryComp<BankAccountComponent>(player, out var bank))
+            balance = bank.Balance;
+
+        // Update the UI
+        RefreshState(uid, balance, true, null, 0, targetId, (ShipyardConsoleUiKey)args.UiKey, false);
+
+        _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low,
+            $"{ToPrettyString(player):actor} unassigned deed for ship '{shipName}' from {ToPrettyString(targetId)} via {ToPrettyString(uid)}");
+    }
 }
