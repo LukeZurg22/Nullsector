@@ -227,8 +227,8 @@
 - type: entity
   parent: BaseStationAdminBankATM
   id: StationAdminBankATMNfsd
-  description: Used to transfer funds to and from NCMCO's bank account.
-  suffix: NCMC
+  description: Used to transfer funds to and from MilitiaO's bank account.
+  suffix: Militia
   components:
   - type: StationBankATM
     account: Nfsd
@@ -241,3 +241,13 @@
   components:
   - type: StationBankATM
     account: Medical
+
+# Null Sector
+- type: entity
+  parent: BaseStationAdminBankATM
+  id: StationAdminBankATMMercenary
+  description: Used to transfer funds to and from the Expeditionary Lodge bank account.
+  suffix: Mercenary
+  components:
+  - type: StationBankATM
+    account: Mercenary

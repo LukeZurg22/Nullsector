@@ -108,7 +108,7 @@
 - type: entity
   parent: DefaultStationBeacon
   id: DefaultStationBeaconFrontierNfsd
-  suffix: NCMC
+  suffix: Militia
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-nfsd    
@@ -117,7 +117,7 @@
 - type: entity
   parent: DefaultStationBeaconFrontierNfsd
   id: DefaultStationBeaconFrontierNfsdBrig
-  suffix: NCMC Brig
+  suffix: Militia Brig
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-nfsd-brig

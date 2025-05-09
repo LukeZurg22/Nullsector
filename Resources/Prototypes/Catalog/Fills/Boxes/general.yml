@@ -350,7 +350,7 @@
         amount: 4
 
 - type: entity
-  name: NCMC encryption key box
+  name: Militia encryption key box
   parent: BoxEncryptionKeyPassenger
   id: BoxEncryptionKeySecurity
   components:

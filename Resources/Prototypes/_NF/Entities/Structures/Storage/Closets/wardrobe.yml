@@ -1,4 +1,4 @@
-# NCMC/brig wardrobe
+# Militia/brig wardrobe
 - type: entity
   id: NFWardrobePrison
   parent: WardrobeBase

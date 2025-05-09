@@ -642,8 +642,8 @@
 - type: entity
   parent: BaseComputerTabletopStationAdminBankATM
   id: ComputerTabletopStationAdminBankATMNfsd
-  description: Used to transfer funds from the NCMCO's bank account
-  suffix: NCMC, Tabletop
+  description: Used to transfer funds from the MilitiaO's bank account
+  suffix: Militia, Tabletop
   components:
   - type: StationBankATM
     account: Nfsd
@@ -656,6 +656,16 @@
   components:
   - type: StationBankATM
     account: Medical
+
+# Null Sector
+- type: entity
+  parent: BaseComputerTabletopStationAdminBankATM
+  id: ComputerTabletopStationAdminBankATMMercenary
+  description: Used to transfer funds from Expeditionary Lodge's bank account
+  suffix: Mercenary, Tabletop
+  components:
+  - type: StationBankATM
+    account: Mercenary
 
 - type: entity
   parent: [BaseStructureIndestructible, BaseStructureComputerTabletop, ComputerContrabandPalletConsole]

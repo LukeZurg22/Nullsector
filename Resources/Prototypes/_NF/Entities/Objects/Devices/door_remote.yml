@@ -1,7 +1,7 @@
 - type: entity
   parent: [DoorRemoteDefault, BaseCommandContraband]
   id: DoorRemoteNfsd
-  name: NCMC door remote
+  name: Militia door remote
   components:
   - type: Sprite
     layers:
