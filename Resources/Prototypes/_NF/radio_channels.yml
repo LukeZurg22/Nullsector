@@ -7,8 +7,7 @@
 
 - type: radioChannel
   id: Nfsd
-  name: chat-radio-Militia
+  name: chat-radio-nfsd
   keycode: 's'
   frequency: 1023
   color: "#047ABD"
-
