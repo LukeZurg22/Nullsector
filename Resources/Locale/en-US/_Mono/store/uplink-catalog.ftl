@@ -60,6 +60,12 @@ uplink-pirate-jaws-desc = A normal jaws-of-life illegally modified past restrict
 uplink-pirate-thruster-kit-name = Thruster Upgrade Kit
 uplink-pirate-thruster-kit-desc = Contains 32 super capaciters. Perfect for upgrading eight thrusters.
 
+uplink-pirate-comms-computer-circuitboard-name = Rogue communications computer board
+uplink-pirate-comms-computer-circuitboard-desc = A computer printed circuit board for a rogue communications console.
+
+uplink-pirate-security-cyborg-module-name = Security Cyborg Module
+uplink-pirate-security-cyborg-module-desc = A machete, an energy gun, and a stun baton, made specifically for borgs. Wait, doesn't TFSMC have the same thing?
+
 # weapons
 
 uplink-pirate-energy-cutlass-name = Energy Cutlass
@@ -87,10 +93,16 @@ uplink-pirate-bulldog-name = Bulldog Bundle
 uplink-pirate-bulldog-desc = A automatic .50 shotgun, packaged with a few drums.
 
 uplink-pirate-vt7-name = VT7 HF Blade
-uplink-pirate-vt7-desc = A high quality HF blade. 
+uplink-pirate-vt7-desc = A high quality HF blade.
 
-uplink-security-hfblade-name = HF-Katana
-uplink-security-hfblade-desc = A tool of justice.
+uplink-pirate-anaconda-name = Anaconda
+uplink-pirate-anaconda-desc = The pride of Cybersun engineers. A handheld, compact, self-recharging ballistic firearm.
+
+uplink-pirate-wspr-name = WSPR
+uplink-pirate-wspr-desc = A counter to the TSFMC's Annie. Uses the same .30 subsonic ammo.
+
+uplink-pirate-burner-name = Burner Heavy Rifle
+uplink-pirate-burner-desc = A destructive .50 caliber rifle. Supports HE ammo. Horribly destructive.
 
 # ammo
 
@@ -120,6 +132,18 @@ uplink-pirate-bulldog-ammo-desc = A ammo drum for a Bulldog shotgun. Can be used
 
 uplink-pirate-smg-magazine-name = .35 auto SMG magazine
 uplink-pirate-smg-magazine-desc = A 30 round magazine of .35 auto. Compatible with the C-20r, Drozd, and many others.
+
+uplink-subsonic-mag-name = .30 subsonic rifle mag
+uplink-subsonic-mag-desc = Supports the WSPR and Annie.
+
+uplink-subsonic-box-name = .30 subsonic rifle box
+uplink-subsonic-box-desc = A box of ammo for the WSPR and Annie.
+
+uplink-pirate-box-highcal-name = .50 ammunition box
+uplink-pirate-box-highcal-desc = A box of general-purpose ammunition for the Burner heavy rifle.
+
+uplink-pirate-box-highcal-he-name = HE .50 ammunition box
+uplink-pirate-box-highcal-he-desc = A box of explosive ammunition for the Burner heavy rifle.
 
 # equipment
 

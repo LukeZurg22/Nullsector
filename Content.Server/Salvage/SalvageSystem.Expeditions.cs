@@ -1,28 +1,20 @@
 using System.Linq;
 using System.Threading;
 using Content.Server._NF.Salvage; // Frontier: graceful exped spawn failures
-using Content.Server.Cargo.Components;
-using Content.Server.Cargo.Systems;
 using Content.Server.Salvage.Expeditions;
 using Content.Server.Salvage.Expeditions.Structure;
 using Content.Shared.CCVar;
 using Content.Shared._NF.CCVar; // Frontier
 using Content.Shared.Examine;
-using Content.Shared.Random.Helpers;
 using Content.Shared.Salvage.Expeditions;
-using Robust.Shared.Audio;
 using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.CPUJob.JobQueues.Queues;
-using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
-using Content.Server.Station.Systems;
-using Content.Shared.Coordinates;
-using Content.Shared.Procedural;
 using Content.Shared.Salvage;
 using Robust.Shared.GameStates;
 using Robust.Shared.Random;
-using Robust.Shared.Map;
-using Content.Shared.Shuttles.Components; // Frontier
+using Content.Shared.Shuttles.Components;
+using Robust.Server.GameObjects; // Frontier
 using Robust.Shared.Configuration; // Frontier
 
 namespace Content.Server.Salvage;
@@ -35,6 +27,7 @@ public sealed partial class SalvageSystem
 
     private const int MissionLimit = 5;
     [Dependency] private readonly IConfigurationManager _cfgManager = default!; // Frontier
+    [Dependency] private readonly TransformSystem _transformSystem = default!;
 
     private readonly JobQueue _salvageQueue = new();
     private readonly List<(SpawnSalvageMissionJob Job, CancellationTokenSource CancelToken)> _salvageJobs = new();
@@ -338,11 +331,16 @@ public sealed partial class SalvageSystem
         args.PushMarkup(Loc.GetString("salvage-expedition-structure-examine"));
     }
 
+    /// <summary>
+    /// Spawns rewards upon the completion of a Salvage / Expeditionary Mission.
+    /// </summary>
+    /// <param name="comp"></param>
     private void GiveRewards(SalvageExpeditionComponent comp)
     {
         if (!_cfgManager.GetCVar(NFCCVars.SalvageExpeditionRewardsEnabled))
             return;
 
+        // Instead of getting pallets, it instead gets the Salvage Expedition Computer.
         var palletList = new List<EntityUid>();
         var pallets = EntityQueryEnumerator<SalvageExpeditionConsoleComponent>(); // Frontier CargoPalletComponent<SalvageExpeditionConsoleComponent
         while (pallets.MoveNext(out var pallet, out var palletComp))
@@ -358,7 +356,8 @@ public sealed partial class SalvageSystem
 
         foreach (var reward in comp.Rewards)
         {
-            Spawn(reward, (Transform(_random.Pick(palletList)).MapPosition));
+            var mapCoordinates = _transformSystem.GetMapCoordinates(_random.Pick(palletList)); // Null - Spawn Reward
+            Spawn(reward, mapCoordinates);
         }
     }
 
