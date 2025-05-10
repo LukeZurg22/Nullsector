@@ -52,5 +52,5 @@ public sealed class CompanyPrototype : IPrototype
     /// Access for login in closed company
     /// </summary>
     [DataField("logins", required: false)]
-    public List<string> Logins { get; private set; } = new();
+    public List<string> Logins { get; private set; } = [];
 }

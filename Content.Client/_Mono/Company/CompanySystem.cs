@@ -16,7 +16,7 @@ public sealed class CompanySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<Shared._Mono.Company.CompanyComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<CompanyComponent, ExaminedEvent>(OnExamined);
     }
 
     private void OnExamined(EntityUid uid, CompanyComponent component, ExaminedEvent args)
@@ -25,17 +25,17 @@ public sealed class CompanySystem : EntitySystem
         if (_prototypeManager.TryIndex<CompanyPrototype>(component.CompanyName, out var prototype) && component.CompanyName != "None")
         {
             // Use the color from the prototype with gender-appropriate pronoun
-            args.PushMarkup(Loc.GetString("examine-company", 
-                ("entity", uid), 
-                ("company", $"[color={prototype.Color.ToHex()}]{prototype.Name}[/color]")), 
+            args.PushMarkup(Loc.GetString("examine-company",
+                ("entity", uid),
+                ("company", $"[color={prototype.Color.ToHex()}]{prototype.Name}[/color]")),
                 priority: 100); // Much higher priority (100) will ensure it's at the top
         }
         else if (component.CompanyName != "None")
         {
             // Fallback for companies without prototypes
-            args.PushMarkup(Loc.GetString("examine-company", 
-                ("entity", uid), 
-                ("company", $"[color=yellow]{component.CompanyName}[/color]")), 
+            args.PushMarkup(Loc.GetString("examine-company",
+                ("entity", uid),
+                ("company", $"[color=yellow]{component.CompanyName}[/color]")),
                 priority: 100);
         }
         // Don't show anything for "None" company
