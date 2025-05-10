@@ -1,0 +1,26 @@
+- type: entity
+  id: ExpedPaperReceipt
+  parent: Paper
+  name: expedition receipt
+  description: A sheet with printed statistics proving an expedition took place somewhere.
+  #categories: [ HideSpawnMenu ]
+  components:
+  - type: Paper
+    stampedBy:
+    - stampedName: exped-receipt-signature
+      stampedColor: "#FFFFF4"
+    stampState: null
+    
+- type: entity
+  name: expedition reward spawner
+  id: ExpedRewardSpawner
+  parent: MarkerBase
+  suffix: Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _NF/Objects/Economy/cash.rsi
+      state: cash_5000
+  - type: ExpeditionRewardReciever
+    isDepot: false

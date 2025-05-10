@@ -5,21 +5,63 @@
   description: A briefcase full of bills fresh from the digital mint. Smells like success and unpaid taxes.
   abstract: true
   categories: [ HideSpawnMenu ]
-  suffix: Money
-  components:
-  - type: Sprite
-    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
-    state: icon
-  - type: Item
-    size: Ginormous
-    sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
-  - type: IgnoreMarketModifier # Worth exactly what it says.
+  components: # Null Sector - Made the spesos briefcase capable of holding a note. Implemented for Exped. Receipts.
+    - type: SolutionContainerManager
+    - type: Sprite
+      sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
+      layers:
+      - state: icon
+      - state: paper
+        visible: false
+        map: ["enum.PaperLabelVisuals.Layer"]
+        sprite: Objects/Storage/Briefcases/briefcase_brown.rsi
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.PaperLabelVisuals.HasLabel:
+          enum.PaperLabelVisuals.Layer:
+            True: { visible: true }
+            False: { visible: false }
+    - type: Item
+      size: Ginormous
+    - type: IgnoreMarketModifier # Worth exactly what it says.
+    - type: ItemSlots
+    - type: ContainerContainer
+      containers:
+        paper_label: !type:ContainerSlot
+    - type: PaperLabel
+      labelSlot:
+        insertVerbText: comp-paper-label-insert
+        ejectVerbText: comp-paper-label-eject
+        whitelist:
+          components:
+          - Paper
+        blacklist:
+          tags:
+          - Book
 
 - type: entity
   parent: SpaceCashExpedition
   id: SpaceCashExpeditionT1
+  name: spesos (2,500)
+  #categories: [ HideSpawnMenu ]
+  components:
+  - type: SpawnItemsOnUse
+    items:
+      - id: SpaceCash1000
+        amount: 2
+      - id: SpaceCash100
+        amount: 5
+    sound:
+      collection: storageRustle
+  - type: StaticPrice # Require since you can still sell a ship that have it on it
+    price: 2500
+
+- type: entity
+  parent: SpaceCashExpedition
+  id: SpaceCashExpeditionT2
   name: spesos (5,000)
-  categories: [ HideSpawnMenu ]
+  #categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
@@ -31,7 +73,7 @@
 
 - type: entity
   parent: SpaceCashExpedition
-  id: SpaceCashExpeditionT2
+  id: SpaceCashExpeditionT3
   name: spesos (10,000)
   categories: [ HideSpawnMenu ]
   components:
@@ -45,7 +87,7 @@
 
 - type: entity
   parent: SpaceCashExpedition
-  id: SpaceCashExpeditionT3
+  id: SpaceCashExpeditionT4
   name: spesos (20,000)
   categories: [ HideSpawnMenu ]
   components:
@@ -59,31 +101,15 @@
 
 - type: entity
   parent: SpaceCashExpedition
-  id: SpaceCashExpeditionT4
-  name: spesos (40,000)
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: SpawnItemsOnUse
-    items:
-      - id: SpaceCash20000
-        amount: 2
-    sound:
-      collection: storageRustle
-  - type: StaticPrice # Require since you can still sell a ship that have it on it
-    price: 40000
-
-- type: entity
-  parent: SpaceCashExpedition
   id: SpaceCashExpeditionT5
-  name: spesos (70,000)
+  name: spesos (35,000)
   categories: [ HideSpawnMenu ]
   components:
   - type: SpawnItemsOnUse
     items:
       - id: SpaceCash25000
-        amount: 2
-      - id: SpaceCash20000
+      - id: SpaceCash10000
     sound:
       collection: storageRustle
   - type: StaticPrice # Require since you can still sell a ship that have it on it
-    price: 70000
+    price: 35000

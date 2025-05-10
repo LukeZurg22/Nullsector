@@ -1101,6 +1101,7 @@
             True: { visible: false }
             False: { visible: true }
     - type: SalvageExpeditionConsole
+    - type: ExpeditionRewardReciever # Null Sector
     - type: ActivatableUI
       key: enum.SalvageConsoleUiKey.Expedition
     - type: ActivatableUIRequiresPower

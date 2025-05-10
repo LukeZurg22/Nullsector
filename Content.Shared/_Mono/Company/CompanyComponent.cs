@@ -3,7 +3,8 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._Mono.Company;
 
 /// <summary>
-/// Component that represents a player's affiliated company.
+/// Component that represents a player's affiliated company.<br/>
+/// This component is also initialized onto ships that are bought by a player.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class CompanyComponent : Component

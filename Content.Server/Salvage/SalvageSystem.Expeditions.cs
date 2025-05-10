@@ -1,29 +1,24 @@
 using System.Linq;
 using System.Threading;
-using Content.Server._NF.Salvage; // Frontier: graceful exped spawn failures
-using Content.Server.Cargo.Components;
-using Content.Server.Cargo.Systems;
+using Content.Server._NF.Salvage;
+using Content.Server._Null.Systems; // Frontier: graceful exped spawn failures
 using Content.Server.Salvage.Expeditions;
 using Content.Server.Salvage.Expeditions.Structure;
 using Content.Shared.CCVar;
 using Content.Shared._NF.CCVar; // Frontier
 using Content.Shared.Examine;
-using Content.Shared.Random.Helpers;
 using Content.Shared.Salvage.Expeditions;
-using Robust.Shared.Audio;
 using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.CPUJob.JobQueues.Queues;
-using Content.Server.Shuttles.Systems;
 using Content.Server.Station.Components;
-using Content.Server.Station.Systems;
-using Content.Shared.Coordinates;
-using Content.Shared.Procedural;
+using Content.Shared._Null.Components;
 using Content.Shared.Salvage;
 using Robust.Shared.GameStates;
 using Robust.Shared.Random;
-using Robust.Shared.Map;
-using Content.Shared.Shuttles.Components; // Frontier
-using Robust.Shared.Configuration; // Frontier
+using Content.Shared.Shuttles.Components;
+using Robust.Server.GameObjects; // Frontier
+using Robust.Shared.Configuration;
+using Robust.Shared.Map; // Frontier
 
 namespace Content.Server.Salvage;
 
@@ -35,10 +30,15 @@ public sealed partial class SalvageSystem
 
     private const int MissionLimit = 5;
     [Dependency] private readonly IConfigurationManager _cfgManager = default!; // Frontier
+    [Dependency] private readonly TransformSystem _transformSystem = default!;
+    [Dependency] private readonly ExpeditionRewardRecieverSystem _rewardRecieverSystem = default!;
 
     private readonly JobQueue _salvageQueue = new();
     private readonly List<(SpawnSalvageMissionJob Job, CancellationTokenSource CancelToken)> _salvageJobs = new();
-    private readonly List<DifficultyRating> _missionDifficulties = [DifficultyRating.Moderate, DifficultyRating.Hazardous, DifficultyRating.Extreme]; // Frontier
+
+    private readonly List<DifficultyRating> _missionDifficulties =
+        [DifficultyRating.Moderate, DifficultyRating.Hazardous, DifficultyRating.Extreme]; // Frontier
+
     private const double SalvageJobTime = 0.002;
 
     private float _cooldown;
@@ -49,8 +49,10 @@ public sealed partial class SalvageSystem
         SubscribeLocalEvent<SalvageExpeditionConsoleComponent, ComponentInit>(OnSalvageConsoleInit);
         SubscribeLocalEvent<SalvageExpeditionConsoleComponent, EntParentChangedMessage>(OnSalvageConsoleParent);
         SubscribeLocalEvent<SalvageExpeditionConsoleComponent, ClaimSalvageMessage>(OnSalvageClaimMessage);
-        SubscribeLocalEvent<SalvageExpeditionDataComponent, ExpeditionSpawnCompleteEvent>(OnExpeditionSpawnComplete); // Frontier: more gracefully handle expedition generation failures
-        SubscribeLocalEvent<SalvageExpeditionConsoleComponent, FinishSalvageMessage>(OnSalvageFinishMessage); // Frontier: For early finish
+        SubscribeLocalEvent<SalvageExpeditionDataComponent, ExpeditionSpawnCompleteEvent>(
+            OnExpeditionSpawnComplete); // Frontier: more gracefully handle expedition generation failures
+        SubscribeLocalEvent<SalvageExpeditionConsoleComponent, FinishSalvageMessage>(
+            OnSalvageFinishMessage); // Frontier: For early finish
 
         SubscribeLocalEvent<SalvageExpeditionComponent, MapInitEvent>(OnExpeditionMapInit);
         // SubscribeLocalEvent<SalvageExpeditionDataComponent, EntityUnpausedEvent>(OnDataUnpaused); // Frontier
@@ -179,7 +181,11 @@ public sealed partial class SalvageSystem
         }
     }
 
-    private void FinishExpedition(SalvageExpeditionDataComponent component, EntityUid uid, SalvageExpeditionComponent expedition, EntityUid? shuttle)
+    private void FinishExpedition(
+        SalvageExpeditionDataComponent component,
+        EntityUid uid,
+        SalvageExpeditionComponent expedition,
+        EntityUid? shuttle)
     {
         component.NextOffer = _timing.CurTime + TimeSpan.FromSeconds(_cooldown);
         Announce(uid, Loc.GetString("salvage-expedition-mission-completed"));
@@ -212,14 +218,16 @@ public sealed partial class SalvageSystem
         // Handle payout after expedition has finished
         if (expedition.Completed)
         {
-            Log.Debug($"Completed mission {expedition.MissionParams.MissionType} with seed {expedition.MissionParams.Seed}");
+            Log.Debug(
+                $"Completed mission {expedition.MissionParams.MissionType} with seed {expedition.MissionParams.Seed}");
             component.NextOffer = _timing.CurTime + TimeSpan.FromSeconds(_cooldown);
             Announce(uid, Loc.GetString("salvage-expedition-mission-completed"));
             GiveRewards(expedition);
         }
         else
         {
-            Log.Debug($"Failed mission {expedition.MissionParams.MissionType} with seed {expedition.MissionParams.Seed}");
+            Log.Debug(
+                $"Failed mission {expedition.MissionParams.MissionType} with seed {expedition.MissionParams.Seed}");
             component.NextOffer = _timing.CurTime + TimeSpan.FromSeconds(_failedCooldown);
             Announce(uid, Loc.GetString("salvage-expedition-mission-failed"));
         }
@@ -234,7 +242,11 @@ public sealed partial class SalvageSystem
     /// <summary>
     /// Deducts ore tax for mining.
     /// </summary>
-    private void MiningTax(List<EntityUid> entities, EntityUid entity, SalvageMiningExpeditionComponent mining, EntityQuery<TransformComponent> xformQuery)
+    private void MiningTax(
+        List<EntityUid> entities,
+        EntityUid entity,
+        SalvageMiningExpeditionComponent mining,
+        EntityQuery<TransformComponent> xformQuery)
     {
         if (!mining.ExemptEntities.Contains(entity))
         {
@@ -260,7 +272,8 @@ public sealed partial class SalvageSystem
 
         // this doesn't support having more missions than types of ratings
         // but the previous system didn't do that either.
-        var allDifficulties = _missionDifficulties; // Frontier: Enum.GetValues<DifficultyRating>() < _missionDifficulties
+        var allDifficulties =
+            _missionDifficulties; // Frontier: Enum.GetValues<DifficultyRating>() < _missionDifficulties
         _random.Shuffle(allDifficulties);
         var difficulties = allDifficulties.Take(MissionLimit).ToList();
         // difficulties.Sort(); // Frontier: sort later
@@ -272,6 +285,7 @@ public sealed partial class SalvageSystem
             var difficultyIndex = _random.Next(_missionDifficulties.Count);
             difficulties.Add(_missionDifficulties[difficultyIndex]);
         }
+
         difficulties.Sort();
         // End Frontier: multiple missions per difficulty
 
@@ -303,7 +317,12 @@ public sealed partial class SalvageSystem
     {
         var missions = component.Missions.Values.ToList();
         //return new SalvageExpeditionConsoleState(component.NextOffer, component.Claimed, component.Cooldown, component.ActiveMission, missions);
-        return new SalvageExpeditionConsoleState(component.NextOffer, component.Claimed, component.Cooldown, component.CanFinish, component.ActiveMission, missions); // Frontier
+        return new SalvageExpeditionConsoleState(component.NextOffer,
+            component.Claimed,
+            component.Cooldown,
+            component.CanFinish,
+            component.ActiveMission,
+            missions); // Frontier
     }
 
     private void SpawnMission(SalvageMissionParams missionParams, EntityUid station, EntityUid? coordinatesDisk)
@@ -338,18 +357,33 @@ public sealed partial class SalvageSystem
         args.PushMarkup(Loc.GetString("salvage-expedition-structure-examine"));
     }
 
+    /// <summary>
+    /// Spawns rewards upon the completion of a Salvage / Expeditionary Mission.
+    /// </summary>
+    /// <param name="comp"></param>
     private void GiveRewards(SalvageExpeditionComponent comp)
     {
         if (!_cfgManager.GetCVar(NFCCVars.SalvageExpeditionRewardsEnabled))
             return;
 
+        // Instead of getting pallets or expedition computer alone, it gets all objects with the-
+        // -ExpeditionRewardRecieverComponent Component.
+        EntityUid depotPallet = new((int)EntityUid.Invalid); // 0 is an invalid Entity Uid; it's for comparison..
         var palletList = new List<EntityUid>();
-        var pallets = EntityQueryEnumerator<SalvageExpeditionConsoleComponent>(); // Frontier CargoPalletComponent<SalvageExpeditionConsoleComponent
+        var pallets = EntityQueryEnumerator<ExpeditionRewardRecieverComponent>(); // Null Sector
         while (pallets.MoveNext(out var pallet, out var palletComp))
         {
-            if (_station.GetOwningStation(pallet) == comp.Station)
+            if (!palletComp.IsDepot) // Is the spawner a Depot that'd be in the Expeditionary lodge vault?
             {
-                palletList.Add(pallet);
+                if (_station.GetOwningStation(pallet) == comp.Station)
+                {
+                    palletList.Add(pallet);
+                }
+            }
+            else // If an entity is a Depot, then it doesn't need to be on the current ship.
+                 // This effectively copies / duplicates expedition rewards, which is why they're lowered.
+            {
+                depotPallet = pallet;
             }
         }
 
@@ -358,12 +392,23 @@ public sealed partial class SalvageSystem
 
         foreach (var reward in comp.Rewards)
         {
-            Spawn(reward, (Transform(_random.Pick(palletList)).MapPosition));
+            var mapCoordinates = _transformSystem.GetMapCoordinates(_random.Pick(palletList)); // Null - Spawn Reward
+            var money = Spawn(reward, mapCoordinates);
+            var ship = _transformSystem.GetGrid(money);
+            // Feeding in the original ship that gets the reward. Scuffed, yes, but "*.station" doesn't work.
+            if (depotPallet.IsValid() && ship.HasValue) // Also spawn in depot pallet.
+            {
+                var depotCoords = _transformSystem.GetMapCoordinates(depotPallet);
+                var receiptReward = Spawn(reward, depotCoords);
+                _rewardRecieverSystem.FillLabel(ship.Value, depotCoords, depotPallet, receiptReward, comp.EndTime);
+            }
         }
     }
 
     // Frontier: handle exped spawn job failures gracefully - reset the console
-    private void OnExpeditionSpawnComplete(EntityUid uid, SalvageExpeditionDataComponent component, ExpeditionSpawnCompleteEvent ev)
+    private void OnExpeditionSpawnComplete(EntityUid uid,
+        SalvageExpeditionDataComponent component,
+        ExpeditionSpawnCompleteEvent ev)
     {
         if (component.ActiveMission == ev.MissionIndex && !ev.Success)
         {

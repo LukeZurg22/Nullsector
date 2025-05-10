@@ -200,7 +200,7 @@ public sealed record SalvageMission(
     public List<string> Rewards = Rewards;
 
     /// <summary>
-    /// Modifiers (outside of the above) applied to the mission.
+    /// Modifiers (outside the above) applied to the mission.
     /// </summary>
     public List<string> Modifiers = Modifiers;
 }

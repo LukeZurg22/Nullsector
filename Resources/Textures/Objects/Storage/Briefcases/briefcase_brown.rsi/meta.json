@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Made by ps3moira (github)",
+  "copyright": "Made by ps3moira (github), paper icon made by LukeZurg22",
   "size": {
     "x": 32,
     "y": 32
@@ -17,6 +17,9 @@
     },
     {
       "name": "icon"
+    },
+    {
+      "name": "paper"
     }
   ]
 }

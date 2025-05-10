@@ -314,6 +314,22 @@
       tags:
       - PirateUplink
 
+- type: listing
+  id: UplinkPirateSecurityCyborgModule
+  name: uplink-pirate-security-cyborg-module-name
+  description: uplink-pirate-security-cyborg-module-desc
+  icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-weapon-module }
+  productEntity: BorgModuleSecurity
+  cost:
+    Doubloon: 10
+  categories:
+  - UplinkPirateUtility
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - PirateUplink
+
 # Ammunition
 
 - type: listing
