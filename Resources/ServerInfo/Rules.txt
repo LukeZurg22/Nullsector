@@ -1,6 +1,6 @@
 ﻿[head=3][color=#ff0000]You must be 16 or older to play. Users under 16 will be banned immediately.[/head][/color]
 
-[color=#99ff99]Monolith Station is a Medium Roleplay server. Try to immerse yourself into your character. This includes doing your job as a station or ship crew member and delegating tasks that are outside of that description, or striking out upon space as a Captain of your ship. This does not imply you’re forced to play the whole round; Monolith Station is designed with pop-in-and-out gameplay in mind, where some players will come and go but their bank account remains persistent across server restarts.[/color]
+[color=#99ff99]Null Sector is a Medium Roleplay server. Try to immerse yourself into your character. This includes doing your job as a station or ship crew member and delegating tasks that are outside of that description, or striking out upon space as a Captain of your ship. This does not imply you’re forced to play the whole round; Null Sector is designed with pop-in-and-out gameplay in mind, where some players will come and go but their bank account remains persistent across server restarts.[/color]
 
 [color=#99ff99]You can access more information about the game using the Guidebook (NUMPAD 0).[/color]
 
