@@ -8,7 +8,7 @@ If you want to host or create content for NS, this is the repo you need. It cont
 
 ## Links
 
-[Discord]() | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/)
+[Discord](https://discord.gg/FDK3QJvxdx) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/)
 
 ## Contributing
 
