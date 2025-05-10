@@ -1,0 +1,5 @@
+- type: guideEntry
+  id: NullRuleAntagonism
+  name: guide-entry-null-rule-antag
+  text: "/ServerInfo/_Null/Guidebook/Rules/NullRuleAntagonism.xml"
+  ruleEntry: true
