@@ -138,7 +138,7 @@ public sealed class NFCCVars
     /// Whether salvage expedition rewards is enabled.
     /// </summary>
     public static readonly CVarDef<bool> SalvageExpeditionRewardsEnabled =
-        CVarDef.Create("nf14.salvage.expedition_rewards_enabled", false, CVar.REPLICATED);
+        CVarDef.Create("nf14.salvage.expedition_rewards_enabled", true, CVar.REPLICATED);
 
     /*
      * Smuggling
