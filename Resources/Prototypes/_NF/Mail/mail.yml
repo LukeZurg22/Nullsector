@@ -1680,18 +1680,19 @@
         prob: 0.20
         amount: 2
 
-- type: entity
-  categories: [ HideSpawnMenu ]
-  parent: BaseMailLarge
-  id: MailCommandNFStationPet
-  suffix: station pet
-  components:
-  - type: Mail
-    isFragile: true
-    contents:
-      - id: PaperMailNFPetBedAssemblyManual
-      - id: MaterialWoodPlank10
-      - id: DelayedPetCarrierNPCEmotionalSupportSafe # Last item - issues with DelayedItemComponent and hand placement
+# Null Sector WARN: This caused some crashing in testing. Other things have priority over fixing this.
+# - type: entity
+  # categories: [ HideSpawnMenu ]
+  # parent: BaseMailLarge
+  # id: MailCommandNFStationPet
+  # suffix: station pet
+  # components:
+  # - type: Mail
+    # isFragile: true
+    # contents:
+      # - id: PaperMailNFPetBedAssemblyManual
+      # - id: MaterialWoodPlank10
+      # - id: DelayedPetCarrierNPCEmotionalSupportSafe # Last item - issues with DelayedItemComponent and hand placement
 
 - type: entity
   categories: [ HideSpawnMenu ]
