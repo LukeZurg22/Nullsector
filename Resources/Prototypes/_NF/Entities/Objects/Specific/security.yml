@@ -50,17 +50,18 @@
 - type: entity
   parent: [ BaseItem, StorePresetSecurityUplink ]
   id: BaseSecurityUplinkRadio
-  name: Militia uplink
+  name: militia uplink
   description: Retro looking old radio...
   suffix: Empty
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: Objects/Devices/communication.rsi
+    sprite: _Null/Objects/Devices/communication.rsi
+    scale: 0.7, 0.7
     layers:
     - state: old-radio
   - type: Item
-    sprite: Objects/Devices/communication.rsi
+    sprite: _Null/Objects/Devices/communication.rsi
     heldPrefix: old-radio
   - type: UserInterface
     interfaces:

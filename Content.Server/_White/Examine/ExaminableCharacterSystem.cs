@@ -5,7 +5,6 @@ using Content.Shared.Examine;
 using Content.Shared.Inventory;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
-using System.Globalization;
 using Content.Shared.CCVar;
 
 namespace Content.Server._White.Examine
@@ -29,32 +28,33 @@ namespace Content.Server._White.Examine
                 || !args.IsInDetailsRange)
                 return;
 
-            var showExamine = _netConfigManager.GetClientCVar(actorComponent.PlayerSession.Channel, CCVars.DetailedExamine);
+            var showExamine =
+                _netConfigManager.GetClientCVar(actorComponent.PlayerSession.Channel, CCVars.DetailedExamine);
 
             var selfaware = args.Examiner == args.Examined;
             var logLines = new List<string>();
 
-            string canseeloc = "examine-can-see";
-            string nameloc = "examine-name";
+            var canSeeLoc = "examine-can-see";
+            var nameLoc = "examine-name";
 
             if (selfaware)
             {
-                canseeloc += "-selfaware";
-                nameloc += "-selfaware";
+                canSeeLoc += "-selfaware";
+                nameLoc += "-selfaware";
             }
 
             var identity = _identitySystem.GetEntityIdentity(uid);
-            var name = Loc.GetString(nameloc, ("name", identity));
+            var name = Loc.GetString(nameLoc, ("name", identity));
             logLines.Add($"[color=DarkGray][font size=10]{name}[/font][/color]");
-            
+
             if (showExamine)
                 args.PushMarkup($"[font size=10]{name}[/font]", 15);
 
-            var cansee = Loc.GetString(canseeloc, ("ent", uid));
-            logLines.Add($"[color=DarkGray][font size=10]{cansee}[/font][/color]");
-            
+            var canSee = Loc.GetString(canSeeLoc, ("ent", uid));
+            logLines.Add($"[color=DarkGray][font size=10]{canSee}[/font][/color]");
+
             if (showExamine)
-                args.PushMarkup($"[font size=10]{cansee}[/font]", 14);
+                args.PushMarkup($"[font size=10]{canSee}[/font]", 14);
 
             var slotLabels = new Dictionary<string, string>
             {
@@ -70,7 +70,7 @@ namespace Content.Server._White.Examine
                 { "belt", "belt-" },
                 { "id", "id-" },
                 { "shoes", "shoes-" },
-                { "suitstorage", "suitstorage-" }
+                { "suitstorage", "suitstorage-" },
             };
 
             var priority = 13;
@@ -86,40 +86,53 @@ namespace Content.Server._White.Examine
                     slotLabel += "-selfaware";
 
                 if (!_inventorySystem.TryGetSlotEntity(uid, slotName, out var slotEntity))
-                    continue;
+                    continue; // Short Circuit - No Slot Entity
 
-                if (_entityManager.TryGetComponent<MetaDataComponent>(slotEntity, out var metaData))
-                {
-                    var item = Loc.GetString(slotLabel, ("item", metaData.EntityName), ("ent", uid));
-                    if (showExamine)
-                        args.PushMarkup($"[font size=10]{item}[/font]", priority);
-                    logLines.Add($"[color=DarkGray][font size=10]{item}[/font][/color]");
-                    priority--;
-                }
+                if (!_entityManager.TryGetComponent<MetaDataComponent>(slotEntity, out var metaData))
+                    continue; // Short Circuit - No MetaData
+
+                var item = Loc.GetString(slotLabel, ("item", metaData.EntityName), ("ent", uid));
+                if (showExamine)
+                    args.PushMarkup($"[font size=10]{item}[/font]", priority);
+                logLines.Add($"[color=DarkGray][font size=10]{item}[/font][/color]");
+                priority--;
             }
 
-            if (priority < 13)
+            if (priority >= 13)
             {
-                // We already pushed the basic description above
-            }
-            else
-            {
-                string canseenothingloc = "examine-can-see-nothing";
+                var canSeeNothingLoc = "examine-can-see-nothing";
 
                 if (selfaware)
-                    canseenothingloc += "-selfaware";
+                    canSeeNothingLoc += "-selfaware";
 
-                var canseenothing = Loc.GetString(canseenothingloc, ("ent", uid));
+                var canseenothing = Loc.GetString(canSeeNothingLoc, ("ent", uid));
                 logLines.Add($"[color=DarkGray][font size=10]{canseenothing}[/font][/color]");
-                
+
                 if (showExamine)
                     args.PushMarkup($"[font size=10]{canseenothing}[/font]", priority);
             }
+            else
+            {
+                // We already pushed the basic description above
+            }
 
-            var combinedLog = string.Join("\n", logLines);
+            // Null Sector start : removing examine chat log
+            if (!_netConfigManager.GetClientCVar(actorComponent.PlayerSession.Channel, CCVars.DetailedExamineChat))
+                return; // Shot Circuit - Detailed Examine is Off
 
+            var combinedLog = string.Join("\n", logLines); // Get all the logs from before.
             if (showExamine && _netConfigManager.GetClientCVar(actorComponent.PlayerSession.Channel, CCVars.LogInChat))
-                _chatManager.ChatMessageToOne(ChatChannel.Emotes, combinedLog, combinedLog, EntityUid.Invalid, false, actorComponent.PlayerSession.Channel, recordReplay: false);
+            {
+                // Spit them out in chat.
+                _chatManager.ChatMessageToOne(ChatChannel.Emotes,
+                    combinedLog,
+                    combinedLog,
+                    EntityUid.Invalid,
+                    false,
+                    actorComponent.PlayerSession.Channel,
+                    recordReplay: false);
+            }
+            // Null Sector end : removing examine chat log
         }
     }
 }

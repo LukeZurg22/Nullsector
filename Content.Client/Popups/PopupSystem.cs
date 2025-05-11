@@ -100,6 +100,10 @@ namespace Content.Client.Popups
             if (message == null)
                 return;
 
+            var messageStart = message.ToLower();
+            if (messageStart.Contains('+') || messageStart.Contains("combat")) // Null Sector
+                return; // Short-Circuit : Ignore "+num" pickups, and "combat mode __" notification spam.
+
             if (recordReplay && _replayRecording.IsRecording)
             {
                 if (entity != null)

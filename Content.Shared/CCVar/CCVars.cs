@@ -57,6 +57,11 @@ public sealed partial class CCVars : CVars
     public static readonly CVarDef<bool> CoalesceIdenticalMessages =
         CVarDef.Create("white.coalesce_identical_messages", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED); // WD EDIT
 
+    /// <summary>
+    /// Ported Goob Station detailed examine system.
+    /// </summary>
     public static readonly CVarDef<bool> DetailedExamine =
         CVarDef.Create("misc.detailed_examine", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED); // Goobstation Change
+    public static readonly CVarDef<bool> DetailedExamineChat =
+        CVarDef.Create("misc.detailed_examine_chat", false, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED); // Null Sector Change
 }
