@@ -50,8 +50,8 @@
 - type: entity
   parent: [ BaseItem, StorePresetPirateUplink ]
   id: BasePirateUplink
-  name: pirate uplink
-  description: A coconut with an antenna?
+  name: evil uplink
+  description: Up to some dubious intent.
   suffix: Empty
   categories: [ HideSpawnMenu ]
   components:
