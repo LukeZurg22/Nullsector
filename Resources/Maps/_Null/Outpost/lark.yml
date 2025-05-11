@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/09/2025 23:39:54
-  entityCount: 5054
+  time: 05/11/2025 19:37:56
+  entityCount: 5074
 maps:
 - 4997
 grids:
@@ -2219,6 +2219,19 @@ entities:
     - type: MetaData
     - type: Transform
       pos: 4.420355,1.2199155
+      parent: 2
+    - type: RadarBlip
+      enabled: False
+      visibleFromOtherGrids: True
+      shape: Ring
+      scale: 0
+      radarColor: '#00DEFEFF'
+    - type: CircularShieldRadar
+  - uid: 2221
+    components:
+    - type: MetaData
+    - type: Transform
+      pos: 4.5079985,1.256103
       parent: 2
     - type: RadarBlip
       enabled: False
@@ -7816,6 +7829,71 @@ entities:
     - type: Transform
       pos: -28.5,0.5
       parent: 2
+  - uid: 5056
+    components:
+    - type: Transform
+      pos: 7.5,10.5
+      parent: 2
+  - uid: 5057
+    components:
+    - type: Transform
+      pos: 6.5,10.5
+      parent: 2
+  - uid: 5058
+    components:
+    - type: Transform
+      pos: 5.5,10.5
+      parent: 2
+  - uid: 5059
+    components:
+    - type: Transform
+      pos: 4.5,10.5
+      parent: 2
+  - uid: 5060
+    components:
+    - type: Transform
+      pos: 3.5,10.5
+      parent: 2
+  - uid: 5061
+    components:
+    - type: Transform
+      pos: 5.5,9.5
+      parent: 2
+  - uid: 5062
+    components:
+    - type: Transform
+      pos: 5.5,8.5
+      parent: 2
+  - uid: 5063
+    components:
+    - type: Transform
+      pos: 5.5,7.5
+      parent: 2
+  - uid: 5064
+    components:
+    - type: Transform
+      pos: 5.5,6.5
+      parent: 2
+  - uid: 5065
+    components:
+    - type: Transform
+      pos: 5.5,5.5
+      parent: 2
+  - uid: 5066
+    components:
+    - type: Transform
+      pos: 5.5,4.5
+      parent: 2
+  - uid: 5067
+    components:
+    - type: Transform
+      pos: 5.5,3.5
+      parent: 2
+  - uid: 5068
+    components:
+    - type: Transform
+      pos: 5.5,2.5
+      parent: 2
 - proto: CableHV
   entities:
   - uid: 2350
@@ -10371,6 +10449,12 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 0.5,0.5
       parent: 2
+  - uid: 5074
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 7.5,0.5
+      parent: 2
 - proto: DisposalJunctionFlipped
   entities:
   - uid: 1205
@@ -10743,12 +10827,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 4.5,0.5
       parent: 2
-  - uid: 2221
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 7.5,0.5
-      parent: 2
   - uid: 2222
     components:
     - type: Transform
@@ -10966,6 +11044,16 @@ entities:
     - type: Transform
       pos: -18.5,-9.5
       parent: 2
+  - uid: 5072
+    components:
+    - type: Transform
+      pos: 7.5,2.5
+      parent: 2
+  - uid: 5073
+    components:
+    - type: Transform
+      pos: 7.5,1.5
+      parent: 2
 - proto: DisposalTrunk
   entities:
   - uid: 1203
@@ -11020,6 +11108,11 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -3.5,-24.5
       parent: 2
+  - uid: 4951
+    components:
+    - type: Transform
+      pos: 7.5,3.5
+      parent: 2
 - proto: DisposalUnit
   entities:
   - uid: 332
@@ -11061,6 +11154,11 @@ entities:
     components:
     - type: Transform
       pos: -3.5,-24.5
+      parent: 2
+  - uid: 5071
+    components:
+    - type: Transform
+      pos: 7.5,3.5
       parent: 2
 - proto: DresserStationRepresentativeFilled
   entities:
@@ -28389,10 +28487,20 @@ entities:
       parent: 2
 - proto: SpawnPointLatejoin
   entities:
-  - uid: 4951
+  - uid: 5055
     components:
     - type: Transform
-      pos: -5.5,10.5
+      pos: -9.5,13.5
+      parent: 2
+  - uid: 5069
+    components:
+    - type: Transform
+      pos: -7.5,13.5
+      parent: 2
+  - uid: 5070
+    components:
+    - type: Transform
+      pos: -5.5,13.5
       parent: 2
 - proto: SpawnPointMailCarrier
   entities:
