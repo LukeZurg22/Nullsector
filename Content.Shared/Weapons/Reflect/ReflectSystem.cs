@@ -89,7 +89,6 @@ public sealed class ReflectSystem : EntitySystem
 
         // Check standard outerClothing slot (standard location for vests/armor)
         if (_inventorySystem.TryGetSlotEntity(uid, "outerClothing", out var outerEntity) &&
-            outerEntity != null &&
             TryComp<ReflectComponent>(outerEntity.Value, out var outerReflectComp) &&
             _toggle.IsActivated((outerEntity.Value, null)) &&
             (outerReflectComp.Reflects & args.Reflective) != 0x0)
@@ -99,7 +98,6 @@ public sealed class ReflectSystem : EntitySystem
 
         // Fallback to "vest" slot
         if (_inventorySystem.TryGetSlotEntity(uid, "vest", out var vestEntity) &&
-            vestEntity != null &&
             TryComp<ReflectComponent>(vestEntity.Value, out var vestReflectComp) &&
             _toggle.IsActivated((vestEntity.Value, null)) &&
             (vestReflectComp.Reflects & args.Reflective) != 0x0)
@@ -153,7 +151,6 @@ public sealed class ReflectSystem : EntitySystem
 
         // Check standard outerClothing slot (standard location for vests/armor)
         if (_inventorySystem.TryGetSlotEntity(uid, "outerClothing", out var outerEntity) &&
-            outerEntity != null &&
             TryComp<ReflectComponent>(outerEntity.Value, out var outerReflectComp) &&
             _toggle.IsActivated((outerEntity.Value, null)) &&
             (outerReflectComp.Reflects & reflective.Reflective) != 0x0)

@@ -55,7 +55,7 @@ public sealed partial class MiscTab : Control
         Control.AddOptionCheckBox(CCVars.CoalesceIdenticalMessages, CoalesceIdenticalMessagesCheckBox);
         Control.AddOptionCheckBox(CCVars.StaticStorageUI, StaticStorageUI);
         Control.AddOptionCheckBox(CCVars.DetailedExamine, DetailedExamineCheckBox); // Goobstation Change
-
+        Control.AddOptionCheckBox(CCVars.DetailedExamineChat, DetailedExamineChatCheckBox); // Null Sector Change For Goob Addition
         Control.Initialize();
     }
 }
