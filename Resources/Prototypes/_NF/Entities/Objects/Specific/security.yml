@@ -62,7 +62,6 @@
     - state: old-radio
   - type: Item
     sprite: _Null/Objects/Devices/communication.rsi
-    scale: 0.7, 0.7
     heldPrefix: old-radio
   - type: UserInterface
     interfaces:
