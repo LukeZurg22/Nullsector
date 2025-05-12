@@ -101,8 +101,8 @@ namespace Content.Client.Popups
                 return;
 
             var messageStart = message.ToLower();
-            if (messageStart.Contains('+') || messageStart.Contains("combat")) // Null Sector
-                return; // Short-Circuit : Ignore "+num" pickups, and "combat mode __" notification spam.
+            if (messageStart.Contains('+') || messageStart.Contains("combat") || messageStart.Contains("inserted")) // Null Sector
+                return; // Short-Circuit : Ignore "+num" pickups, ore processor, and "combat mode __" notification spam.
 
             if (recordReplay && _replayRecording.IsRecording)
             {
