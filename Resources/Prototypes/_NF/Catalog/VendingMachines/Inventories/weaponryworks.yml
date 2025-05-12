@@ -58,12 +58,14 @@
   emaggedInventory:
     WeaponPistolViper: 1
 
-- type: vendingMachineInventory # Mono - this entire thing is mono
+# Monolith Implementation
+- type: vendingMachineInventory
   id: WeaponryWorksVendPOIMercInventory
   startingInventory:
-    WeaponSubMachineGunWt550PMC: 4294967295
-    WeaponSubMachineGunDrozdPMC: 4294967295
-    WeaponSubMachineGunC20rPMC: 4294967295
+    WeaponSubMachineGunWt550PMC: 1      # Null Sector
+    WeaponSubMachineGunDrozdPMC: 1      # Null Sector
+    WeaponSubMachineGunC20rPMC: 1       # Null Sector
+    WeaponShotgunKammerer: 5            # Null Sector
     WeaponRifleLecterPMC: 4294967295
     WeaponPistolViperPMC: 4294967295
     WeaponPistolUniversal: 4294967295
