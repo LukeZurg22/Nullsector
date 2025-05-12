@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/03/2025 04:34:46
-  entityCount: 46
+  time: 05/12/2025 06:31:31
+  entityCount: 52
 maps: []
 grids:
 - 1
@@ -160,6 +160,20 @@ entities:
       id: Nfsd
     - type: GravityShake
       shakeTimes: 10
+- proto: ClothingMaskGoldenCursed
+  entities:
+  - uid: 49
+    components:
+    - type: Transform
+      pos: -1.9753919,2.3164978
+      parent: 1
+- proto: DrinkGoldenCup
+  entities:
+  - uid: 48
+    components:
+    - type: Transform
+      pos: -1.9285169,1.8633728
+      parent: 1
 - proto: Girder
   entities:
   - uid: 16
@@ -202,6 +216,25 @@ entities:
     - type: Transform
       pos: 1.5,0.5
       parent: 1
+- proto: IngotGold
+  entities:
+  - uid: 50
+    components:
+    - type: Transform
+      pos: -2.7097669,1.7071228
+      parent: 1
+  - uid: 51
+    components:
+    - type: Transform
+      pos: -1.2410167,1.5508728
+      parent: 1
+  - uid: 52
+    components:
+    - type: Transform
+      pos: -1.4285167,2.9571228
+      parent: 1
+    - type: Stack
+      count: 60
 - proto: LockerMercenaryFilled
   entities:
   - uid: 27
@@ -336,25 +369,6 @@ entities:
     - type: Transform
       pos: 2.5,3.5
       parent: 1
-- proto: SpawnMobArcIndBlaster
-  entities:
-  - uid: 3
-    components:
-    - type: Transform
-      pos: 0.5,-2.5
-      parent: 1
-  - uid: 4
-    components:
-    - type: Transform
-      pos: -2.5,2.5
-      parent: 1
-- proto: SpawnMobArcIndHoloparasiteGuardian
-  entities:
-  - uid: 2
-    components:
-    - type: Transform
-      pos: 0.5,0.5
-      parent: 1
 - proto: WallSolid
   entities:
   - uid: 5
@@ -418,5 +432,31 @@ entities:
     components:
     - type: Transform
       pos: 0.5,1.5
+      parent: 1
+- proto: WeaponTurretAllHostile
+  entities:
+  - uid: 2
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 2.5,-5.5
+      parent: 1
+  - uid: 3
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -5.5,-2.5
+      parent: 1
+  - uid: 4
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -3.5,5.5
+      parent: 1
+  - uid: 47
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 6.5,2.5
       parent: 1
 ...

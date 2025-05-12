@@ -153,6 +153,8 @@
     - plastic
     - plastic_2
     - plastic_3
+    - plastic_4
+    - plastic_5
   - type: Sprite
     state: plastic_3
     layers:

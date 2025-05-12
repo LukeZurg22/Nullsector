@@ -1,0 +1,35 @@
+- type: entity
+  parent: PersonalAI
+  id: GildedPersonalAI
+  name: gilded personal ai device
+  description: Wow! What a one-in-a-million! This is worth a fortune!
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/pai.rsi
+    layers:
+    - state: gilded-icon-pai-off
+    - state: gilded-pai-off-overlay
+      shader: unshaded
+      map: ["screen"]
+  - type: ToggleableGhostRole
+    roleName: pai-system-role-name-gilded
+    roleDescription: pai-system-role-description-gilded
+    roleRules: ghost-role-information-familiar-rules
+    mindRoles:
+    - MindRoleGhostRoleFamiliar
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableGhostRoleVisuals.Status:
+        screen:
+          Off: { state: gilded-pai-off-overlay }
+          Searching: { state: gilded-pai-searching-overlay }
+          On: { state: gilded-pai-on-overlay }
+  - type: Construction
+    graph: GildedAI
+    node: gildedai
+  - type: Tag
+    tags:
+    - GildedAI
+  - type: StaticPrice
+    price: 2500

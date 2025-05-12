@@ -179,6 +179,8 @@
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 1
+  - type: BallisticAmmoProvider # Null Sector
+    capacity: 5
   - type: Tag
     tags:
     - WeaponShotgunKammerer

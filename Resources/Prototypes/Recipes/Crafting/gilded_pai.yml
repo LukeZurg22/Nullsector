@@ -1,0 +1,11 @@
+- type: construction
+  name: gilded artificial intelligence
+  id: GildedAI
+  graph: GildedAI
+  startNode: start
+  targetNode: gildedai
+  category: construction-category-misc
+  description: A one-in-a-million pAI worth a decent bit of money!
+  icon: { sprite: Objects/Fun/pai.rsi, state: gilded-icon-pai-off }
+  objectType: Item
+  

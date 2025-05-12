@@ -43,6 +43,13 @@
     - gold
     - gold_2
     - gold_3
+    - gold_4
+    - gold_5
+    - gold_6
+    - gold_7
+    - gold_8
+    - gold_9
+    - gold_10
   - type: Sprite
     state: gold_3
     layers:
@@ -61,7 +68,7 @@
           Quantity: 10
   - type: PirateBountyItem # Frontier
     id: Gold # Frontier
-
+      
 - type: entity
   parent: IngotGold
   id: IngotGold1
@@ -90,6 +97,13 @@
     - silver
     - silver_2
     - silver_3
+    - silver_4
+    - silver_5
+    - silver_6
+    - silver_7
+    - silver_8
+    - silver_9
+    - silver_10
   - type: Sprite
     state: silver_3
     layers:
