@@ -64,6 +64,8 @@
     - glass
     - glass_2
     - glass_3
+    - glass_4
+    - glass_5
   - type: Sprite
     state: glass_3
     layers:

@@ -51,6 +51,8 @@
     - steel
     - steel_2
     - steel_3
+    - steel_4
+    - steel_5
   - type: Sprite
     state: steel_3
     layers:
@@ -187,6 +189,8 @@
     - plasteel
     - plasteel_2
     - plasteel_3
+    - plasteel_4
+    - plasteel_5
   - type: Sprite
     state: plasteel_3
     layers:
