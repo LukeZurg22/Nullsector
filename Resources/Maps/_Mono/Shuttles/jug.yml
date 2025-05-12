@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 04/03/2025 06:11:24
-  entityCount: 495
+  time: 05/12/2025 19:10:56
+  entityCount: 496
 maps: []
 grids:
 - 1
@@ -192,7 +192,8 @@ entities:
           1,1:
             1: 59193
           1,-1:
-            0: 30464
+            2: 256
+            0: 30208
             1: 142
           1,2:
             1: 14
@@ -238,7 +239,8 @@ entities:
             1: 4096
             0: 40960
           0,-2:
-            0: 65454
+            2: 256
+            0: 65198
           -1,-2:
             1: 24
             0: 60928
@@ -273,6 +275,21 @@ entities:
           moles:
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.14996
+          moles:
+          - 21.824879
+          - 82.10312
           - 0
           - 0
           - 0
@@ -1198,6 +1215,10 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -0.5,6.5
       parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
 - proto: ComputerStationRecords
   entities:
   - uid: 10
@@ -1206,6 +1227,10 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 1.5,6.5
       parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
 - proto: ComputerTabletopAnalysisConsole
   entities:
   - uid: 75
@@ -1214,24 +1239,40 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -8.5,-0.5
       parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
   - uid: 83
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -8.5,1.5
       parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
   - uid: 84
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -8.5,0.5
       parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
   - uid: 86
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -8.5,-1.5
       parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
 - proto: ComputerTabletopResearchAndDevelopment
   entities:
   - uid: 490
@@ -1239,6 +1280,10 @@ entities:
     - type: Transform
       pos: -1.5,2.5
       parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
 - proto: ComputerTabletopShuttle
   entities:
   - uid: 7
@@ -1246,6 +1291,24 @@ entities:
     - type: Transform
       pos: 0.5,7.5
       parent: 1
+    - type: ShuttleConsoleLock
+      locked: False
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
+    - type: DeviceLinkSource
+      linkedPorts: {}
+      lastSignals: {}
+      ports:
+      - device-button-1
+      - device-button-2
+      - device-button-3
+      - device-button-4
+      - device-button-5
+      - device-button-6
+      - device-button-7
+      - device-button-8
 - proto: CrateArtifactContainer
   entities:
   - uid: 456
@@ -1281,11 +1344,10 @@ entities:
       parent: 1
 - proto: ExtinguisherCabinetFilled
   entities:
-  - uid: 446
+  - uid: 496
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 3.5,3.5
+      pos: 0.5,-6.5
       parent: 1
 - proto: FaxMachineShip
   entities:
@@ -1969,6 +2031,10 @@ entities:
     - type: Transform
       pos: 2.5,2.5
       parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
 - proto: Gyroscope
   entities:
   - uid: 372
@@ -2005,6 +2071,13 @@ entities:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -1.5,-6.5
+      parent: 1
+- proto: LockerWallMaterialsFuelPlasmaFilled2
+  entities:
+  - uid: 446
+    components:
+    - type: Transform
+      pos: 3.5,3.5
       parent: 1
 - proto: MedicalBed
   entities:
