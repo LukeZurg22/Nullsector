@@ -131,6 +131,7 @@
   id: SalvageTreasureRare
   table: !type:GroupSelector
     children:
+    - id: CassetteTapesSpawner
     - id: MaterialDiamond1
     - id: TreasureCPUSupercharged
     # - id: TechnologyDiskRare # Frontier

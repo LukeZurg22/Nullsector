@@ -18,8 +18,8 @@
     - CassetteTapeArmada
     - CassetteTapeCongress
     - CassetteTapeRogue
-    chance: 0.05
-    #offset: 0.5
+    chance: 1
+    #offset: 0.2
     rarePrototypes:
       - TapeOhMahNina
       - TapePayemPayam
