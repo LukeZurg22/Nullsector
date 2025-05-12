@@ -425,7 +425,7 @@
     tags:
     - GildedAI
   - type: StaticPrice
-    price: 2000
+    price: 440
   - type: PhysicalComposition
     materialComposition:
       Gold: 100 # 1 sheet
