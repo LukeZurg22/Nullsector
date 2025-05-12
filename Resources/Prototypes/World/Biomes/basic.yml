@@ -8,18 +8,22 @@
     - type: SimpleDebrisSelector
       debrisTable:
         - id: AsteroidDebrisSmall
+          prob: 0.3
         - id: AsteroidDebrisMedium
+          prob: 0.2
         - id: AsteroidDebrisLarge
-          prob: 0.7
+          prob: 0.1
         - id: AsteroidDebrisLarger
-          prob: 0.4
+          prob: 0.05
     - type: NoiseDrivenDebrisSelector
       noiseChannel: Wreck
       debrisTable:
         - id: ScrapDebrisSmall
+          prob: 0.7
         - id: ScrapDebrisMedium
-        - id: ScrapDebrisLarge
           prob: 0.5
+        - id: ScrapDebrisLarge
+          prob: 0.3
     - type: NoiseRangeCarver
       ranges:
         - 0.4, 0.6
