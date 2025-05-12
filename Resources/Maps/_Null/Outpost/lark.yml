@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/12/2025 19:08:31
-  entityCount: 5083
+  time: 05/12/2025 05:06:51
+  entityCount: 5076
 maps:
 - 4997
 grids:
@@ -2317,30 +2317,6 @@ entities:
       scale: 0
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
-  - uid: 5077
-    components:
-    - type: MetaData
-    - type: Transform
-      pos: 4.5079985,1.256103
-      parent: 2
-    - type: RadarBlip
-      enabled: False
-      visibleFromOtherGrids: True
-      shape: Ring
-      scale: 0
-      radarColor: '#00DEFEFF'
-    - type: CircularShieldRadar
-- proto: ActionToggleInternals
-  entities:
-  - uid: 5080
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 5079
-    - type: InstantAction
-      originalIconColor: '#FFFFFFFF'
-      container: 5079
 - proto: AirAlarm
   entities:
   - uid: 1532
@@ -9551,13 +9527,6 @@ entities:
     - type: Transform
       pos: -6.623421,-9.469943
       parent: 2
-- proto: ClothingMaskBreathMedical
-  entities:
-  - uid: 5081
-    components:
-    - type: Transform
-      pos: -6.7712073,-12.361206
-      parent: 2
 - proto: ClothingMaskSterile
   entities:
   - uid: 444
@@ -9588,11 +9557,6 @@ entities:
     components:
     - type: Transform
       pos: -8.315525,-2.6847568
-      parent: 2
-  - uid: 5082
-    components:
-    - type: Transform
-      pos: -6.283679,-12.67137
       parent: 2
 - proto: ComfyChair
   entities:
@@ -23521,28 +23485,6 @@ entities:
       parent: 2
     - type: Physics
       bodyType: Static
-- proto: NitrousOxideCanister
-  entities:
-  - uid: 5078
-    components:
-    - type: Transform
-      pos: -6.5,-11.5
-      parent: 2
-- proto: NitrousOxideTankFilled
-  entities:
-  - uid: 5079
-    components:
-    - type: Transform
-      pos: -6.596179,-12.42137
-      parent: 2
-    - type: GasTank
-      toggleActionEntity: 5080
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 5080
 - proto: NonLethalVendingMachine
   entities:
   - uid: 1083
@@ -25045,12 +24987,6 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 7.5,14.5
-      parent: 2
-  - uid: 5083
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -6.5,-11.5
       parent: 2
 - proto: RailingCorner
   entities:
