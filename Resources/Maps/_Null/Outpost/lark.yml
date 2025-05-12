@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/11/2025 19:37:56
-  entityCount: 5074
+  time: 05/12/2025 05:06:51
+  entityCount: 5076
 maps:
 - 4997
 grids:
@@ -2292,6 +2292,19 @@ entities:
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
   - uid: 5051
+    components:
+    - type: MetaData
+    - type: Transform
+      pos: 4.5079985,1.256103
+      parent: 2
+    - type: RadarBlip
+      enabled: False
+      visibleFromOtherGrids: True
+      shape: Ring
+      scale: 0
+      radarColor: '#00DEFEFF'
+    - type: CircularShieldRadar
+  - uid: 5075
     components:
     - type: MetaData
     - type: Transform
@@ -33425,6 +33438,11 @@ entities:
     components:
     - type: Transform
       pos: 10.5,-2.5
+      parent: 2
+  - uid: 5076
+    components:
+    - type: Transform
+      pos: -11.5,12.5
       parent: 2
 - proto: WaterTankHighCapacity
   entities:
