@@ -8,6 +8,9 @@
   },
   "states": [
     {
+      "name": "junk-pai-gold"
+    },
+	{
       "name": "icon-pai-off"
     },
     {
@@ -54,6 +57,30 @@
     },
     {
       "name": "syndicate-pai-searching-overlay",
+      "delays": [
+        [
+          0.8,
+          0.8
+        ]
+      ]
+    },
+    {
+      "name": "gilded-icon-pai-off"
+    },
+    {
+      "name": "gilded-pai-off-overlay"
+    },
+    {
+      "name": "gilded-pai-on-overlay",
+      "delays": [
+        [
+          0.8,
+          0.8
+        ]
+      ]
+    },
+    {
+      "name": "gilded-pai-searching-overlay",
       "delays": [
         [
           0.8,

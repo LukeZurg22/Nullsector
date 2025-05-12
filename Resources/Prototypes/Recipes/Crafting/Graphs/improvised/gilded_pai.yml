@@ -1,0 +1,22 @@
+- type: constructionGraph
+  id: GildedAI
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: gildedai
+          steps:
+            - tag: GildedAI
+              name: broken gilded personal ai device
+              icon:
+                sprite: Objects/Fun/pai.rsi
+                state: junk-pai-gold
+            - material: Gold
+              amount: 1
+              doAfter: 1
+            - material: Plastic
+              amount: 4
+              doAfter: 1
+            
+    - node: gildedai
+      entity: GildedPersonalAI

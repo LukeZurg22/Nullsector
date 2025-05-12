@@ -421,6 +421,11 @@
     - state: junk-pai-gold
   - type: Item
     size: Small
+  - type: Tag # Null Sector ; for gilded pAI
+    tags:
+    - GildedAI
+  - type: StaticPrice
+    price: 2000
   - type: PhysicalComposition
     materialComposition:
       Gold: 100 # 1 sheet

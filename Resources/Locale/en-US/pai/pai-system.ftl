@@ -12,6 +12,10 @@ pai-system-role-description-syndicate = Be someone's Syndicate pal!
 pai-system-role-name-potato = Potato Artificial Intelligence
 pai-system-role-description-potato = It's a toy for children. And now you live in it.
 
+pai-system-role-name-gilded = Gilded Personal AI
+pai-system-role-description-gilded = Be someone's Glistening Gilded pal!
+                                        (Memories *not* included.)
+
 pai-system-wipe-device-verb-text = Remove pAI
 pai-system-wiped-device = The pAI was wiped from the device.
 

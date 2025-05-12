@@ -605,6 +605,9 @@
 - type: Tag
   id: GeigerCounter
 
+- type: Tag # Null Sector ; for gilded pAI recipe
+  id: GildedAI
+
 - type: Tag
   id: GlassAirlock
 
