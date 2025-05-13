@@ -125,7 +125,7 @@
 # Mining Blaster
 
 - type: entity
-  id: WeaponTurretType35
+  id: WeaponTurretMining
   name: Mining Blaster
   parent: BallisticArtillery
   description: Launches charged bolts of energy to break apart rocks. Can be remotely activated, or linked up to a GCS.
