@@ -1,0 +1,9 @@
+﻿advertisement-military-1 = Loyal to the Iron Law!
+advertisement-military-2 = Loyal to the Eternal War!
+advertisement-military-3 = Loyal to the Report!
+advertisement-military-4 = Annihilate, Eliminate, Decimate, Destroy!
+advertisement-military-5 = Are you out of uniform, soldier?!!
+advertisement-military-6 = Where is your power Armour?!!
+thankyou-military-1 = Down with traitors!
+thankyou-military-2 = HUT-HUT-HUT!
+thankyou-military-3 = Move it or lose it!

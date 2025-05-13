@@ -1,0 +1,5 @@
+- type: localizedDataset
+  id: MilDrobeAds
+  values:
+    prefix: advertisement-military-
+    count: 6
