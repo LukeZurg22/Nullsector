@@ -70,3 +70,40 @@
     range: 4
     energyConsumption: 2700000
     disableDuration: 5
+
+# Mining Blaster
+
+- type: entity
+  id: BulletKineticShuttle
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    color: "#FF8888" # Frontier: color it red vs. handheld bolts
+    layers:
+    - state: chronobolt
+      shader: unshaded
+  - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
+    damage:
+      types:
+        Blunt: 0.5 # Frontier 30<0.5
+        Structural: 1 # Frontier 35<1
+  - type: Ammo
+    muzzleFlash: HitscanEffect
+  - type: ShipWeaponProjectile
+  - type: RadarBlip
+    radarColor: "#00FFAA"
+    scale: 1.5
+    requireNoGrid: true
+    shape: circle
+  - type: TimedDespawn
+    lifetime: 10 # Frontier 1.5<1
+  - type: PointLight
+    radius: 2.5
+    color: "#FF8888" # Frontier: white<FF8888
+    energy: 0.5
+  - type: GatheringProjectile
+    amount: 5
+  - type: MiningGatheringHard # mono
