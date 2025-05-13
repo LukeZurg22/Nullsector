@@ -106,4 +106,5 @@
     energy: 0.5
   - type: GatheringProjectile
     amount: 5
+  - type: MiningGatheringSoft # mono
   - type: MiningGatheringHard # mono
