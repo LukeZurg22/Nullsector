@@ -29,7 +29,7 @@ public sealed class CompanyPrototype : IPrototype
     public string Name { get; private set; } = default!;
 
     /// <summary>
-    /// The name of the company.
+    /// The description of the company.
     /// </summary>
     [DataField("description", required: false)]
     public string Description { get; private set; } = default!;
@@ -52,5 +52,11 @@ public sealed class CompanyPrototype : IPrototype
     /// Access for login in closed company
     /// </summary>
     [DataField("logins", required: false)]
-    public List<string> Logins { get; private set; } = [];
+    public List<string> Logins { get; private set; } = new();
+
+    /// <summary>
+    /// The image to display for this company in the UI.
+    /// </summary>
+    [DataField("image")]
+    public string? Image { get; private set; }
 }
