@@ -11,4 +11,10 @@ public sealed partial class GatheringProjectileComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("amount")]
     public int Amount = 1;
+
+    /// <summary>
+    /// Whether we destroy ores in a gatherable when overpenning
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite), DataField("nonDestructiveOverpen")]
+    public bool NonDestructiveOverpen = false;
 }

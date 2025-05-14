@@ -80,7 +80,7 @@
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
-    color: "#FF8888" # Frontier: color it red vs. handheld bolts
+    color: "#FF8888"
     layers:
     - state: chronobolt
       shader: unshaded
@@ -88,8 +88,10 @@
     impactEffect: BulletImpactEffectKinetic
     damage:
       types:
-        Blunt: 0.5 # Frontier 30<0.5
-        Structural: 1 # Frontier 35<1
+        Piercing: 2.5
+        Heat: 7.5 # So its not great at anti-personel and ore-monsters remain either a threat during collection or a time sink.
+        Structural: 2500
+    penetrationThreshold: 2500 # 4.125 basic walls
   - type: Ammo
     muzzleFlash: HitscanEffect
   - type: ShipWeaponProjectile
@@ -99,12 +101,13 @@
     requireNoGrid: true
     shape: circle
   - type: TimedDespawn
-    lifetime: 10 # Frontier 1.5<1
+    lifetime: 4 # 200 tiles
   - type: PointLight
     radius: 2.5
-    color: "#FF8888" # Frontier: white<FF8888
+    color: "#FF8888"
     energy: 0.5
   - type: GatheringProjectile
-    amount: 5
-  - type: MiningGatheringSoft # mono
-  - type: MiningGatheringHard # mono
+    amount: 10
+    nonDestructiveOverpen: true 
+  - type: MiningGatheringSoft
+  - type: MiningGatheringHard

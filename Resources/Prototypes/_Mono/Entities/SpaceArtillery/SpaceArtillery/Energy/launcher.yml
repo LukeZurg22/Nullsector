@@ -126,9 +126,9 @@
 
 - type: entity
   id: WeaponTurretMining
-  name: Mining Blaster
+  name: PGI-3300 Mining Laser
   parent: BallisticArtillery
-  description: Launches charged bolts of energy to break apart rocks. Can be remotely activated, or linked up to a GCS.
+  description: Launches charged bolts of energy to break apart rocks, or ships that stray too close. Can be remotely activated, or linked up to a GCS.
   components:
   - type: StaticPrice
     price: 2500
@@ -145,8 +145,8 @@
   - type: WirelessNetworkConnection
     range: 500
   - type: Gun
-    fireRate: 0.25
-    projectileSpeed: 40
+    fireRate: 0.5
+    projectileSpeed: 50
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon2.ogg
     soundEmpty:
