@@ -9,6 +9,7 @@
   - type: Sprite
     sprite: _Null/Objects/Fun/cassette.rsi
     state: player_filled
+    scale: 0.8, 0.8
   - type: Item
     size: Small
   - type: Clothing
@@ -28,10 +29,12 @@
   - type: Sprite
     sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_default
+    scale: 0.7, 0.7
   - type: Item
     size: Small
+    storedRotation: -90
   - type: StaticPrice
-    price: 1000
+    price: 500
 
 # Standard Blank Cassette Tapes 
 - type: entity
@@ -42,7 +45,8 @@
   - type: Sprite
     sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_default
-  
+    scale: 0.7, 0.7
+    
 - type: entity
   parent: BaseTape
   id: CassetteTapeRed
@@ -51,6 +55,7 @@
   - type: Sprite
     sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_red
+    scale: 0.7, 0.7
     
 - type: entity
   parent: BaseTape
@@ -60,6 +65,7 @@
   - type: Sprite
     sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_green
+    scale: 0.7, 0.7
 
 - type: entity
   parent: BaseTape
@@ -69,6 +75,7 @@
   - type: Sprite
     sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_blue
+    scale: 0.7, 0.7
 
 
 # Special Blank Tapes
@@ -80,8 +87,9 @@
   - type: Sprite
     sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_armada
+    scale: 0.7, 0.7
   - type: StaticPrice
-    price: 1500
+    price: 1000
     
 - type: entity
   parent: BaseTape
@@ -91,8 +99,9 @@
   - type: Sprite
     sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_congress
+    scale: 0.7, 0.7
   - type: StaticPrice
-    price: 2500
+    price: 2000
 
 - type: entity
   parent: BaseTape
@@ -102,9 +111,9 @@
   - type: Sprite
     sprite: _Null/Objects/Fun/cassette.rsi
     state: tape_rogue
+    scale: 0.7, 0.7
   - type: StaticPrice
-    price: 3000
-
+    price: 2500
 
 # Special Music Tapes
 - type: entity
@@ -115,6 +124,7 @@
   - type: StaticPrice
     price: 3000
     # create custom cassette tape component
+    
 - type: entity
   parent: CassetteTapeArmada
   id: TapePayemPayam

@@ -27,6 +27,7 @@
   form: Protagonist
   name: Union J
   description: union-j-description
+  image: /Textures/_Null/Companies/unionj.png
   color: "#FFB266"
   # NOTE: Has special mechanics:
   # - adds "John" to start of name on spawn
@@ -35,6 +36,7 @@
   id: ArmadanExiles
   form: Protagonist
   name: Armadan Exiles
+  image: /Textures/_Null/Companies/armadanexiles.png
   description: armadan-exiles-description
   color: "#D82918"
 
@@ -42,5 +44,6 @@
   id: GasNewGalactic
   form: Protagonist
   name: Gas New Galactic
+  image: /Textures/_Null/Companies/gasnewgalactic.png
   description: gas-new-galactic-description
   color: "#3DA695"

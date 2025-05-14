@@ -687,6 +687,40 @@
     energy: 1.6
     color: "#4b93ad"
 
+# Null Sector
+- type: entity
+  id: VendingMachineMilitary
+  name: MilDrobe
+  parent: [ VendingMachine ]
+  description: Selling finely-tailored uniforms since the Armada's formation!
+  components:
+    - type: VendingMachine
+      pack: MilDrobeInventory
+      dispenseOnHitChance: 0.25
+      dispenseOnHitThreshold: 2
+      offState: off
+      brokenState: broken
+      normalState: normal-unshaded
+      # ejectState: eject-unshaded  No sprite, see chefvend/dinnerware/BODA/etc for examples
+      # denyState: deny-unshaded
+      ejectDelay: 3
+    - type: Advertise
+      pack: MilDrobeAds
+    - type: Sprite
+      sprite: _NF/Structures/Machines/VendingMachines/mildrobe.rsi
+      layers:
+      - state: "off"
+        map: ["enum.VendingMachineVisualLayers.Base"]
+      - state: "off"
+        map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+        shader: unshaded
+      - state: panel
+        map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - type: PointLight
+      radius: 1.5
+      energy: 1.6
+      color: "#FF0000"
+
 # POI versions of upstream machines
 
 - type: entity
