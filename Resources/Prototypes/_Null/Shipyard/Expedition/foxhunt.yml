@@ -1,0 +1,40 @@
+# Author Info
+# GitHub: LukeZurg22
+# Discord: @lukezurg22
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: Foxhunt
+  parent: BaseVessel
+  name: Foxhunt
+  description: A cheap, bare-minimum mercenary ship that barely qualifies as an expedition vessel designed for two.
+  price: 25010
+  category: Small
+  group: Expedition
+  shuttlePath: /Maps/_Null/Shuttles/Expedition/foxhunt.yml
+  guidebookPage: null
+  class:
+  - Expedition
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Foxhunt
+  mapName: 'Foxhunt'
+  mapPath: /Maps/_Null/Shuttles/Expedition/foxhunt.yml
+  minPlayers: 0
+  stations:
+    Foxhunt:
+      stationProto: StandardFrontierExpeditionVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Foxhunt EXP{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 1, 1 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
