@@ -433,35 +433,6 @@
   - type: GatheringProjectile
   - type: MiningGatheringSoft # Frontier
 
-- type: entity
-  id: BulletKineticShuttle
-  parent: BaseBullet
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    noRot: false
-    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
-    color: "#FF8888" # Frontier: color it red vs. handheld bolts
-    layers:
-    - state: chronobolt
-      shader: unshaded
-  - type: Projectile
-    impactEffect: BulletImpactEffectKinetic
-    damage:
-      types:
-        Blunt: 0.5 # Frontier 30<0.5
-        Structural: 1 # Frontier 35<1
-  - type: Ammo
-    muzzleFlash: HitscanEffect
-  - type: TimedDespawn
-    lifetime: 1 # Frontier 1.5<1
-  - type: PointLight
-    radius: 2.5
-    color: "#FF8888" # Frontier: white<FF8888
-    energy: 0.5
-  - type: GatheringProjectile
-  - type: MiningGatheringSoft # mono
-  - type: MiningGatheringHard # mono
 
 - type: entity
   id: BulletCharge
