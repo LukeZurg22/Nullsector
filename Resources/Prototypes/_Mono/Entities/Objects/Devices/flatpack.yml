@@ -41,3 +41,14 @@
     entity: WeaponTurretCharon
   - type: StaticPrice
     price: 10000
+
+- type: entity
+  parent: BaseFlatpack
+  id: MiningLaserFlatpack
+  name: PGI-3300 Mining Laser flatpack
+  description: A flatpack used for constructing an PGI-3300 Mining Laser.
+  components:
+  - type: Flatpack
+    entity: WeaponTurretMining
+  - type: StaticPrice
+    price: 3500

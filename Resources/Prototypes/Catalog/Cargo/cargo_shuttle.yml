@@ -18,6 +18,16 @@
   category: cargoproduct-category-name-shuttle
   group: market
 
+- type: cargoProduct
+  id: ShuttleMiningLaser
+  icon:
+    sprite: Objects/Devices/flatpack.rsi
+    state: solar-assembly-part # to-do, give it a sprite
+  product: CrateEngineeringMiningLaser
+  cost: 10000 # Frontier: 525<1500
+  category: cargoproduct-category-name-shuttle
+  group: market
+
 # - type: cargoProduct
   # id: ShuttlePowerKit
   # icon:
