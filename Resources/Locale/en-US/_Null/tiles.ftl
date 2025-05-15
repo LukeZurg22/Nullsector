@@ -1,0 +1,1 @@
+tiles-wood-parquet = wood parquet

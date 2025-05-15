@@ -18,6 +18,16 @@
   category: cargoproduct-category-name-shuttle
   group: market
 
+- type: cargoProduct
+  id: ShuttleMiningLaser
+  icon:
+    sprite: Objects/Devices/flatpack.rsi
+    state: gun-part
+  product: CrateEngineeringMiningLaser
+  cost: 15000
+  category: cargoproduct-category-name-shuttle
+  group: market
+
 # - type: cargoProduct
   # id: ShuttlePowerKit
   # icon:

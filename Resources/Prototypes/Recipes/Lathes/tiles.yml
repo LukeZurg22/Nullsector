@@ -202,6 +202,11 @@
   id: FloorTileItemWoodPattern
   result: FloorTileItemWoodPattern
 
+- type: latheRecipe
+  parent: BaseWoodTileRecipe
+  id: FloorTileItemWoodParquet
+  result: FloorTileItemWoodParquet
+
 # Concrete
 - type: latheRecipe
   parent: BaseConcreteTileRecipe

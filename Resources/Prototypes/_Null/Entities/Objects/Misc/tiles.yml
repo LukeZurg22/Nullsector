@@ -1,0 +1,18 @@
+- type: entity
+  name: parquet wood floor
+  parent: FloorTileItemBase
+  id: FloorTileItemWoodParquet
+  components:
+  - type: Sprite
+    state: wood-parquet
+  - type: Item
+    heldPrefix: wood
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWoodParquet
+  - type: Stack
+    stackType: FloorTileWoodParquet
+  - type: Construction
+    graph: TileWoodParquet
+    node: woodtileparquet
