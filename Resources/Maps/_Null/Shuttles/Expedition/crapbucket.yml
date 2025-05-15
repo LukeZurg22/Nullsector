@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/15/2025 03:39:05
-  entityCount: 364
+  time: 05/15/2025 03:43:05
+  entityCount: 366
 maps: []
 grids:
 - 2
@@ -1763,6 +1763,18 @@ entities:
     components:
     - type: Transform
       pos: -1.5,-3.5
+      parent: 2
+- proto: SuitStorageEVAMercenary
+  entities:
+  - uid: 359
+    components:
+    - type: Transform
+      pos: -0.5,5.5
+      parent: 2
+  - uid: 366
+    components:
+    - type: Transform
+      pos: -3.5,-0.5
       parent: 2
 - proto: Table
   entities:
