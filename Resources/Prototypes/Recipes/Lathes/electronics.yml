@@ -571,11 +571,11 @@
   result: ShuttleGunPerforatorCircuitboard
   completetime: 10
 
-- type: latheRecipe
-  parent: BaseCircuitboardRecipe
-  id: ShuttleGunKineticCircuitboard
-  result: ShuttleGunKineticCircuitboard
-  completetime: 6
+# - type: latheRecipe
+  # parent: BaseCircuitboardRecipe
+  # id: ShuttleGunKineticCircuitboard
+  # result: ShuttleGunKineticCircuitboard
+  # completetime: 6
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe

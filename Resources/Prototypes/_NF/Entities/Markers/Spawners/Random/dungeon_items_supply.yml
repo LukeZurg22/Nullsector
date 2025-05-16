@@ -284,7 +284,7 @@
     - GyroscopeMachineCircuitboard
     - MiniGravityGeneratorCircuitboard
     - ThrusterMachineCircuitboard
-    - ShuttleGunKineticCircuitboard
+#    - ShuttleGunKineticCircuitboard
     chance: 0.95
     offset: 0.0
     rarePrototypes:
@@ -322,6 +322,6 @@
     chance: 0.95
     offset: 0.0
     rarePrototypes:
-    - ShuttleGunKineticFlatpack
+#    - ShuttleGunKineticFlatpack
     - AmmoTechFabFlatpack
     rareChance: 0.01

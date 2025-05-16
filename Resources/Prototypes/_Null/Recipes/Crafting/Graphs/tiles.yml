@@ -1,0 +1,15 @@
+- type: constructionGraph
+  id: TileWoodParquet
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: woodtileparquet
+          completed:
+            - !type:SetStackCount
+              amount: 4
+          steps:
+            - material: WoodPlank
+              amount: 2
+    - node: woodtileparquet
+      entity: FloorTileItemWoodParquet
