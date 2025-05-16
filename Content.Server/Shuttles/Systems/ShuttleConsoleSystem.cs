@@ -1,4 +1,3 @@
-using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
@@ -24,6 +23,8 @@ using Robust.Shared.Utility;
 using Content.Shared.UserInterface;
 using Content.Shared.Access.Systems; // Frontier
 using Content.Shared.Construction.Components; // Frontier
+using Content.Server.Radio.EntitySystems;
+using Content.Shared.Verbs;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -41,6 +42,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly SharedContentEyeSystem _eyeSystem = default!;
     [Dependency] private readonly AccessReaderSystem _access = default!;
+    [Dependency] private readonly RadioSystem _radioSystem = default!;
 
     private EntityQuery<MetaDataComponent> _metaQuery;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -61,10 +63,12 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         SubscribeLocalEvent<ShuttleConsoleComponent, PowerChangedEvent>(OnConsolePowerChange);
         SubscribeLocalEvent<ShuttleConsoleComponent, AnchorStateChangedEvent>(OnConsoleAnchorChange);
         SubscribeLocalEvent<ShuttleConsoleComponent, ActivatableUIOpenAttemptEvent>(OnConsoleUIOpenAttempt);
+        SubscribeLocalEvent<ShuttleConsoleComponent, GetVerbsEvent<Verb>>(AddPanicButtonVerb);
         Subs.BuiEvents<ShuttleConsoleComponent>(ShuttleConsoleUiKey.Key, subs =>
         {
             subs.Event<ShuttleConsoleFTLBeaconMessage>(OnBeaconFTLMessage);
             subs.Event<ShuttleConsoleFTLPositionMessage>(OnPositionFTLMessage);
+            subs.Event<ToggleFTLLockRequestMessage>(OnToggleFTLLock);
             subs.Event<BoundUIClosedEvent>(OnConsoleUIClose);
         });
 
@@ -193,7 +197,7 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         // Check if console is locked
         if (TryComp<ShuttleConsoleLockComponent>(uid, out var lockComp) && lockComp.Locked)
         {
-            _popup.PopupEntity(Loc.GetString("shuttle-console-locked"), uid, user);
+            // _popup.PopupEntity(Loc.GetString("shuttle-console-locked"), uid, user); // Mono
             return false;
         }
 
@@ -222,8 +226,94 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
     {
         if (ent.Comp.Console != null)
         {
-            RemovePilot(ent.Owner, ent.Comp);
+            RemovePilot(ent);
         }
+    }
+
+    /// <summary>
+    /// Handles FTL lock toggling for docked shuttles
+    /// </summary>
+    private void OnToggleFTLLock(EntityUid uid, ShuttleConsoleComponent component, ToggleFTLLockRequestMessage args)
+    {
+        // Get the console's grid (shuttle)
+        var consoleXform = Transform(uid);
+        var shuttleGrid = consoleXform.GridUid;
+
+        Logger.DebugS("shuttle", $"Server received FTL lock request with {args.DockedEntities.Count} entities, enabled={args.Enabled}");
+
+        // If the shuttleGrid is null, we can't do anything
+        if (shuttleGrid == null)
+        {
+            Logger.DebugS("shuttle", $"Cannot toggle FTL lock: console {ToPrettyString(uid)} is not on a grid");
+            return;
+        }
+
+        bool processedMainGrid = false;
+
+        // Process each entity in the request
+        foreach (var dockedEntityNet in args.DockedEntities)
+        {
+            var dockedEntity = GetEntity(dockedEntityNet);
+
+            // Check if this is the main shuttle grid
+            if (dockedEntity == shuttleGrid)
+            {
+                processedMainGrid = true;
+            }
+
+            if (TryComp<FTLLockComponent>(dockedEntity, out var ftlLock))
+            {
+                Logger.DebugS("shuttle", $"Setting FTL lock for {ToPrettyString(dockedEntity)} to {args.Enabled}");
+                ftlLock.Enabled = args.Enabled;
+                Dirty(dockedEntity, ftlLock);
+            }
+        }
+
+        // If we didn't process the main grid yet, do it now
+        if (!processedMainGrid && shuttleGrid != null)
+        {
+            if (TryComp<FTLLockComponent>(shuttleGrid, out var ftlLock))
+            {
+                Logger.DebugS("shuttle", $"Setting FTL lock for main grid {ToPrettyString(shuttleGrid.Value)} to {args.Enabled}");
+                ftlLock.Enabled = args.Enabled;
+                Dirty(shuttleGrid.Value, ftlLock);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Sets the FTL lock state of a shuttle entity.
+    /// </summary>
+    /// <param name="shuttleUid">The shuttle entity to modify</param>
+    /// <param name="dockedEntities">List of docked entities to also modify, or empty to only modify the shuttle</param>
+    /// <param name="enabled">The desired FTL lock state (true to enable, false to disable)</param>
+    /// <returns>True if at least one entity was modified, false otherwise</returns>
+    public bool ToggleFTLLock(EntityUid shuttleUid, List<NetEntity> dockedEntities, bool enabled)
+    {
+        var modified = false;
+
+        // Modify the main shuttle if it has the component
+        if (TryComp<FTLLockComponent>(shuttleUid, out var shuttleFtlLock))
+        {
+            shuttleFtlLock.Enabled = enabled;
+            Dirty(shuttleUid, shuttleFtlLock);
+            modified = true;
+        }
+
+        // Modify any docked entities if provided
+        foreach (var dockedEntityNet in dockedEntities)
+        {
+            var dockedEntity = GetEntity(dockedEntityNet);
+
+            if (TryComp<FTLLockComponent>(dockedEntity, out var ftlLock))
+            {
+                ftlLock.Enabled = enabled;
+                Dirty(dockedEntity, ftlLock);
+                modified = true;
+            }
+        }
+
+        return modified;
     }
 
     /// <summary>
@@ -413,18 +503,27 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
         if (!Resolve(entity, ref entity.Comp1, ref entity.Comp2))
             return new NavInterfaceState(SharedRadarConsoleSystem.DefaultMaxRange, null, null, docks, Shared._NF.Shuttles.Events.InertiaDampeningMode.Dampen); // Frontier: add inertia dampening
 
+        // Get port names from the console component if available
+        var portNames = new Dictionary<string, string>();
+        if (TryComp<ShuttleConsoleComponent>(entity, out var consoleComp))
+        {
+            portNames = consoleComp.PortNames;
+        }
+
         return GetNavState(
             entity,
             docks,
             entity.Comp2.Coordinates,
-            entity.Comp2.LocalRotation);
+            entity.Comp2.LocalRotation,
+            portNames);
     }
 
     public NavInterfaceState GetNavState(
         Entity<RadarConsoleComponent?, TransformComponent?> entity,
         Dictionary<NetEntity, List<DockingPortState>> docks,
         EntityCoordinates coordinates,
-        Angle angle)
+        Angle angle,
+        Dictionary<string, string>? portNames = null)
     {
         if (!Resolve(entity, ref entity.Comp1, ref entity.Comp2))
             return new NavInterfaceState(SharedRadarConsoleSystem.DefaultMaxRange, GetNetCoordinates(coordinates), angle, docks, InertiaDampeningMode.Dampen); // Frontier: add inertial dampening
@@ -434,7 +533,8 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             GetNetCoordinates(coordinates),
             angle,
             docks,
-            _shuttle.NfGetInertiaDampeningMode(entity)); // Frontier: inertia dampening
+            _shuttle.NfGetInertiaDampeningMode(entity), // Frontier: inertia dampening
+            portNames);
     }
 
     /// <summary>
@@ -471,5 +571,69 @@ public sealed partial class ShuttleConsoleSystem : SharedShuttleConsoleSystem
             stateDuration,
             beacons ?? new List<ShuttleBeaconObject>(),
             exclusions ?? new List<ShuttleExclusionObject>());
+    }
+
+    /// <summary>
+    /// Adds the panic button verb to the shuttle console
+    /// </summary>
+    private void AddPanicButtonVerb(EntityUid uid, ShuttleConsoleComponent component, GetVerbsEvent<Verb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract || !this.IsPowered(uid, EntityManager))
+            return;
+
+        // Don't show the panic button if the console is emergency locked
+        if (TryComp<ShuttleConsoleLockComponent>(uid, out var lockComp) && lockComp.EmergencyLocked)
+            return;
+
+        // Create the panic button verb
+        Verb verb = new()
+        {
+            Act = () => SendPanicSignal(uid, args.User),
+            Text = Loc.GetString("shuttle-console-panic-button"),
+            Priority = 1,
+        };
+
+        args.Verbs.Add(verb);
+    }
+
+    /// <summary>
+    /// Sends an emergency signal to the TSFMC radio channel with the shuttle's name and location
+    /// </summary>
+    private void SendPanicSignal(EntityUid uid, EntityUid user, ShuttleConsoleComponent? component = null, MetaDataComponent? gridMeta = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        // Get the grid entity
+        if (Transform(uid).GridUid is not {} gridUid)
+        {
+            _popup.PopupEntity(Loc.GetString("shuttle-console-panic-no-grid"), uid, user);
+            return;
+        }
+
+        // Get grid name
+        if (!Resolve(gridUid, ref gridMeta))
+        {
+            _popup.PopupEntity(Loc.GetString("shuttle-console-panic-failed"), uid, user);
+            return;
+        }
+
+        var gridName = gridMeta.EntityName;
+        var mapCoordinates = _transform.ToMapCoordinates(Transform(uid).Coordinates);
+
+        // Construct emergency message
+        var message = Loc.GetString("shuttle-console-panic-message",
+            ("gridName", gridName),
+            ("coordinates", $"{mapCoordinates.Position.X:0.0}, {mapCoordinates.Position.Y:0.0}"));
+
+        // Send to TSFMC radio channel
+        _radioSystem.SendRadioMessage(user, message, "Nfsd", uid); // god bro why.
+
+        // Lock the console in emergency mode
+        var lockSystem = EntityManager.EntitySysManager.GetEntitySystem<ShuttleConsoleLockSystem>();
+        lockSystem.SetEmergencyLock(uid, true);
+
+        // Show confirmation popup
+        _popup.PopupEntity(Loc.GetString("shuttle-console-panic-sent"), uid, user);
     }
 }
