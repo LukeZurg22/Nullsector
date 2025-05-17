@@ -1,0 +1,38 @@
+# Author Info
+# GitHub: Phoenix51505
+# Discord: phoebe_the_phoenix0227
+
+- type: vessel
+  id: Bison
+  parent: BaseVessel
+  name: PCY Bison
+  description: A container hauler featuring 4 cargo bays and a comfortable living area for the long haul.
+  price: 45000
+  category: Medium
+  group: Shipyard
+  shuttlePath: /Maps/_Mono/Shuttles/bison.yml
+  guidebookPage: null
+  class:
+  - Cargo
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Bison
+  mapName: 'PCY Bison'
+  mapPath: /Maps/_Mono/Shuttles/bison.yml
+  minPlayers: 0
+  stations:
+    Bison:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Bison CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
