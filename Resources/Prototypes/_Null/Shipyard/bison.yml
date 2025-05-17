@@ -9,7 +9,7 @@
   description: A container hauler featuring 4 cargo bays and a comfortable living area for the long haul.
   price: 45000
   category: Medium
-  group: Cargo
+  group: Shipyard
   shuttlePath: /Maps/_Mono/Shuttles/bison.yml
   guidebookPage: null
   class:
@@ -23,7 +23,7 @@
   mapPath: /Maps/_Mono/Shuttles/bison.yml
   minPlayers: 0
   stations:
-    Orit:
+    Bison:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
