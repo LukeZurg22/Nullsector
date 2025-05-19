@@ -781,7 +781,7 @@ entities:
   - uid: 118
     components:
     - type: Transform
-      pos: -5.5,1.5
+      pos: -6.5,2.5
       parent: 2
   - uid: 125
     components:
