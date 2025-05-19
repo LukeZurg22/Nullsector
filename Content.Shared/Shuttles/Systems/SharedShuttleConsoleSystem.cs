@@ -22,9 +22,14 @@ namespace Content.Shared.Shuttles.Systems
         }
 
         [Serializable, NetSerializable]
-        protected sealed class PilotComponentState(NetEntity? uid) : ComponentState
+        protected sealed class PilotComponentState : ComponentState
         {
-            public NetEntity? Console { get; } = uid;
+            public NetEntity? Console { get; }
+
+            public PilotComponentState(NetEntity? uid)
+            {
+                Console = uid;
+            }
         }
 
         protected virtual void HandlePilotShutdown(EntityUid uid, PilotComponent component, ComponentShutdown args)
@@ -37,15 +42,19 @@ namespace Content.Shared.Shuttles.Systems
                 Dirty(uid, inputMover);
             }
 
-            if (!TryComp<PausedPilotingRelayComponent>(uid, out var pausedRelay))
-                return;
+            if (TryComp<PausedPilotingRelayComponent>(uid, out var pausedRelay))
+            {
+                if (pausedRelay.RelayTarget.IsValid() && Exists(pausedRelay.RelayTarget))
+                {
+                    _mover.SetRelay(uid, pausedRelay.RelayTarget);
+                }
+                else
+                {
+                    RemComp<RelayInputMoverComponent>(uid);
+                }
 
-            if (pausedRelay.RelayTarget.IsValid() && Exists(pausedRelay.RelayTarget))
-                _mover.SetRelay(uid, pausedRelay.RelayTarget);
-            else
-                RemComp<RelayInputMoverComponent>(uid);
-
-            RemComp<PausedPilotingRelayComponent>(uid);
+                RemComp<PausedPilotingRelayComponent>(uid);
+            }
         }
 
         private void OnStartup(EntityUid uid, PilotComponent component, ComponentStartup args)
@@ -58,14 +67,14 @@ namespace Content.Shared.Shuttles.Systems
                 Dirty(uid, inputMover);
             }
 
-            if (!TryComp<RelayInputMoverComponent>(uid, out var relayCompToPause))
-                return;
+            if (TryComp<RelayInputMoverComponent>(uid, out var relayCompToPause))
+            {
+                var pausedRelay = EnsureComp<PausedPilotingRelayComponent>(uid);
+                pausedRelay.RelayTarget = relayCompToPause.RelayEntity;
+                Dirty(uid, pausedRelay);
 
-            var pausedRelay = EnsureComp<PausedPilotingRelayComponent>(uid);
-            pausedRelay.RelayTarget = relayCompToPause.RelayEntity;
-            Dirty(uid, pausedRelay);
-
-            RemComp<RelayInputMoverComponent>(uid);
+                RemComp<RelayInputMoverComponent>(uid);
+            }
         }
 
         private void HandleMovementBlock(EntityUid uid, PilotComponent component, UpdateCanMoveEvent args)

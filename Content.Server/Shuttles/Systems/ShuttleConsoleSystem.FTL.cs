@@ -3,7 +3,6 @@ using Content.Server.Shuttles.Events;
 using Content.Shared.Popups;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Events;
-using Content.Shared.Shuttles.Systems;
 using Content.Shared.Shuttles.UI.MapObjects;
 using Content.Shared.Station.Components;
 using Robust.Shared.Map;
@@ -16,7 +15,6 @@ public sealed partial class ShuttleConsoleSystem
 {
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedShuttleSystem _sharedShuttle = default!;
 
     private const float ShuttleFTLRange = 100f;
     private const float ShuttleFTLMassThreshold = 50f;
@@ -181,10 +179,10 @@ public sealed partial class ShuttleConsoleSystem
             if (TryComp<TransformComponent>(dock.DockedWith.Value, out var dockedXform) && dockedXform.GridUid != null)
             {
                 dockedGrids.Add(dockedXform.GridUid.Value);
-
+                
                 // Check if we're docked to another grid
                 var parentGridUid = dockedXform.GridUid.Value;
-
+                
                 // Find all other grids docked to this parent grid
                 // These should also be excluded from the proximity check so we can
                 // still FTL even when other ships are docked to the same station/grid
@@ -194,10 +192,10 @@ public sealed partial class ShuttleConsoleSystem
                     // Only consider docks on the parent grid
                     if (parentDockXform.GridUid != parentGridUid || !parentDock.Docked || parentDock.DockedWith == null)
                         continue;
-
+                    
                     // If we have a docked entity and it's not our ship, add its grid to the exclusion list
-                    if (TryComp<TransformComponent>(parentDock.DockedWith.Value, out var siblingDockedXform) &&
-                        siblingDockedXform.GridUid != null &&
+                    if (TryComp<TransformComponent>(parentDock.DockedWith.Value, out var siblingDockedXform) && 
+                        siblingDockedXform.GridUid != null && 
                         siblingDockedXform.GridUid != shuttleUid.Value)
                     {
                         dockedGrids.Add(siblingDockedXform.GridUid.Value);
@@ -230,8 +228,8 @@ public sealed partial class ShuttleConsoleSystem
 
         var ev = new ShuttleConsoleFTLTravelStartEvent(ent.Owner);
         RaiseLocalEvent(ref ev);
-        if(_sharedShuttle.TryGetFTLDrive(shuttleUid.Value, out _, out var drive))
-            _shuttle.FTLToCoordinates(shuttleUid.Value, shuttleComp, adjustedCoordinates, targetAngle, drive.StartupTime, drive.HyperSpaceTime);
+
+        _shuttle.FTLToCoordinates(shuttleUid.Value, shuttleComp, adjustedCoordinates, targetAngle);
     }
 
     private void UpdateConsoles(EntityUid uid, ShuttleComponent? component = null)

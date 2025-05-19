@@ -1,12 +1,12 @@
-using System.Diagnostics.CodeAnalysis;
 using Content.Shared._Mono.Ships;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Power.EntitySystems;
+using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.UI.MapObjects;
 using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 
@@ -19,7 +19,6 @@ public abstract partial class SharedShuttleSystem : EntitySystem
     [Dependency] protected readonly SharedMapSystem Maps = default!;
     [Dependency] protected readonly SharedTransformSystem XformSystem = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
-    [Dependency] private readonly SharedPowerReceiverSystem _powerReceiverSystem = default!;
 
     public const float FTLRange = 64f;
     public const float FTLBufferRange = 8f;
@@ -152,37 +151,24 @@ public abstract partial class SharedShuttleSystem : EntitySystem
         return HasComp<MapComponent>(coordinates.EntityId);
     }
 
-    public float GetFTLRange(EntityUid shuttleUid) // Monolith - FTL Rework
+    public float GetFTLRange(EntityUid shuttleUid)
     {
-        // Return the default FTL range if no powered drive was found
-        // In the future, we could return a different range if an unpowered drive was found
-        if(!TryGetFTLDrive(shuttleUid, out var drive, out var driveComp)
-           || !_powerReceiverSystem.IsPowered(drive.Value))
-            return FTLRange;
-
-        return driveComp.Range;
-    }
-
-    public bool TryGetFTLDrive(EntityUid shuttleUid, [NotNullWhen(true)] out EntityUid? driveUid, [NotNullWhen(true)] out FTLDriveComponent? drive)
-    {
-        driveUid = null;
-        drive = null;
-
         // Look for any powered FTL drives on the shuttle's grid
         // FTL drive is now optional and only enhances range if present
         var query = AllEntityQuery<FTLDriveComponent>();
 
-        while (query.MoveNext(out var uid, out var comp))
+        while (query.MoveNext(out var driveUid, out var drive))
         {
-            if (Transform(uid).GridUid != shuttleUid)
-                continue;
-
-            driveUid = uid;
-            drive = comp;
-            return true;
+            if (TryComp<TransformComponent>(driveUid, out var transform) && transform.GridUid == shuttleUid)
+            {
+                if (drive.Powered)
+                    return drive.Range;
+            }
         }
 
-        return false;
+        // Return the default FTL range if no powered drive was found
+        // In the future, we could return a different range if an unpowered drive was found
+        return FTLRange;
     }
 
     public float GetFTLBufferRange(EntityUid shuttleUid, MapGridComponent? grid = null)
