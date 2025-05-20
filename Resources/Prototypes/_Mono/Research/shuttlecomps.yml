@@ -2,7 +2,7 @@
   id: ShuttleArmamentComponentsResearch
   name: research-technology-shuttle-armaments-components
   icon:
-    sprite: _Mono/Structures/ShuttleComponents/shield.rsi
+    sprite: _Null/Structures/ShuttleComponents/shield_beta.rsi
     state: control
   discipline: Arsenal
   tier: 3
