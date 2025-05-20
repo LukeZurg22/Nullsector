@@ -102,7 +102,7 @@
       map: ["enum.ThrusterVisualLayers.ThrustingUnshaded"]
       shader: unshaded
       visible: false
-      offset: 0, 1
+    offset: 0, 1
     scale: 3, 3
   - type: Fixtures
     fixtures:
