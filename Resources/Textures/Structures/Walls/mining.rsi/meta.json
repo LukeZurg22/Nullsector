@@ -11,35 +11,35 @@
       "name": "full"
     }, 
 	  {
-      "name": "mining0",
+      "name": "miningB0",
 	    "directions": 4
     },
 	  {
-      "name": "mining1",
+      "name": "miningB1",
 	    "directions": 4
     },
 	  {
-      "name": "mining2",
+      "name": "miningB2",
 	    "directions": 4
     },
 	  {
-      "name": "mining3",
+      "name": "miningB3",
 	    "directions": 4
     },
 	  {
-      "name": "mining4",
+      "name": "miningB4",
 	    "directions": 4
     },
 	  {
-      "name": "mining5",
+      "name": "miningB5",
 	    "directions": 4
     },
 	  {
-      "name": "mining6",
+      "name": "miningB6",
 	    "directions": 4
     },
 	  {
-      "name": "mining7",
+      "name": "miningB7",
 	    "directions": 4
     }
   ]
