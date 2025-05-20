@@ -15,8 +15,8 @@
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
-  id: MachineDriveCTLA25Circuitboard
-  result: MachineDriveCTLA25Circuitboard
+  id: MachineDriveWarpCircuitboard
+  result: MachineDriveWarpCircuitboard
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe

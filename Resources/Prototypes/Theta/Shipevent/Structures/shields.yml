@@ -38,10 +38,11 @@
     - type: Computer # Mono
       board: ShieldControlComputerCircuitboard
 
+# Alpha Shield Core
 - type: entity
   id: CircularShieldBase
   name: CIR-C1A shield generator
-  parent: [ BaseStructure ] 
+  parent: BaseStructure
   suffix: Alpha, Shield
   components:
     - type: CircularShield
@@ -97,7 +98,7 @@
             False: { visible: false }
     - type: PointLight
       enabled: false
-      color: "#FF0040"
+      color: "#0000FF"
       radius: 2.0
       energy: 1.5
     - type: LitOnPowered
@@ -115,6 +116,8 @@
         machine_board: !type:Container
         machine_parts: !type:Container
 
+
+# Beta Shield Core
 - type: entity
   id: CircularShieldBoosted
   name: CIR-C1B shield generator
@@ -141,8 +144,8 @@
       layers:
       - state: control
       - state: control_on
-        map: [ "enum.PowerDeviceVisualLayers.Powered" ]
         shader: unshaded
+        map: [ "enum.PowerDeviceVisualLayers.Powered" ]
     - type: Fixtures
       fixtures:
         fix1:
@@ -167,6 +170,7 @@
       range: 5
       sound:
         path: /Audio/Ambience/Objects/anomaly_generator.ogg
+    - type: Appearance
     - type: GenericVisualizer
       visuals:
         enum.PowerDeviceVisuals.Powered:
@@ -181,14 +185,14 @@
     - type: LitOnPowered
     - type: InteractionOutline
     - type: Machine
-      board: MachineShieldAlphaCoreCircuitboard
-    - type: Construction # Mono
+      board: MachineShieldBetaCoreCircuitboard
+    - type: Construction
       graph: Machine
       node: machine
       containers:
       - machine_board
       - machine_parts
-    - type: ContainerContainer # Mono
+    - type: ContainerContainer
       containers:
         machine_board: !type:Container
         machine_parts: !type:Container

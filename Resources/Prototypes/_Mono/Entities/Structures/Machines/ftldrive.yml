@@ -44,7 +44,7 @@
             True: { visible: true }
             False: { visible: false }
     - type: Machine
-      board: MachineDriveCTLA25Circuitboard
+      board: MachineDriveWarpCircuitboard
     - type: Construction # Mono
       graph: Machine
       node: machine
