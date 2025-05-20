@@ -1,8 +1,8 @@
 - type: entity
-  id: ThrusterMilitiaLarge
+  id: ThrusterLarge
   name: thruster
   parent: BaseThruster
-  suffix: Green, 2x2
+  suffix: 2x2
   components:
   - type: Destructible
     thresholds:
@@ -22,7 +22,7 @@
         sound:
           collection: MetalBreak
   - type: Sprite
-    sprite: _NF/Structures/Shuttles/thrusternfsd.rsi
+    sprite: Structures/Shuttles/thruster.rsi
     layers:
     - state: base
       map: ["enum.ThrusterVisualLayers.Base"]
@@ -67,10 +67,10 @@
     shape: diamond
 
 - type: entity
-  id: ThrusterMilitiaCapital
+  id: ThrusterCapital
   name: thruster
   parent: BaseThruster
-  suffix: Green, 3x3
+  suffix: 3x3
   components:
   - type: Destructible
     thresholds:
@@ -90,7 +90,7 @@
         sound:
           collection: MetalBreak
   - type: Sprite
-    sprite: _NF/Structures/Shuttles/thrusternfsd.rsi
+    sprite: Structures/Shuttles/thruster.rsi
     layers:
     - state: base
       map: ["enum.ThrusterVisualLayers.Base"]
