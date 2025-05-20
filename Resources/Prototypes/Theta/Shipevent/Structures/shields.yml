@@ -41,7 +41,7 @@
 - type: entity
   id: CircularShieldBase
   name: MS-225 shield generator
-  parent: BaseStructure
+  parent: [ BaseStructure ] 
   suffix: Theta, CircularShield # Mono
   components:
     - type: CircularShield
@@ -59,13 +59,24 @@
       delay: 10
     - type: Sprite
       sprite: _Mono/Structures/ShuttleComponents/shield.rsi
+      offset: -0.5,-0.5
       snapCardinals: true
       layers:
       - state: control
       - state: control_on
         map: [ "enum.PowerDeviceVisualLayers.Powered" ]
-        visible: false
         shader: unshaded
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-1.2,-1.2,0.2,0.5" # Null Sector :: Alignment TOP-RIGHT (-1 left, -1 down, 0,0 is top right)
+          density: 190
+          mask:
+          - MachineMask
+          layer:
+          - MachineLayer
     - type: DeviceNetwork
       deviceNetId: Wireless
     - type: WirelessNetworkConnection
