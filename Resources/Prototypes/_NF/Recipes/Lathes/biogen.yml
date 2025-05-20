@@ -82,7 +82,6 @@
   materials:
     Biomass: 45
 
-
 - type: latheRecipe
   id: BioGenPigCube
   result: PigCube
@@ -91,7 +90,7 @@
   materials:
     Biomass: 45
   
-  - type: latheRecipe
+- type: latheRecipe
   id: NullBioGenNutriBrick
   result: FoodSnackNutribrick
   parent: BioGenFoodRecipe
