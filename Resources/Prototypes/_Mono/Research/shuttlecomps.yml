@@ -14,10 +14,10 @@
   - MachineGCSCircuitboard
 
 - type: technology
-  id: ShuttleCtla25DriveResearch
+  id: ShuttleWarpDriveResearch
   name: research-technology-bluespace-drive-ctla25
   icon:
-    sprite: _Mono/Structures/ShuttleComponents/drive.rsi
+    sprite: _Null/Structures/ShuttleComponents/drive.rsi
     state: control
   discipline: Experimental
   tier: 3

@@ -40,14 +40,14 @@
 
 - type: entity
   id: CircularShieldBase
-  name: MS-225 shield generator
+  name: CIR-C1A shield generator
   parent: [ BaseStructure ] 
-  suffix: Theta, CircularShield # Mono
+  suffix: Alpha, Shield
   components:
     - type: CircularShield
-      consumptionPerM2: 0.55 # Mono - too much at 1
-      maxWidth: 360
-      maxRadius: 100 # Mono - 2x
+      consumptionPerM2: 0.50
+      maxWidth: 256
+      maxRadius: 50
       color: "#00DEFE"
       effects:
         - !type:CircularShieldTempSpeedChangeEffect
@@ -58,8 +58,7 @@
     - type: Anchorable
       delay: 10
     - type: Sprite
-      sprite: _Mono/Structures/ShuttleComponents/shield.rsi
-      offset: -0.5,-0.5
+      sprite: _Null/Structures/ShuttleComponents/shield_alpha.rsi
       snapCardinals: true
       layers:
       - state: control
@@ -71,7 +70,7 @@
         fix1:
           shape:
             !type:PhysShapeAabb
-            bounds: "-1.2,-1.2,0.2,0.5" # Null Sector :: Alignment TOP-RIGHT (-1 left, -1 down, 0,0 is top right)
+            bounds: "-0.2,-0.2,0.2,0.5" # Null Sector :: Alignment TOP-RIGHT (-1 left, -1 down, 0,0 is top right)
           density: 190
           mask:
           - MachineMask
@@ -115,3 +114,58 @@
       containers:
         machine_board: !type:Container
         machine_parts: !type:Container
+
+- type: entity
+  id: CircularShieldBoosted
+  name: CIR-C1B shield generator
+  parent: [ CircularShieldBase ] 
+  suffix: Beta, Shield
+  components:
+    - type: CircularShield
+      consumptionPerM2: 0.55 # Mono - too much at 1
+      maxWidth: 360
+      maxRadius: 100 # Mono - 2x
+      color: "#00DEFE"
+      effects:
+        - !type:CircularShieldTempSpeedChangeEffect
+          speedModifier: 0.1
+    - type: Anchorable
+      delay: 15
+    - type: Sprite
+      sprite: _Null/Structures/ShuttleComponents/shield_beta.rsi
+      offset: -0.5,-0.5
+      snapCardinals: true
+      layers:
+      - state: control
+      - state: control_on
+        map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+        shader: unshaded
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-1.2,-1.2,0.2,0.5" # Null Sector :: Alignment TOP-RIGHT (-1 left, -1 down, 0,0 is top right)
+          density: 190
+          mask:
+          - MachineMask
+          layer:
+          - MachineLayer
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+    - type: WirelessNetworkConnection
+      range: 200
+    - type: DeviceLinkSink
+      ports:
+        - CircularShieldConsoleReceiver
+    - type: GenericVisualizer
+      visuals:
+        enum.PowerDeviceVisuals.Powered:
+          enum.PowerDeviceVisualLayers.Powered:
+            True: { visible: true }
+            False: { visible: false }
+    - type: PointLight
+      enabled: false
+      color: "#FF0040"
+      radius: 2.0
+      energy: 1.5
