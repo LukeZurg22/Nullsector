@@ -1332,7 +1332,6 @@
   - type: RandomIconSmooth
     randomStates:
     - mining
-    - miningB
   - type: Appearance
 
 - type: entity
