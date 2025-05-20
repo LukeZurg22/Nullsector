@@ -1,5 +1,5 @@
 ﻿- type: entity
-  id: MachineShieldMS225Circuitboard
+  id: MachineShieldAlphaCoreCircuitboard
   parent: BaseMachineCircuitboard
   name: MS-225 shield generator board
   description: A machine board for a shield generator.

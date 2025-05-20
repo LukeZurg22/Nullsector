@@ -10,8 +10,8 @@
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
-  id: MachineShieldMS225Circuitboard
-  result: MachineShieldMS225Circuitboard
+  id: MachineShieldAlphaCoreCircuitboard
+  result: MachineShieldAlphaCoreCircuitboard
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
