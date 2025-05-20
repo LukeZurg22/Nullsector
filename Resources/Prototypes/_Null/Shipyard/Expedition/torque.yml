@@ -1,0 +1,40 @@
+# Author Info
+# Github: UskSys
+# Discord: Usk
+
+# Shuttle Notes: Spacious but otherwise standard expeditions tub with a built in empty chemlab
+#
+- type: vessel
+  id: Torque
+  parent: BaseVessel
+  name: TSE Torque
+  description: A twice converted hulk of an expedition ship with pre-installed chemlab and plenty of storage room.
+  price: 100050 # I love and hate the extra 50
+  category: Large
+  group: Expedition
+  shuttlePath: /Maps/_Mono/Shuttles/Expedition/torque.yml
+  guidebookPage: null
+  class:
+  - Expedition
+  engine:
+  - AME
+
+- type: gameMap
+  id: Torque
+  mapName: 'Torque'
+  mapPath: /Maps/_Mono/Shuttles/Expedition/torque.yml
+  minPlayers: 0
+  stations:
+    Torque:
+      stationProto: StandardFrontierExpeditionVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Torque EXP{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
