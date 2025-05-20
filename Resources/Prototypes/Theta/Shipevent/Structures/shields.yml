@@ -148,8 +148,12 @@
         fix1:
           shape:
             !type:PhysShapeAabb
-            bounds: "1,1,0,0" # Null Sector :: Alignment TOP-RIGHT (-1 left, -1 down, 0,0 is top right)
+            bounds: "-1.2,-1.2,0.2,0.5" # Null Sector :: Alignment TOP-RIGHT (-1 left, -1 down, 0,0 is top right)
           density: 190
+          mask:
+          - MachineMask
+          layer:
+          - MachineLayer
     - type: DeviceNetwork
       deviceNetId: Wireless
     - type: WirelessNetworkConnection
