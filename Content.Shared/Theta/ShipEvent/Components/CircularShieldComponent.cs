@@ -16,55 +16,51 @@ public sealed partial class CircularShieldComponent : Component
     [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public bool Powered;
 
-    [DataField]
-    public string ShieldFixtureId = "ShieldFixture"; // Mono
-
-    [DataField("consumptionPerM2")]
+    [DataField("consumptionPerM2"), ViewVariables(VVAccess.ReadWrite)]
     public float ConsumptionPerSquareMeter;
 
     //specified in degrees, for prototypes
-    [DataField] // Mono
+    [DataField("maxWidth"), ViewVariables(VVAccess.ReadWrite)]
     public int MaxWidth = 360;
 
-    [DataField] // Mono
+    [DataField("maxRadius"), ViewVariables(VVAccess.ReadWrite)]
     public int MaxRadius;
 
-    [AutoNetworkedField, DataField] // Mono
+    [AutoNetworkedField, DataField("color"), ViewVariables(VVAccess.ReadWrite)]
     public Color Color;
 
     //(datafields are for map serialization, so it's possible for mappers to create shield presets)
-    [AutoNetworkedField, DataField] // Mono
+    [AutoNetworkedField, DataField("angle"), ViewVariables(VVAccess.ReadWrite)]
     public Angle Angle;
 
-    [AutoNetworkedField, DataField] // Mono
+    [AutoNetworkedField, DataField("width"), ViewVariables(VVAccess.ReadWrite)]
     public Angle Width;
 
-    [AutoNetworkedField, DataField] // Mono
+    [AutoNetworkedField, DataField("radius"), ViewVariables(VVAccess.ReadWrite)]
     public int Radius;
 
     // Power surge mechanics when taking damage
-    [DataField] // Mono
-    public float ProjectileWattPerImpact = 25f; // Watts per point of projectile damage
+    [DataField("projectileWattPerImpact"), ViewVariables(VVAccess.ReadWrite)]
+    public float ProjectileWattPerImpact = 105f; // Watts per point of projectile damage
 
-    [DataField] // Mono
+    [DataField("damageSurgeDuration"), ViewVariables(VVAccess.ReadWrite)]
     public float DamageSurgeDuration = 25f; // Duration in seconds before surge dissipates
 
-    [DataField] // Mono
+    [DataField("currentSurgePower"), ViewVariables(VVAccess.ReadWrite)]
     public float CurrentSurgePower; // Additional watts of power usage from damage
 
-    [DataField] // Mono
+    [DataField("surgeTimeRemaining"), ViewVariables(VVAccess.ReadWrite)]
     public float SurgeTimeRemaining; // Time remaining for the current power surge
 
-    [DataField] // Mono
-    public float PowerDrawLimit = 1500000f; // Amount of wattage you can draw before the shield system turns off - lol this dont work
+    [DataField("powerDrawLimit"), ViewVariables(VVAccess.ReadWrite)]
+    public float PowerDrawLimit = 1500000f; // Amount of wattage you can draw before the shield system turns off
 
-    [DataField] // Mono
-    public float ResetPower = 200000f; // Power usage has to drop below this to reenable shield - lol this dont work
+    [DataField("resetPower"), ViewVariables(VVAccess.ReadWrite)]
+    public float ResetPower = 200000f; // Power usage has to drop below this to reenable shield
 
-    [DataField(serverOnly: true)] // Mono
+    [DataField("effects", serverOnly: true)]
     public List<CircularShieldEffect> Effects = new();
 
-    [ViewVariables(VVAccess.ReadOnly)] // Mono
     public bool CanWork => Enabled && Powered;
 
     // Calculate power draw including any damage surge
@@ -76,7 +72,7 @@ public sealed partial class CircularShieldComponent : Component
                 return 0;
 
             // Base power draw from shield size
-            var baseDraw = Radius * Radius * Width.Degrees * 0.5f * ConsumptionPerSquareMeter;
+            double baseDraw = Radius * Radius * Width.Degrees * 0.5f * ConsumptionPerSquareMeter;
 
             // Add surge power
             return (int)(baseDraw + CurrentSurgePower);
@@ -87,10 +83,10 @@ public sealed partial class CircularShieldComponent : Component
 [ImplicitDataDefinitionForInheritors]
 public abstract partial class CircularShieldEffect
 {
-    public virtual void OnShieldInit(Entity<CircularShieldComponent> shield) { }
-    public virtual void OnShieldShutdown(Entity<CircularShieldComponent> shield) { }
-    public virtual void OnShieldUpdate(Entity<CircularShieldComponent> shield, float time) { }
-    public virtual void OnShieldEnter(EntityUid uid, Entity<CircularShieldComponent> shield) { }
+    public virtual void OnShieldInit(EntityUid uid, CircularShieldComponent shield) { }
+    public virtual void OnShieldShutdown(EntityUid uid, CircularShieldComponent shield) { }
+    public virtual void OnShieldUpdate(EntityUid uid, CircularShieldComponent shield, float time) { }
+    public virtual void OnShieldEnter(EntityUid uid, CircularShieldComponent shield) { }
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
@@ -101,15 +97,21 @@ public sealed partial class CircularShieldConsoleComponent : Component
 }
 
 [Serializable, NetSerializable]
-public sealed class CircularShieldToggleMessage : BoundUserInterfaceMessage; // Mono
+public sealed class CircularShieldToggleMessage : BoundUserInterfaceMessage { }
 
 [Serializable, NetSerializable]
-public sealed class CircularShieldChangeParametersMessage(Angle? angle, Angle? width, int? radius) // Mono
-    : BoundUserInterfaceMessage
+public sealed class CircularShieldChangeParametersMessage : BoundUserInterfaceMessage
 {
-    public Angle? Angle = angle;
+    public Angle? Angle;
 
-    public Angle? Width = width;
+    public Angle? Width;
 
-    public int? Radius = radius;
+    public int? Radius;
+
+    public CircularShieldChangeParametersMessage(Angle? angle, Angle? width, int? radius)
+    {
+        Angle = angle;
+        Width = width;
+        Radius = radius;
+    }
 }

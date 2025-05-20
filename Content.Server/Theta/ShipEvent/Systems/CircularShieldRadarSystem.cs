@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Numerics;
 using Content.Server._Mono.Radar;
 using Content.Server.Theta.ShipEvent.Components;
@@ -60,13 +59,13 @@ public sealed class CircularShieldRadarSystem : EntitySystem
 
         // Get the shield's current grid
         var xform = Transform(uid);
-        var currentGridUidNullable = xform.GridUid;
+        var currentGridUid = xform.GridUid;
 
         // If the shield is no longer on a grid, delete the blip
-        if (currentGridUidNullable is not { } currentGridUid || !HasComp<MapGridComponent>(currentGridUid))
+        if (currentGridUid == null || !TryComp<MapGridComponent>(currentGridUid.Value, out _))
         {
-            if (!TerminatingOrDeleted(blipUid))
-                Del(blipUid);
+            if (_entityManager.EntityExists(blipUid))
+                _entityManager.DeleteEntity(blipUid);
 
             _shieldRadarBlips.Remove(uid);
             return;
@@ -77,39 +76,42 @@ public sealed class CircularShieldRadarSystem : EntitySystem
         var blipGridUid = blipXform.ParentUid;
 
         // If the shield moved to a different grid, recreate the blip on the new grid
-        if (blipGridUid == currentGridUid)
-            return;
+        if (blipGridUid != currentGridUid)
+        {
+            // Delete the old blip
+            if (_entityManager.EntityExists(blipUid))
+                _entityManager.DeleteEntity(blipUid);
 
-        // Delete the old blip
-        if (!TerminatingOrDeleted(blipUid))
-            Del(blipUid);
+            _shieldRadarBlips.Remove(uid);
 
-        _shieldRadarBlips.Remove(uid);
-
-        // Create a new blip on the current grid
-        CreateRadarBlipForShield(uid, component, currentGridUid);
+            // Create a new blip on the current grid
+            CreateRadarBlipForShield(uid, component, currentGridUid.Value);
+        }
     }
 
     private void OnShieldParentChanged(EntityUid uid, CircularShieldComponent component, ref EntParentChangedMessage args)
     {
         // Get the shield's current grid
-        if (args.Transform.GridUid is not { } currentGridUid)
-            return;
+        var currentGridUid = args.Transform.GridUid;
 
-        // If we don't have a blip for this shield yet, and it's now on a grid, create one
-        if (!_shieldRadarBlips.TryGetValue(uid, out var blipUid))
+        // If we don't have a blip for this shield yet and it's now on a grid, create one
+        if (!_shieldRadarBlips.ContainsKey(uid))
         {
-            if (HasComp<MapGridComponent>(currentGridUid))
-                CreateRadarBlipForShield(uid, component, currentGridUid);
-
+            if (currentGridUid != null && TryComp<MapGridComponent>(currentGridUid.Value, out _))
+            {
+                CreateRadarBlipForShield(uid, component, currentGridUid.Value);
+            }
             return;
         }
 
+        // Get the existing blip
+        var blipUid = _shieldRadarBlips[uid];
+
         // If the shield is no longer on a grid, delete the blip
-        if (!HasComp<MapGridComponent>(currentGridUid))
+        if (currentGridUid == null || !TryComp<MapGridComponent>(currentGridUid.Value, out _))
         {
-            if (!TerminatingOrDeleted(blipUid))
-                Del(blipUid);
+            if (_entityManager.EntityExists(blipUid))
+                _entityManager.DeleteEntity(blipUid);
 
             _shieldRadarBlips.Remove(uid);
             return;
@@ -120,16 +122,17 @@ public sealed class CircularShieldRadarSystem : EntitySystem
         var blipGridUid = blipXform.ParentUid;
 
         // If the shield moved to a different grid, recreate the blip on the new grid
-        if (blipGridUid == currentGridUid)
-            return;
+        if (blipGridUid != currentGridUid)
+        {
+            // Delete the old blip
+            if (_entityManager.EntityExists(blipUid))
+                _entityManager.DeleteEntity(blipUid);
 
-        // Delete the old blip
-        if (!TerminatingOrDeleted(blipUid))
-            Del(blipUid);
+            _shieldRadarBlips.Remove(uid);
 
-        _shieldRadarBlips.Remove(uid);
-
-        CreateRadarBlipForShield(uid, component, currentGridUid);
+            // Create a new blip on the current grid
+            CreateRadarBlipForShield(uid, component, currentGridUid.Value);
+        }
     }
 
     private void CreateRadarBlipForShield(EntityUid shieldUid, CircularShieldComponent shield, EntityUid gridUid)
@@ -139,9 +142,11 @@ public sealed class CircularShieldRadarSystem : EntitySystem
             return;
 
         // Get the grid's center of mass if it has physics
-        var centerOfMass = Vector2.Zero;
+        Vector2 centerOfMass = Vector2.Zero;
         if (TryComp<PhysicsComponent>(gridUid, out var physics))
+        {
             centerOfMass = physics.LocalCenter;
+        }
 
         // Spawn a new entity for the radar blip at the grid's center of mass
         var blipEntity = _entityManager.SpawnEntity(null, new EntityCoordinates(gridUid, centerOfMass));
@@ -170,18 +175,18 @@ public sealed class CircularShieldRadarSystem : EntitySystem
         var toRemove = new List<EntityUid>();
         foreach (var (shieldUid, blipUid) in _shieldRadarBlips)
         {
-            if (TerminatingOrDeleted(shieldUid))
+            if (!_entityManager.EntityExists(shieldUid))
             {
                 // Shield entity no longer exists, clean up the blip
-                if (!TerminatingOrDeleted(blipUid))
-                    Del(blipUid);
+                if (_entityManager.EntityExists(blipUid))
+                    _entityManager.DeleteEntity(blipUid);
 
                 toRemove.Add(shieldUid);
                 continue;
             }
 
             // Skip if the blip no longer exists
-            if (TerminatingOrDeleted(blipUid))
+            if (!_entityManager.EntityExists(blipUid))
             {
                 toRemove.Add(shieldUid);
                 continue;
@@ -191,7 +196,7 @@ public sealed class CircularShieldRadarSystem : EntitySystem
             if (!TryComp<CircularShieldComponent>(shieldUid, out var shield))
             {
                 // Shield lost its component, clean up the blip
-                Del(blipUid);
+                _entityManager.DeleteEntity(blipUid);
                 toRemove.Add(shieldUid);
                 continue;
             }
@@ -206,7 +211,9 @@ public sealed class CircularShieldRadarSystem : EntitySystem
 
                 // Only update if position has changed significantly
                 if ((blipXform.LocalPosition - centerOfMass).LengthSquared() > 0.01f)
+                {
                     _transform.SetLocalPosition(blipUid, centerOfMass);
+                }
             }
 
             // Make sure the blip still has the radar component
@@ -222,7 +229,9 @@ public sealed class CircularShieldRadarSystem : EntitySystem
 
         // Remove any shields that no longer exist from our tracking
         foreach (var shieldUid in toRemove)
+        {
             _shieldRadarBlips.Remove(shieldUid);
+        }
     }
 
     public override void Shutdown()
@@ -230,8 +239,11 @@ public sealed class CircularShieldRadarSystem : EntitySystem
         base.Shutdown();
 
         // Clean up all radar blip entities
-        foreach (var blipUid in _shieldRadarBlips.Values.Where(blipUid => !TerminatingOrDeleted(blipUid)))
-            Del(blipUid);
+        foreach (var blipUid in _shieldRadarBlips.Values)
+        {
+            if (_entityManager.EntityExists(blipUid))
+                _entityManager.DeleteEntity(blipUid);
+        }
 
         _shieldRadarBlips.Clear();
     }
@@ -244,11 +256,11 @@ public sealed class CircularShieldRadarSystem : EntitySystem
     {
         if (!_shieldRadarBlips.TryGetValue(shieldUid, out var blipUid))
             return;
-
+            
         // Delete the blip if it exists
-        if (!TerminatingOrDeleted(blipUid))
-            Del(blipUid);
-
+        if (_entityManager.EntityExists(blipUid))
+            _entityManager.DeleteEntity(blipUid);
+            
         // Remove from our tracking dictionary
         _shieldRadarBlips.Remove(shieldUid);
     }

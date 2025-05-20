@@ -54,14 +54,15 @@ public sealed class CircularShieldProjectileSystem : EntitySystem
 
         while (query.MoveNext(out var shieldUid, out _, out var shield))
         {
-            if (shield.Effects.Count == 0 || !shield.CanWork)
+            if (shield.Effects == null || shield.Effects.Count == 0 || !shield.CanWork)
                 continue;
 
-            var hasPhaseEffect = shield.Effects.Any(e => e is CircularShieldTempSpeedChangeEffect speedEffect && speedEffect.ProjectilePhasing);
+            bool hasPhaseEffect = shield.Effects.Any(e => e is CircularShieldTempSpeedChangeEffect speedEffect && speedEffect.ProjectilePhasing);
 
             if (hasPhaseEffect)
+            {
                 _activeShields.Add((shieldUid, shield));
-            
+            }
         }
     }
 
@@ -71,7 +72,9 @@ public sealed class CircularShieldProjectileSystem : EntitySystem
     private void OnProjectileCollisionAttempt(ref ProjectileCollisionAttemptEvent args)
     {
         if (ShouldProjectilePhase(args.Projectile))
+        {
             args.Cancelled = true;
+        }
     }
 
     /// <summary>
@@ -85,7 +88,9 @@ public sealed class CircularShieldProjectileSystem : EntitySystem
 
         // For single shield scenarios or empty shield lists, use the sequential approach
         if (_activeShields.Count <= 1)
+        {
             return CheckShieldsSequential(projectileUid);
+        }
 
         // For multiple shields, try to parallelize the check
         return CheckShieldsParallel(projectileUid);
@@ -96,29 +101,33 @@ public sealed class CircularShieldProjectileSystem : EntitySystem
     /// </summary>
     private bool CheckShieldsSequential(EntityUid projectileUid)
     {
-        foreach (var shield in _activeShields)
+        foreach (var (shieldUid, shield) in _activeShields)
         {
             // Check if the projectile is in the shield range based on grid center
-            if (!_shieldSys.EntityInShield(shield, projectileUid, _transform))
+            if (!_shieldSys.EntityInShield(shieldUid, shield, projectileUid, _transform))
                 continue;
 
-            foreach (var effect in shield.Shield.Effects)
+            foreach (var effect in shield.Effects)
             {
-                if (effect is not CircularShieldTempSpeedChangeEffect { ProjectilePhasing: true } speedEffect)
+                if (effect is not CircularShieldTempSpeedChangeEffect speedEffect || !speedEffect.ProjectilePhasing)
                     continue;
 
                 // First check if the projectile is already in the tracked list
-                var wasAlreadyTracked = speedEffect.TrackedProjectiles.Contains(projectileUid);
+                bool wasAlreadyTracked = speedEffect.TrackedProjectiles.Contains(projectileUid);
 
                 // If projectile is not in tracked list yet, try to add it through OnShieldEnter
                 if (!wasAlreadyTracked)
-                    _shieldSys.DoEnterEffects(shield, projectileUid);
+                {
+                    speedEffect.OnShieldEnter(projectileUid, shield);
+                }
 
                 // NOW check if the projectile was actually added to the tracked list
                 // This handles the case where OnShieldEnter decided not to track it
                 // (like if it's from the same grid)
                 if (speedEffect.TrackedProjectiles.Contains(projectileUid))
+                {
                     return true;
+                }
             }
         }
 
@@ -144,7 +153,7 @@ public sealed class CircularShieldProjectileSystem : EntitySystem
             Transform = _transform,
             ProjectileUid = projectileUid,
             Shields = _activeShields,
-            Result = result,
+            Result = result
         };
 
         // Process the job now, blocking until complete
@@ -175,36 +184,35 @@ public sealed class CircularShieldProjectileSystem : EntitySystem
             if (index >= Shields.Count)
                 return;
 
-            var shield = Shields[index];
+            var (shieldUid, shield) = Shields[index];
 
             // Check if the projectile is in the shield range
-            if (!ShieldSys.EntityInShield(shield, ProjectileUid, Transform))
+            if (!ShieldSys.EntityInShield(shieldUid, shield, ProjectileUid, Transform))
                 return;
 
-            foreach (var effect in shield.Shield.Effects)
+            foreach (var effect in shield.Effects)
             {
-                if (effect is not CircularShieldTempSpeedChangeEffect { ProjectilePhasing: true } speedEffect)
+                if (effect is not CircularShieldTempSpeedChangeEffect speedEffect || !speedEffect.ProjectilePhasing)
                     continue;
 
                 // Check if already tracked
-                lock (speedEffect.TrackedProjectiles)
+                bool wasAlreadyTracked = speedEffect.TrackedProjectiles.Contains(ProjectileUid);
+
+                // Try to add if not tracked
+                if (!wasAlreadyTracked)
                 {
-                    var wasAlreadyTracked = speedEffect.TrackedProjectiles.Contains(ProjectileUid);
-
-                    // Try to add if not tracked
-                    if (!wasAlreadyTracked)
+                    // Need synchronization when adding to TrackedProjectiles
+                    lock (speedEffect.TrackedProjectiles)
                     {
-                        // Need synchronization when adding to TrackedProjectiles
-
                         speedEffect.OnShieldEnter(ProjectileUid, shield);
                     }
+                }
 
-                    // Check if it was added
-                    if (speedEffect.TrackedProjectiles.Contains(ProjectileUid))
-                    {
-                        Result.Add(true);
-                        return;
-                    }
+                // Check if it was added
+                if (speedEffect.TrackedProjectiles.Contains(ProjectileUid))
+                {
+                    Result.Add(true);
+                    return;
                 }
             }
 

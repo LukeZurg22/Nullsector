@@ -7,16 +7,17 @@ namespace Content.Client.Theta.ShipEvent.Console;
 
 
 [UsedImplicitly]
-public sealed class CircularShieldConsoleBoundUserInterface(EntityUid owner, Enum uiKey)
-    : BoundUserInterface(owner, uiKey) // Mono - Primary constructor
+public sealed class CircularShieldConsoleBoundUserInterface : BoundUserInterface
 {
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     private CircularShieldConsoleWindow? _window;
 
     // Smooth changing the shield parameters causes a spam to server
-    private readonly TimeSpan _updateCd = TimeSpan.FromMilliseconds(1);
+    private TimeSpan _updateCd = TimeSpan.FromMilliseconds(1);
     private TimeSpan _nextUpdate;
+
+    public CircularShieldConsoleBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey) { }
 
     protected override void Open()
     {
@@ -36,7 +37,6 @@ public sealed class CircularShieldConsoleBoundUserInterface(EntityUid owner, Enu
     {
         if (_nextUpdate > _gameTiming.RealTime)
             return;
-
         _nextUpdate = _gameTiming.RealTime + _updateCd;
 
         // We still send width in case other parts of the system use it,
@@ -52,13 +52,11 @@ public sealed class CircularShieldConsoleBoundUserInterface(EntityUid owner, Enu
         _window?.UpdateState(shieldState);
     }
 
-    // Mono
     protected override void Dispose(bool disposing)
     {
         base.Dispose(disposing);
 
         if (disposing)
-            _window?.Close();
+            _window?.Dispose();
     }
-
 }
