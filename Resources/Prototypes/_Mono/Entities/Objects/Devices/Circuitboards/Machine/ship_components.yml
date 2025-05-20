@@ -7,7 +7,7 @@
     - type: Sprite
       state: security
     - type: MachineBoard
-      prototype: CircularShieldBase # why are we using the base for this? whatever
+      prototype: CircularShieldBase
       componentRequirements:
         AmeFuelContainer:
           amount: 3
