@@ -5,7 +5,34 @@
   name: monolith
   description: An ancient structure.
   abstract: true
-  
+  components:
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0,-0.5,1,0.5"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: StationAnchor
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Sprite
+    offset: 0.5, 1
+    noRot: true
+    sprite: _Null/Objects/Fun/nullith.rsi
+    drawdepth: Mobs
+  - type: PointLight
+    enabled: true
+    color: "#FFFFFF"
+    radius: 12.0
+    energy: 7.5
+      
 # Null Sector : Monolith Implementations
 - type: entity
   id: MonolithNullith
@@ -13,33 +40,39 @@
   suffix: nullith
   components:
   - type: Sprite
-    noRot: true
-    sprite: _Null/Objects/Fun/nullith.rsi
-    state: monolith_nullith
-    drawdepth: Mobs
-    offset: "0.0,0.5"
+    state: nullith
+  - type: PointLight
+    color: "#FF0040"
     
 - type: entity
   id: MonolithNGC
   parent: Monolith
+  description: An ancient structure. Dubbed as "The Honorary Tombstone" by the NGC.
   suffix: NGC
   components:
   - type: Sprite
-    noRot: true
-    sprite: _Null/Objects/Fun/nullith.rsi
-    state: monolith_NGC
-    drawdepth: Mobs
-    offset: "0.0,0.5"
+    state: NGC
+  - type: PointLight
+    color: "#0000FA"
     
 - type: entity
   id: MonolithCube
   parent: Monolith
   description: The Cube! The Cube! The Cube!
-  suffix: Cube
+  suffix: cube
   components:
   - type: Sprite
-    noRot: true
-    sprite: _Null/Objects/Fun/nullith.rsi
-    state: monolith_cube
-    drawdepth: Mobs
-    offset: "0.0,0.5"
+    state: cube
+  - type: PointLight
+    color: "#FFFF00"  
+
+- type: entity
+  id: MonolithArmadan
+  parent: Monolith
+  description: Depicts a time-accurate map of the entire galaxy.
+  suffix: armadith
+  components:
+  - type: Sprite
+    state: armadith
+  - type: PointLight
+    color: "#FF0000"  
