@@ -616,6 +616,7 @@
     - NFBioGenSeedsStatic # Frontier
     - NFBioGenSeedsMedicalStatic # Frontier
     - NFBioGenSoil # Frontier
+    - NullBioGenMRE # Null
   - type: EmagLatheRecipes # Frontier
     emagStaticPacks: # Frontier
     - HostileCubesStatic # Frontier
