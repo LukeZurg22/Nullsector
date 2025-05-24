@@ -97,7 +97,7 @@
   - type: Sprite
     sprite: _Mono/Objects/SpaceArtillery/57_shell.rsi
     layers:
-    - state: 57-shell
+    - state: base
     scale: 1, 1
   - type: Ammo
     muzzleFlash: null
