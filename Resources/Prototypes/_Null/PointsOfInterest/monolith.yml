@@ -1,0 +1,47 @@
+# Author Info
+# GitHub: LukeZurg22
+# Discord: lukezurg22
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+- type: pointOfInterest
+  id: Monolith
+  parent: BasePOI
+  name: Warped Signal
+  minimumDistance: 2000 # Null Sector
+  maximumDistance: 3500 # Null Sector
+  spawnGamePreset: [ NFPirate ]
+  spawnGroup: Required
+  gridPath: /Maps/_Null/POI/monolith.yml
+  hideWarp: true
+  addComponents:
+  - type: IFF
+    color: "#9D7EB7"
+#    flags: [HideLabel] # Null Sector
+#    readOnly: false # Null Sector
+
+- type: gameMap
+  id: Monolith
+  mapName: 'Warped Signal'
+  mapPath: /Maps/_Null/POI/monolith.yml
+  minPlayers: 0 # Null Sector
+  stations:
+    Nullith:
+      stationProto: RecordsFrontierOutpost
+      components:
+        # - type: StationNameSetup
+          # mapNameTemplate: 'Rogue Insurgency Hideout'
+        # - type: ExtraStationInformation
+          # iconPath: /Textures/_NF/Interface/Pirate/piratelogo.png
+          # stationSubtext: 'frontier-lobby-pirate-subtext'
+          # stationDescription: 'frontier-lobby-pirate-description'
+        # - type: StationJobs
+          # availableJobs:
+            # PirateCaptain: [ 1, 1 ]
+            # PirateFirstMate: [ 2, 2 ] # Mono
+            # Pirate: [ 4, 4 ] # Mono
+        # - type: StationDeadDropReporting
+          # messageSet: Pirate
+        # - type: StationDeadDropHintExempt
+        # - type: TradeCrateWildcardDestination

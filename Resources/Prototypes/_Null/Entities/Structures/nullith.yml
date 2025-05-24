@@ -23,7 +23,6 @@
   - type: Physics
     bodyType: Static
   - type: Sprite
-    offset: 0.5, 1
     noRot: true
     sprite: _Null/Objects/Fun/nullith.rsi
     drawdepth: Mobs
