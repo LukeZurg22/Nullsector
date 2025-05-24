@@ -8,13 +8,16 @@
   },
   "states": [
     {
-      "name": "monolith_nullith"
+      "name": "nullith"
     },
     {
-      "name": "monolith_NGC"
+      "name": "NGC"
     },
     {
-      "name": "monolith_cube"
+      "name": "cube"
+    },
+    {
+      "name": "armadith"
     }
   ]
 }
