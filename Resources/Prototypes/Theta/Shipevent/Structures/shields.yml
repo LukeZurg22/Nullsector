@@ -38,16 +38,17 @@
     - type: Computer # Mono
       board: ShieldControlComputerCircuitboard
 
+# Alpha Shield Core
 - type: entity
   id: CircularShieldBase
-  name: MS-225 shield generator
+  name: CIR-C1A shield generator
   parent: BaseStructure
-  suffix: Theta, CircularShield # Mono
+  suffix: Alpha, Shield
   components:
     - type: CircularShield
-      consumptionPerM2: 0.55 # Mono - too much at 1
-      maxWidth: 360
-      maxRadius: 100 # Mono - 2x
+      consumptionPerM2: 0.50
+      maxWidth: 256
+      maxRadius: 50
       color: "#00DEFE"
       effects:
         - !type:CircularShieldTempSpeedChangeEffect
@@ -58,14 +59,24 @@
     - type: Anchorable
       delay: 10
     - type: Sprite
-      sprite: _Mono/Structures/ShuttleComponents/shield.rsi
+      sprite: _Null/Structures/ShuttleComponents/shield_alpha.rsi
       snapCardinals: true
       layers:
       - state: control
       - state: control_on
         map: [ "enum.PowerDeviceVisualLayers.Powered" ]
-        visible: false
         shader: unshaded
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.2,-0.2,0.2,0.5" # Null Sector :: Alignment TOP-RIGHT (-1 left, -1 down, 0,0 is top right)
+          density: 190
+          mask:
+          - MachineMask
+          layer:
+          - MachineLayer
     - type: DeviceNetwork
       deviceNetId: Wireless
     - type: WirelessNetworkConnection
@@ -87,13 +98,13 @@
             False: { visible: false }
     - type: PointLight
       enabled: false
-      color: "#FF0040"
+      color: "#0000FF"
       radius: 2.0
       energy: 1.5
     - type: LitOnPowered
     - type: InteractionOutline
     - type: Machine
-      board: MachineShieldMS225Circuitboard
+      board: MachineShieldAlphaCoreCircuitboard
     - type: Construction # Mono
       graph: Machine
       node: machine
@@ -101,6 +112,87 @@
       - machine_board
       - machine_parts
     - type: ContainerContainer # Mono
+      containers:
+        machine_board: !type:Container
+        machine_parts: !type:Container
+
+
+# Beta Shield Core
+- type: entity
+  id: CircularShieldBoosted
+  name: CIR-C1B shield generator
+  parent: BaseStructure
+  suffix: Beta, Shield
+  components:
+    - type: CircularShield
+      consumptionPerM2: 0.50
+      maxWidth: 256
+      maxRadius: 50
+      color: "#00DEFE"
+      effects:
+        - !type:CircularShieldTempSpeedChangeEffect
+          speedModifier: 0.1
+    - type: ExtensionCableReceiver
+    - type: ApcPowerReceiver
+      needsPower: true
+    - type: Anchorable
+      delay: 10
+    - type: Sprite
+      offset: -0.5, -0.5
+      sprite: _Null/Structures/ShuttleComponents/shield_beta.rsi
+      snapCardinals: true
+      layers:
+      - state: control
+      - state: control_on
+        shader: unshaded
+        map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-1.2,-1.2,0.2,0.5" # Null Sector :: Alignment TOP-RIGHT (-1 left, -1 down, 0,0 is top right)
+          density: 190
+          mask:
+          - MachineMask
+          layer:
+          - MachineLayer
+    - type: DeviceNetwork
+      deviceNetId: Wireless
+    - type: WirelessNetworkConnection
+      range: 200
+    - type: DeviceLinkSink
+      ports:
+        - CircularShieldConsoleReceiver
+    - type: AmbientOnPowered
+    - type: AmbientSound
+      volume: -9
+      range: 5
+      sound:
+        path: /Audio/Ambience/Objects/anomaly_generator.ogg
+    - type: Appearance
+    - type: GenericVisualizer
+      visuals:
+        enum.PowerDeviceVisuals.Powered:
+          enum.PowerDeviceVisualLayers.Powered:
+            True: { visible: true }
+            False: { visible: false }
+    - type: PointLight
+      enabled: false
+      color: "#FF0040"
+      radius: 2.0
+      energy: 1.5
+    - type: LitOnPowered
+    - type: InteractionOutline
+    - type: Machine
+      board: MachineShieldBetaCoreCircuitboard
+    - type: Construction
+      graph: Machine
+      node: machine
+      containers:
+      - machine_board
+      - machine_parts
+    - type: ContainerContainer
       containers:
         machine_board: !type:Container
         machine_parts: !type:Container

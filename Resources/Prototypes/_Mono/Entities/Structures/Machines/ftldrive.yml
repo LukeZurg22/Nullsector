@@ -11,7 +11,7 @@
     - type: Physics
       bodyType: Static
     - type: Sprite
-      sprite: _Mono/Structures/ShuttleComponents/drive.rsi
+      sprite: _Null/Structures/ShuttleComponents/drive.rsi
       snapCardinals: true
       layers:
       - state: control
@@ -44,7 +44,7 @@
             True: { visible: true }
             False: { visible: false }
     - type: Machine
-      board: MachineDriveCTLA25Circuitboard
+      board: MachineDriveWarpCircuitboard
     - type: Construction # Mono
       graph: Machine
       node: machine

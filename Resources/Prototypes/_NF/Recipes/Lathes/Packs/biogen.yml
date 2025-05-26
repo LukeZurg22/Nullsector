@@ -88,3 +88,8 @@
   id: NFBioGenSoil
   recipes:
   - NFBioGenHydroponicsSoilNutritionFlatpack
+
+- type: latheRecipePack
+  id: NullBioGenMRE
+  recipes:
+  - NullBioGenNutriBrick

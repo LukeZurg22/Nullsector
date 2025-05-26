@@ -1,0 +1,40 @@
+# Author Info
+# GitHub: LukeZurg22
+# Discord: @lukezurg22
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: Crapbucket
+  parent: BaseVessel
+  name: Crapbucket
+  description: A rough and malleable fighting vessel designed for dubious practices. Not for expeditions.
+  price: 55000
+  category: Small
+  group: Expedition
+  shuttlePath: /Maps/_Null/Shuttles/Expedition/crapbucket.yml
+  guidebookPage: null
+  class:
+  - Pirate
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Crapbucket
+  mapName: 'Crapbucket'
+  mapPath: /Maps/_Null/Shuttles/Expedition/crapbucket.yml
+  minPlayers: 0
+  stations:
+    Crapbucket:
+      stationProto: StandardFrontierExpeditionVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Crapbucket MIL{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 1, 1 ]

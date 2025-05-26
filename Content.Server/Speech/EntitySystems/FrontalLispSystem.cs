@@ -23,10 +23,10 @@ public sealed class FrontalLispSystem : EntitySystem
         var message = args.Message;
 
         // handles ts, sc(i|e|y), c(i|e|y), ps, st(io(u|n)), ch(i|e), z, s
-        message = RegexUpperTh.Replace(message, "TH");
+        message = RegexUpperTh.Replace(message, "Th");
         message = RegexLowerTh.Replace(message, "th");
         // handles ex(c), x
-        message = RegexUpperEcks.Replace(message, "EKTH");
+        message = RegexUpperEcks.Replace(message, "Ekth");
         message = RegexLowerEcks.Replace(message, "ekth");
 
         args.Message = message;

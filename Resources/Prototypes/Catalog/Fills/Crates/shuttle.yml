@@ -17,3 +17,13 @@
   - type: StorageFill
     contents:
       - id: GyroscopeFlatpack
+
+- type: entity
+  parent: CrateEngineering
+  id: CrateEngineeringMiningLaser
+  name: mining blaster crate
+  description: Contains a mining blaster flatpack.
+  components:
+  - type: StorageFill
+    contents:
+      - id: MiningLaserFlatpack

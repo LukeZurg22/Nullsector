@@ -106,7 +106,7 @@
       MailCommandNFGoldCigars: 0.15 # 0.2 weight total
       MailCommandNFPlatinumCigars: 0.1
       MailCommandNFPremiumAlcohol: 0.25
-      MailCommandNFStationPet: 2
+      #MailCommandNFStationPet: 2
       MailCommandNFPipebombIntern: 1 # TODO: make the "real" pipebomb
       MailCommandNFWristwatchGold: 0.5
       MailStationRepNFClurger: 0.5
@@ -116,6 +116,6 @@
       MailNFGoldCigars: 0.15 # 0.2 weight total
       MailCommandNFPlatinumCigars: 0.1
       MailCommandNFPremiumAlcohol: 0.25
-      MailCommandNFStationPet: 2 # Don't see the harm in this with Smile and Cappy around
+      #MailCommandNFStationPet: 2 # Don't see the harm in this with Smile and Cappy around
       MailCommandNFPipebombIntern: 1 # TODO: make the "real" pipebomb
       MailCommandNFWristwatchGold: 0.5
