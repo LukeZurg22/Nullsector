@@ -17,9 +17,8 @@
     - !type:GroupSelector
       children:
       - id: ScrapPAI
-        weight: 0.1 # Null Sector
       - id: ScrapPAIGold
-        weight: 0.05 # Null Sector
+        weight: 0.1 # Null Sector
     - id: ScrapTube
     - id: ShardGlass
       amount: !type:RangeNumberSelector

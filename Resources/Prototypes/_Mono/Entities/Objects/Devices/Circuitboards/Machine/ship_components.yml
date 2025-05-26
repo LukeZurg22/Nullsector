@@ -1,25 +1,45 @@
 ﻿- type: entity
-  id: MachineShieldMS225Circuitboard
+  id: MachineShieldAlphaCoreCircuitboard
   parent: BaseMachineCircuitboard
-  name: MS-225 shield generator board
-  description: A machine board for a shield generator.
+  name: CIR-C1A shield generator board
+  description: A machine board for a type-1 shield generator.
   components:
     - type: Sprite
       state: security
     - type: MachineBoard
-      prototype: CircularShieldBase # why are we using the base for this? whatever
+      prototype: CircularShieldBase
       componentRequirements:
         AmeFuelContainer:
           amount: 3
           defaultPrototype: AmeJar
       stackRequirements:
-        Glass: 10
-        Steel: 10
-        Plasma: 30
-        Plasteel: 10
+        Glass: 50
+        Steel: 50
+        Plasma: 60
+        Plasteel: 50
 
 - type: entity
-  id: MachineDriveCTLA25Circuitboard
+  id: MachineShieldBetaCoreCircuitboard
+  parent: BaseMachineCircuitboard
+  name: CIR-C1B shield generator board
+  description: A machine board for a type-2 shield generator.
+  components:
+    - type: Sprite
+      state: security
+    - type: MachineBoard
+      prototype: CircularShieldBoosted
+      componentRequirements:
+        AmeFuelContainer:
+          amount: 3
+          defaultPrototype: AmeJar
+      stackRequirements:
+        Glass: 100
+        Steel: 100
+        Plasma: 90
+        Plasteel: 100
+
+- type: entity
+  id: MachineDriveWarpCircuitboard
   parent: BaseMachineCircuitboard
   name: CTLA-25 bluespace drive board
   description: A machine board for a bluespace drive.
