@@ -82,7 +82,6 @@
   materials:
     Biomass: 45
 
-
 - type: latheRecipe
   id: BioGenPigCube
   result: PigCube
@@ -90,6 +89,17 @@
   completetime: 300
   materials:
     Biomass: 45
+  
+- type: latheRecipe
+  id: NullBioGenNutriBrick
+  result: FoodSnackNutribrick
+  parent: BioGenFoodRecipe
+  completetime: 120
+  materials:
+    Biomass: 10
+  icon:
+    sprite: Objects/Consumable/Food/snacks.rsi
+    state: nutribrick
 
 # Condiments
 

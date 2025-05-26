@@ -8,7 +8,7 @@
   id: Judiciary
   parent: BaseVessel
   name: SHM Judiciary
-  description: A refitted research vessel armed with expedition-rated combat equipment.
+  description: A refitted research vessel armed with combat equipment. NOT for expeditions.
   price: 70001 # ~20,000$ markup
   category: Medium
   group: Expedition

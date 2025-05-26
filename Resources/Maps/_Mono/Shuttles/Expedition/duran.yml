@@ -4,7 +4,7 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 04/27/2025 19:28:26
+  time: 05/15/2025 01:08:56
   entityCount: 368
 maps: []
 grids:
@@ -781,7 +781,7 @@ entities:
   - uid: 118
     components:
     - type: Transform
-      pos: -5.5,1.5
+      pos: -6.5,2.5
       parent: 2
   - uid: 125
     components:
@@ -939,6 +939,8 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 7.5,0.5
       parent: 2
+    - type: ExpeditionRewardReciever
+      spotLocation: 6.9583335,0.015635818
     - type: ApcPowerReceiver
       powerLoad: 5
     - type: Battery
@@ -950,6 +952,8 @@ entities:
     - type: Transform
       pos: 6.5,2.5
       parent: 2
+    - type: ShuttleConsoleLock
+      locked: False
     - type: ApcPowerReceiver
       powerLoad: 5
     - type: Battery
@@ -2064,17 +2068,13 @@ entities:
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
-      pos: 9.5,1.5
+      pos: 9.5,0.5
       parent: 2
-    - type: Thruster
-      enabled: False
-    - type: ApcPowerReceiver
-      powerLoad: 1
   - uid: 180
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
-      pos: 9.5,0.5
+      pos: 9.5,1.5
       parent: 2
   - uid: 181
     components:

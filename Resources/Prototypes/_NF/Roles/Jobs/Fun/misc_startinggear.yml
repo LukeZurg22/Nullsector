@@ -24,6 +24,9 @@
     - BluespaceBeaker
     - Omnitool
     - SyringeBluespace
+    # Null
+    - AppraisalTool
+    - ContrabandAppraisalTool
 
 - type: startingGear
   id: MobClippyGear

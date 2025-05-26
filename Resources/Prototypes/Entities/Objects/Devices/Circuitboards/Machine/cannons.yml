@@ -77,21 +77,22 @@
       CableHV: 5
       Uranium: 2
 
-- type: entity
-  id: ShuttleGunKineticCircuitboard
-  parent: BaseMachineCircuitboard
-  name: PTK-1500e "Matter Dematerializer" machine board # Frontier: 800<1500e
-  description: A machine printed circuit board for an PTK-1500e "Matter Dematerializer". # Frontier: 800<1500e
-  suffix: DO NOT MAP, Machine Board
-  categories: [ DoNotMap ]
-  components:
-  - type: Sprite
-    state: security
-  - type: MachineBoard
-    prototype: ShuttleGunKinetic
-    requirements: # Frontier
-      MatterBin: 2 # Frontier stackRequirements<requirements
-      Manipulator: 3 # Frontier stackRequirements<requirements
-    stackRequirements:
-      Steel: 5
-      CableHV: 2
+# Null Sector : PTK got removed
+# - type: entity
+  # id: ShuttleGunKineticCircuitboard
+  # parent: BaseMachineCircuitboard
+  # name: PTK-1500e "Matter Dematerializer" machine board # Frontier: 800<1500e
+  # description: A machine printed circuit board for an PTK-1500e "Matter Dematerializer". # Frontier: 800<1500e
+  # suffix: DO NOT MAP, Machine Board
+  # categories: [ DoNotMap ]
+  # components:
+  # - type: Sprite
+    # state: security
+  # - type: MachineBoard
+    # prototype: ShuttleGunKinetic
+    # requirements: # Frontier
+      # MatterBin: 2 # Frontier stackRequirements<requirements
+      # Manipulator: 3 # Frontier stackRequirements<requirements
+    # stackRequirements:
+      # Steel: 5
+      # CableHV: 2

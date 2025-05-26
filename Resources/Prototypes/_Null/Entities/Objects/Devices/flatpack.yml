@@ -1,0 +1,14 @@
+# Mining Blaster
+- type: entity
+  parent: BaseFlatpack
+  id: MiningLaserFlatpack
+  name: PGI-3300 Mining Blaster flatpack
+  description: A flatpack used for constructing an PGI-3300 Mining Blaster.
+  components:
+  - type: Flatpack
+    entity: WeaponTurretMining
+  - type: StaticPrice
+    price: 9000
+  - type: Sprite
+    layers:
+    - state: gun-part
