@@ -12,7 +12,7 @@
   price: 25000
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Mono/Shuttles/grisial.yml
+  shuttlePath: /Maps/_Null/Shuttles/grisial.yml
   guidebookPage: null
   class:
   - Civilian
@@ -23,7 +23,7 @@
 - type: gameMap
   id: Grisial
   mapName: 'Grisial'
-  mapPath: /Maps/_Mono/Shuttles/grisial.yml
+  mapPath: /Maps/_Null/Shuttles/grisial.yml
   minPlayers: 0
   stations:
     Grisial:
