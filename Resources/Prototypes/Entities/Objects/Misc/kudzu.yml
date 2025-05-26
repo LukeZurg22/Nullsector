@@ -309,3 +309,90 @@
   components:
     - type: Kudzu
       spreadChance: 0 #appears during pulsation. It shouldnt spreading.
+
+# So this was an attempt at making a wall that would self seal breaches by growing new segments of itself and self repair, but ultimately the former part is difficult to regulate and honestly it'll never really come about
+#- type: entity
+#  id: wallliving
+#  name: Living Wall
+#  description: Keeps the air in and the greytide out. It seems to be growing.
+#  parent: BaseKudzu
+#  placement:
+#    mode: SnapgridCenter
+#    snap:
+#      - Wall
+#  components:
+#    - type: MeleeSound
+#      soundGroups:
+#        Brute:
+#          path:
+#            "/Audio/Weapons/slash.ogg"
+#    - type: Sprite
+#      sprite: Objects/Misc/kudzuflower.rsi
+#      state: kudzu_11
+#      drawdepth: Walls
+#    - type: Tag
+#      tags:
+#      - Wall
+#    - type: KudzuVisuals
+#    - type: Clickable
+#    - type: Physics
+#      bodyType: Static
+#      canCollide: true
+#    - type: IsRoof
+#    - type: Fixtures
+#      fixtures:
+#        fix1:
+#          hard: false
+#          density: 1000
+#          shape:
+#            !type:PhysShapeAabb
+#            bounds: "-0.5,-0.5,0.5,0.5"
+#          layer:
+#          - WallLayer
+#          - MidImpassable
+#    - type: Damageable
+#    - type: Destructible
+#      thresholds:
+#      - trigger:
+#          !type:DamageTrigger
+#          damage: 1200
+#        behaviors:
+#        - !type:DoActsBehavior
+#          acts: [ "Destruction" ]
+#      ignoreWhitelist:
+#        components:
+#          RCDDeconstructable
+#          Kudzu
+#          Inorganic
+#          FloorTile
+#      Whitelist:
+#        components:
+#          - Flammable
+#    - type: Kudzu
+#      growthTickChance: 0.1
+#      spreadChance: 0.4
+#      damageRecovery:
+#        types:
+#          Slash: -40
+#          Heat: -40
+#          Cold: -40
+#          Blunt: -40
+#          Pierecing: -40
+#    - type: Flammable
+#      fireSpread: true
+#      damage:
+#       types:
+#         Heat: 3
+#    - type: SpeedModifierContacts
+#      walkSpeedModifier: 0.9
+#      sprintSpeedModifier: 0.9
+#      ignoreWhitelist:
+#        components:
+#        - IgnoreKudzu
+#    - type: Occluder
+#    - type: Airtight
+#    - type: StaticPrice
+#      price: 20
+#    - type: RadiationBlocker
+#      resistance: 2
+#    - type: BlockWeather
