@@ -1,0 +1,41 @@
+# Author Info
+# GitHub: LukeZurg22
+# Discord: lukezurg22
+
+# Shuttle Notes:
+# Made by Sketch
+
+- type: vessel
+  id: Camper
+  parent: BaseVessel
+  name: UNJ Camper
+  description: A small, single-person shuttle meant for cozy travels.
+  price: 20000
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Null/Shuttles/camper.yml
+  guidebookPage: null
+  class:
+  - Civilian
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Camper
+  mapName: 'Camper'
+  mapPath: /Maps/_Null/Shuttles/camper.yml
+  minPlayers: 0
+  stations:
+    Camper:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Camper CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

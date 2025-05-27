@@ -1,0 +1,17 @@
+- type: entity
+  name: random monolith spawner
+  id: MonolithSpawner
+  parent: MarkerBase
+  suffix: Spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Null/Objects/Fun/nullith.rsi
+      state: nullith
+  - type: RandomSpawner
+    prototypes:
+    - MonolithNullith
+    - MonolithNGC
+    - MonolithCube
+    - MonolithArmadan
