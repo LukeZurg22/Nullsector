@@ -713,14 +713,14 @@
     - Diagonal
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/reinforced_diagonal.rsi
+    sprite: _NF/Structures/Walls/reinforced_diagonal.rsi
     state: state0
   - type: IconSmooth
     mode: DiagonalNF # Frontier: Diagonal<DiagonalNF
     key: walls
     base: state
   - type: Icon
-    sprite: Structures/Walls/reinforced_diagonal.rsi
+    sprite: _NF/Structures/Walls/reinforced_diagonal.rsi
     state: state0
 
 # Riveting
