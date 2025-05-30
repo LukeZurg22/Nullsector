@@ -8,7 +8,7 @@
   },
   "states": [
     {
-      "name": "on-equipped-NECK",
+      "name": "music",
       "directions": 4,
       "delays": [
         [
@@ -50,7 +50,10 @@
       ]
     },
     {
-      "name": "off-equipped-NECK",
+      "name": "ribbon_overlay"
+    },
+    {
+      "name": "mob-overlay",
       "directions": 4
     },
     {

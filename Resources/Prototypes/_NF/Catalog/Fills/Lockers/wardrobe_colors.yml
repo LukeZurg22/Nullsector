@@ -95,7 +95,7 @@
     - id: ClothingMaskBat
     - id: ClothingNeckCloakHerald
     - id: ClothingNeckCloakTrans
-    - id: ClothingNeckHeadphones
+    - id: NullClothingHeadphones
     - id: ClothingNeckBling
     - id: ClothingNeckTieRed
     - id: ClothingNeckTieSci

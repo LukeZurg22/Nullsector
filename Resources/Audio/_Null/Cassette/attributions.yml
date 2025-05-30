@@ -1,0 +1,19 @@
+- files: ["oh_mah_nina.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Oh Mah Nina - Suno"
+  source: "https://www.youtube.com/"
+
+- files: ["payem_payam.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Payem Payam - Suno"
+  source: "https://www.youtube.com/"
+
+- files: ["vinyl.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Vinyl - Unknown Source"
+  source: "https://www.youtube.com/"
+
+- files: ["papers_please_radio.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Papers Please Remix - Reimaginer"
+  source: "https://www.youtube.com/watch?v=EUTmB_zN1SQ"

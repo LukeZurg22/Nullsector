@@ -259,7 +259,7 @@
       - id: ClothingNeckCloakPirateCap
         orGroup: DripLoot
         prob: 0.25
-      - id: ClothingNeckHeadphones
+      - id: NullClothingHeadphones
         orGroup: DripLoot
       - id: ClothingNeckBling
         orGroup: DripLoot
