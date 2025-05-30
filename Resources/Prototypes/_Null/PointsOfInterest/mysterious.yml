@@ -29,7 +29,7 @@
   stations:
     Mysterious:
       stationProto: RecordsFrontierOutpost
-      components:
+      #components:
         # - type: StationNameSetup
           # mapNameTemplate: 'Rogue Insurgency Hideout'
         # - type: ExtraStationInformation
