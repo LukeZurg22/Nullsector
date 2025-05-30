@@ -1,0 +1,37 @@
+# Author Info
+# GitHub: LukeZurg22
+# Discord: lukezurg22
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+- type: pointOfInterest
+  id: Mysterious
+  parent: BasePOI
+  name: Strange Signal
+  minimumDistance: 2000
+  maximumDistance: 3500
+  spawnGamePreset: [ NFPirate ]
+  spawnGroup: Required
+  gridPath: /Maps/_Null/POI/mysterious.yml
+  hideWarp: true
+  addComponents:
+  - type: IFF
+    color: "#9D7EB7"
+#    flags: [HideLabel] # Null Sector
+#    readOnly: false # Null Sector
+
+- type: gameMap
+  id: Mysterious
+  mapName: 'Strange Signal'
+  mapPath: /Maps/_Null/POI/mysterious.yml
+  minPlayers: 0
+  stations:
+    Mysterious:
+      stationProto: RecordsFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Strange Signal'
+        - type: StationJobs
+          availableJobs: {}
+        - type: StationDeadDropHintExempt

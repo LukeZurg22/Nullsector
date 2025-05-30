@@ -23,7 +23,7 @@
   - type: Physics
     bodyType: Static
   - type: Sprite
-    noRot: true
+    noRot: false
     sprite: _Null/Objects/Fun/nullith.rsi
     drawdepth: Mobs
   - type: PointLight
