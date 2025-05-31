@@ -1,0 +1,44 @@
+- files: ["oh_mah_nina.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Oh Mah Nina - Suno"
+  source: "https://www.youtube.com/"
+
+- files: ["payem_payam.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Payem Payam - Suno"
+  source: "https://www.youtube.com/"
+
+- files: ["vinyl.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Vinyl - Unknown Source"
+  source: "https://www.youtube.com/"
+
+- files: ["papers_please_radio.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Papers Please Remix - Reimaginer"
+  source: "https://www.youtube.com/watch?v=EUTmB_zN1SQ"
+
+- files: ["prepare_yourself_to_fight.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Prepare Yourself To Fight - Stormfrun"
+  source: "https://youtu.be/MrHJpWhoMFI?si=bTDSv95CytE7Uacy"
+
+- files: ["byker_hill.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Byker Hill - The Longest Johns"
+  source: "https://youtu.be/ejsOuhpM2NQ?si=goWejmJwxrnadZWm"
+
+- files: ["fire_down_below.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Fire Down Below - The Jolly Rogers"
+  source: "https://youtu.be/4mLR_W4JZdI?si=Daw_a6efUVNOGRI5"
+
+- files: ["take_us_home.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Take Us Home - Colm R. McGuinness"
+  source: "https://youtu.be/u_FKAT5zCcU?si=C2viy-HSXslddEyW"
+  
+- files: ["die_hebben_baarden.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Al Die Willen te Kaapren Varen - The Dutch"
+  source: "https://youtu.be/v3JSYFkWml4?si=N7eJsbG8RDadcj7j"

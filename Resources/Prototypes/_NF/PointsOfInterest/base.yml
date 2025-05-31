@@ -11,3 +11,15 @@
     readOnly: true
   # Prevent gravity changes
   - type: ForceAnchor
+
+- type: pointOfInterest
+  id: UnanchoredPOI
+  abstract: true
+  minimumDistance: 2000 # Some sane defaults
+  maximumDistance: 4000
+  spawnGamePreset: [ NFAdventure, NFPirate ]
+  spawnGroup: Optional
+  addComponents:
+  - type: IFF
+    color: "#ffa600"
+    readOnly: true
