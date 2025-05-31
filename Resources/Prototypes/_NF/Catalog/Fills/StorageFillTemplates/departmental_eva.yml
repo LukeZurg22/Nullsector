@@ -26,7 +26,7 @@
 - type: entity
   abstract: true
   id: StorageFillEVASuitSr
-  description: Contains a standard issue station representative EVA kit.
+  description: Contains a standard issue sector coordinator EVA kit.
   components:
   - type: StorageFill
     contents:

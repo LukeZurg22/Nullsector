@@ -149,7 +149,7 @@
 - type: entity
   parent: ClothingHeadEVAHelmetWithLightBase
   id: ClothingHeadEVAHelmetSr
-  name: station representative EVA helmet
+  name: sector coordinator EVA helmet
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite

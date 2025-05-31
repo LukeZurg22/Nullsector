@@ -1,4 +1,4 @@
-# Station Representative Forms
+# Mercenary Coordinator Forms
 # Sources: https://discord.com/channels/1123826877245694004/1182366744266932224/1182366744266932224
 #          https://docs.google.com/document/d/1jDX9numj-VHKBJ2FiiEo1GIlHESffOUIHIIXaqhEnls/edit?pli=1#heading=h.ru93r8n0fb7m
 # These forms should be kept up-to-date with changes to Space Law.
@@ -64,7 +64,7 @@
 
 
 
-      [color=#AAAAAA]This Warrant is only valid when requested by an agent of the Militia and approved, signed, and stamped by a [italic]distinct[/italic] (unless impossible) officer ranked Bailiff or above or a Station Representative.[/color]
+      [color=#AAAAAA]This Warrant is only valid when requested by an agent of the Militia and approved, signed, and stamped by a [italic]distinct[/italic] (unless impossible) officer ranked Bailiff or above or a Mercenary Coordinator.[/color]
 
 - type: entity # Creator: Starly (Shaw Clifflower)
   id: PaperWrittenNfsdReport
@@ -145,7 +145,7 @@
 
 
 
-      [color=#AAAAAA]This warrant is only valid when requested by an agent of the Militia, and approved, signed and stamped by a distinct (unless impossible) officer ranked Bailiff or above, or a Station Representative.[/color]
+      [color=#AAAAAA]This warrant is only valid when requested by an agent of the Militia, and approved, signed and stamped by a distinct (unless impossible) officer ranked Bailiff or above, or a Mercenary Coordinator.[/color]
 
 - type: entity # Creator: Kwentov (Vica)
   id: PaperWrittenNfsdArrestReport

@@ -338,7 +338,7 @@
 - type: entity
   parent: NFClothingDuffel
   id: ClothingBackpackDuffelSr
-  name: station representative duffel
+  name: sector coordinator duffel
   description: No expense was spared in crafting of this premium duffelbag.
   components:
   - type: Sprite
