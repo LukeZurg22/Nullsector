@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/12/2025 05:50:15
-  entityCount: 1658
+  time: 05/31/2025 00:17:09
+  entityCount: 1679
 maps:
 - 1
 grids:
@@ -261,9 +261,11 @@ entities:
           1,1:
             0: 61166
           2,0:
-            0: 65535
+            2: 1
+            0: 65534
           2,1:
-            0: 60943
+            0: 60935
+            2: 8
           2,2:
             0: 7632
           2,-1:
@@ -377,6 +379,21 @@ entities:
           moles:
           - 0
           - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          temperature: 293.14996
+          moles:
+          - 21.824879
+          - 82.10312
           - 0
           - 0
           - 0
@@ -842,6 +859,18 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 23.5,12.5
       parent: 2
+  - uid: 544
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 17.5,0.5
+      parent: 2
+  - uid: 546
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 22.5,0.5
+      parent: 2
   - uid: 1641
     components:
     - type: Transform
@@ -871,6 +900,107 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 11.5,-4.5
+      parent: 2
+  - uid: 1659
+    components:
+    - type: Transform
+      pos: 17.5,2.5
+      parent: 2
+  - uid: 1660
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 21.5,4.5
+      parent: 2
+  - uid: 1661
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 26.5,0.5
+      parent: 2
+  - uid: 1662
+    components:
+    - type: Transform
+      pos: 22.5,-1.5
+      parent: 2
+  - uid: 1663
+    components:
+    - type: Transform
+      pos: 17.5,-1.5
+      parent: 2
+  - uid: 1664
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 25.5,-2.5
+      parent: 2
+  - uid: 1665
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 27.5,-4.5
+      parent: 2
+  - uid: 1666
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 33.5,-1.5
+      parent: 2
+  - uid: 1667
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 33.5,-5.5
+      parent: 2
+  - uid: 1668
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 25.5,5.5
+      parent: 2
+  - uid: 1669
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 22.5,7.5
+      parent: 2
+  - uid: 1670
+    components:
+    - type: Transform
+      pos: 23.5,14.5
+      parent: 2
+  - uid: 1671
+    components:
+    - type: Transform
+      pos: 14.5,14.5
+      parent: 2
+  - uid: 1672
+    components:
+    - type: Transform
+      pos: 19.5,14.5
+      parent: 2
+  - uid: 1673
+    components:
+    - type: Transform
+      pos: 7.5,16.5
+      parent: 2
+  - uid: 1674
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 6.5,19.5
+      parent: 2
+  - uid: 1675
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 12.5,9.5
+      parent: 2
+  - uid: 1676
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 12.5,6.5
       parent: 2
 - proto: AmmoTechFab
   entities:
@@ -3480,63 +3610,6 @@ entities:
     - type: Transform
       pos: 11.5,21.5
       parent: 2
-- proto: CircularShieldBase
-  entities:
-  - uid: 544
-    components:
-    - type: Transform
-      pos: -7.5,3.5
-      parent: 2
-    - type: ApcPowerReceiver
-      powerLoad: 0
-    - type: CircularShield
-      radius: 1
-      width: 6.283185307179586 rad
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape: !type:PolygonShape
-            radius: 0.01
-            vertices:
-            - -0.45,-0.45
-            - 0.45,-0.45
-            - 0.45,0.45
-            - -0.45,0.45
-          mask:
-          - Impassable
-          - TableLayer
-          - LowImpassable
-          layer:
-          - TableLayer
-          - LowImpassable
-          density: 60
-          hard: True
-          restitution: 0
-          friction: 0.4
-        ShieldFixture:
-          shape: !type:PhysShapeCircle
-            radius: 1
-            position: 6.6990843,4.543504
-          mask: []
-          layer:
-          - BulletImpassable
-          density: 1
-          hard: False
-          restitution: 0
-          friction: 0.4
-- proto: CircularShieldConsole
-  entities:
-  - uid: 546
-    components:
-    - type: Transform
-      pos: -6.5,3.5
-      parent: 2
-    - type: ApcPowerReceiver
-      powerLoad: 5
-    - type: DeviceLinkSource
-      linkedPorts:
-        544:
-        - CircularShieldConsoleSender: CircularShieldConsoleReceiver
 - proto: ClosetEmergencyFilledRandom
   entities:
   - uid: 547
@@ -3585,13 +3658,6 @@ entities:
         - 0
         - 0
         - 0
-- proto: ClosetFsbEvaFilled
-  entities:
-  - uid: 1658
-    components:
-    - type: Transform
-      pos: 8.5,0.5
-      parent: 2
 - proto: ClosetRadiationSuitFilled
   entities:
   - uid: 549
@@ -5753,10 +5819,10 @@ entities:
       parent: 2
 - proto: LockerWeldingSuppliesFilled
   entities:
-  - uid: 508
+  - uid: 509
     components:
     - type: Transform
-      pos: 11.5,4.5
+      pos: 6.5,4.5
       parent: 2
 - proto: M_Emp
   entities:
@@ -6129,6 +6195,13 @@ entities:
     components:
     - type: Transform
       pos: 7.5,-1.5
+      parent: 2
+- proto: NullClothingHeadphones
+  entities:
+  - uid: 1677
+    components:
+    - type: Transform
+      pos: 11.557579,1.6569992
       parent: 2
 - proto: OilJarCorn
   entities:
@@ -7718,6 +7791,13 @@ entities:
     - type: Transform
       pos: -6.5,-13.5
       parent: 2
+- proto: SuitStorageEVASyndicate
+  entities:
+  - uid: 508
+    components:
+    - type: Transform
+      pos: 7.5,4.5
+      parent: 2
 - proto: SuitStorageWallmountSalv
   entities:
   - uid: 1077
@@ -8193,6 +8273,13 @@ entities:
     components:
     - type: Transform
       pos: 8.5,-1.5
+      parent: 2
+- proto: TableCounterMetal
+  entities:
+  - uid: 1678
+    components:
+    - type: Transform
+      pos: 11.5,3.5
       parent: 2
 - proto: TableGlass
   entities:
@@ -8745,12 +8832,12 @@ entities:
     - type: Transform
       pos: -15.5,6.5
       parent: 2
-- proto: VendingMachineTankDispenserEVAPOI
+- proto: VendingMachineTankDispenserEVA
   entities:
-  - uid: 509
+  - uid: 1658
     components:
     - type: Transform
-      pos: 12.5,4.5
+      pos: 11.5,4.5
       parent: 2
 - proto: VendingMachineYouToolPOI
   entities:
@@ -10459,6 +10546,11 @@ entities:
     components:
     - type: Transform
       pos: -17.5,0.5
+      parent: 2
+  - uid: 1679
+    components:
+    - type: Transform
+      pos: 12.5,4.5
       parent: 2
 - proto: WallWeaponCapacitorRecharger
   entities:
