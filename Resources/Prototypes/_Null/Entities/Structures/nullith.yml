@@ -31,7 +31,9 @@
     color: "#FFFFFF"
     radius: 12.0
     energy: 7.5
-      
+  - type: PowerSupplier
+    supplyRate: 3000
+   
 # Null Sector : Monolith Implementations
 - type: entity
   id: MonolithNullith
