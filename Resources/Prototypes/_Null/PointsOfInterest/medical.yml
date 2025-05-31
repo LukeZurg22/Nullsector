@@ -1,0 +1,52 @@
+# Author Info
+# GitHub: dustylens
+# Discord: dustylens
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+
+# Notes:
+# Medical ship garage, medical manager base and medical bounty staging area.
+# NULL SECTOR:
+# This map is a Null-Sector modified version (by LukeZurg22) of dustylens' map for Frontier.
+# It is a medical ship garage, medical manager base, bounty staging area, and a medical carrier mother-ship.
+- type: pointOfInterest
+  id: Medical
+  parent: BasePOI
+  name: 'Kemak Station'
+  minimumDistance: 1650
+  maximumDistance: 3400
+  spawnGroup: Required
+  gridPath: /Maps/_Null/POI/medical.yml
+  addComponents:
+  - type: IFF
+    color: "#00b7eb"
+  - type: StationTransit
+
+- type: gameMap
+  id: Medical
+  mapName: 'Kemak Station'
+  mapPath: /Maps/_Null/POI/medical.yml
+  minPlayers: 0
+  stations:
+    Medical:
+      stationProto: RecordsFrontierOutpost
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Kemak Station'
+        - type: ExtraStationInformation
+          iconPath: /Textures/_NF/Markers/jobs.rsi/medic.png
+          stationSubtext: 'frontier-lobby-medical-subtext'
+          stationDescription: 'frontier-lobby-medical-description'
+          lobbySortOrder: 4
+        - type: StationJobs
+          availableJobs:
+            DirectorOfCare: [ 1, 1 ]
+            Pilot: [ -1, -1 ]
+            #Mercenary: [ -1, -1 ] # No mercs on med outpost
+          tags:
+          - HeadOfPersonnel
+          - HeadOfSecurity
+        - type: StationDeadDrop
+          maxDeadDrops: 1 # Fewer here, players start here.
