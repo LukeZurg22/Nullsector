@@ -125,8 +125,6 @@
   id: TapeOhMahNina
   suffix: oh mah nina
   components:
-  - type: StaticPrice
-    price: 3000
   - type: CassetteTape
     name: "Oh Mah Nina"
     custom: false
@@ -138,8 +136,6 @@
   id: TapePayemPayam
   suffix: payem payam
   components:
-  - type: StaticPrice
-    price: 3000
   - type: CassetteTape
     name: "Payem Payam"
     custom: false
@@ -151,8 +147,6 @@
   id: TapePapersPlease
   suffix: paper's please
   components:
-  - type: StaticPrice
-    price: 1500
   - type: CassetteTape
     name: "Papers, Please"
     custom: false
@@ -164,8 +158,6 @@
   id: TapeAcrossTheVoid
   suffix: across the void
   components:
-  - type: StaticPrice
-    price: 3000
   - type: CassetteTape
     name: "Across The Void"
     custom: false
@@ -177,8 +169,6 @@
   id: TapeTheBrigVolumeOne
   suffix: the brig - volume one
   components:
-  - type: StaticPrice
-    price: 3000
   - type: CassetteTape
     name: "90.4 The Brig - Volume One"
     custom: false
@@ -199,3 +189,4 @@
     custom: false
     songs:
     - /Audio/_Null/Cassette/vinyl.ogg
+
