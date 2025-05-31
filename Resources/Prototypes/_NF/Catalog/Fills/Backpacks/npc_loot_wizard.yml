@@ -90,9 +90,9 @@
       - id: FoodCoffeeBeansRoastedDark
         prob: 0.4
       - id: AnimationStaff
-        prob: 0.1
+        prob: 0.01
       - id: WeaponStaffHealing
-        prob: 0.1
+        prob: 0.01
     sound:
       path: /Audio/Items/jumpsuit_equip.ogg
 
@@ -118,7 +118,7 @@
       - id: FoodSpaceshroom
         prob: 0.7
       - id: WeaponWandFireball
-        prob: 0.05
+        prob: 0.01
       - id: ReagentContainerRaisin
         prob: 0.4
     sound:
@@ -146,7 +146,7 @@
       - id: FoodSpaceshroom
         prob: 0.7
       - id: WeaponWandPolymorphDoor
-        prob: 0.1
+        prob: 0.01
       - id: DrinkBottleOfNothingFull
         prob: 0.5
     sound:
