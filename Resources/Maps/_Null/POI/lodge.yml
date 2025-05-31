@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/13/2025 19:20:50
-  entityCount: 2656
+  time: 05/31/2025 00:05:08
+  entityCount: 2668
 maps: []
 grids:
 - 1
@@ -2824,32 +2824,25 @@ entities:
             1: 143
           -5,0:
             0: 3327
-            1: 4096
           -4,1:
-            0: 63291
-            2: 2048
+            0: 64315
           -5,1:
-            0: 2184
-            2: 32768
-            1: 4371
+            0: 65480
           -4,2:
-            0: 65535
+            0: 49083
           -5,2:
-            0: 2184
-            2: 32768
-            1: 4369
+            0: 65535
           -4,3:
-            0: 1911
+            0: 1906
           -5,3:
-            0: 3272
-            1: 17
+            0: 3264
+            1: 16
           -4,4:
             0: 62054
           -3,0:
             0: 65535
           -3,1:
-            0: 63619
-            2: 768
+            0: 64387
           -3,2:
             0: 48123
           -3,3:
@@ -2895,7 +2888,7 @@ entities:
             0: 61440
           -6,0:
             0: 255
-            1: 12288
+            1: 8192
           -9,0:
             0: 238
             1: 16384
@@ -2904,14 +2897,16 @@ entities:
           -7,1:
             1: 15
           -6,1:
-            1: 15
+            1: 2
+            0: 52224
+          -6,2:
+            0: 36044
           -6,3:
-            1: 34952
+            1: 34944
           -6,4:
             1: 12232
           -5,4:
-            0: 51276
-            2: 128
+            0: 49356
             1: 17
           5,-1:
             1: 143
@@ -3047,24 +3042,21 @@ entities:
           - 0
           - 0
           - 0
-        - volume: 2500
-          temperature: 293.14996
-          moles:
-          - 21.824879
-          - 82.10312
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
+- proto: AirAlarm
+  entities:
+  - uid: 1202
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -13.5,9.5
+      parent: 1
+    - type: DeviceList
+      devices:
+      - 2657
+      - 2605
 - proto: AirCanister
   entities:
   - uid: 2
@@ -5335,14 +5327,6 @@ entities:
     components:
     - type: Transform
       pos: -6.632983,17.52343
-      parent: 1
-- proto: ButtonFrameCaution
-  entities:
-  - uid: 2604
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -13.5,9.5
       parent: 1
 - proto: CableApcExtension
   entities:
@@ -9865,14 +9849,6 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
-  - uid: 1202
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -10.5,9.5
-      parent: 1
-    - type: AtmosPipeColor
-      color: '#990000FF'
   - uid: 1203
     components:
     - type: Transform
@@ -9974,6 +9950,34 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
+  - uid: 1793
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -12.5,9.5
+      parent: 1
+  - uid: 2604
+    components:
+    - type: Transform
+      pos: -12.5,10.5
+      parent: 1
+  - uid: 2658
+    components:
+    - type: Transform
+      pos: -10.5,8.5
+      parent: 1
+  - uid: 2659
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -12.5,8.5
+      parent: 1
+  - uid: 2660
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -12.5,7.5
+      parent: 1
 - proto: GasPipeFourway
   entities:
   - uid: 1217
@@ -12534,11 +12538,41 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#990000FF'
-  - uid: 1793
+  - uid: 2661
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -10.5,7.5
+      rot: -1.5707963267948966 rad
+      pos: -13.5,7.5
+      parent: 1
+  - uid: 2662
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -14.5,7.5
+      parent: 1
+  - uid: 2663
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -13.5,10.5
+      parent: 1
+  - uid: 2664
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -14.5,10.5
+      parent: 1
+  - uid: 2665
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -11.5,9.5
+      parent: 1
+  - uid: 2666
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: -11.5,8.5
       parent: 1
 - proto: GasPipeTJunction
   entities:
@@ -12882,6 +12916,18 @@ entities:
       parent: 1
     - type: AtmosPipeColor
       color: '#0055CCFF'
+  - uid: 2667
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -10.5,7.5
+      parent: 1
+  - uid: 2668
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -10.5,9.5
+      parent: 1
 - proto: GasPort
   entities:
   - uid: 1588
@@ -13100,6 +13146,17 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -11.5,7.5
       parent: 1
+  - uid: 2657
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -15.5,7.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 1202
 - proto: GasVentScrubber
   entities:
   - uid: 1615
@@ -13266,6 +13323,17 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -11.5,10.5
       parent: 1
+  - uid: 2605
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -15.5,10.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 1202
 - proto: GasVolumePumpOn
   entities:
   - uid: 1636
@@ -16092,14 +16160,6 @@ entities:
     components:
     - type: Transform
       pos: -20.5,12.5
-      parent: 1
-- proto: SignalButtonDirectional
-  entities:
-  - uid: 2605
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -13.5,9.5
       parent: 1
 - proto: SignDirectionalCryo
   entities:
