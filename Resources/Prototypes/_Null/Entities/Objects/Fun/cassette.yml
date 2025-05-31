@@ -171,3 +171,31 @@
     custom: false
     songs:
     - /Audio/_Mono/Jukebox/across_the_void.ogg
+
+- type: entity
+  parent: CassetteTapeRogue
+  id: TapeTheBrigVolumeOne
+  suffix: 90.4 "the brig" volume one
+  components:
+  - type: StaticPrice
+    price: 3000
+  - type: CassetteTape
+    name: "90.4 The Brig - Volume One"
+    custom: false
+    songs:
+    - /Audio/_Null/Cassette/prepare_yourself_to_fight.ogg
+    - /Audio/_Null/Cassette/byker_hill.ogg
+    - /Audio/_Null/Cassette/fire_down_below.ogg
+    - /Audio/_Null/Cassette/take_us_home.ogg
+    - /Audio/_Null/Cassette/die_hebben_baarden.ogg
+
+- type: entity
+  parent: CassetteTapeRed
+  id: TapeVoidAmbiance
+  suffix: void ambiance
+  components:
+  - type: CassetteTape
+    name: "Entity Readings"
+    custom: false
+    songs:
+    - /Audio/_Null/Cassette/vinyl.ogg
