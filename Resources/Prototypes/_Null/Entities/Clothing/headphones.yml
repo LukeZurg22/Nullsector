@@ -43,3 +43,5 @@
     soundDeactivate:
       path: /Audio/Items/flashlight_off.ogg
   - type: Headphones
+  - type: StaticPrice
+    price: 50

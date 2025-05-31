@@ -16,7 +16,7 @@
     sprite: _Null/Objects/Fun/cassette.rsi
     slots: [ belt, pocket ]
   - type: StaticPrice
-    price: 3000
+    price: 300
   - type: CassettePlayer
 
 # Base Tape

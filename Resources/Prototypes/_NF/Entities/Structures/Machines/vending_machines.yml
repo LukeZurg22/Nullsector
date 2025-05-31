@@ -301,7 +301,7 @@
 - type: entity
   parent: [BaseStructureDisableAnchoring, VendingMachine]
   id: VendingMachineAutoTuneVend
-  name: AutoTune
+  name: MusicVend
   description: Feeling BASSed? Time to TUNE into AutoVend! Take NOTES and let your audience TREBLE.
   components:
   - type: VendingMachine
