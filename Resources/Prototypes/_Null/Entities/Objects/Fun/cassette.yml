@@ -175,7 +175,7 @@
 - type: entity
   parent: CassetteTapeRogue
   id: TapeTheBrigVolumeOne
-  suffix: 90.4 "the brig" volume one
+  suffix: the brig - volume one
   components:
   - type: StaticPrice
     price: 3000
