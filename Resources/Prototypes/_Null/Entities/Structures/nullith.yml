@@ -12,7 +12,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "0,-0.5,1,0.5"
+          bounds: "-0.5,-1,0.5,0.2" # Left, Down, Right, Up
         mask:
         - MachineMask
         layer:
@@ -31,8 +31,7 @@
     color: "#FFFFFF"
     radius: 12.0
     energy: 7.5
-  - type: PowerSupplier
-    supplyRate: 3000
+    # WIP : Add power generation.
    
 # Null Sector : Monolith Implementations
 - type: entity
