@@ -77,12 +77,11 @@ public sealed partial class TargetSeekingComponent : Component
     /// Previous position of the target, used for velocity calculation.
     /// </summary>
     public Vector2 PreviousTargetPosition;
-    
+
     /// <summary>
-    /// The grid UID that this projectile was launched from.
-    /// Used to prevent targeting the ship that fired it.
+    /// Whether seeking has been disabled (e.g., after entering an enemy grid).
     /// </summary>
-    public EntityUid? OriginGridUid;
+    public bool SeekingDisabled;
 }
 
 /// <summary>
