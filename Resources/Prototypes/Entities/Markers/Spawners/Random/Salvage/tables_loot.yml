@@ -156,9 +156,10 @@
           weight: 14
         - id: SpaceCash10000
           weight: 1
-        - id: CassetteTapesSpawner
+    - id: CassetteTapesSpawner
+      weight: 0.5
     - id: CassettePlayer
-      weight: 0.05
+      weight: 0.2
     - !type:NestedSelector
       tableId: RingTableRare
     - id: CardBoxNanotrasen # Frontier
