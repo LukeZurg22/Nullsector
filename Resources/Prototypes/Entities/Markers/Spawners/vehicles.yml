@@ -38,7 +38,7 @@
         state: keys
   - type: ConditionalSpawner
     prototypes:
-      - VehicleATVNF # Frontier: add NF suffix
+      - NFVehicleATV # Frontier: add NF suffix
 
 - type: entity
   name: Motobike Spawner
