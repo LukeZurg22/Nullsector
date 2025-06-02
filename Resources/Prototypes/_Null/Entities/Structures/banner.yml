@@ -42,29 +42,28 @@
 # Antag Banners
 - type: entity
   id: BannerVSChaosBlue
-  parent: BannerBase
+  parent: BannerNull
   name: chaos banner
   suffix: blue
   description: A banner with an eight pointed star. It's blue, and kind of moldy.
   components:
   - type: Sprite
-    sprite: _Null/Structures/banner.rsi
     state: banner_vs_chaos_blue
 
 - type: entity
   id: BannerArmadan
-  parent: BannerBase
+  parent: BannerNull
   name: armadan banner
   description: A banner of the Armadan standard. It's a.. terrifying number seven...?
   components:
   - type: Sprite
-    sprite: _Null/Structures/banner.rsi
     state: banner_armada
     
 - type: entity
   id: BannerSubsidiary
+  name: subsidiary banner
   description: A banner of an Armadan subsidiary organization.
-  parent: BannerBase
+  parent: BannerNull
   components:
   - type: Sprite
     sprite: _Null/Structures/banner.rsi
@@ -72,47 +71,45 @@
 
 - type: entity
   id: BannerSubsidiaryBT
+  suffix: blazing thorns
   description: A banner of an Armadan subsidiary organization.
-  parent: BannerBase
+  parent: BannerNull
   components:
   - type: Sprite
-    sprite: _Null/Structures/banner.rsi
     state: banner_subsidiary_blazingthorns
     
 - type: entity
   id: BannerSubsidiaryGC
+  suffix: group constantine
   description: A banner of an Armadan subsidiary organization.
-  parent: BannerBase
+  parent: BannerNull
   components:
   - type: Sprite
-    sprite: _Null/Structures/banner.rsi
     state: banner_subsidiary_GC
 
 - type: entity
   id: BannerSubsidiaryNF
+  suffix: nebula's fury
   description: A banner of an Armadan subsidiary organization.
-  parent: BannerBase
+  parent: BannerNull
   components:
   - type: Sprite
-    sprite: _Null/Structures/banner.rsi
     state: banner_subsidiary_nebulas
 
 - type: entity
   id: BannerSubsidiaryRI
+  suffix: ronaj incorporate
   description: A banner of an Armadan subsidiary organization.
-  parent: BannerBase
+  parent: BannerNull
   components:
   - type: Sprite
-    sprite: _Null/Structures/banner.rsi
     state: banner_subsidiary_ronaj
 
 - type: entity
   id: BannerSubsidiaryVG
+  suffix: viper group
   description: A banner of an Armadan subsidiary organization.
-  parent: BannerBase
+  parent: BannerNull
   components:
   - type: Sprite
-    sprite: _Null/Structures/banner.rsi
     state: banner_subsidiary_vipergroup
-    
-    
