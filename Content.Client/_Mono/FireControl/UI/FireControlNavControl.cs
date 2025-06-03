@@ -1,13 +1,13 @@
 using System.Linq;
 using System.Numerics;
+using Content.Client._NF.Radar;
 using Content.Client.Shuttles.UI;
 using Content.Shared._Mono.FireControl;
+using Content.Shared._NF.Radar;
 using Content.Shared.Physics;
 using Content.Shared.Shuttles.BUIStates;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.Systems;
-using Content.Client._Mono.Radar;
-using Content.Shared._Mono.Radar;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Shared.Input;
@@ -26,7 +26,7 @@ public sealed class FireControlNavControl : BaseShuttleControl
     private readonly SharedShuttleSystem _shuttles;
     private readonly SharedTransformSystem _transform;
     private readonly IEntitySystemManager _sysManager = default!;
-    private readonly RadarBlipsSystem _blips;
+    private readonly RadarBlipSystem _blips;
     private readonly SharedPhysicsSystem _physics;
 
     private EntityCoordinates? _coordinates;
@@ -41,8 +41,7 @@ public sealed class FireControlNavControl : BaseShuttleControl
     private List<Entity<MapGridComponent>> _grids = new();
 
     #region Mono
-
-    private const float RadarUpdateInterval = 0f;
+    private const float RadarUpdateInterval = 0.001f;
     private float _updateAccumulator = 0f;
     #endregion
 
@@ -65,7 +64,7 @@ public sealed class FireControlNavControl : BaseShuttleControl
         IoCManager.InjectDependencies(this);
         _shuttles = EntManager.System<SharedShuttleSystem>();
         _transform = EntManager.System<SharedTransformSystem>();
-        _blips = EntManager.System<RadarBlipsSystem>();
+        _blips = EntManager.System<RadarBlipSystem>();
         _physics = EntManager.System<SharedPhysicsSystem>();
 
         OnMouseEntered += HandleMouseEntered;
@@ -315,7 +314,7 @@ public sealed class FireControlNavControl : BaseShuttleControl
         {
             var blipPos = Vector2.Transform(blip.Item1, worldToShuttle * shuttleToView);
 
-            if (blip.Item4 == RadarBlipShape.Ring)
+            if (blip.Item4 == RadarBlipShape.Circle)
             {
                 // For Ring shapes, use the real radius but with a dedicated drawing method
                 DrawShieldRing(handle, blipPos, blip.Item2 * MinimapScale, blip.Item3.WithAlpha(0.8f));

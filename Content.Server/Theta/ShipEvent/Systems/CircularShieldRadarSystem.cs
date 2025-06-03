@@ -1,8 +1,8 @@
 using System.Numerics;
-using Content.Server._Mono.Radar;
+using Content.Server._NF.Radar;
 using Content.Server.Theta.ShipEvent.Components;
+using Content.Shared._NF.Radar;
 using Content.Shared.Theta.ShipEvent.Components;
-using Content.Shared._Mono.Radar;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
@@ -155,7 +155,7 @@ public sealed class CircularShieldRadarSystem : EntitySystem
         var radarComp = EnsureComp<RadarBlipComponent>(blipEntity);
         radarComp.RadarColor = shield.Color;
         radarComp.Scale = shield.Radius;
-        radarComp.Shape = RadarBlipShape.Ring;
+        radarComp.Shape = RadarBlipShape.Circle;
         radarComp.Enabled = shield.CanWork;
         radarComp.VisibleFromOtherGrids = true;
 
@@ -256,11 +256,11 @@ public sealed class CircularShieldRadarSystem : EntitySystem
     {
         if (!_shieldRadarBlips.TryGetValue(shieldUid, out var blipUid))
             return;
-            
+
         // Delete the blip if it exists
         if (_entityManager.EntityExists(blipUid))
             _entityManager.DeleteEntity(blipUid);
-            
+
         // Remove from our tracking dictionary
         _shieldRadarBlips.Remove(shieldUid);
     }

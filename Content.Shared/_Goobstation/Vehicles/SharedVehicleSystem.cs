@@ -1,3 +1,4 @@
+using Content.Shared._NF.Vehicle.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Actions;
@@ -6,20 +7,28 @@ using Content.Shared.Buckle;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Hands;
 using Content.Shared.Inventory.VirtualItem;
+using Content.Shared.Light.Components;
+using Content.Shared.Light.EntitySystems;
 using Content.Shared.Movement.Components;
+using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Systems;
-using Robust.Shared.Audio;
+using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes; // Frontier
-using Content.Shared.Light.Components; // Frontier
-using Content.Shared.Light.EntitySystems; // Frontier
-using Content.Shared.Movement.Pulling.Components; // Frontier
-using Content.Shared.Popups; // Frontier
-using Robust.Shared.Network; // Frontier
-using Content.Shared._NF.Vehicle.Components; // Frontier
-using Content.Shared.Movement.Pulling.Events; // Frontier
-using Robust.Shared.Timing; // Frontier
+using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
+// Frontier
+// Frontier
+// Frontier
+// Frontier
+// Frontier
+// Frontier
+// Frontier
+// Frontier
+
+// Frontier
 
 namespace Content.Shared._Goobstation.Vehicles;
 // Frontier: migrate under _Goobstation
@@ -210,7 +219,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         // AddHorns(driver, ent); // Frontier: delay until mounted
     }
 
-    public void OnStrapped(Entity<VehicleComponent> ent, ref StrappedEvent args)
+    protected virtual void OnStrapped(Entity<VehicleComponent> ent, ref StrappedEvent args) // Frontier: private<protected virtual
     {
         var driver = args.Buckle.Owner;
 
@@ -230,7 +239,7 @@ public abstract partial class SharedVehicleSystem : EntitySystem
         Mount(driver, ent.Owner);
     }
 
-    public void OnUnstrapped(Entity<VehicleComponent> ent, ref UnstrappedEvent args)
+    protected virtual void OnUnstrapped(Entity<VehicleComponent> ent, ref UnstrappedEvent args) // Frontier: private<protected virtual
     {
         if (ent.Comp.Driver != args.Buckle.Owner)
             return;
@@ -272,7 +281,9 @@ public abstract partial class SharedVehicleSystem : EntitySystem
             grantedActions.Add(flashlight.ToggleActionEntity.Value);
             _flashlight.SetLight((vehicle, flashlight), flashlight.LightOn, quiet: true);
         }
-        _actions.GrantActions(driver, grantedActions, vehicle);
+        // Only try to grant actions if the vehicle actually has them.
+        if (grantedActions.Count > 0)
+            _actions.GrantActions(driver, grantedActions, vehicle);
         // End Frontier
     }
 
@@ -316,7 +327,8 @@ public abstract partial class SharedVehicleSystem : EntitySystem
     // Frontier: prevent drivers from pulling things
     private void OnRiderPull(Entity<VehicleRiderComponent> ent, ref PullAttemptEvent args)
     {
-        args.Cancelled = true;
+        if (args.PullerUid == ent.Owner)
+            args.Cancelled = true;
     }
     // End Frontier
 }

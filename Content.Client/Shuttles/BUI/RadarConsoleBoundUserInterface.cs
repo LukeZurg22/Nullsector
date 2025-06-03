@@ -1,7 +1,5 @@
-using Content.Client.Shuttles.UI;
 using Content.Shared.Shuttles.BUIStates;
 using JetBrains.Annotations;
-using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
 using RadarConsoleWindow = Content.Client.Shuttles.UI.RadarConsoleWindow;
 
@@ -22,7 +20,7 @@ public sealed class RadarConsoleBoundUserInterface : BoundUserInterface
         base.Open();
 
         _window = this.CreateWindow<RadarConsoleWindow>();
-        _window?.SetConsole(Owner);
+        _window?.SetConsole(Owner); // Frontier
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

@@ -1,9 +1,11 @@
-using System.Numerics; // Frontier
+using System.Numerics;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
+// Frontier
 
-namespace Content.Shared._Goobstation.Vehicles; // Frontier: migrate under _Goobstation
+namespace Content.Shared._Goobstation.Vehicles;
+// Frontier: migrate under _Goobstation
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState] // Frontier: add AutoGenerateComponentState
 public sealed partial class VehicleComponent : Component
