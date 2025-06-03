@@ -4,7 +4,7 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/22/2025 19:43:55
+  time: 06/03/2025 05:06:58
   entityCount: 325
 maps: []
 grids:
@@ -285,7 +285,7 @@ entities:
       pos: -0.5,9.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -866.8105
+      secondsUntilStateChange: -923.6074
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -1306,7 +1306,8 @@ entities:
   - uid: 233
     components:
     - type: Transform
-      pos: 1.5,11.5
+      rot: -1.5707963267948966 rad
+      pos: 2.5,10.5
       parent: 1
 - proto: MicrophoneInstrument
   entities:
