@@ -5,8 +5,7 @@
   playTimeTracker: JobDirectorOfCare
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 21600 # 20 hrs # mono - change to 6hr
-  #whitelisted: true # mono - comment out
+      time: 54000 # 20 hrs # mono - change to 15hr
   startingGear: DocGear
   alwaysUseSpawner: true
   icon: "JobIconDoc"
@@ -23,6 +22,8 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+      - type: SurgerySpeedModifier
+        SpeedModifier: 2
   - !type:GiveItemOnHolidaySpecial
     holiday: FrontierBirthday
     prototype: FrontierBirthdayGift

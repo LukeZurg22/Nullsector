@@ -23,6 +23,13 @@
   accessGroups:
   - GeneralNfsdBrigmedicAccess
   special:
+  - !type:AddComponentSpecial
+    components:
+    - type: NpcFactionMember
+      factions:
+      - TSFMC
+    - type: SurgerySpeedModifier
+      SpeedModifier: 1.50
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant ]
   - !type:GiveItemOnHolidaySpecial
@@ -37,6 +44,5 @@
     back:
     - EncryptionKeyMedical
     - Flash
-    - MagazinePistol
     - MagazinePistolRubber
     - FrontierUplinkCoin10
