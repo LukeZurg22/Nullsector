@@ -195,7 +195,7 @@
     layers:
       - state: floodlight
         map: [ "base" ]
-      - state: floodlight-on
+      - state: floodlight_on
         shader: unshaded
         visible: false
         map: [ "light" ]
@@ -250,10 +250,10 @@
   - type: Item
     size: Normal
     sprite: Objects/Misc/Lights/lights.rsi
-    heldPrefix: floodlight-broken
+    heldPrefix: floodlight_broken
   - type: Sprite
     sprite: Objects/Misc/Lights/lights.rsi
-    state: floodlight-broken
+    state: floodlight_broken
   - type: Anchorable
   - type: Damageable
     damageContainer: StructuralInorganic
