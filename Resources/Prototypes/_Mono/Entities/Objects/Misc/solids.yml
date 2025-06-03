@@ -2,7 +2,7 @@
   name: fentanyl crystal
   parent: [ BaseItem, BaseC3ChemContraband ]
   id: FentanylSolidified
-  description: 5u of Fentanyl solidified with Tricordrazine.
+  description: Pure solidified fentanyl, probably isn't safe to eat unless its an emergency.
   components:
   - type: Sprite
     sprite: _Mono/Objects/Misc/fentanyl.rsi
@@ -10,7 +10,7 @@
   - type: Item
     size: Tiny
   - type: StaticPrice
-    price: 320
+    price: 430
   - type: Food
   - type: FlavorProfile
     flavors:
