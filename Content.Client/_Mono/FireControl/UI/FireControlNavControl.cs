@@ -41,7 +41,7 @@ public sealed class FireControlNavControl : BaseShuttleControl
     private List<Entity<MapGridComponent>> _grids = new();
 
     #region Mono
-    private const float RadarUpdateInterval = 0.001f;
+    private const float RadarUpdateInterval = 0f;
     private float _updateAccumulator = 0f;
     #endregion
 

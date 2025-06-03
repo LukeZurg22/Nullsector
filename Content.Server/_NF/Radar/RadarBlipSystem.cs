@@ -91,7 +91,7 @@ public sealed partial class RadarBlipSystem : EntitySystem
         {
             if (!blip.Enabled)
             {
-                Log.Debug($"Blip {blipUid} skipped: not enabled.");
+                //Log.Debug($"Blip {blipUid} skipped: not enabled."); // No need to log for now.
                 continue;
             }
 
@@ -111,7 +111,7 @@ public sealed partial class RadarBlipSystem : EntitySystem
 
             if (!blip.VisibleFromOtherGrids && blipGrid != radarGrid)
             {
-                Log.Debug($"Blip {blipUid} skipped: not on same grid as radar.");
+                //Log.Debug($"Blip {blipUid} skipped: not on same grid as radar."); // Effectively non-issue.
                 continue;
             }
 
@@ -119,7 +119,7 @@ public sealed partial class RadarBlipSystem : EntitySystem
             var distance = (blipPosition - radarPosition).Length();
             if (distance > radarRange)
             {
-                Log.Debug($"Blip {blipUid} skipped: out of range.");
+                //Log.Debug($"Blip {blipUid} skipped: out of range."); // Naturally tends to itself.
                 continue;
             }
 
