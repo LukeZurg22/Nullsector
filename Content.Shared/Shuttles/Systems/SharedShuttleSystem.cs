@@ -172,11 +172,10 @@ public abstract partial class SharedShuttleSystem : EntitySystem
         driveUid = null;
         drive = null;
 
-        // Okay so, this is fucking stupid, but it works.
-        // When making this method smarter I needed to do two things.
-        // 1. Maintain parity between TryGetFTLDrive results regardless of what they're used for. (so I don't cause weird bugs)
+        // When making this method function, one requires the following:
+        // 1. Maintain parity between TryGetFTLDrive results regardless of what they're used for. (as to not cause bugs)
         // 2. Get a powered drive if one exists since those are the only ones you can actually jump with.
-        // So instead of only getting powered drives we prioritize powered drives.
+        // Instead of only getting powered drives, we prioritize powered drives.
         var poweredDriveFound = false;
 
         var query = AllEntityQuery<FTLDriveComponent>();
