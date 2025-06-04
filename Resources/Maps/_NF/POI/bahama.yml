@@ -11834,7 +11834,7 @@ entities:
       parent: 2
     - type: Fixtures
       fixtures: {}
-- proto: FloorWaterDecorativeEntity
+- proto: FloorWaterEntity
   entities:
   - uid: 1615
     components:
@@ -17396,13 +17396,6 @@ entities:
       parent: 2
     - type: DisableToolUse
       anchoring: True
-- proto: SellOnlyMothershipComputer
-  entities:
-  - uid: 2447
-    components:
-    - type: Transform
-      pos: 0.5,9.5
-      parent: 2
 - proto: SignalButtonDirectional
   entities:
   - uid: 2158
