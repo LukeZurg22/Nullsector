@@ -20,6 +20,7 @@ public abstract partial class SharedShuttleSystem : EntitySystem
     [Dependency] protected readonly SharedTransformSystem XformSystem = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly SharedPowerReceiverSystem _powerReceiverSystem = default!;
+    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
 
     public const float FTLRange = 0f;
     public const float FTLBufferRange = 8f;
@@ -187,7 +188,7 @@ public abstract partial class SharedShuttleSystem : EntitySystem
 
             var isPowered = _powerReceiverSystem.IsPowered(uid);
 
-            // If we've already found an powered drive, ignore unpowered ones.
+            // If we've already found a powered drive, ignore unpowered ones.
             if (poweredDriveFound && !isPowered)
                 continue;
 
@@ -229,9 +230,9 @@ public abstract partial class SharedShuttleSystem : EntitySystem
             return false;
         }
 
-        // Just checks if any grids inside of a buffer range at the target position.
+        // Just checks if any grids inside a buffer range at the target position.
         _grids.Clear();
-        var mapCoordinates = coordinates.ToMap(EntityManager, XformSystem);
+        var mapCoordinates = _transformSystem.ToMapCoordinates(coordinates);
 
         var ourPos = Maps.GetGridPosition((shuttleUid, shuttlePhysics, shuttleXform));
 
