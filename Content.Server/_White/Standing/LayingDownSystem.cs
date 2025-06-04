@@ -1,9 +1,8 @@
-using Content.Shared._White;
 using Content.Shared._White.Standing;
 using Content.Shared.CCVar;
 using Robust.Shared.Configuration;
 
-namespace Content.Server.Standing;
+namespace Content.Server._White.Standing;
 
 public sealed class LayingDownSystem : SharedLayingDownSystem
 {
