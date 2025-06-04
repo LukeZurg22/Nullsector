@@ -1,5 +1,7 @@
 using System.Linq;
 using System.Numerics;
+using Content.Server._NF.Bank;
+using Content.Server._NF.GameRule;
 using Content.Server.Announcements;
 using Content.Server.CrewManifest;
 using Content.Server.Discord;
@@ -8,8 +10,7 @@ using Content.Server.Ghost;
 using Content.Server.Maps;
 using Content.Server.Roles;
 using Content.Server.Station.Systems;
-using Content.Server._NF.Bank;
-using Content.Server._NF.GameRule;
+using Content.Shared._Null.CCVar;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
@@ -20,6 +21,7 @@ using JetBrains.Annotations;
 using Prometheus;
 using Robust.Shared.Asynchronous;
 using Robust.Shared.Audio;
+using Robust.Shared.Configuration;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
@@ -38,6 +40,7 @@ namespace Content.Server.GameTicking
         [Dependency] private readonly CrewManifestSystem _crewManifest = default!;
         [Dependency] private readonly StationSystem _stationSystem = default!;
         [Dependency] private readonly BankSystem _bank = default!;
+        [Dependency] private readonly INetConfigurationManager _netConfigManager = default!;
 
         private static readonly Counter RoundNumberMetric = Metrics.CreateCounter(
             "ss14_round_number",
@@ -214,7 +217,7 @@ namespace Content.Server.GameTicking
                 }
 
                 _metaData.SetEntityName(mapUid, proto.MapName);
-                var g = new List<EntityUid> {grid.Value.Owner};
+                var g = new List<EntityUid> { grid.Value.Owner };
                 RaiseLocalEvent(new PostGameMapLoad(proto, mapId, g, stationName));
                 return g;
             }
@@ -264,7 +267,7 @@ namespace Content.Server.GameTicking
                 }
 
                 _metaData.SetEntityName(mapUid, proto.MapName);
-                var g = new List<EntityUid> {grid.Value.Owner};
+                var g = new List<EntityUid> { grid.Value.Owner };
                 RaiseLocalEvent(new PostGameMapLoad(proto, mapId, g, stationName));
                 return g;
             }
@@ -314,7 +317,7 @@ namespace Content.Server.GameTicking
                     throw new Exception($"Failed to load game-map grid {ev.GameMap.ID}");
                 }
 
-                var g = new List<EntityUid> {grid.Value.Owner};
+                var g = new List<EntityUid> { grid.Value.Owner };
                 // TODO MAP LOADING use a new event?
                 RaiseLocalEvent(new PostGameMapLoad(proto, targetMap, g, stationName));
                 return g;
@@ -360,91 +363,94 @@ namespace Content.Server.GameTicking
             try
             {
 #endif
-            // If this game ticker is a dummy or the round is already being started, do nothing!
-            if (DummyTicker || _startingRound)
-                return;
+                // If this game ticker is a dummy or the round is already being started, do nothing!
+                if (DummyTicker || _startingRound)
+                    return;
 
-            _startingRound = true;
+                _startingRound = true;
 
-            if (RoundId == 0)
-                IncrementRoundNumber();
+                if (RoundId == 0)
+                    IncrementRoundNumber();
 
-            ReplayStartRound();
+                ReplayStartRound();
 
-            DebugTools.Assert(RunLevel == GameRunLevel.PreRoundLobby);
-            _sawmill.Info("Starting round!");
+                DebugTools.Assert(RunLevel == GameRunLevel.PreRoundLobby);
+                _sawmill.Info("Starting round!");
 
-            SendServerMessage(Loc.GetString("game-ticker-start-round"));
+                SendServerMessage(Loc.GetString("game-ticker-start-round"));
 
-            var readyPlayers = new List<ICommonSession>();
-            var readyPlayerProfiles = new Dictionary<NetUserId, HumanoidCharacterProfile>();
-            var autoDeAdmin = _cfg.GetCVar(CCVars.AdminDeadminOnJoin);
-            foreach (var (userId, status) in _playerGameStatuses)
-            {
-                if (LobbyEnabled && status != PlayerGameStatus.ReadyToPlay) continue;
-                if (!_playerManager.TryGetSessionById(userId, out var session)) continue;
-
-                if (autoDeAdmin && _adminManager.IsAdmin(session))
+                var readyPlayers = new List<ICommonSession>();
+                var readyPlayerProfiles = new Dictionary<NetUserId, HumanoidCharacterProfile>();
+                var autoDeAdmin = _cfg.GetCVar(CCVars.AdminDeadminOnJoin);
+                foreach (var (userId, status) in _playerGameStatuses)
                 {
-                    _adminManager.DeAdmin(session);
-                }
+                    if (LobbyEnabled && status != PlayerGameStatus.ReadyToPlay)
+                        continue;
+                    if (!_playerManager.TryGetSessionById(userId, out var session))
+                        continue;
+
+                    if (autoDeAdmin && _adminManager.IsAdmin(session))
+                    {
+                        _adminManager.DeAdmin(session);
+                    }
 #if DEBUG
                 DebugTools.Assert(_userDb.IsLoadComplete(session), $"Player was readied up but didn't have user DB data loaded yet??");
 #endif
 
-                readyPlayers.Add(session);
-                HumanoidCharacterProfile profile;
-                if (_prefsManager.TryGetCachedPreferences(userId, out var preferences))
-                {
-                    profile = (HumanoidCharacterProfile) preferences.SelectedCharacter;
+                    readyPlayers.Add(session);
+                    HumanoidCharacterProfile profile;
+                    if (_prefsManager.TryGetCachedPreferences(userId, out var preferences))
+                    {
+                        profile = (HumanoidCharacterProfile)preferences.SelectedCharacter;
+                    }
+                    else
+                    {
+                        profile = HumanoidCharacterProfile.Random();
+                    }
+
+                    readyPlayerProfiles.Add(userId, profile);
                 }
-                else
+
+                DebugTools.AssertEqual(readyPlayers.Count, ReadyPlayerCount());
+
+                // Just in case it hasn't been loaded previously we'll try loading it.
+                LoadMaps();
+
+                // map has been selected so update the lobby info text
+                // applies to players who didn't ready up
+                UpdateInfoText();
+
+                StartGamePresetRules();
+
+                RoundLengthMetric.Set(0);
+
+                var startingEvent = new RoundStartingEvent(RoundId);
+                RaiseLocalEvent(startingEvent);
+
+                var origReadyPlayers = readyPlayers.ToArray();
+
+                if (!StartPreset(origReadyPlayers, force))
                 {
-                    profile = HumanoidCharacterProfile.Random();
+                    _startingRound = false;
+                    return;
                 }
-                readyPlayerProfiles.Add(userId, profile);
-            }
 
-            DebugTools.AssertEqual(readyPlayers.Count, ReadyPlayerCount());
+                // MapInitialize *before* spawning players, our codebase is too shit to do it afterwards...
+                _map.InitializeMap(DefaultMap);
 
-            // Just in case it hasn't been loaded previously we'll try loading it.
-            LoadMaps();
+                SpawnPlayers(readyPlayers, readyPlayerProfiles, force);
 
-            // map has been selected so update the lobby info text
-            // applies to players who didn't ready up
-            UpdateInfoText();
+                _roundStartDateTime = DateTime.UtcNow;
+                RunLevel = GameRunLevel.InRound;
 
-            StartGamePresetRules();
-
-            RoundLengthMetric.Set(0);
-
-            var startingEvent = new RoundStartingEvent(RoundId);
-            RaiseLocalEvent(startingEvent);
-
-            var origReadyPlayers = readyPlayers.ToArray();
-
-            if (!StartPreset(origReadyPlayers, force))
-            {
-                _startingRound = false;
-                return;
-            }
-
-            // MapInitialize *before* spawning players, our codebase is too shit to do it afterwards...
-            _map.InitializeMap(DefaultMap);
-
-            SpawnPlayers(readyPlayers, readyPlayerProfiles, force);
-
-            _roundStartDateTime = DateTime.UtcNow;
-            RunLevel = GameRunLevel.InRound;
-
-            RoundStartTimeSpan = _gameTiming.CurTime;
-            SendStatusToAll();
-            ReqWindowAttentionAll();
-            UpdateLateJoinStatus();
-            AnnounceRound();
-            UpdateInfoText();
-            RaiseLocalEvent(new RoundStartedEvent(RoundId));
-            SendRoundStartedDiscordMessage();
+                RoundStartTimeSpan = _gameTiming.CurTime;
+                SendStatusToAll();
+                ReqWindowAttentionAll();
+                UpdateLateJoinStatus();
+                AnnounceRound();
+                UpdateInfoText();
+                RaiseLocalEvent(new RoundStartedEvent(RoundId));
+                SendRoundStartedDiscordMessage();
 
 #if EXCEPTION_TOLERANCE
             }
@@ -454,7 +460,8 @@ namespace Content.Server.GameTicking
 
                 if (RoundStartFailShutdownCount > 0 && _roundStartFailCount >= RoundStartFailShutdownCount)
                 {
-                    _sawmill.Fatal($"Failed to start a round {_roundStartFailCount} time(s) in a row... Shutting down!");
+                    _sawmill.Fatal(
+                        $"Failed to start a round {_roundStartFailCount} time(s) in a row... Shutting down!");
                     _runtimeLog.LogException(e, nameof(GameTicker));
                     _baseServer.Shutdown("Restarting server");
                     return;
@@ -555,6 +562,7 @@ namespace Content.Server.GameTicking
                 {
                     connected = true;
                 }
+
                 ContentPlayerData? contentPlayerData = null;
                 if (userId != null && _playerManager.TryGetPlayerData(userId.Value, out var playerData))
                 {
@@ -601,7 +609,9 @@ namespace Content.Server.GameTicking
 
             // This ordering mechanism isn't great (no ordering of minds) but functions
             var listOfPlayerInfoFinal = listOfPlayerInfo.OrderBy(pi => pi.PlayerOOCName).ToArray();
-            var sound = RoundEndSoundCollection == null ? null : _audio.ResolveSound(new SoundCollectionSpecifier(RoundEndSoundCollection));
+            var sound = RoundEndSoundCollection == null
+                ? null
+                : _audio.ResolveSound(new SoundCollectionSpecifier(RoundEndSoundCollection));
 
             var roundEndMessageEvent = new RoundEndMessageEvent(
                 gamemodeTitle,
@@ -652,161 +662,172 @@ namespace Content.Server.GameTicking
             }
         }
 
+        /// <summary>
+        /// Mono + Null : Sends manifest to discord webhook.
+        /// </summary>
+        /// <param name="playerInfo"></param>
         private async void SendCrewManifestDiscordMessage(RoundEndMessageEvent.RoundEndPlayerInfo[]? playerInfo)
         {
-            try
+            var webhookUrl = _cfg.GetCVar(CCVars.DiscordCrewManifestWebhook);
+            if (string.IsNullOrEmpty(webhookUrl))
+                return;
+
+            var webhookData = await _discord.GetWebhook(webhookUrl);
+            if (webhookData == null)
+                return;
+
+            var webhookIdentifier = webhookData.Value.ToIdentifier();
+
+            if (playerInfo == null || playerInfo.Length == 0)
+                return;
+
+            var serverName = _baseServer.ServerName;
+
+            // Filter out observers and sort by antag status (antags first), then by player name
+            var sortedPlayers = playerInfo
+                .Where(p => !p.Observer && !string.IsNullOrEmpty(p.PlayerICName))
+                .OrderBy(p => !p.Antag)
+                .ThenBy(p => p.PlayerOOCName)
+                .ToList();
+
+            if (sortedPlayers.Count == 0)
+                return;
+
+            // Create the manifest text in the same format as the round end summary
+            var manifestLines = new List<string>();
+            var profitLines = new List<string>();
+
+            // Get the NFAdventureRuleSystem to access profit data
+            var adventureSystem = EntityManager.System<NFAdventureRuleSystem>();
+
+            foreach (var player in sortedPlayers)
             {
-                var webhookUrl = _cfg.GetCVar(CCVars.DiscordCrewManifestWebhook);
-                if (string.IsNullOrEmpty(webhookUrl))
-                    return;
+                #region Null Sector
 
-                var webhookData = await _discord.GetWebhook(webhookUrl);
-                if (webhookData == null)
-                    return;
+                // Use localization to get the proper job name instead of the key
+                var roleName = Loc.GetString(player.Role);
+                var showUsername = false; // 'false' by default, it is an opt-in feature.t
 
-                var webhookIdentifier = webhookData.Value.ToIdentifier();
+                if (_playerManager.TryGetSessionById(player.PlayerGuid, out var ds))
+                    showUsername = _netConfigManager.GetClientCVar(ds.Channel, NullCCVars.DisplayUsernameInSummary);
 
-                if (playerInfo == null || playerInfo.Length == 0)
-                    return;
+                // - PLAYER was CHARACTER playing role of ROLE. |OR| // - CHARACTER playing role of ROLE.
+                var playerLine = showUsername
+                    ? $"- {player.PlayerOOCName} was {player.PlayerICName} playing as a {roleName}."
+                    : $"- {player.PlayerICName} playing as a {roleName}.";
 
-                var serverName = _baseServer.ServerName;
+                #endregion Null Sector End
 
-                // Filter out observers and sort by antag status (antags first), then by player name
-                var sortedPlayers = playerInfo
-                    .Where(p => !p.Observer && !string.IsNullOrEmpty(p.PlayerICName))
-                    .OrderBy(p => !p.Antag)
-                    .ThenBy(p => p.PlayerOOCName)
-                    .ToList();
+                manifestLines.Add(playerLine);
 
-                if (sortedPlayers.Count == 0)
-                    return;
+                // Try to get profit information for this player
+                if (player.PlayerGuid == null || string.IsNullOrEmpty(player.PlayerICName))
+                    continue; // Short-circuit
 
-                // Create the manifest text in the same format as the round end summary
-                var manifestLines = new List<string>();
-                var profitLines = new List<string>();
-
-                // Get the NFAdventureRuleSystem to access profit data
-                var adventureSystem = EntityManager.System<NFAdventureRuleSystem>();
-
-                foreach (var player in sortedPlayers)
+                var profitInfo = adventureSystem.GetPlayerProfitInfo(player.PlayerGuid.Value, player.PlayerICName);
+                if (profitInfo != null)
                 {
-                    // Use localization to get the proper job name instead of the key
-                    var roleName = Loc.GetString(player.Role);
-                    var playerLine = "- " + player.PlayerOOCName + " was " + player.PlayerICName + " playing role of " + roleName + ".";
-                    manifestLines.Add(playerLine);
-
-                    // Try to get profit information for this player
-                    if (player.PlayerGuid != null && !string.IsNullOrEmpty(player.PlayerICName))
-                    {
-                        var profitInfo = adventureSystem.GetPlayerProfitInfo(player.PlayerGuid.Value, player.PlayerICName);
-                        if (profitInfo != null)
-                        {
-                            profitLines.Add(profitInfo);
-                        }
-                    }
+                    profitLines.Add(profitInfo);
                 }
+            }
 
-                // Split into multiple fields if the content is too long for a single Discord field
-                var fields = new List<WebhookEmbedField>();
-                var currentFieldLines = new List<string>();
-                var currentFieldLength = 0;
-                var manifestFieldCount = 0;
+            // Split into multiple fields if the content is too long for a single Discord field
+            var fields = new List<WebhookEmbedField>();
+            var currentFieldLines = new List<string>();
+            var currentFieldLength = 0;
+            var manifestFieldCount = 0;
 
-                foreach (var line in manifestLines)
-                {
-                    // Discord field value limit is 1024 characters
-                    if (currentFieldLength + line.Length + 1 > 1020 && currentFieldLines.Count > 0)
-                    {
-                        fields.Add(new WebhookEmbedField
-                        {
-                            Name = manifestFieldCount == 0 ? "Player Manifest" : "Player Manifest (continued)",
-                            Value = string.Join("\n", currentFieldLines),
-                            Inline = false
-                        });
-                        manifestFieldCount++;
-                        currentFieldLines.Clear();
-                        currentFieldLength = 0;
-                    }
-
-                    currentFieldLines.Add(line);
-                    currentFieldLength += line.Length + 1; // +1 for newline
-                }
-
-                // Add the remaining lines
-                if (currentFieldLines.Count > 0)
+            foreach (var line in manifestLines)
+            {
+                // Discord field value limit is 1024 characters
+                if (currentFieldLength + line.Length + 1 > 1020 && currentFieldLines.Count > 0)
                 {
                     fields.Add(new WebhookEmbedField
                     {
                         Name = manifestFieldCount == 0 ? "Player Manifest" : "Player Manifest (continued)",
                         Value = string.Join("\n", currentFieldLines),
-                        Inline = false
+                        Inline = false,
                     });
+                    manifestFieldCount++;
+                    currentFieldLines.Clear();
+                    currentFieldLength = 0;
                 }
 
-                // Add profit information if available
-                if (profitLines.Count > 0)
+                currentFieldLines.Add(line);
+                currentFieldLength += line.Length + 1; // +1 for newline
+            }
+
+            // Add the remaining lines
+            if (currentFieldLines.Count > 0)
+            {
+                fields.Add(new WebhookEmbedField
                 {
-                    // Split profit lines into fields if needed (same algorithm as Player Manifest)
-                    var currentProfitLines = new List<string>();
-                    var currentProfitLength = 0;
-                    var profitFieldCount = 0;
+                    Name = manifestFieldCount == 0 ? "Player Manifest" : "Player Manifest (continued)",
+                    Value = string.Join("\n", currentFieldLines),
+                    Inline = false,
+                });
+            }
 
-                    foreach (var line in profitLines)
-                    {
-                        // Discord field value limit is 1024 characters
-                        if (currentProfitLength + line.Length + 1 > 1020 && currentProfitLines.Count > 0)
-                        {
-                            fields.Add(new WebhookEmbedField
-                            {
-                                Name = profitFieldCount == 0 ? "NT Galactic Bank" : "NT Galactic Bank (continued)",
-                                Value = string.Join("\n", currentProfitLines),
-                                Inline = false
-                            });
-                            profitFieldCount++;
-                            currentProfitLines.Clear();
-                            currentProfitLength = 0;
-                        }
+            // Add profit information if available
+            if (profitLines.Count > 0)
+            {
+                // Split profit lines into fields if needed (same algorithm as Player Manifest)
+                var currentProfitLines = new List<string>();
+                var currentProfitLength = 0;
+                var profitFieldCount = 0;
 
-                        currentProfitLines.Add(line);
-                        currentProfitLength += line.Length + 1; // +1 for newline
-                    }
-
-                    // Add the remaining lines
-                    if (currentProfitLines.Count > 0)
+                foreach (var line in profitLines)
+                {
+                    // Discord field value limit is 1024 characters
+                    if (currentProfitLength + line.Length + 1 > 1020 && currentProfitLines.Count > 0)
                     {
                         fields.Add(new WebhookEmbedField
                         {
-                            Name = profitFieldCount == 0 ? "NT Galactic Bank" : "NT Galactic Bank (continued)",
+                            Name = profitFieldCount == 0 ? "Galactic Bank" : "Galactic Bank (continued)",
                             Value = string.Join("\n", currentProfitLines),
-                            Inline = false
+                            Inline = false,
                         });
+                        profitFieldCount++;
+                        currentProfitLines.Clear();
+                        currentProfitLength = 0;
                     }
+
+                    currentProfitLines.Add(line);
+                    currentProfitLength += line.Length + 1; // +1 for newline
                 }
 
-                var payload = new WebhookPayload
+                // Add the remaining lines
+                if (currentProfitLines.Count > 0)
                 {
-                    Embeds = new List<WebhookEmbed>
+                    fields.Add(new WebhookEmbedField
                     {
-                        new()
-                        {
-                            Title = "Round End Summary",
-                            Description = "Round **" + RoundId + "** has ended with **" + sortedPlayers.Count + "** total characters being involved.",
-                            Color = 0x9999FF,
-                            Fields = fields,
-                            Footer = new WebhookEmbedFooter
-                            {
-                                Text = serverName + " - Round " + RoundId
-                            }
-                        }
-                    }
-                };
+                        Name = profitFieldCount == 0 ? "Galactic Bank" : "Galactic Bank (continued)",
+                        Value = string.Join("\n", currentProfitLines),
+                        Inline = false,
+                    });
+                }
+            }
 
-                await _discord.CreateMessage(webhookIdentifier, payload);
-            }
-            catch (Exception e)
+            var payload = new WebhookPayload
             {
-                Log.Error($"Error while sending crew manifest discord message:\n{e}");
-            }
+                Embeds =
+                [
+                    new WebhookEmbed
+                    {
+                        Title = "Round End Summary",
+                        Description = "Round **" + RoundId + "** has ended with **" + sortedPlayers.Count +
+                                      "** total characters involved.",
+                        Color = 0x9999FF,
+                        Fields = fields,
+                        Footer = new WebhookEmbedFooter
+                        {
+                            Text = serverName + " - Round " + RoundId,
+                        },
+                    },
+                ],
+            };
+
+            await _discord.CreateMessage(webhookIdentifier, payload);
         }
 
         public void RestartRound()
@@ -909,7 +930,8 @@ namespace Content.Server.GameTicking
             _playerGameStatuses.Clear();
             foreach (var session in _playerManager.Sessions)
             {
-                _playerGameStatuses[session.UserId] = LobbyEnabled ? PlayerGameStatus.NotReadyToPlay : PlayerGameStatus.ReadyToPlay;
+                _playerGameStatuses[session.UserId] =
+                    LobbyEnabled ? PlayerGameStatus.NotReadyToPlay : PlayerGameStatus.ReadyToPlay;
             }
         }
 
@@ -924,7 +946,8 @@ namespace Content.Server.GameTicking
 
             RaiseNetworkEvent(new TickerLobbyCountdownEvent(_roundStartTime, Paused));
 
-            _chatManager.DispatchServerAnnouncement(Loc.GetString("game-ticker-delay-start", ("seconds", time.TotalSeconds)));
+            _chatManager.DispatchServerAnnouncement(
+                Loc.GetString("game-ticker-delay-start", ("seconds", time.TotalSeconds)));
 
             return true;
         }
@@ -958,7 +981,8 @@ namespace Content.Server.GameTicking
 
         private void AnnounceRound()
         {
-            if (CurrentPreset == null) return;
+            if (CurrentPreset == null)
+                return;
 
             var options = _prototypeManager.EnumeratePrototypes<RoundAnnouncementPrototype>().ToList();
 
@@ -981,7 +1005,8 @@ namespace Content.Server.GameTicking
                 if (_webhookIdentifier == null)
                     return;
 
-                var mapName = _gameMapManager.GetSelectedMap()?.MapName ?? Loc.GetString("discord-round-notifications-unknown-map");
+                var mapName = _gameMapManager.GetSelectedMap()?.MapName ??
+                              Loc.GetString("discord-round-notifications-unknown-map");
                 var content = Loc.GetString("discord-round-notifications-started", ("id", RoundId), ("map", mapName));
 
                 var payload = new WebhookPayload { Content = content };
@@ -1038,7 +1063,11 @@ namespace Content.Server.GameTicking
     ///     You likely want to subscribe to this after StationSystem.
     /// </remarks>
     [PublicAPI]
-    public sealed class PreGameMapLoad(GameMapPrototype gameMap, DeserializationOptions options, Vector2 offset, Angle rotation) : EntityEventArgs
+    public sealed class PreGameMapLoad(
+        GameMapPrototype gameMap,
+        DeserializationOptions options,
+        Vector2 offset,
+        Angle rotation) : EntityEventArgs
     {
         public readonly GameMapPrototype GameMap = gameMap;
         public DeserializationOptions Options = options;
@@ -1112,10 +1141,13 @@ namespace Content.Server.GameTicking
         /// </summary>
         /// <remarks>If you spawn a player by yourself from this event, don't forget to call <see cref="GameTicker.PlayerJoinGame"/> on them.</remarks>
         public List<ICommonSession> PlayerPool { get; }
+
         public IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> Profiles { get; }
         public bool Forced { get; }
 
-        public RulePlayerSpawningEvent(List<ICommonSession> playerPool, IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles, bool forced)
+        public RulePlayerSpawningEvent(List<ICommonSession> playerPool,
+            IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles,
+            bool forced)
         {
             PlayerPool = playerPool;
             Profiles = profiles;
@@ -1133,7 +1165,9 @@ namespace Content.Server.GameTicking
         public IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> Profiles { get; }
         public bool Forced { get; }
 
-        public RulePlayerJobsAssignedEvent(ICommonSession[] players, IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles, bool forced)
+        public RulePlayerJobsAssignedEvent(ICommonSession[] players,
+            IReadOnlyDictionary<NetUserId, HumanoidCharacterProfile> profiles,
+            bool forced)
         {
             Players = players;
             Profiles = profiles;

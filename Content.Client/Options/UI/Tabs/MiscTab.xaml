@@ -12,6 +12,7 @@
                 <Label Text="{Loc 'ui-options-general-discord'}"
                        StyleClasses="LabelKeyText"/>
                 <CheckBox Name="DiscordRich" Text="{Loc 'ui-options-discordrich'}" />
+                <CheckBox Name="UsernameInSummary" Text="{Loc 'ui-options-display-username-in-summary'}" />
                 <Label Text="{Loc 'ui-options-general-speech'}"
                        StyleClasses="LabelKeyText"/>
                 <CheckBox Name="ShowOocPatronColor" Text="{Loc 'ui-options-show-ooc-patron-color'}" />
