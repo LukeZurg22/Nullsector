@@ -706,7 +706,8 @@ namespace Content.Server.GameTicking
 
                 // Use localization to get the proper job name instead of the key
                 var roleName = Loc.GetString(player.Role);
-                var showUsername = false; // 'false' by default, it is an opt-in feature.
+                var showUsername = false; // 'false' by default, it is an opt-in feature.t
+
                 if (_playerManager.TryGetSessionById(player.PlayerGuid, out var ds))
                     showUsername = _netConfigManager.GetClientCVar(ds.Channel, NullCCVars.DisplayUsernameInSummary);
 
@@ -782,7 +783,7 @@ namespace Content.Server.GameTicking
                     {
                         fields.Add(new WebhookEmbedField
                         {
-                            Name = profitFieldCount == 0 ? "NT Galactic Bank" : "NT Galactic Bank (continued)",
+                            Name = profitFieldCount == 0 ? "Galactic Bank" : "Galactic Bank (continued)",
                             Value = string.Join("\n", currentProfitLines),
                             Inline = false,
                         });
@@ -800,7 +801,7 @@ namespace Content.Server.GameTicking
                 {
                     fields.Add(new WebhookEmbedField
                     {
-                        Name = profitFieldCount == 0 ? "NT Galactic Bank" : "NT Galactic Bank (continued)",
+                        Name = profitFieldCount == 0 ? "Galactic Bank" : "Galactic Bank (continued)",
                         Value = string.Join("\n", currentProfitLines),
                         Inline = false,
                     });
@@ -815,7 +816,7 @@ namespace Content.Server.GameTicking
                     {
                         Title = "Round End Summary",
                         Description = "Round **" + RoundId + "** has ended with **" + sortedPlayers.Count +
-                                      "** total characters being involved.",
+                                      "** total characters involved.",
                         Color = 0x9999FF,
                         Fields = fields,
                         Footer = new WebhookEmbedFooter
