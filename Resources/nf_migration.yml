@@ -228,6 +228,9 @@ VendingMachineChefvendDungeon: Biogenerator
 # 2025-03-15 hydroponicsTray with bind to grid
 hydroponicsTrayAnchored: hydroponicsTray
 
+# 20250603 - Null
+SpawnVehicleHoverbikeNF: NFSpawnVehicleHoverbike
+
 # 2025-04-19 Material Magnet Boxes
 OreBox: NFMagnetBoxOre
 ConstructionBox: NFMagnetBoxConstruction
