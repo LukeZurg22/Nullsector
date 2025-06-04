@@ -24,31 +24,3 @@
 #    - Ship1
 #    - Ship2
 #    - Ship3
-
-
-- type: entity
-  id: PirateCarrierComputer
-  parent: BaseCarrierComputer
-  name: pirate carrier console
-  components:
-  - type: ShipyardListing
-    shuttles:
-    - Veska
-
-- type: entity
-  id: MiningCarrierComputer
-  parent: BaseCarrierComputer
-  name: mining carrier console
-  components:
-  - type: ShipyardListing
-    shuttles:
-    - Ample
-
-- type: entity
-  id: HiveCarrierComputer
-  parent: BaseCarrierComputer
-  name: skyfire carrier console
-  components:
-  - type: ShipyardListing
-    shuttles:
-    - Zephyr
