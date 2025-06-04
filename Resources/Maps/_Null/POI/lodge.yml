@@ -13153,8 +13153,6 @@ entities:
       pos: -15.5,7.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1202
 - proto: GasVentScrubber
@@ -13330,8 +13328,6 @@ entities:
       pos: -15.5,10.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 1202
 - proto: GasVolumePumpOn
