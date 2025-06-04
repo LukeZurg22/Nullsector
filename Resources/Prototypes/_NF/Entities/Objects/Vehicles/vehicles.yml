@@ -1,9 +1,7 @@
-# Base game vehicles
+#region Base game vehicles
 - type: entity
   parent: VehicleATV
-  id: VehicleATVNF
-  name: ATV
-  description: All-Tile Vehicle.
+  id: NFVehicleATV
   components:
   - type: Sprite
     sprite: _NF/Objects/Vehicles/atv.rsi
@@ -15,6 +13,12 @@
     - state: lights
       shader: unshaded
     noRot: true
+  - type: Vehicle
+    renderOver: North, East, South, West # Frontier
+    southOffset: 0, -0.1
+    northOffset: 0, -0.1
+    eastOffset: 0.05, -0.1
+    westOffset: -0.05, -0.1
   - type: RandomSprite
     available:
       - enum.DamageStateVisualLayers.Base:
