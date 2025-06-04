@@ -137,7 +137,7 @@ public sealed partial class ShuttleConsoleSystem
         // Check shuttle can even FTL
         if (!_shuttle.CanFTL(shuttleUid.Value, out var reason))
         {
-            // TODO: Session popup
+            Logger.Debug(reason);
             return;
         }
 
@@ -181,10 +181,10 @@ public sealed partial class ShuttleConsoleSystem
             if (TryComp<TransformComponent>(dock.DockedWith.Value, out var dockedXform) && dockedXform.GridUid != null)
             {
                 dockedGrids.Add(dockedXform.GridUid.Value);
-                
+
                 // Check if we're docked to another grid
                 var parentGridUid = dockedXform.GridUid.Value;
-                
+
                 // Find all other grids docked to this parent grid
                 // These should also be excluded from the proximity check so we can
                 // still FTL even when other ships are docked to the same station/grid
@@ -194,10 +194,10 @@ public sealed partial class ShuttleConsoleSystem
                     // Only consider docks on the parent grid
                     if (parentDockXform.GridUid != parentGridUid || !parentDock.Docked || parentDock.DockedWith == null)
                         continue;
-                    
+
                     // If we have a docked entity and it's not our ship, add its grid to the exclusion list
-                    if (TryComp<TransformComponent>(parentDock.DockedWith.Value, out var siblingDockedXform) && 
-                        siblingDockedXform.GridUid != null && 
+                    if (TryComp<TransformComponent>(parentDock.DockedWith.Value, out var siblingDockedXform) &&
+                        siblingDockedXform.GridUid != null &&
                         siblingDockedXform.GridUid != shuttleUid.Value)
                     {
                         dockedGrids.Add(siblingDockedXform.GridUid.Value);
