@@ -1,0 +1,1 @@
+ui-options-display-username-in-summary = Show Username in end-of-round summary on Discord
