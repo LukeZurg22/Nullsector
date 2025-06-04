@@ -25,9 +25,6 @@
   special:
   - !type:AddComponentSpecial
     components:
-    - type: NpcFactionMember
-      factions:
-      - TSFMC
     - type: SurgerySpeedModifier
       SpeedModifier: 1.50
   - !type:AddImplantSpecial
