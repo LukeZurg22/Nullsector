@@ -11886,13 +11886,6 @@ entities:
       parent: 1
     - type: DisableToolUse
       anchoring: True
-- proto: SellOnlyMothershipComputer
-  entities:
-  - uid: 2250
-    components:
-    - type: Transform
-      pos: -10.5,-7.5
-      parent: 1
 - proto: SignBar
   entities:
   - uid: 1991
