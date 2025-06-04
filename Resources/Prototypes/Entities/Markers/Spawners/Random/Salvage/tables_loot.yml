@@ -130,7 +130,6 @@
   id: SalvageTreasureRare
   table: !type:GroupSelector
     children:
-    - id: CassetteTapesSpawner
     - id: MaterialDiamond1
     - id: TreasureCPUSupercharged
     # - id: TechnologyDiskRare # Frontier
@@ -157,13 +156,16 @@
           weight: 14
         - id: SpaceCash10000
           weight: 1
+    - id: CassetteTapesSpawner
+      weight: 0.5
+    - id: CassettePlayer
+      weight: 0.2
     - !type:NestedSelector
       tableId: RingTableRare
     - id: CardBoxNanotrasen # Frontier
       weight: 0.05 # Frontier
     - id: CardBoxSyndicate # Frontier
       weight: 0.005 # Frontier
-
 - type: entityTable
   id: SalvageTreasureLegendary
   table: !type:GroupSelector

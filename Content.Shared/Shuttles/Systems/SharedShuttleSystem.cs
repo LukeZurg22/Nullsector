@@ -1,12 +1,12 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Shared._Mono.Ships;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Shuttles.BUIStates;
+using Content.Shared.Power.EntitySystems;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Shuttles.UI.MapObjects;
 using Content.Shared.Whitelist;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Physics;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Components;
 
@@ -19,8 +19,9 @@ public abstract partial class SharedShuttleSystem : EntitySystem
     [Dependency] protected readonly SharedMapSystem Maps = default!;
     [Dependency] protected readonly SharedTransformSystem XformSystem = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private readonly SharedPowerReceiverSystem _powerReceiverSystem = default!;
 
-    public const float FTLRange = 64f;
+    public const float FTLRange = 0f;
     public const float FTLBufferRange = 8f;
 
     private EntityQuery<MapGridComponent> _gridQuery;
@@ -151,24 +152,59 @@ public abstract partial class SharedShuttleSystem : EntitySystem
         return HasComp<MapComponent>(coordinates.EntityId);
     }
 
-    public float GetFTLRange(EntityUid shuttleUid)
+    public float GetFTLRange(EntityUid shuttleUid) // Monolith - FTL Rework
     {
-        // Look for any powered FTL drives on the shuttle's grid
-        // FTL drive is now optional and only enhances range if present
-        var query = AllEntityQuery<FTLDriveComponent>();
-
-        while (query.MoveNext(out var driveUid, out var drive))
-        {
-            if (TryComp<TransformComponent>(driveUid, out var transform) && transform.GridUid == shuttleUid)
-            {
-                if (drive.Powered)
-                    return drive.Range;
-            }
-        }
-
         // Return the default FTL range if no powered drive was found
         // In the future, we could return a different range if an unpowered drive was found
-        return FTLRange;
+        if (!TryGetFTLDrive(shuttleUid, out var drive, out var driveComp) || !_powerReceiverSystem.IsPowered(drive.Value))
+            return FTLRange;
+
+        return driveComp.Range;
+    }
+
+    /// <summary>
+    /// Tries to get the highest range FTL drive on the shuttle. Prioritizes powered drives.
+    /// </summary>
+    public bool TryGetFTLDrive(EntityUid shuttleUid, [NotNullWhen(true)] out EntityUid? driveUid, [NotNullWhen(true)] out FTLDriveComponent? drive)
+    {
+        var highestRange = 0f;
+
+        driveUid = null;
+        drive = null;
+
+        // When making this method function, one requires the following:
+        // 1. Maintain parity between TryGetFTLDrive results regardless of what they're used for. (as to not cause bugs)
+        // 2. Get a powered drive if one exists since those are the only ones you can actually jump with.
+        // Instead of only getting powered drives, we prioritize powered drives.
+        var poweredDriveFound = false;
+
+        var query = AllEntityQuery<FTLDriveComponent>();
+
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (Transform(uid).GridUid != shuttleUid)
+                continue;
+
+            var isPowered = _powerReceiverSystem.IsPowered(uid);
+
+            // If we've already found an powered drive, ignore unpowered ones.
+            if (poweredDriveFound && !isPowered)
+                continue;
+
+            var isBetterCandidate = (comp.Range > highestRange) || (isPowered && !poweredDriveFound);
+
+            if (!isBetterCandidate)
+                continue;
+
+            highestRange = comp.Range;
+
+            driveUid = uid;
+            drive = comp;
+
+            poweredDriveFound = isPowered;
+        }
+
+        return driveUid != null;
     }
 
     public float GetFTLBufferRange(EntityUid shuttleUid, MapGridComponent? grid = null)
@@ -202,8 +238,10 @@ public abstract partial class SharedShuttleSystem : EntitySystem
         // This is the already adjusted position
         var targetPosition = mapCoordinates.Position;
 
+        var range = GetFTLRange(shuttleUid);
+
         // Check range even if it's cross-map.
-        if ((targetPosition - ourPos).Length() > GetFTLRange(shuttleUid))
+        if (range <= 0 || (targetPosition - ourPos).Length() > range)
         {
             return false;
         }
@@ -240,6 +278,33 @@ public abstract partial class SharedShuttleSystem : EntitySystem
         }
 
         return true;
+    }
+
+    /// <summary>
+    /// Returns the given EntityCoordinates with the distance clamped to the maximum FTL range of the given shuttle.
+    /// </summary>
+    public EntityCoordinates ClampCoordinatesToFTLRange(EntityUid shuttleUid, EntityCoordinates coordinates)
+    {
+        if (!_physicsQuery.TryGetComponent(shuttleUid, out var shuttlePhysics) || !_xformQuery.TryGetComponent(shuttleUid, out var shuttleTransform))
+            return coordinates;
+
+        var targetMapCoordinates = XformSystem.ToMapCoordinates(coordinates);
+
+        if (targetMapCoordinates == MapCoordinates.Nullspace)
+            return coordinates;
+
+        var targetPosition = targetMapCoordinates.Position;
+        var shuttlePosition = Maps.GetGridPosition((shuttleUid, shuttlePhysics, shuttleTransform));
+
+        var shuttleToTarget = targetPosition - shuttlePosition;
+
+        var targetDistance = shuttleToTarget.Length();
+        var maximumDistance = GetFTLRange(shuttleUid);
+
+        if (targetDistance > maximumDistance)
+            return coordinates.WithPosition(shuttlePosition + shuttleToTarget.Normalized() * maximumDistance);
+
+        return coordinates;
     }
 }
 

@@ -76,8 +76,8 @@ public abstract class SharedCassetteSystem : EntitySystem
     /// <summary>
     /// Stops music whenever cassette player is removed.
     /// </summary>
-    private void OnPlayerUnequipped(Entity<CassettePlayerComponent> ent, ref GotUnequippedEvent args) =>
-        StopAllAudio(ent);
+    private void OnPlayerUnequipped(Entity<CassettePlayerComponent> ent, ref GotUnequippedEvent args)
+        => StopAllAudio(ent);
 
     private void RemoveAudioFromEquipee(EntityUid entity)
     {

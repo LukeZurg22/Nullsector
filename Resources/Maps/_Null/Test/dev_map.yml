@@ -421,7 +421,7 @@ entities:
     - type: RadarBlip
       enabled: False
       visibleFromOtherGrids: True
-      shape: Ring
+      shape: Circle
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
   - uid: 797
@@ -433,7 +433,7 @@ entities:
     - type: RadarBlip
       enabled: False
       visibleFromOtherGrids: True
-      shape: Ring
+      shape: Circle
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
   - uid: 798
@@ -445,7 +445,7 @@ entities:
     - type: RadarBlip
       enabled: False
       visibleFromOtherGrids: True
-      shape: Ring
+      shape: Circle
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
   - uid: 799
@@ -457,7 +457,7 @@ entities:
     - type: RadarBlip
       enabled: False
       visibleFromOtherGrids: True
-      shape: Ring
+      shape: Circle
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
   - uid: 1646
@@ -469,7 +469,7 @@ entities:
     - type: RadarBlip
       enabled: False
       visibleFromOtherGrids: True
-      shape: Ring
+      shape: Circle
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
 - proto: AdvancedCapacitorStockPart

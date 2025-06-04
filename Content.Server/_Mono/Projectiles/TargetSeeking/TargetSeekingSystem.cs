@@ -19,20 +19,7 @@ public sealed class TargetSeekingSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<TargetSeekingComponent, ProjectileHitEvent>(OnProjectileHit);
-        SubscribeLocalEvent<TargetSeekingComponent, ComponentInit>(OnComponentInit);
-    }
-
-    /// <summary>
-    /// Initialize the target seeking component with information about its origin grid.
-    /// </summary>
-    private void OnComponentInit(EntityUid uid, TargetSeekingComponent component, ComponentInit args)
-    {
-        if (TryComp<ProjectileComponent>(uid, out var projectile) && 
-            projectile.Shooter.HasValue &&
-            TryComp<TransformComponent>(projectile.Shooter.Value, out var shooterTransform))
-        {
-            component.OriginGridUid = shooterTransform.GridUid;
-        }
+        SubscribeLocalEvent<TargetSeekingComponent, EntParentChangedMessage>(OnParentChanged);
     }
 
     /// <summary>
@@ -48,6 +35,30 @@ public sealed class TargetSeekingSystem : EntitySystem
 
         // Reset the target since we've hit something
         component.CurrentTarget = null;
+    }
+
+    /// <summary>
+    /// Called when a target-seeking projectile changes parent (e.g., enters a grid).
+    /// </summary>
+    private void OnParentChanged(EntityUid uid, TargetSeekingComponent component, EntParentChangedMessage args)
+    {
+        // Check if the projectile has entered a grid
+        if (args.Transform.GridUid == null)
+            return;
+
+        // Get the shooter's grid to compare
+        if (!TryComp<ProjectileComponent>(uid, out var projectile) ||
+            !TryComp<TransformComponent>(projectile.Shooter, out var shooterTransform))
+            return;
+
+        var shooterGridUid = shooterTransform.GridUid;
+        var currentGridUid = args.Transform.GridUid;
+
+        // If we've entered a different grid than the shooter's grid, disable seeking
+        if (currentGridUid != shooterGridUid)
+        {
+            component.SeekingDisabled = true;
+        }
     }
 
     public override void Update(float frameTime)
@@ -75,6 +86,10 @@ public sealed class TargetSeekingSystem : EntitySystem
 
             // Apply velocity in the direction the projectile is facing
             _physics.SetLinearVelocity(uid, _transform.GetWorldRotation(xform).ToWorldVec() * seekingComp.CurrentSpeed);
+
+            // Skip seeking behavior if disabled (e.g., after entering an enemy grid)
+            if (seekingComp.SeekingDisabled)
+                continue;
 
             // If we have a target, track it using the selected algorithm
             if (seekingComp.CurrentTarget.HasValue)
@@ -112,13 +127,6 @@ public sealed class TargetSeekingSystem : EntitySystem
             // If this entity has a grid UID, use that as our actual target
             // This targets the ship grid rather than just the console
             var actualTarget = targetXform.GridUid ?? targetUid;
-            
-            // Skip if the target grid is the same as our origin grid
-            if (targetXform.GridUid.HasValue && component.OriginGridUid.HasValue && 
-                targetXform.GridUid.Value == component.OriginGridUid.Value)
-            {
-                continue; // Don't target the grid we were fired from
-            }
 
             // Get angle to the target
             var targetPos = _transform.ToMapCoordinates(targetXform.Coordinates).Position;
@@ -142,6 +150,19 @@ public sealed class TargetSeekingSystem : EntitySystem
             if (distance > component.DetectionRange)
             {
                 continue;
+            }
+
+            // Skip if the target is our own launcher (don't target our own ship)
+            if (TryComp<ProjectileComponent>(uid, out var projectile) &&
+                TryComp<TransformComponent>(projectile.Shooter, out var shooterTransform))
+            {
+                var shooterGridUid = shooterTransform.GridUid;
+
+                // If the shooter is on the same grid as this potential target, skip it
+                if (targetXform.GridUid.HasValue && shooterGridUid == targetXform.GridUid)
+                {
+                    continue;
+                }
             }
 
             // If this is closer than our previous best target, update

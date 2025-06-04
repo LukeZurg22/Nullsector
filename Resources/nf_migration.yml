@@ -206,6 +206,9 @@ PoweredlightColoredBlack: PoweredlightBlack
 ClothingShoesBootsMagCombat: ClothingShoesBootsMagSecurity
 ClothingShoesBootsMagCombatFilled: ClothingShoesBootsMagSecurityFilled
 
+# 2025-03-01 SVT
+WeaponRifleSVT: WeaponRifleSVS
+
 # 2025-02-18 HYPERPACMAN to D-K
 PortableGeneratorHyperPacman: PortableGeneratorDK
 PortableGeneratorHyperPacmanShuttle: PortableGeneratorDKShuttle
@@ -222,5 +225,13 @@ MobSnakeExpeditions: NFMobPurpleSnake
 # 2025-03-01 Dungeon tileset
 VendingMachineChefvendDungeon: Biogenerator
 
-# 2025-03-01 SVT
-WeaponRifleSVT: WeaponRifleSVS
+# 2025-03-15 hydroponicsTray with bind to grid
+hydroponicsTrayAnchored: hydroponicsTray
+
+# 20250603 - Null
+SpawnVehicleHoverbikeNF: NFSpawnVehicleHoverbike
+
+# 2025-04-19 Material Magnet Boxes
+OreBox: NFMagnetBoxOre
+ConstructionBox: NFMagnetBoxConstruction
+PlantBox: NFMagnetBoxPlant

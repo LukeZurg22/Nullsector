@@ -191,8 +191,10 @@
   - type: Item
     size: Normal
   - type: Sprite
+    sprite: Objects/Misc/Lights/lights.rsi
     layers:
       - state: floodlight
+        map: [ "base" ]
       - state: floodlight_on
         shader: unshaded
         visible: false
@@ -244,6 +246,11 @@
   parent: BaseItem
   description: A pole with powerful mounted lights on it. It's broken.
   components:
+  - type: GoblinPreciousTrash # Frontier
+  - type: Item
+    size: Normal
+    sprite: Objects/Misc/Lights/lights.rsi
+    heldPrefix: floodlight_broken
   - type: Sprite
     sprite: Objects/Misc/Lights/lights.rsi
     state: floodlight_broken

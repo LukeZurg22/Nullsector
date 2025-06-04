@@ -1,6 +1,7 @@
 // New Frontiers - This file is licensed under AGPLv3
 // Copyright (c) 2024 New Frontiers Contributors
 // See AGPLv3.txt for details.
+
 using Content.Shared._NF.Shuttles.Events;
 using Robust.Client.UserInterface.Controls;
 
@@ -75,7 +76,7 @@ namespace Content.Client.Shuttles.UI
                 AnchorOn.Pressed = NavRadar.DampeningMode == InertiaDampeningMode.Anchor;
 
                 // Disable the Park button (AnchorOn) while in FTL, but keep other dampener buttons enabled
-                if (NavRadar.InFtl)
+                /*if (NavRadar.InFtl)
                 {
                     AnchorOn.Disabled = true;
                     // If the AnchorOn button is pressed while it gets disabled, we need to switch to another mode
@@ -88,7 +89,7 @@ namespace Content.Client.Shuttles.UI
                 else
                 {
                     AnchorOn.Disabled = false;
-                }
+                }*/
             }
         }
 

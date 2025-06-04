@@ -56,13 +56,13 @@
         ]
       ]
     },
-	{
+    {
       "name": "nfsd-banner"
     },
     {
       "name": "nfsd-flag"
     },
-	{
+    {
       "name": "ngc-banner"
     }
   ]

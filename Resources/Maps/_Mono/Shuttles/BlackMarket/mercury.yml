@@ -756,7 +756,7 @@ entities:
     - type: RadarBlip
       enabled: False
       visibleFromOtherGrids: True
-      shape: Ring
+      shape: Circle
       scale: 0
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
@@ -769,7 +769,7 @@ entities:
     - type: RadarBlip
       enabled: False
       visibleFromOtherGrids: True
-      shape: Ring
+      shape: Circle
       scale: 0
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
@@ -782,7 +782,7 @@ entities:
     - type: RadarBlip
       enabled: False
       visibleFromOtherGrids: True
-      shape: Ring
+      shape: Circle
       scale: 0
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
