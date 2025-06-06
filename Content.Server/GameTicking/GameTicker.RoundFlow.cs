@@ -435,7 +435,7 @@ namespace Content.Server.GameTicking
                     return;
                 }
 
-                // MapInitialize *before* spawning players, our codebase is too shit to do it afterwards...
+                // MapInitialize must be done -before- spawning players, else it will not work.
                 _map.InitializeMap(DefaultMap);
 
                 SpawnPlayers(readyPlayers, readyPlayerProfiles, force);
@@ -709,7 +709,17 @@ namespace Content.Server.GameTicking
                 var showUsername = false; // 'false' by default, it is an opt-in feature.t
 
                 if (_playerManager.TryGetSessionById(player.PlayerGuid, out var ds))
-                    showUsername = _netConfigManager.GetClientCVar(ds.Channel, NullCCVars.DisplayUsernameInSummary);
+                {
+                    try
+                    {
+                        // This can fail to get client CVar. It is not optimal, but this prevents an all-out break.
+                        showUsername = _netConfigManager.GetClientCVar(ds.Channel, NullCCVars.DisplayUsernameInSummary);
+                    }
+                    catch(Exception e)
+                    {
+                        Logger.Error(e.ToString());
+                    }
+                }
 
                 // - PLAYER was CHARACTER playing role of ROLE. |OR| // - CHARACTER playing role of ROLE.
                 var playerLine = showUsername
