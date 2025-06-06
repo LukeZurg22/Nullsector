@@ -1,6 +1,6 @@
 # Base entries
 guide-entry-nf14 = Frontier Guide
-guide-entry-bank = NT Galactic Bank
+guide-entry-bank = Lark Regional Bank
 guide-entry-piloting = Piloting
 guide-entry-startinggear = Starting Equipment
 guide-entry-hiring = Hiring Crew
