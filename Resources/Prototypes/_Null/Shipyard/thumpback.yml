@@ -11,7 +11,7 @@
 - type: vessel
   id: Thumpback
   parent: BaseVessel
-  name: Thumpback
+  name: UNJ Thumpback
   description: A cheap but effective salvage shuttle.
   price: 30000
   category: Medium
