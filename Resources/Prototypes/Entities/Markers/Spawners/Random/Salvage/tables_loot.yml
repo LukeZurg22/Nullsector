@@ -125,6 +125,10 @@
     - id: WristwatchGold
     - !type:NestedSelector
       tableId: RingTableCommon
+    - id: CassetteTapesSpawner
+      weight: 0.05
+    - id: CassettePlayer
+      weight: 0.02
 
 - type: entityTable
   id: SalvageTreasureRare
@@ -156,10 +160,6 @@
           weight: 14
         - id: SpaceCash10000
           weight: 1
-    - id: CassetteTapesSpawner
-      weight: 0.5
-    - id: CassettePlayer
-      weight: 0.2
     - !type:NestedSelector
       tableId: RingTableRare
     - id: CardBoxNanotrasen # Frontier
