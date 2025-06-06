@@ -155,7 +155,7 @@ public sealed class CircularShieldRadarSystem : EntitySystem
         var radarComp = EnsureComp<RadarBlipComponent>(blipEntity);
         radarComp.RadarColor = shield.Color;
         radarComp.Scale = shield.Radius;
-        radarComp.Shape = RadarBlipShape.Circle;
+        radarComp.Shape = RadarBlipShape.Ring;
         radarComp.Enabled = shield.CanWork;
         radarComp.VisibleFromOtherGrids = true;
 

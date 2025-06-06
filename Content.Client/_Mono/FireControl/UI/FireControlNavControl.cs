@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Client._NF.Radar;
+using Content.Client._Null;
 using Content.Client.Shuttles.UI;
 using Content.Shared._Mono.FireControl;
 using Content.Shared._NF.Radar;
@@ -314,7 +315,7 @@ public sealed class FireControlNavControl : BaseShuttleControl
         {
             var blipPos = Vector2.Transform(blip.Item1, worldToShuttle * shuttleToView);
 
-            if (blip.Item4 == RadarBlipShape.Circle)
+            if (blip.Item4 == RadarBlipShape.Ring)
             {
                 // For Ring shapes, use the real radius but with a dedicated drawing method
                 DrawShieldRing(handle, blipPos, blip.Item2 * MinimapScale, blip.Item3.WithAlpha(0.8f));
@@ -375,6 +376,9 @@ public sealed class FireControlNavControl : BaseShuttleControl
     {
         switch (shape)
         {
+            case RadarBlipShape.Ring:
+                handle.DrawRing(position, size, color);
+                break;
             case RadarBlipShape.Circle:
                 handle.DrawCircle(position, size, color);
                 break;
@@ -389,7 +393,7 @@ public sealed class FireControlNavControl : BaseShuttleControl
                 handle.DrawRect(rect, color);
                 break;
             case RadarBlipShape.Triangle:
-                var points = new Vector2[]
+                var points = new[]
                 {
                     position + new Vector2(0, -size),
                     position + new Vector2(-size * 0.866f, size * 0.5f),

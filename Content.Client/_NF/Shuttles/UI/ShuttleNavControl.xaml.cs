@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Client._NF.Radar;
+using Content.Client._Null;
 using Content.Client.Station;
 using Content.Shared._NF.Radar;
 using Content.Shared._NF.Shuttles.Events;
@@ -225,6 +226,9 @@ public sealed partial class ShuttleNavControl
     {
         switch (shape)
         {
+            case RadarBlipShape.Ring:
+                handle.DrawRing(position, size, color);
+                break;
             case RadarBlipShape.Circle:
                 handle.DrawCircle(position, size, color);
                 break;
