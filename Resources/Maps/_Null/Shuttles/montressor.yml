@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/20/2025 18:54:12
-  entityCount: 415
+  time: 06/06/2025 03:18:53
+  entityCount: 417
 maps: []
 grids:
 - 1
@@ -86,64 +86,80 @@ entities:
         tiles:
           0,0:
             0: 29488
-            2: 128
+            1: 128
           -1,0:
             0: 65416
-            2: 3
+            1: 3
           0,1:
             0: 30711
           -1,1:
             0: 57480
-            2: 32
+            1: 32
           0,2:
             0: 30247
           -1,2:
             0: 65134
           -1,3:
             0: 3310
-            2: 4096
+            1: 4096
           0,3:
-            1: 26208
+            2: 26208
           0,-1:
-            0: 24576
-            2: 136
+            3: 8192
+            0: 16384
+            1: 136
           0,4:
-            1: 6
+            2: 6
           1,1:
             0: 240
-            2: 61440
+            1: 61440
           1,2:
-            2: 63624
+            1: 63624
           1,3:
-            2: 61456
+            1: 61456
             0: 192
           1,0:
-            2: 1024
+            1: 1024
           2,2:
-            2: 2944
+            1: 2944
           2,3:
             0: 26162
-            2: 8
+            1: 8
           1,4:
-            2: 32888
+            1: 32888
           2,4:
             0: 822
-            2: 18432
+            1: 18432
           -2,2:
-            2: 1152
+            1: 1152
           -2,0:
-            2: 136
+            1: 136
             0: 34816
           -2,3:
-            2: 128
+            1: 128
           -1,-1:
-            2: 3072
+            1: 3072
         uniqueMixes:
         - volume: 2500
           temperature: 293.15
           moles:
           - 21.824879
           - 82.10312
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+        - volume: 2500
+          immutable: True
+          moles:
+          - 0
+          - 0
           - 0
           - 0
           - 0
@@ -170,10 +186,10 @@ entities:
           - 0
           - 0
         - volume: 2500
-          immutable: True
+          temperature: 293.14996
           moles:
-          - 0
-          - 0
+          - 21.824879
+          - 82.10312
           - 0
           - 0
           - 0
@@ -1747,17 +1763,13 @@ entities:
     - type: Transform
       pos: -0.54417443,8.670709
       parent: 1
-- proto: PortableGeneratorPacmanShuttle
+- proto: PortableGeneratorSuperPacmanShuttle
   entities:
   - uid: 156
     components:
     - type: Transform
       pos: 2.5,-0.5
       parent: 1
-    - type: MaterialStorage
-      storage:
-        FuelGradePlasma: 3000
-    - type: InsertingMaterialStorage
 - proto: PosterLegitCleanliness
   entities:
   - uid: 412
@@ -1875,17 +1887,35 @@ entities:
     - type: Transform
       pos: 9.5,12.5
       parent: 1
-- proto: SheetPlasma
+- proto: SheetUranium
   entities:
   - uid: 195
     components:
     - type: Transform
-      pos: 2.5032582,-0.4441489
+      rot: 3.141592653589793 rad
+      pos: 2.4739769,-0.5383941
       parent: 1
   - uid: 197
     components:
     - type: Transform
-      pos: 2.5032582,-0.4441489
+      rot: 3.141592653589793 rad
+      pos: 2.5677269,-0.5383941
+      parent: 1
+- proto: SignDirectionalBridge
+  entities:
+  - uid: 416
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 3.5,13.5
+      parent: 1
+- proto: SignDisposalSpace
+  entities:
+  - uid: 417
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 3.5,14.5
       parent: 1
 - proto: SinkWide
   entities:
