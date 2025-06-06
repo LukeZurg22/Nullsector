@@ -204,7 +204,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
 
         // Draw radar position on the station
         const float radarVertRadius = 2f;
-        var radarPosVerts = new Vector2[]
+        var radarPosVerts = new[]
         {
             ScalePosition(new Vector2(0f, -radarVertRadius)),
             ScalePosition(new Vector2(radarVertRadius / 2f, 0f)),

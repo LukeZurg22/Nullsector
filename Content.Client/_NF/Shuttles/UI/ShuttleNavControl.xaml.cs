@@ -243,7 +243,7 @@ public sealed partial class ShuttleNavControl
                 handle.DrawRect(rect, color);
                 break;
             case RadarBlipShape.Triangle:
-                var points = new Vector2[]
+                var points = new[]
                 {
                 position + new Vector2(0, -size),
                 position + new Vector2(-size * 0.866f, size * 0.5f),
