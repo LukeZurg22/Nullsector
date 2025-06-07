@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server._NF.Bank;
-using Content.Server._NF.GameRule;
 using Content.Server.Announcements;
 using Content.Server.CrewManifest;
 using Content.Server.Discord;
@@ -10,7 +9,6 @@ using Content.Server.Ghost;
 using Content.Server.Maps;
 using Content.Server.Roles;
 using Content.Server.Station.Systems;
-using Content.Shared._Null.CCVar;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
@@ -435,7 +433,7 @@ namespace Content.Server.GameTicking
                     return;
                 }
 
-                // MapInitialize must be done -before- spawning players, else it will not work.
+                // MapInitialize *before* spawning players, our codebase is too shit to do it afterwards...
                 _map.InitializeMap(DefaultMap);
 
                 SpawnPlayers(readyPlayers, readyPlayerProfiles, force);
@@ -660,184 +658,6 @@ namespace Content.Server.GameTicking
             {
                 Log.Error($"Error while sending discord round end message:\n{e}");
             }
-        }
-
-        /// <summary>
-        /// Mono + Null : Sends manifest to discord webhook.
-        /// </summary>
-        /// <param name="playerInfo"></param>
-        private async void SendCrewManifestDiscordMessage(RoundEndMessageEvent.RoundEndPlayerInfo[]? playerInfo)
-        {
-            var webhookUrl = _cfg.GetCVar(CCVars.DiscordCrewManifestWebhook);
-            if (string.IsNullOrEmpty(webhookUrl))
-                return;
-
-            var webhookData = await _discord.GetWebhook(webhookUrl);
-            if (webhookData == null)
-                return;
-
-            var webhookIdentifier = webhookData.Value.ToIdentifier();
-
-            if (playerInfo == null || playerInfo.Length == 0)
-                return;
-
-            var serverName = _baseServer.ServerName;
-
-            // Filter out observers and sort by antag status (antags first), then by player name
-            var sortedPlayers = playerInfo
-                .Where(p => !p.Observer && !string.IsNullOrEmpty(p.PlayerICName))
-                .OrderBy(p => !p.Antag)
-                .ThenBy(p => p.PlayerOOCName)
-                .ToList();
-
-            if (sortedPlayers.Count == 0)
-                return;
-
-            // Create the manifest text in the same format as the round end summary
-            var manifestLines = new List<string>();
-            var profitLines = new List<string>();
-
-            // Get the NFAdventureRuleSystem to access profit data
-            var adventureSystem = EntityManager.System<NFAdventureRuleSystem>();
-
-            foreach (var player in sortedPlayers)
-            {
-                #region Null Sector
-
-                // Use localization to get the proper job name instead of the key
-                var roleName = Loc.GetString(player.Role);
-                var showUsername = false; // 'false' by default, it is an opt-in feature.t
-
-                if (_playerManager.TryGetSessionById(player.PlayerGuid, out var ds))
-                {
-                    try
-                    {
-                        // This can fail to get client CVar. It is not optimal, but this prevents an all-out break.
-                        showUsername = _netConfigManager.GetClientCVar(ds.Channel, NullCCVars.DisplayUsernameInSummary);
-                    }
-                    catch(Exception e)
-                    {
-                        Logger.Error(e.ToString());
-                    }
-                }
-
-                // - PLAYER was CHARACTER playing role of ROLE. |OR| // - CHARACTER playing role of ROLE.
-                var playerLine = showUsername
-                    ? $"- {player.PlayerOOCName} was {player.PlayerICName} playing as a {roleName}."
-                    : $"- {player.PlayerICName} playing as a {roleName}.";
-
-                #endregion Null Sector End
-
-                manifestLines.Add(playerLine);
-
-                // Try to get profit information for this player
-                if (player.PlayerGuid == null || string.IsNullOrEmpty(player.PlayerICName))
-                    continue; // Short-circuit
-
-                var profitInfo = adventureSystem.GetPlayerProfitInfo(player.PlayerGuid.Value, player.PlayerICName);
-                if (profitInfo != null)
-                {
-                    profitLines.Add(profitInfo);
-                }
-            }
-
-            // Split into multiple fields if the content is too long for a single Discord field
-            var fields = new List<WebhookEmbedField>();
-            var currentFieldLines = new List<string>();
-            var currentFieldLength = 0;
-            var manifestFieldCount = 0;
-
-            foreach (var line in manifestLines)
-            {
-                // Discord field value limit is 1024 characters
-                if (currentFieldLength + line.Length + 1 > 1020 && currentFieldLines.Count > 0)
-                {
-                    fields.Add(new WebhookEmbedField
-                    {
-                        Name = manifestFieldCount == 0 ? "Player Manifest" : "Player Manifest (continued)",
-                        Value = string.Join("\n", currentFieldLines),
-                        Inline = false,
-                    });
-                    manifestFieldCount++;
-                    currentFieldLines.Clear();
-                    currentFieldLength = 0;
-                }
-
-                currentFieldLines.Add(line);
-                currentFieldLength += line.Length + 1; // +1 for newline
-            }
-
-            // Add the remaining lines
-            if (currentFieldLines.Count > 0)
-            {
-                fields.Add(new WebhookEmbedField
-                {
-                    Name = manifestFieldCount == 0 ? "Player Manifest" : "Player Manifest (continued)",
-                    Value = string.Join("\n", currentFieldLines),
-                    Inline = false,
-                });
-            }
-
-            // Add profit information if available
-            if (profitLines.Count > 0)
-            {
-                // Split profit lines into fields if needed (same algorithm as Player Manifest)
-                var currentProfitLines = new List<string>();
-                var currentProfitLength = 0;
-                var profitFieldCount = 0;
-
-                foreach (var line in profitLines)
-                {
-                    // Discord field value limit is 1024 characters
-                    if (currentProfitLength + line.Length + 1 > 1020 && currentProfitLines.Count > 0)
-                    {
-                        fields.Add(new WebhookEmbedField
-                        {
-                            Name = profitFieldCount == 0 ? "Galactic Bank" : "Galactic Bank (continued)",
-                            Value = string.Join("\n", currentProfitLines),
-                            Inline = false,
-                        });
-                        profitFieldCount++;
-                        currentProfitLines.Clear();
-                        currentProfitLength = 0;
-                    }
-
-                    currentProfitLines.Add(line);
-                    currentProfitLength += line.Length + 1; // +1 for newline
-                }
-
-                // Add the remaining lines
-                if (currentProfitLines.Count > 0)
-                {
-                    fields.Add(new WebhookEmbedField
-                    {
-                        Name = profitFieldCount == 0 ? "Galactic Bank" : "Galactic Bank (continued)",
-                        Value = string.Join("\n", currentProfitLines),
-                        Inline = false,
-                    });
-                }
-            }
-
-            var payload = new WebhookPayload
-            {
-                Embeds =
-                [
-                    new WebhookEmbed
-                    {
-                        Title = "Round End Summary",
-                        Description = "Round **" + RoundId + "** has ended with **" + sortedPlayers.Count +
-                                      "** total characters involved.",
-                        Color = 0x9999FF,
-                        Fields = fields,
-                        Footer = new WebhookEmbedFooter
-                        {
-                            Text = serverName + " - Round " + RoundId,
-                        },
-                    },
-                ],
-            };
-
-            await _discord.CreateMessage(webhookIdentifier, payload);
         }
 
         public void RestartRound()
