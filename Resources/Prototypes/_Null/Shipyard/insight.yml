@@ -9,7 +9,7 @@
   parent: BaseVessel
   name: Insight
   description: An artifact research vessel with room for 3 crew
-  price: 55000
+  price: 75000
   category: Medium
   group: Shipyard
   shuttlePath: /Maps/_Null/Shuttles/insight.yml
