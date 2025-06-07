@@ -14,6 +14,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+
 // Frontier
 
 // Frontier
@@ -203,7 +204,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
 
         // Draw radar position on the station
         const float radarVertRadius = 2f;
-        var radarPosVerts = new Vector2[]
+        var radarPosVerts = new[]
         {
             ScalePosition(new Vector2(0f, -radarVertRadius)),
             ScalePosition(new Vector2(radarVertRadius / 2f, 0f)),
@@ -498,6 +499,6 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     }
 
     private const int RadarBlipSize = 15;
-    private const int RadarFontSize = 10;
+    private const int RadarFontSize = 8;
 
 }

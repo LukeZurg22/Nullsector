@@ -1,5 +1,6 @@
 using System.Numerics;
 using Content.Client._NF.Radar;
+using Content.Client._Null;
 using Content.Client.Station;
 using Content.Shared._NF.Radar;
 using Content.Shared._NF.Shuttles.Events;
@@ -225,6 +226,9 @@ public sealed partial class ShuttleNavControl
     {
         switch (shape)
         {
+            case RadarBlipShape.Ring:
+                handle.DrawRing(position, size, color);
+                break;
             case RadarBlipShape.Circle:
                 handle.DrawCircle(position, size, color);
                 break;
@@ -239,7 +243,7 @@ public sealed partial class ShuttleNavControl
                 handle.DrawRect(rect, color);
                 break;
             case RadarBlipShape.Triangle:
-                var points = new Vector2[]
+                var points = new[]
                 {
                 position + new Vector2(0, -size),
                 position + new Vector2(-size * 0.866f, size * 0.5f),
