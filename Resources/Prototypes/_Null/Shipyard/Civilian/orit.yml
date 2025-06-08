@@ -6,21 +6,21 @@
   id: Orit
   parent: BaseVessel
   name: SKR Orit
-  description: A small medical vessel equipped with an FTL drive, designed for the fast search and retrieval of patients out in deep space.
+  description: A small salvage vessel retrofitted out of its previous medical status, designed for the fast search and retrieval in deep space.
   price: 30530
   category: Small
-  group: Medical
-  shuttlePath: /Maps/_Mono/Shuttles/orit.yml
+  group: Civilian
+  shuttlePath: /Maps/_Null/Shuttles/Civilian/orit.yml
   guidebookPage: null
   class:
-  - Medical
+  - Civilian
   engine:
   - Plasma
 
 - type: gameMap
   id: Orit
   mapName: 'SKR Orit'
-  mapPath: /Maps/_Mono/Shuttles/orit.yml
+  mapPath: /Maps/_Null/Shuttles/Civilian/orit.yml
   minPlayers: 0
   stations:
     Orit:
