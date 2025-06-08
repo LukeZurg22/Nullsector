@@ -9,18 +9,18 @@
   description: A small salvage vessel retrofitted out of its previous medical status, designed for the fast search and retrieval in deep space.
   price: 30530
   category: Small
-  group: Civilian
-  shuttlePath: /Maps/_Null/Shuttles/Civilian/orit.yml
+  group: Shipyard
+  shuttlePath: /Maps/_Null/Shuttles/Salvage/orit.yml
   guidebookPage: null
   class:
-  - Civilian
+  - Salvage
   engine:
   - Plasma
 
 - type: gameMap
   id: Orit
   mapName: 'SKR Orit'
-  mapPath: /Maps/_Null/Shuttles/Civilian/orit.yml
+  mapPath: /Maps/_Null/Shuttles/Salvage/orit.yml
   minPlayers: 0
   stations:
     Orit:
