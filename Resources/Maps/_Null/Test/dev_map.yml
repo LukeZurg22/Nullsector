@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/31/2025 00:17:09
-  entityCount: 1679
+  time: 06/08/2025 16:49:39
+  entityCount: 1684
 maps:
 - 1
 grids:
@@ -50,7 +50,7 @@ entities:
           version: 6
         -1,-1:
           ind: -1,-1
-          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAeQAAAAAA
+          tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAaAAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAaAAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAeQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAWQAAAAAAeQAAAAAAeQAAAAAA
           version: 6
         0,1:
           ind: 0,1
@@ -115,7 +115,77 @@ entities:
     - type: DecalGrid
       chunkCollection:
         version: 2
-        nodes: []
+        nodes:
+        - node:
+            angle: 3.141592653589793 rad
+            color: '#000000FF'
+            id: arrow
+          decals:
+            14: -4.700056,-0.46334124
+            15: -5.746931,-0.46334124
+        - node:
+            color: '#6F0000FF'
+            id: c
+          decals:
+            7: -4.559431,1.1304088
+        - node:
+            color: '#6F0000FF'
+            id: e
+          decals:
+            6: -4.840681,1.1304088
+        - node:
+            color: '#6F0000FF'
+            id: exclamationmark
+          decals:
+            12: -4.621931,0.45853376
+        - node:
+            color: '#6F0000FF'
+            id: l
+          decals:
+            3: -5.840681,1.2554088
+            10: -5.309431,0.58353376
+        - node:
+            angle: 6.230825429619756 rad
+            color: '#6F0000FF'
+            id: l
+          decals:
+            4: -5.543806,1.2085338
+        - node:
+            color: '#6F0000FF'
+            id: n
+          decals:
+            1: -6.528181,1.3179088
+        - node:
+            color: '#6F0000FF'
+            id: r
+          decals:
+            8: -6.075056,0.59915876
+        - node:
+            color: '#6F0000FF'
+            id: s
+          decals:
+            5: -5.215681,1.1616588
+        - node:
+            color: '#000000FF'
+            id: space
+          decals:
+            13: -5.153181,-0.43209124
+        - node:
+            color: '#6F0000FF'
+            id: u
+          decals:
+            9: -5.700056,0.58353376
+        - node:
+            angle: 6.19591884457987 rad
+            color: '#6F0000FF'
+            id: u
+          decals:
+            2: -6.168806,1.2710338
+        - node:
+            color: '#6F0000FF'
+            id: z
+          decals:
+            11: -4.934431,0.50540876
     - type: OccluderTree
     - type: Shuttle
     - type: RadiationGridResistance
@@ -291,7 +361,8 @@ entities:
           1,-4:
             0: 13056
           1,-3:
-            0: 61747
+            0: 61491
+            2: 256
           1,-2:
             0: 273
           2,-3:
@@ -420,8 +491,6 @@ entities:
       parent: 2
     - type: RadarBlip
       enabled: False
-      visibleFromOtherGrids: True
-      shape: Ring
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
   - uid: 797
@@ -432,8 +501,6 @@ entities:
       parent: 2
     - type: RadarBlip
       enabled: False
-      visibleFromOtherGrids: True
-      shape: Ring
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
   - uid: 798
@@ -444,8 +511,6 @@ entities:
       parent: 2
     - type: RadarBlip
       enabled: False
-      visibleFromOtherGrids: True
-      shape: Ring
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
   - uid: 799
@@ -456,8 +521,6 @@ entities:
       parent: 2
     - type: RadarBlip
       enabled: False
-      visibleFromOtherGrids: True
-      shape: Ring
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
   - uid: 1646
@@ -468,8 +531,6 @@ entities:
       parent: 2
     - type: RadarBlip
       enabled: False
-      visibleFromOtherGrids: True
-      shape: Ring
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
 - proto: AdvancedCapacitorStockPart
@@ -531,13 +592,6 @@ entities:
     - type: Transform
       pos: 6.5,28.5
       parent: 2
-- proto: AirlockCargo
-  entities:
-  - uid: 12
-    components:
-    - type: Transform
-      pos: 2.5,-4.5
-      parent: 2
 - proto: AirlockEngineering
   entities:
   - uid: 13
@@ -564,6 +618,13 @@ entities:
     components:
     - type: Transform
       pos: -12.5,0.5
+      parent: 2
+- proto: AirlockEngineeringGlass
+  entities:
+  - uid: 591
+    components:
+    - type: Transform
+      pos: -4.5,-4.5
       parent: 2
 - proto: AirlockExternal
   entities:
@@ -758,11 +819,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -6.5,0.5
       parent: 2
-  - uid: 48
-    components:
-    - type: Transform
-      pos: -4.5,-5.5
-      parent: 2
   - uid: 49
     components:
     - type: Transform
@@ -858,6 +914,11 @@ entities:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 23.5,12.5
+      parent: 2
+  - uid: 537
+    components:
+    - type: Transform
+      pos: -5.5,-5.5
       parent: 2
   - uid: 544
     components:
@@ -1335,6 +1396,11 @@ entities:
       parent: 2
 - proto: CableApcExtension
   entities:
+  - uid: 48
+    components:
+    - type: Transform
+      pos: -5.5,-7.5
+      parent: 2
   - uid: 115
     components:
     - type: Transform
@@ -3060,6 +3126,11 @@ entities:
     - type: Transform
       pos: 11.5,-4.5
       parent: 2
+  - uid: 905
+    components:
+    - type: Transform
+      pos: -5.5,-8.5
+      parent: 2
   - uid: 1221
     components:
     - type: Transform
@@ -3105,10 +3176,25 @@ entities:
     - type: Transform
       pos: 7.5,4.5
       parent: 2
+  - uid: 1551
+    components:
+    - type: Transform
+      pos: -5.5,-9.5
+      parent: 2
   - uid: 1618
     components:
     - type: Transform
       pos: 9.5,4.5
+      parent: 2
+  - uid: 1680
+    components:
+    - type: Transform
+      pos: -5.5,-10.5
+      parent: 2
+  - uid: 1681
+    components:
+    - type: Transform
+      pos: -5.5,-11.5
       parent: 2
 - proto: CableApcStack
   entities:
@@ -3296,10 +3382,10 @@ entities:
       parent: 2
 - proto: CargoTelepad
   entities:
-  - uid: 491
+  - uid: 535
     components:
     - type: Transform
-      pos: -0.5,-5.5
+      pos: 0.5,-5.5
       parent: 2
 - proto: CassettePlayer
   entities:
@@ -3548,28 +3634,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 14.5,7.5
       parent: 2
-- proto: ChairOfficeDark
-  entities:
-  - uid: 535
-    components:
-    - type: Transform
-      rot: 3.1415926535897967 rad
-      pos: 0.5,-6.5
-      parent: 2
-- proto: ChairOfficeLight
-  entities:
-  - uid: 536
-    components:
-    - type: Transform
-      rot: 4.71238898038469 rad
-      pos: 19.5,4.5
-      parent: 2
-  - uid: 537
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 20.5,5.5
-      parent: 2
 - proto: ChemDispenser
   entities:
   - uid: 538
@@ -3725,7 +3789,7 @@ entities:
   - uid: 553
     components:
     - type: Transform
-      pos: -4.1021323,-3.2949362
+      pos: -2.8029485,-3.239439
       parent: 2
 - proto: ClothingBeltUtilityFilled
   entities:
@@ -3788,6 +3852,13 @@ entities:
     - type: Transform
       pos: -0.9130585,-10.66307
       parent: 2
+- proto: ClothingOuterWinterEngi
+  entities:
+  - uid: 1682
+    components:
+    - type: Transform
+      pos: -6.309431,-7.4488525
+      parent: 2
 - proto: ClothingShoesBootsMag
   entities:
   - uid: 563
@@ -3815,6 +3886,13 @@ entities:
     components:
     - type: Transform
       pos: 0.16303456,8.308816
+      parent: 2
+- proto: ClothingShoesBootsWinterEngi
+  entities:
+  - uid: 1683
+    components:
+    - type: Transform
+      pos: -6.668806,-7.3707275
       parent: 2
 - proto: ClothingUniformJumpsuitEngineering
   entities:
@@ -3896,21 +3974,25 @@ entities:
       startingCharge: 0
 - proto: ComputerCargoOrders
   entities:
-  - uid: 576
+  - uid: 536
     components:
     - type: Transform
-      pos: 0.5,-5.5
+      pos: 1.5,-5.5
       parent: 2
+    - type: DeviceLinkSource
+      linkedPorts:
+        535:
+        - OrderSender: OrderReceiver
     - type: ApcPowerReceiver
       powerLoad: 5
     - type: Battery
       startingCharge: 0
 - proto: ComputerContrabandPalletConsole
   entities:
-  - uid: 577
+  - uid: 765
     components:
     - type: Transform
-      pos: 1.5,-5.5
+      pos: 2.5,-5.5
       parent: 2
     - type: ApcPowerReceiver
       powerLoad: 5
@@ -4034,6 +4116,28 @@ entities:
       startingCharge: 0
 - proto: ComputerPalletConsoleNFHighMarket
   entities:
+  - uid: 491
+    components:
+    - type: Transform
+      pos: -0.5,-5.5
+      parent: 2
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
+- proto: ComputerPalletConsoleNFLowMarket
+  entities:
+  - uid: 576
+    components:
+    - type: Transform
+      pos: -2.5,-5.5
+      parent: 2
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
+- proto: ComputerPalletConsoleNFNormalMarket
+  entities:
   - uid: 588
     components:
     - type: Transform
@@ -4043,34 +4147,12 @@ entities:
       powerLoad: 5
     - type: Battery
       startingCharge: 0
-- proto: ComputerPalletConsoleNFLowMarket
+- proto: ComputerPalletConsoleNFVeryLowMarket
   entities:
-  - uid: 589
+  - uid: 577
     components:
     - type: Transform
       pos: -3.5,-5.5
-      parent: 2
-    - type: ApcPowerReceiver
-      powerLoad: 5
-    - type: Battery
-      startingCharge: 0
-- proto: ComputerPalletConsoleNFNormalMarket
-  entities:
-  - uid: 590
-    components:
-    - type: Transform
-      pos: -2.5,-5.5
-      parent: 2
-    - type: ApcPowerReceiver
-      powerLoad: 5
-    - type: Battery
-      startingCharge: 0
-- proto: ComputerPalletConsoleNFVeryLowMarket
-  entities:
-  - uid: 591
-    components:
-    - type: Transform
-      pos: -4.5,-5.5
       parent: 2
     - type: ApcPowerReceiver
       powerLoad: 5
@@ -4163,6 +4245,17 @@ entities:
     components:
     - type: Transform
       pos: -1.5,-11.5
+      parent: 2
+    - type: ApcPowerReceiver
+      powerLoad: 5
+    - type: Battery
+      startingCharge: 0
+- proto: ComputerShipyardMedical
+  entities:
+  - uid: 1322
+    components:
+    - type: Transform
+      pos: 2.5,-11.5
       parent: 2
     - type: ApcPowerReceiver
       powerLoad: 5
@@ -4667,14 +4760,14 @@ entities:
   - uid: 656
     components:
     - type: Transform
-      pos: -4.560466,-3.2324362
+      pos: -2.8810735,-3.380064
       parent: 2
 - proto: CrossbowModernHand
   entities:
   - uid: 657
     components:
     - type: Transform
-      pos: -4.487549,-3.6595192
+      pos: -2.7716985,-3.317564
       parent: 2
 - proto: Crowbar
   entities:
@@ -4720,6 +4813,13 @@ entities:
     components:
     - type: Transform
       pos: 0.5,-3.5
+      parent: 2
+- proto: DebugGenerator
+  entities:
+  - uid: 589
+    components:
+    - type: Transform
+      pos: -6.5,-8.5
       parent: 2
 - proto: DefaultStationBeaconAISatellite
   entities:
@@ -5316,13 +5416,6 @@ entities:
     - type: Transform
       pos: 1.8003306,4.661284
       parent: 2
-- proto: GeneratorBasic15kW
-  entities:
-  - uid: 747
-    components:
-    - type: Transform
-      pos: -6.5,-8.5
-      parent: 2
 - proto: GibAcidifierImplanterNF
   entities:
   - uid: 748
@@ -5424,10 +5517,10 @@ entities:
       startingCharge: 0
 - proto: GunSafeShuttleCaptain
   entities:
-  - uid: 765
+  - uid: 590
     components:
     - type: Transform
-      pos: 4.5,-9.5
+      pos: 5.5,-11.5
       parent: 2
 - proto: Handcuffs
   entities:
@@ -5441,7 +5534,7 @@ entities:
   - uid: 767
     components:
     - type: Transform
-      pos: -4.925259,-3.7194638
+      pos: -2.9829736,-1.5242245
       parent: 2
 - proto: HandHeldMassScanner
   entities:
@@ -5492,8 +5585,6 @@ entities:
     - type: Transform
       pos: 2.5,14.5
       parent: 2
-- proto: hydroponicsTrayAnchored
-  entities:
   - uid: 774
     components:
     - type: Transform
@@ -5633,6 +5724,14 @@ entities:
     components:
     - type: Transform
       pos: -13.5,6.5
+      parent: 2
+- proto: LightPostSmall
+  entities:
+  - uid: 1159
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 9.5,-13.5
       parent: 2
 - proto: LockerBotanistFilled
   entities:
@@ -6596,13 +6695,6 @@ entities:
       parent: 2
     - type: ApcPowerReceiver
       powerLoad: 0
-  - uid: 905
-    components:
-    - type: Transform
-      pos: -4.5,-5.5
-      parent: 2
-    - type: ApcPowerReceiver
-      powerLoad: 0
   - uid: 906
     components:
     - type: Transform
@@ -6643,6 +6735,13 @@ entities:
     components:
     - type: Transform
       pos: -3.37047,8.853753
+      parent: 2
+- proto: Rack
+  entities:
+  - uid: 1684
+    components:
+    - type: Transform
+      pos: -6.5,-7.5
       parent: 2
 - proto: Railing
   entities:
@@ -7109,7 +7208,7 @@ entities:
   - uid: 988
     components:
     - type: Transform
-      pos: -6.5073137,-7.5018454
+      pos: -6.481306,-9.480103
       parent: 2
 - proto: SheetPlasteel
   entities:
@@ -7188,7 +7287,7 @@ entities:
   - uid: 1001
     components:
     - type: Transform
-      pos: -6.2573137,-7.543512
+      pos: -6.465681,-10.464478
       parent: 2
 - proto: ShelfWallFreezerWhite
   entities:
@@ -8257,11 +8356,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -2.5,-3.5
       parent: 2
-  - uid: 1159
-    components:
-    - type: Transform
-      pos: -4.5,-3.5
-      parent: 2
 - proto: TableBrass
   entities:
   - uid: 1647
@@ -8855,6 +8949,12 @@ entities:
       parent: 2
 - proto: WallSolid
   entities:
+  - uid: 12
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5,-4.5
+      parent: 2
   - uid: 512
     components:
     - type: Transform
@@ -9399,11 +9499,6 @@ entities:
     components:
     - type: Transform
       pos: -3.5,-4.5
-      parent: 2
-  - uid: 1322
-    components:
-    - type: Transform
-      pos: -4.5,-4.5
       parent: 2
   - uid: 1323
     components:
@@ -10554,17 +10649,17 @@ entities:
       parent: 2
 - proto: WallWeaponCapacitorRecharger
   entities:
+  - uid: 747
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -2.5,-4.5
+      parent: 2
   - uid: 1550
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -3.5,-4.5
-      parent: 2
-  - uid: 1551
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -4.5,-4.5
       parent: 2
 - proto: WarpPoint
   entities:
