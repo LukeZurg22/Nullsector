@@ -960,4 +960,5 @@
     - MetalBarrelWhite
     - MetalBarrelBlack
     - ChemicalBarrelExplosiveEmpty
+    - ChemicalBarrelExplosiveFilled
     offset: 0.1 # Little offset, it's free-standing

@@ -1,0 +1,40 @@
+# Author Info
+# GitHub: Bluespace-Storm
+# Discord: its_bear
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: Insight
+  parent: BaseVessel
+  name: Insight
+  description: An artifact research vessel with room for 3 crew
+  price: 75000
+  category: Medium
+  group: Shipyard
+  shuttlePath: /Maps/_Null/Shuttles/Research/insight.yml
+  guidebookPage: null
+  class:
+  - Science
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Insight
+  mapName: 'Insight'
+  mapPath: /Maps/_Null/Shuttles/Research/insight.yml
+  minPlayers: 0
+  stations:
+    Insight:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Insight CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 1, 1 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

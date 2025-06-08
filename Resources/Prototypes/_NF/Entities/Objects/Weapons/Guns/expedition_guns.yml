@@ -1,6 +1,14 @@
 # The list contains only the guns that were previously obtainable as expedition reward
 # or as a loose guns on the expedition
 
+# Null
+- type: entity
+  parent:
+  - BaseC2ExpeditionContraband
+  - WeaponPistolMauserC96
+  categories: [ HideSpawnMenu ]
+  id: WeaponPistolMauserC96Expedition
+
 # Pistols
 - type: entity
   parent:

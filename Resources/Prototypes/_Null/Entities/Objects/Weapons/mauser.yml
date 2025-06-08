@@ -1,0 +1,34 @@
+- type: entity
+  name: mauser C96
+  parent: [ WeaponPistolMk58, BaseC1Contraband ]
+  id: WeaponPistolMauserC96
+  description: An old military grade hunk of junk. Uses .45 auto ammo.
+  components:
+  - type: Sprite
+    sprite: _Null/Objects/Weapons/mauser_c96.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineMagnum
+        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineMagnum
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeMagnum
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeMagnum
+#  - type: PirateBountyItem # Frontier
+#    id: WeaponPistolMk58 # Frontier

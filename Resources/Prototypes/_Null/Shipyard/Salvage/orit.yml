@@ -1,36 +1,33 @@
 # Author Info
-# Github: UskSys
-# Discord: Usk
+# GitHub: sowelipililimute
+# Discord: akesima
 
-# Shuttle Notes: Tandem hull scrapyard kitchen ship
-#
 - type: vessel
-  id: Montressor
+  id: Orit
   parent: BaseVessel
-  name: Montressor
-  description: A tandem hull kitchen shuttle made up from two wrecks loosely held together. Make sure not to run out of power!
-  price: 25000
+  name: SKR Orit
+  description: A small salvage vessel retrofitted out of its previous medical status, designed for the fast search and retrieval in deep space.
+  price: 30530
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Null/Shuttles/Scrap/montressor.yml
+  shuttlePath: /Maps/_Null/Shuttles/Salvage/orit.yml
   guidebookPage: null
   class:
-  - Scrapyard
-  - Kitchen
+  - Salvage
   engine:
   - Plasma
 
 - type: gameMap
-  id: Montressor
-  mapName: 'Montressor'
-  mapPath: /Maps/_Null/Shuttles/Scrap/montressor.yml
+  id: Orit
+  mapName: 'SKR Orit'
+  mapPath: /Maps/_Null/Shuttles/Salvage/orit.yml
   minPlayers: 0
   stations:
-    Montressor:
+    Orit:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Montressor CIV{1}'
+          mapNameTemplate: 'Orit CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -62,10 +62,11 @@
 - type: vendingMachineInventory
   id: WeaponryWorksVendPOIMercInventory
   startingInventory:
-    WeaponSubMachineGunWt550PMC: 1      # Null Sector
-    WeaponSubMachineGunDrozdPMC: 1      # Null Sector
-    WeaponSubMachineGunC20rPMC: 1       # Null Sector
-    WeaponShotgunKammerer: 5            # Null Sector
+    WeaponSubMachineGunWt550PMC: 1
+    WeaponSubMachineGunDrozdPMC: 1
+    WeaponSubMachineGunC20rPMC: 1
+    WeaponShotgunKammerer: 5
+    WeaponPistolMauserC96: 7
     WeaponRifleLecterPMC: 4294967295
     WeaponPistolViperPMC: 4294967295
     WeaponPistolUniversal: 4294967295

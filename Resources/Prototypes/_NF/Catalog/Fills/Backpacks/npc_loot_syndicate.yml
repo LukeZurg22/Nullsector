@@ -563,6 +563,9 @@
   - type: SpawnItemsOnUse
     items:
       - id: WeaponPistolMk58Expedition
+        prob: 0.5
+      - id: WeaponPistolMauserC96Expedition
+        prob: 0.5
       - id: MagazinePistol
       - id: SpaceCash1000
       # Bonus Loot T1

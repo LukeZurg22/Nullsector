@@ -20,6 +20,9 @@
   - id: WeaponPistolMk58
     amount: 0
     maxAmount: 5
+  - id: WeaponPistolMauserC96
+    amount: 0
+    maxAmount: 5
   - id: ButchCleaver
     maxAmount: 5
   - id: Pickaxe

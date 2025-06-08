@@ -2,35 +2,35 @@
 # Github: UskSys
 # Discord: Usk
 
-# Shuttle Notes: Tandem hull scrapyard kitchen ship
+# Shuttle Notes: Bar ship made from ice, name means 'crystal'
 #
 - type: vessel
-  id: Montressor
+  id: Grisial
   parent: BaseVessel
-  name: Montressor
-  description: A tandem hull kitchen shuttle made up from two wrecks loosely held together. Make sure not to run out of power!
+  name: Grisial
+  description: A budget bar ship made up largely of ice, comes with a stage and instruments
   price: 25000
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Null/Shuttles/Scrap/montressor.yml
+  shuttlePath: /Maps/_Null/Shuttles/Civilian/grisial.yml
   guidebookPage: null
   class:
-  - Scrapyard
+  - Civilian
   - Kitchen
   engine:
   - Plasma
 
 - type: gameMap
-  id: Montressor
-  mapName: 'Montressor'
-  mapPath: /Maps/_Null/Shuttles/Scrap/montressor.yml
+  id: Grisial
+  mapName: 'Grisial'
+  mapPath: /Maps/_Null/Shuttles/Civilian/grisial.yml
   minPlayers: 0
   stations:
-    Montressor:
+    Grisial:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Montressor CIV{1}'
+          mapNameTemplate: 'Grisial CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

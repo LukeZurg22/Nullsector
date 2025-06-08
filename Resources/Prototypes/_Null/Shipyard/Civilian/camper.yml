@@ -1,36 +1,36 @@
 # Author Info
-# Github: UskSys
-# Discord: Usk
+# GitHub: LukeZurg22
+# Discord: lukezurg22
 
-# Shuttle Notes: Tandem hull scrapyard kitchen ship
-#
+# Shuttle Notes:
+# Made by Sketch
+
 - type: vessel
-  id: Montressor
+  id: Camper
   parent: BaseVessel
-  name: Montressor
-  description: A tandem hull kitchen shuttle made up from two wrecks loosely held together. Make sure not to run out of power!
-  price: 25000
+  name: UNJ Camper
+  description: A small, single-person shuttle meant for cozy travels.
+  price: 20000
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Null/Shuttles/Scrap/montressor.yml
+  shuttlePath: /Maps/_Null/Shuttles/Civilian/camper.yml
   guidebookPage: null
   class:
-  - Scrapyard
-  - Kitchen
+  - Civilian
   engine:
   - Plasma
 
 - type: gameMap
-  id: Montressor
-  mapName: 'Montressor'
-  mapPath: /Maps/_Null/Shuttles/Scrap/montressor.yml
+  id: Camper
+  mapName: 'Camper'
+  mapPath: /Maps/_Null/Shuttles/Civilian/camper.yml
   minPlayers: 0
   stations:
-    Montressor:
+    Camper:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Montressor CIV{1}'
+          mapNameTemplate: 'Camper CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
