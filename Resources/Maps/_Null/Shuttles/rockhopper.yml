@@ -4,7 +4,7 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 06/08/2025 14:33:56
+  time: 06/08/2025 17:36:06
   entityCount: 320
 maps: []
 grids:
@@ -2528,7 +2528,7 @@ entities:
     - type: Transform
       pos: 2.5,-2.5
       parent: 1
-- proto: WeaponTurretL85Autocannon
+- proto: WeaponTurretMining
   entities:
   - uid: 294
     components:
