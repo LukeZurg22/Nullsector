@@ -12,7 +12,7 @@
   price: 36200
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Null/Shuttles/Civilian/iapetus.yml
+  shuttlePath: /Maps/_Null/Shuttles/Research/iapetus.yml
   guidebookPage: null
   class:
   - Science
@@ -22,7 +22,7 @@
 - type: gameMap
   id: Iapetus
   mapName: 'NGC Iapetus'
-  mapPath: /Maps/_Null/Shuttles/Civilian/iapetus.yml
+  mapPath: /Maps/_Null/Shuttles/Research/iapetus.yml
   minPlayers: 0
   stations:
     Iapetus:
