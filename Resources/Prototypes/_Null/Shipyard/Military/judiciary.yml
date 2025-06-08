@@ -7,12 +7,12 @@
 - type: vessel
   id: Judiciary
   parent: BaseVessel
-  name: SHM Judiciary
+  name: Judiciary
   description: A refitted research vessel armed with combat equipment. NOT for expeditions.
   price: 70001 # ~20,000$ markup
   category: Medium
   group: Expedition
-  shuttlePath: /Maps/_Mono/Shuttles/Expedition/judiciary.yml
+  shuttlePath: /Maps/_Null/Shuttles/Military/judiciary.yml
   guidebookPage: ShipyardJudiciary
   class:
   - Expedition
@@ -22,14 +22,14 @@
 - type: gameMap
   id: Judiciary
   mapName: 'Judiciary'
-  mapPath: /Maps/_Mono/Shuttles/Expedition/judiciary.yml
+  mapPath: /Maps/_Null/Shuttles/Military/judiciary.yml
   minPlayers: 0
   stations:
     Judiciary:
       stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Judiciary EXP{1}'
+          mapNameTemplate: 'Judiciary MIL{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
