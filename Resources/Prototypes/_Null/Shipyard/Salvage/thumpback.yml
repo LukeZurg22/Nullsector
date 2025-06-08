@@ -16,7 +16,7 @@
   price: 30000
   category: Medium
   group: Shipyard
-  shuttlePath: /Maps/_Null/Shuttles/thumpback.yml
+  shuttlePath: /Maps/_Null/Shuttles/Salvage/thumpback.yml
   guidebookPage: null
   class:
   - Salvage
@@ -27,7 +27,7 @@
 - type: gameMap
   id: Thumpback
   mapName: 'Thumpback'
-  mapPath: /Maps/_Null/Shuttles/thumpback.yml
+  mapPath: /Maps/_Null/Shuttles/Salvage/thumpback.yml
   minPlayers: 0
   stations:
     Thumpback:
