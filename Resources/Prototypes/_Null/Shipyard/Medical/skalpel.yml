@@ -7,12 +7,12 @@
 - type: vessel
   id: Skalpel
   parent: BaseVessel
-  name: NGC-SKR Skalpel
+  name: NGC Skalpel
   description: A de-militarized S&R ship, outfitted with chemistry and paramedic equipment.
-  price: 48800
+  price: 58800
   category: Medium
   group: Medical
-  shuttlePath: /Maps/_Mono/Shuttles/skalpel.yml
+  shuttlePath: /Maps/_Null/Shuttles/Medical/skalpel.yml
   guidebookPage: null
   class:
   - Medical
@@ -21,8 +21,8 @@
 
 - type: gameMap
   id: Skalpel
-  mapName: 'NGC-SKR Skalpel'
-  mapPath: /Maps/_Mono/Shuttles/skalpel.yml
+  mapName: 'NGC Skalpel'
+  mapPath: /Maps/_Null/Shuttles/Medical/skalpel.yml
   minPlayers: 0
   stations:
     Skalpel:
