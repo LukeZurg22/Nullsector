@@ -35,6 +35,6 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            Contractor: [ 0, 0 ]
+            Contractor: [ 1, 1 ]
             Pilot: [ 0, 0 ]
             Mercenary: [ 0, 0 ]
