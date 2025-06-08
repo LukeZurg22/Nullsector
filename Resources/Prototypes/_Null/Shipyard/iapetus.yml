@@ -3,16 +3,16 @@
 # Discord: _starch_
 
 # Shuttle Notes:
-# This ship was originally designed by starch70, but was overhauled in design by Bluespace- for use on Null Sector
+# This ship was originally designed by starch70, but was overhauled in design by Bluespace-Storm for use on Null Sector.
 - type: vessel
   id: Iapetus
   parent: BaseVessel
-  name: NGC-SKR Iapetus
-  description: A basic artifact research ship, with minimal armament.
+  name: NGC Iapetus
+  description: A basic artifact research ship, with minimal armament that has been refitted.
   price: 36200
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Null/Shuttles/iapetus.yml
+  shuttlePath: /Maps/_Null/Shuttles/Civilian/iapetus.yml
   guidebookPage: null
   class:
   - Science
@@ -21,8 +21,8 @@
 
 - type: gameMap
   id: Iapetus
-  mapName: 'NGC-SKR Iapetus'
-  mapPath: /Maps/_Null/Shuttles/iapetus.yml
+  mapName: 'NGC Iapetus'
+  mapPath: /Maps/_Null/Shuttles/Civilian/iapetus.yml
   minPlayers: 0
   stations:
     Iapetus:
@@ -35,6 +35,6 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            Contractor: [ 0, 0 ]
+            Contractor: [ 1, 1 ]
             Pilot: [ 0, 0 ]
             Mercenary: [ 0, 0 ]
