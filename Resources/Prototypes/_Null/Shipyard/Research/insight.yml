@@ -12,7 +12,7 @@
   price: 75000
   category: Medium
   group: Shipyard
-  shuttlePath: /Maps/_Null/Shuttles/insight.yml
+  shuttlePath: /Maps/_Null/Shuttles/Research/insight.yml
   guidebookPage: null
   class:
   - Science
@@ -22,7 +22,7 @@
 - type: gameMap
   id: Insight
   mapName: 'Insight'
-  mapPath: /Maps/_Null/Shuttles/insight.yml
+  mapPath: /Maps/_Null/Shuttles/Research/insight.yml
   minPlayers: 0
   stations:
     Insight:
