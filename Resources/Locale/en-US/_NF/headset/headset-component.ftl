@@ -1,3 +1,3 @@
 chat-radio-traffic = Traffic
-chat-radio-nfsd = NFSD
+chat-radio-nfsd = MC
 chat-radio-ncmc = NCMC
