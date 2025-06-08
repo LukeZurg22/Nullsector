@@ -6,11 +6,11 @@
   id: Miriam
   parent: BaseVessel
   name: SKR Miriam
-  description: A modestly sized medical vessel equipped with all the equipment required to operate a cryogenics laboratory.
+  description: A fully supported cryogenics laboratory with a unique dual-hull design.
   price: 41070
   category: Medium
   group: Medical
-  shuttlePath: /Maps/_Mono/Shuttles/miriam.yml
+  shuttlePath: /Maps/_Null/Shuttles/miriam.yml
   guidebookPage: null
   class:
   - Medical
@@ -20,7 +20,7 @@
 - type: gameMap
   id: Miriam
   mapName: 'SKR Miriam'
-  mapPath: /Maps/_Mono/Shuttles/miriam.yml
+  mapPath: /Maps/_Null/Shuttles/miriam.yml
   minPlayers: 0
   stations:
     Miriam:
