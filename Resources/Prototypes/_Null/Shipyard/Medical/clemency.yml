@@ -10,7 +10,7 @@
   price: 40001
   category: Medium
   group: Medical
-  shuttlePath: /Maps/_Null/Shuttles/clemency.yml
+  shuttlePath: /Maps/_Null/Shuttles/Medical/clemency.yml
   guidebookPage: null
   class:
   - Civilian
@@ -21,7 +21,7 @@
 - type: gameMap
   id: Clemency
   mapName: 'UNJ Clemency'
-  mapPath: /Maps/_Null/Shuttles/clemency.yml
+  mapPath: /Maps/_Null/Shuttles/Medical/clemency.yml
   minPlayers: 0
   stations:
     Clemency:
