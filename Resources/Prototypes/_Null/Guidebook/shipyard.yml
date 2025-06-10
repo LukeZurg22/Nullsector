@@ -9,6 +9,7 @@
   - ShipyardJudiciary
   - ShipyardIapetus
   - ShipyardInsight
+  - ShipyardNourishment
 
 - type: guideEntry
   id: ShipyardArgent
@@ -34,3 +35,8 @@
   id: ShipyardInsight
   name: guide-entry-shipyard-insight
   text: "/ServerInfo/_Null/Guidebook/Shipyard/Insight.xml"
+
+- type: guideEntry
+  id: ShipyardNourishment
+  name: guide-entry-shipyard-insight
+  text: "/ServerInfo/_Null/Guidebook/Shipyard/Nourishment.xml"
