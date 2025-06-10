@@ -157,7 +157,7 @@
     anchored: true
   - type: Sprite # TODO: add sprite for maintenance panel open
     drawdepth: WallMountedItems
-    sprite: Structures/Power/substation.rsi
+    sprite: Structures/Power/substation_wallmount.rsi
     layers:
     - state: substation_wall
     - state: screen
@@ -179,7 +179,7 @@
     group: Substation
     sourceNode: input
     loadNode: output
-    sprite: Structures/Power/substation.rsi
+    sprite: Structures/Power/substation_wallmount.rsi
     state: substation_wall_static
   - type: BatteryCharger
     voltage: High
@@ -284,7 +284,7 @@
     anchored: true
   - type: Sprite
     drawdepth: WallMountedItems
-    sprite: Structures/Power/substation.rsi
+    sprite: Structures/Power/substation_wallmount.rsi
     layers:
     - state: substation_wall
   - type: Construction
