@@ -1,9 +1,10 @@
 # Author Info
-# GitHub: LukeZurg22
-# Discord: lukezurg22
+# GitHub: revoemagcoconut
+# Discord: walken_talken
 
 # Shuttle Notes:
-# Made by Sketch
+# A cheap salvage shuttle with dark moody corridors contrasted by a bright roomy workspace.
+# As a pilot's potential first ship it was designed with some flaws in mind like the paper-thin hull and bubble cockpit.
 
 - type: vessel
   id: Rockhopper
@@ -13,17 +14,17 @@
   price: 28000
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Null/Shuttles/rockhopper.yml
+  shuttlePath: /Maps/_Null/Shuttles/Salvage/rockhopper.yml
   guidebookPage: null
   class:
-  - Civilian
+  - Salvage
   engine:
   - Plasma
 
 - type: gameMap
   id: Rockhopper
   mapName: 'Rockhopper'
-  mapPath: /Maps/_Null/Shuttles/rockhopper.yml
+  mapPath: /Maps/_Null/Shuttles/Salvage/rockhopper.yml
   minPlayers: 0
   stations:
     Rockhopper:
