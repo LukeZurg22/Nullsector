@@ -3,7 +3,7 @@
 - type: entity
   id: PartChitinidBase
   parent: [BaseItem, BasePart]
-  name: "Chitinid body part"
+  name: "chitinid body part"
   abstract: true
   components:
   - type: Sprite

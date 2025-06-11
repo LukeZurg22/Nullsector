@@ -1,11 +1,11 @@
 {
     "version": 1,
-    "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/c6e3401f2e7e1e55c57060cdf956a98ef1fefc24 | Moth sprites made by PuroSlavKing (Github) | Spider sprites made by PixelTheKermit (Github) | Lizard sprites made by AmalgoMyte (Github) | Diona and Gingerbread sprites made by YoungThugSS14 (Github)",
     "size": {
         "x": 32,
         "y": 32
     },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/c6e3401f2e7e1e55c57060cdf956a98ef1fefc24 | Moth sprites made by PuroSlavKing (Github) | Spider sprites made by PixelTheKermit (Github) | Lizard sprites made by AmalgoMyte (Github)",
     "states": [
         {
             "name": "alien0",
@@ -26,30 +26,31 @@
         {
             "name": "alien2"
         },
-        {
+		{
             "name": "alien3",
             "delays": [
-                    [
-                        0.2,
-                        0.3,
-                        0.3,
-                        0.5,
-                        0.5
-                    ]
-                ]
+				[
+					0.2,
+					0.3,
+					0.3,
+					0.5,
+					0.5
+				]
+			]
         },
         {
             "name": "alienroyal0",
+
             "delays": [
-                    [
-                        0.2,
-                        0.3,
-                        0.3,
-                        0.3,
-                        0.3,
-                        0.5
-                    ]
+                [
+                    0.2,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.5
                 ]
+            ]
         },
         {
             "name": "alienroyal1"
@@ -57,7 +58,7 @@
         {
             "name": "alienroyal2"
         },
-        {
+		{
             "name": "alienroyal3",
             "delays": [
                 [
@@ -149,7 +150,7 @@
         {
             "name": "default2"
         },
-        {
+		{
             "name": "default3",
             "delays": [
                 [
@@ -161,7 +162,7 @@
                 ]
             ]
         },
-        {
+		{
             "name": "diona0",
             "delays": [
                 [
@@ -179,40 +180,12 @@
             "name": "diona2"
         },
         {
-            "name": "gingerbread0",
-            "delays": [
-                [
-                    0.3,
-                    0.3,
-                    0.3,
-                    0.4
-                ]
-            ]
-        },
-        {
-            "name": "gingerbread1"
-        },
-        {
-            "name": "gingerbread2"
-        },
-        {
-            "name": "guardian0",
-            "delays": [
-                [
-                    0.4,
-                    0.4,
-                    0.4,
-                    0.6
-                ]
-            ]
-        },
-        {
             "name": "guardian1"
         },
         {
             "name": "guardian2"
         },
-        {
+		{
             "name": "guardian3",
             "delays": [
                 [
@@ -242,18 +215,6 @@
         },
         {
             "name": "holo2"
-        },
-        {
-            "name": "holo3",
-            "delays": [
-                [
-                    0.2,
-                    0.3,
-                    0.3,
-                    0.5,
-                    0.5
-                ]
-            ]
         },
         {
             "name": "lawyer0",
@@ -292,7 +253,7 @@
                 ]
             ]
         },
-        {
+		{
             "name": "lawyer3",
             "delays": [
                 [
@@ -324,7 +285,7 @@
         {
             "name": "lizard2"
         },
-        {
+		{
             "name": "lizard3",
             "delays": [
                 [
@@ -373,7 +334,7 @@
                 ]
             ]
         },
-        {
+		{
             "name": "moth3",
             "delays": [
                 [
@@ -428,7 +389,7 @@
         {
             "name": "robot2"
         },
-        {
+		{
             "name": "robot3",
             "delays": [
                 [
@@ -483,7 +444,7 @@
                 ]
             ]
         },
-        {
+		{
             "name": "slime3",
             "delays": [
                 [
@@ -563,7 +524,7 @@
         {
             "name": "syndibot2"
         },
-        {
+		{
             "name": "syndibot3",
             "delays": [
                 [
@@ -594,7 +555,7 @@
         {
             "name": "spider2"
         },
-        {
+		{
             "name": "spider3",
             "delays": [
                 [
@@ -606,7 +567,7 @@
                 ]
             ]
         },
-        {
+		{
             "name": "vox0",
             "delays": [
                 [
