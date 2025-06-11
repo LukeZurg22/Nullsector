@@ -89,7 +89,7 @@
 - type: entity
   parent: ClothingBackpackMessengerContractor
   id: ClothingBackpackMessengerSr
-  name: militia coordinator's messenger bag
+  name: sector coordinator's messenger bag
   description: An exclusive messenger bag for Nanotrasen officers.
   components:
   - type: Sprite

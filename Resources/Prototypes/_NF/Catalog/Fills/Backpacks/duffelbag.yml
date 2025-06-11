@@ -99,7 +99,7 @@
 - type: entity
   parent: [ ClothingBackpackDuffelSr, StorageFillEVASuitSr ]
   id: ClothingBackpackDuffelEVABundleSr
-  name: militia coordinator EVA bundle
+  name: sector coordinator EVA bundle
   suffix: Filled
 
 - type: entity

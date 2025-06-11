@@ -30,7 +30,7 @@
   categories: [ HideSpawnMenu ] # debloat spawn menu
   id: LockerWallEVAColorSr
   parent: LockerWallColorBase
-  name: militia coordinator EVA wall locker
+  name: sector coordinator EVA wall locker
   components:
   - type: Sprite
     layers:

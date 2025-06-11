@@ -181,7 +181,7 @@
 - type: entity
   id: NFPouchSr
   parent: NFPouchUtility
-  name: militia coordinator's pouch
+  name: sector coordinator's pouch
   components:
   - type: Sprite
     layers:
