@@ -1,0 +1,120 @@
+<Document>
+  # NOURISHMENT
+  <Box>
+  <GuideEntityEmbed Entity="SignKitchen"/>
+  </Box>
+    [color=#a4885c]Hull Configuration:[/color] Medium, Bowside Docking, Portside Fly-up
+
+	[color=#a4885c]Crew Slots:[/color] 1 Chef, 2 Service Staff
+
+	[color=#a4885c]Power System:[/color] 2x SUPERPACMAN Uranium Generator
+
+    [color=#a4885c]Atmospherics:[/color] Gas Mixer
+
+    [color=#a4885c]Weapons:[/color] None
+
+	[color=#a4885c]IFF Designation:[/color] Civilian
+
+  "The Ursadyne Nourishment, a top of the line Restaurant Support Vessel. It has a full kitchen, greenhouse, and service area. It includes a Vox dining area and a convienent fly-up counter."
+
+  # SHIP FEATURES
+
+  ## 1. Bridge
+
+  ### 1.1. Control Systems
+  <Box>
+  <GuideEntityEmbed Entity="ComputerStationRecords"/>
+  <GuideEntityEmbed Entity="ComputerShuttle"/>
+  <GuideEntityEmbed Entity="NFHolopadShip"/>
+  </Box>
+
+  - Unlock the Shuttle computer using your ID card.
+  - Use the Station Records computer to open up slots for the other crew members.
+  - The Holopad can be used to directly contact other ships or stations.
+
+  ### 1.2. Safety Systems
+  <Box>
+  <GuideEntityEmbed Entity="LockerWallEVAColorServiceWorkerFilled"/>
+  <GuideEntityEmbed Entity="ShuttersNormal"/>
+  </Box>
+
+  - Check that the EVA locker is filled with a hardsuit, air tank, and mini-jetpack.
+  - The Yellow button on the table can be used to toggle the shutters.
+  - The Red button toggles the thrusters and one of the generators. This helps reduce power use while parked
+
+  ## 2. Culinary Service
+
+  ### 2.1. Kitchen
+  <Box>
+  <GuideEntityEmbed Entity="KitchenElectricRange"/>
+  <GuideEntityEmbed Entity="KitchenDeepFryer"/>
+  <GuideEntityEmbed Entity="KitchenMicrowave"/>
+  <GuideEntityEmbed Entity="KitchenAssembler"/>
+  <GuideEntityEmbed Entity="ClosetChefFilled"/>
+  </Box>
+
+  - The Electric Range, Deep Fryer, Microwave, and Assembler can be used to cook a wide variety of food.
+  - The Chef's Closet contains the basics to start cooking.
+
+  ### 2.2 Greenhouse
+  <Box>
+  <GuideEntityEmbed Entity="hydroponicsTray"/>
+  <GuideEntityEmbed Entity="LockerWallColorHydroponicsFilled"/>
+  <GuideEntityEmbed Entity="CrateHydroponicsSeeds"/>
+  <GuideEntityEmbed Entity="WaterTankHighCapacity"/>
+  </Box>
+
+  - The Hydroponics Tray can be used to grow plants.
+  - The Hydroponics Locker contains tools
+  - The Hydroponics Seeds crate contains a variety of seeds to grow.
+  - The Water Tank can be used to fill the Hydroponics Tray with water.
+
+  ### 2.3. Service
+  <Box>
+  <GuideEntityEmbed Entity="ComputerWallmountWithdrawBankATM"/>
+  <GuideEntityEmbed Entity="SodaDispenser"/>
+  <GuideEntityEmbed Entity="CondimentDispenser"/>
+  </Box>
+
+- The ATM can be used to withdraw money.
+- The Soda Dispenser has a variety of non-alcoholic drinks.
+- The Condiment Dispenser gives guests a wide variety of condiments.
+
+  ## 3. Engineering
+
+  ### 3.1. Power System
+  <Box>
+  <GuideEntityEmbed Entity="SMESBasic"/>
+  <GuideEntityEmbed Entity="SubstationWallBasic"/>
+  <GuideEntityEmbed Entity="APCBasic"/>
+  <GuideEntityEmbed Entity="PortableGeneratorSuperPacmanShuttle"/>
+  <GuideEntityEmbed Entity="LockerWallMaterialsFuelUraniumFilled"/>
+  </Box>
+
+  - Check that the S.U.P.E.R.P.A.C.M.A.N. generator units are anchored to the floor.
+  - Check that the SMES unit is anchored to the floor.
+  - Check that the Fuel Locker has spare fuel.
+
+  ### 3.2. Atmospherics
+  <Box>
+  <GuideEntityEmbed Entity="OxygenCanister"/>
+  <GuideEntityEmbed Entity="NitrogenCanister"/>
+  <GuideEntityEmbed Entity="GasMixer"/>
+  <GuideEntityEmbed Entity="AirAlarm"/>
+  </Box>
+
+  - Set the Ships Air Alarms to Filtering (Wide)
+  - Ensure that a gas canisters are wrenched to the connector ports.
+  - Check that the air mixer is set to ~21% oxygen, ~79% nitrogen (Confirm Crew Biology).
+
+  ### 3.3 Other Systems
+  <Box>
+  <GuideEntityEmbed Entity="Gyroscope"/>
+  <GuideEntityEmbed Entity="GravityGeneratorMini"/>
+  <GuideEntityEmbed Entity="LockerSalvageSpecialistFilledHardsuit"/>
+  </Box>
+
+  - Check that the gyroscope is anchored, powered, and enabled.
+  - Check that the mini gravity generator is anchored, powered, and enabled.
+  - Check that the Salvage Locker has tools, a hardsuit, air tank, and a mini-jetpack.
+</Document>
