@@ -4,7 +4,7 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 06/06/2025 05:06:29
+  time: 06/11/2025 03:52:56
   entityCount: 956
 maps: []
 grids:
@@ -1389,10 +1389,9 @@ entities:
       parent: 1
 - proto: BlastDoor
   entities:
-  - uid: 49
+  - uid: 18
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 13.5,-12.5
       parent: 1
   - uid: 286
@@ -3154,8 +3153,6 @@ entities:
       pos: 9.5,0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 217
       - 625
@@ -4295,8 +4292,6 @@ entities:
       pos: 10.5,2.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 217
     - type: AtmosPipeColor
@@ -4402,8 +4397,6 @@ entities:
       pos: 10.5,1.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 217
     - type: AtmosPipeColor
@@ -5551,10 +5544,9 @@ entities:
       parent: 1
 - proto: ShelfWallFreezerWhite
   entities:
-  - uid: 432
+  - uid: 19
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: 15.5,5.5
       parent: 1
 - proto: ShuttersNormalOpen
@@ -5885,7 +5877,7 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        49:
+        18:
         - Pressed: Toggle
     - type: Label
       currentLabel: Vent Test Chamber
@@ -6907,18 +6899,6 @@ entities:
       parent: 1
 - proto: WallShuttleDiagonal
   entities:
-  - uid: 18
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 2.5,-8.5
-      parent: 1
-  - uid: 19
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: 1.5,-7.5
-      parent: 1
   - uid: 23
     components:
     - type: Transform
@@ -6944,12 +6924,26 @@ entities:
   - uid: 44
     components:
     - type: Transform
-      pos: 17.5,-11.5
+      rot: 1.5707963267948966 rad
+      pos: 2.5,-8.5
       parent: 1
   - uid: 45
     components:
     - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 1.5,-7.5
+      parent: 1
+  - uid: 49
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
       pos: 16.5,-10.5
+      parent: 1
+  - uid: 432
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 17.5,-11.5
       parent: 1
 - proto: WallShuttleInterior
   entities:
