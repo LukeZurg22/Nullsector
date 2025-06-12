@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 06/12/2025 03:27:47
-  entityCount: 2073
+  time: 06/12/2025 19:18:58
+  entityCount: 2081
 maps: []
 grids:
 - 1
@@ -1844,6 +1844,17 @@ entities:
       scale: 0
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
+  - uid: 102
+    components:
+    - type: MetaData
+    - type: Transform
+      pos: 2.4890888,-2.4826505
+      parent: 1
+    - type: RadarBlip
+      enabled: False
+      scale: 0
+      radarColor: '#00DEFEFF'
+    - type: CircularShieldRadar
   - uid: 129
     components:
     - type: MetaData
@@ -2434,7 +2445,7 @@ entities:
       - - ChiefMedicalOfficer
       - - Janitor
     - type: Door
-      secondsUntilStateChange: -1914.647
+      secondsUntilStateChange: -2136.4978
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -11656,11 +11667,6 @@ entities:
     - type: Transform
       pos: -3.5,-21.5
       parent: 1
-  - uid: 1402
-    components:
-    - type: Transform
-      pos: 0.5,-3.5
-      parent: 1
 - proto: PoweredLEDSmallLight
   entities:
   - uid: 2202
@@ -12016,6 +12022,17 @@ entities:
     - type: Transform
       pos: -2.5,6.5
       parent: 1
+  - uid: 104
+    components:
+    - type: Transform
+      pos: 0.5,-2.5
+      parent: 1
+  - uid: 109
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 0.5,-4.5
+      parent: 1
   - uid: 410
     components:
     - type: Transform
@@ -12057,6 +12074,17 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -3.5,7.5
+      parent: 1
+  - uid: 110
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 1.5,-2.5
+      parent: 1
+  - uid: 111
+    components:
+    - type: Transform
+      pos: 1.5,-4.5
       parent: 1
   - uid: 1003
     components:
@@ -12702,6 +12730,13 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -6.5,1.5
+      parent: 1
+- proto: SmartFridge
+  entities:
+  - uid: 108
+    components:
+    - type: Transform
+      pos: 0.5,-3.5
       parent: 1
 - proto: SMESAdvanced
   entities:
@@ -13415,6 +13450,28 @@ entities:
     components:
     - type: Transform
       pos: 4.5,1.5
+      parent: 1
+- proto: VendingMachineFuelVend
+  entities:
+  - uid: 103
+    components:
+    - type: Transform
+      pos: -5.5,-18.5
+      parent: 1
+  - uid: 105
+    components:
+    - type: Transform
+      pos: 10.5,11.5
+      parent: 1
+  - uid: 106
+    components:
+    - type: Transform
+      pos: -5.5,11.5
+      parent: 1
+  - uid: 107
+    components:
+    - type: Transform
+      pos: 10.5,-18.5
       parent: 1
 - proto: VendingMachineMediDrobe
   entities:
@@ -15313,7 +15370,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -13437.032
+      secondsUntilStateChange: -13658.883
       state: Opening
     - type: Airlock
       autoClose: False
@@ -15471,11 +15528,6 @@ entities:
     components:
     - type: Transform
       pos: 4.5,-5.5
-      parent: 1
-  - uid: 1018
-    components:
-    - type: Transform
-      pos: 0.5,-3.5
       parent: 1
   - uid: 1228
     components:
