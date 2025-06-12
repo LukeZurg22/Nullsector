@@ -1187,9 +1187,6 @@ entities:
     - type: Transform
       pos: 2.5,13.5
       parent: 1
-    - type: DisposalUnit
-      recentlyEjected:
-      - invalid
 - proto: DrinkBottleRum
   entities:
   - uid: 293

@@ -2252,8 +2252,6 @@ entities:
       pos: 0.5,-7.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
   - uid: 560
@@ -2263,8 +2261,6 @@ entities:
       pos: 1.5,-7.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
   - uid: 561
@@ -2274,8 +2270,6 @@ entities:
       pos: 2.5,-7.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
 - proto: GasMixerOnFlipped
@@ -2838,8 +2832,6 @@ entities:
       pos: -1.5,2.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -2850,8 +2842,6 @@ entities:
       pos: 4.5,2.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -2871,8 +2861,6 @@ entities:
       pos: -1.5,-0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -2884,8 +2872,6 @@ entities:
       pos: 4.5,-0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -2897,8 +2883,6 @@ entities:
       pos: 4.5,-7.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -2910,8 +2894,6 @@ entities:
       pos: 1.5,-3.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -2923,8 +2905,6 @@ entities:
       pos: 1.5,-10.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -2935,8 +2915,6 @@ entities:
       pos: 0.5,4.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -2950,8 +2928,6 @@ entities:
       pos: -0.5,2.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -2963,8 +2939,6 @@ entities:
       pos: 1.5,-9.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -2976,8 +2950,6 @@ entities:
       pos: 1.5,-2.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -2989,8 +2961,6 @@ entities:
       pos: -1.5,-8.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -3002,8 +2972,6 @@ entities:
       pos: 4.5,-8.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -3015,8 +2983,6 @@ entities:
       pos: 4.5,-1.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -3028,8 +2994,6 @@ entities:
       pos: -1.5,-1.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
@@ -3041,8 +3005,6 @@ entities:
       pos: 3.5,2.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 558
     - type: AtmosPipeColor
