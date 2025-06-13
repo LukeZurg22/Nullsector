@@ -2,38 +2,41 @@
 # GitHub: LukeZurg22
 # Discord: lukezurg22
 
+# Shuttle Notes:
+# A botany ship shaped like a mushroom. It's got everything a botany ship needs.
+# Can be recovered even after a max-speed head-on collision.
+
 - type: vessel
-  id: Donkhaus
+  id: Coldcap
   parent: BaseVessel
-  name: UNJ Donkhaus
-  description: A large and very well-established diner. Donkhaus is a sizable mobile kitchen.
-  price: 40000
+  name: UNJ Coldcap
+  description: An oddly fungal-shaped botanists vessel.
+  price: 30000
   category: Medium
   group: Shipyard
-  shuttlePath: /Maps/_Mono/Shuttles/donkhaus.yml
+  shuttlePath: /Maps/_Mono/Shuttles/Civilian/coldcap.yml
   guidebookPage: null
   class:
   - Civilian
-  - Kitchen
   engine:
   - Uranium
 
 - type: gameMap
-  id: Donkhaus
-  mapName: 'UNJ Donkhaus'
-  mapPath: /Maps/_Mono/Shuttles/donkhaus.yml
+  id: Coldcap
+  mapName: 'UNJ Coldcap'
+  mapPath: /Maps/_Mono/Shuttles/Civilian/coldcap.yml
   minPlayers: 0
   stations:
-    Donkhaus:
+    Coldcap:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Donkhaus CIV{1}'
+          mapNameTemplate: 'Coldcap CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            Contractor: [ 1, 1 ]
+            Contractor: [ 0, 0 ]
             Pilot: [ 0, 0 ]
             Mercenary: [ 0, 0 ]

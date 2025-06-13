@@ -9,7 +9,7 @@
 - type: vessel
   id: Rockhopper
   parent: BaseVessel
-  name: Rockhopper
+  name: UNJ Rockhopper
   description: Salvaging vessel, designed for industry over comfort.
   price: 28000
   category: Small

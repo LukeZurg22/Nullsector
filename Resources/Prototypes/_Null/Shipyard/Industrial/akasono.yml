@@ -5,32 +5,31 @@
 # Shuttle Notes:
 #
 - type: vessel
-  id: Praetorian
+  id: Akasono
   parent: BaseVessel
-  name: NGC-SKR Praetorian
-  description: A more compact and advanced Archer, outfitted with a shield gen, 4 AK570s, 2 L85s, and 2 MARAUDERS. This ship has a military IFF designation.
-  price: 101520
-  category: Medium
+  name: SYN Akasono
+  description: A small entry-level gas deposit mining ship.
+  price: 38250
+  category: Small
   group: Shipyard
-  access: Mercenary
-  shuttlePath: /Maps/_Mono/Shuttles/praetorian.yml
+  shuttlePath: /Maps/_Null/Shuttles/Industrial/akasono.yml
   guidebookPage: Null
   class:
-  - Pursuit
+  - Atmospherics
   engine:
   - Uranium
 
 - type: gameMap
-  id: Praetorian
-  mapName: 'NGC-SKR Praetorian'
-  mapPath: /Maps/_Mono/Shuttles/praetorian.yml
+  id: Akasono
+  mapName: 'Akasono'
+  mapPath: /Maps/_Null/Shuttles/Industrial/akasono.yml
   minPlayers: 0
   stations:
-    Praetorian:
+    Akasono:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Praetorian MIL{1}'
+          mapNameTemplate: 'Akasono CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

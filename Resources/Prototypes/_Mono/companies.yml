@@ -47,3 +47,11 @@
   image: /Textures/_Null/Companies/gasnewgalactic.png
   description: gas-new-galactic-description
   color: "#3DA695"
+  
+  - type: company
+  id: Cerceakaa
+  form: Protagonist
+  name: Cerceakan Reaches
+  image: /Textures/_Null/Companies/cerceakan.png
+  description: cerceakan-description
+  color: "#00E2F7"

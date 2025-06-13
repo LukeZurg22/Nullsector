@@ -1,13 +1,13 @@
 - type: vessel
   id: Solarsail
   parent: BaseVessel
-  name: Solarsail
+  name: NT Solarsail
   description: A personal transport and mobile office for the sector coordinator. Part of the combined service ship.
   price: 19000
   category: Small
   group: Sr
   access: HeadOfPersonnel
-  shuttlePath: /Maps/_Mono/Shuttles/Service/solarsail.yml
+  shuttlePath: /Maps/_Null/Shuttles/Service/solarsail.yml
   guidebookPage: Null
   class:
   - Civilian
@@ -17,7 +17,7 @@
 - type: gameMap
   id: Solarsail
   mapName: 'Solarsail'
-  mapPath: /Maps/_Mono/Shuttles/Service/solarsail.yml
+  mapPath: /Maps/_Null/Shuttles/Service/solarsail.yml
   minPlayers: 0
   stations:
     Solarsail:

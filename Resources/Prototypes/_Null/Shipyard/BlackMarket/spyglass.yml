@@ -1,7 +1,7 @@
 - type: vessel
   id: Spyglass
   parent: BaseVesselAntag
-  name: RSIC Spyglass
+  name: Spyglass
   description: One of the more rare kinds of ships you'll see rogues with. A actual commercial one. Capable of Xenoarcheology and Robotics.
   price: 48500
   category: Small

@@ -7,7 +7,7 @@
 - type: vessel
   id: Torque
   parent: BaseVessel
-  name: TSE Torque
+  name: Torque
   description: A twice converted hulk of an expedition ship with pre-installed chemlab and plenty of storage room.
   price: 200051
   category: Large

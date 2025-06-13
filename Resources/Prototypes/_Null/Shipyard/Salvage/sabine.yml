@@ -7,12 +7,12 @@
 - type: vessel
   id: Sabine
   parent: BaseVessel
-  name: SKR Sabine
+  name: SYN Sabine
   description: Light salvage and mining shuttle. Requires 2 crewmen to utilize gunnery and pilot console at the same time effectively.
   price: 24500
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Mono/Shuttles/sabine.yml
+  shuttlePath: /Maps/_Null/Shuttles/Salvage/sabine.yml
   guidebookPage: ShipyardSabine
   class:
   - Salvage
@@ -21,8 +21,8 @@
 
 - type: gameMap
   id: Sabine
-  mapName: 'SKR Sabine'
-  mapPath: /Maps/_Mono/Shuttles/sabine.yml
+  mapName: 'Sabine'
+  mapPath: /Maps/_Null/Shuttles/Salvage/sabine.yml
   minPlayers: 0
   stations:
     Sabine:
@@ -35,6 +35,6 @@
             prefixCreator: '14'
         - type: StationJobs
           availableJobs:
-            Contractor: [ 0, 0 ]
+            Contractor: [ 1, 1 ]
             Pilot: [ 0, 0 ]
             Mercenary: [ 0, 0 ]

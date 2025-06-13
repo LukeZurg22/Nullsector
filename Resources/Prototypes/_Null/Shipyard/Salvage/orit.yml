@@ -5,7 +5,7 @@
 - type: vessel
   id: Orit
   parent: BaseVessel
-  name: SKR Orit
+  name: NGC Orit
   description: A small salvage vessel retrofitted out of its previous medical status, designed for the fast search and retrieval in deep space.
   price: 30530
   category: Small
@@ -19,7 +19,7 @@
 
 - type: gameMap
   id: Orit
-  mapName: 'SKR Orit'
+  mapName: 'Orit'
   mapPath: /Maps/_Null/Shuttles/Salvage/orit.yml
   minPlayers: 0
   stations:

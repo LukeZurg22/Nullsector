@@ -1,36 +1,37 @@
 # Author Info
-# GitHub: starch70
-# Discord: _starch_
+# GitHub: LukeZurg22
+# Discord: lukezurg22
 
 # Shuttle Notes:
-#
+# A botany ship shaped like a mushroom. It's got everything a botany ship needs.
+# Can be recovered even after a max-speed head-on collision.
+
 - type: vessel
-  id: Rhea
+  id: Penman
   parent: BaseVessel
-  name: SKR Rhea
-  description: A very small food ship.
-  price: 25250
+  name: UNJ Penman
+  description: A run-of-the-mill news vessel with all the bells and whistles.
+  price: 18000
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Mono/Shuttles/rhea.yml
-  guidebookPage: Null
+  shuttlePath: /Maps/_Null/Shuttles/Service/penman.yml
+  guidebookPage: null
   class:
   - Civilian
-  - Kitchen
   engine:
   - Plasma
 
 - type: gameMap
-  id: Rhea
-  mapName: 'SKR Rhea'
-  mapPath: /Maps/_Mono/Shuttles/rhea.yml
+  id: Penman
+  mapName: 'UNJ Penman'
+  mapPath: /Maps/_Null/Shuttles/Service/penman.yml
   minPlayers: 0
   stations:
-    Rhea:
+    Penman:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Rhea CIV{1}'
+          mapNameTemplate: 'Penman CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

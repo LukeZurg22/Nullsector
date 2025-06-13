@@ -1,7 +1,7 @@
 - type: vessel
   id: Mercury
   parent: BaseVesselAntag
-  name: RG Mercury
+  name: Mercury
   description: A light sub-capital missile corvette, equipped with 8x ASM-302 pods and 4x L85 20mms. This ship has a military IFF designation.
   price: 105820
   category: Large
