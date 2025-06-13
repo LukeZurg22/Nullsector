@@ -1,7 +1,7 @@
 - type: vessel
   id: Marauder
   parent: BaseVesselAntag
-  name: RG Marauder
+  name: Marauder
   description: Truly a revolutionary piece of pirate ship design. Contains the bare essentials for piracy. This ship has a military IFF designation.
   price: 45600
   category: Medium

@@ -1,13 +1,13 @@
 - type: vessel
   id: Letterbox
   parent: BaseVessel
-  name: Letterbox
+  name: NT Letterbox
   description: The mailing segment of the combined service ship.
   price: 10000
   category: Micro
   group: Sr
   access: Mail
-  shuttlePath: /Maps/_Mono/Shuttles/Service/letterbox.yml
+  shuttlePath: /Maps/_Null/Shuttles/Service/letterbox.yml
   guidebookPage: Null
   class:
   - Cargo
@@ -17,7 +17,7 @@
 - type: gameMap
   id: Letterbox
   mapName: 'Letterbox'
-  mapPath: /Maps/_Mono/Shuttles/Service/letterbox.yml
+  mapPath: /Maps/_Null/Shuttles/Service/letterbox.yml
   minPlayers: 0
   stations:
     Letterbox:

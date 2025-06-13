@@ -1,7 +1,7 @@
 - type: vessel
   id: Exocron
   parent: BaseVesselAntag
-  name: RG Exocron
+  name: Exocron
   description: A small vessel made out of salvaged rusted Zenith parts, and remade for humanoids. Designed to only be an agile fighter, and not anything else. No evil AI's inside.
   price: 95000
   category: Small

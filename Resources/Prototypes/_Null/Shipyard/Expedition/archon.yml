@@ -7,12 +7,12 @@
 - type: vessel
   id: Archon
   parent: BaseVessel
-  name: SKR Archon
+  name: Archon
   description: A entry level expedition ship, outfitted with bare essentials.
   price: 65820
   category: Medium
   group: Expedition
-  shuttlePath: /Maps/_Mono/Shuttles/Expedition/archon.yml
+  shuttlePath: /Maps/_Null/Shuttles/Expedition/archon.yml
   guidebookPage: null
   class:
   - Expedition
@@ -22,7 +22,7 @@
 - type: gameMap
   id: Archon
   mapName: 'Archon'
-  mapPath: /Maps/_Mono/Shuttles/Expedition/archon.yml
+  mapPath: /Maps/_Null/Shuttles/Expedition/archon.yml
   minPlayers: 0
   stations:
     Archon:

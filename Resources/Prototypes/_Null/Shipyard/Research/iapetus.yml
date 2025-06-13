@@ -21,7 +21,7 @@
 
 - type: gameMap
   id: Iapetus
-  mapName: 'NGC Iapetus'
+  mapName: 'Iapetus'
   mapPath: /Maps/_Null/Shuttles/Research/iapetus.yml
   minPlayers: 0
   stations:

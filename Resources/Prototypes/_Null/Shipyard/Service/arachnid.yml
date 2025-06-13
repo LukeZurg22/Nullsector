@@ -1,14 +1,14 @@
 - type: vessel
   id: Arachnid
   parent: BaseVessel
-  name: Arachnid
+  name: NT Arachnid
   description: The security wing of the combined service ship.
   price: 20000
   category: Small
   group: Sr
   access: Brig # Oddball, matches guard ID, specific enough to exclude cadets
   mapchecker_group_override: Security  # Treat this as a security vessel for mapchecker purposes
-  shuttlePath: /Maps/_Mono/Shuttles/Service/arachnid.yml
+  shuttlePath: /Maps/_Null/Shuttles/Service/arachnid.yml
   guidebookPage: Null
   class:
   - Civilian
@@ -18,14 +18,14 @@
 - type: gameMap
   id: Arachnid
   mapName: 'Arachnid'
-  mapPath: /Maps/_Mono/Shuttles/Service/arachnid.yml
+  mapPath: /Maps/_Null/Shuttles/Service/arachnid.yml
   minPlayers: 0
   stations:
     Arachnid:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Arachnid SEC{1}'
+          mapNameTemplate: 'Arachnid MIL{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

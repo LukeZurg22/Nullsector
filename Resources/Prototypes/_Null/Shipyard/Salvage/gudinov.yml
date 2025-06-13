@@ -16,7 +16,7 @@
   price: 14000
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Mono/Shuttles/gudinov.yml
+  shuttlePath: /Maps/_Null/Shuttles/Salvage/gudinov.yml
   guidebookPage: null
   class:
   - Salvage
@@ -27,7 +27,7 @@
 - type: gameMap
   id: Gudinov
   mapName: 'UNJ Gudinov'
-  mapPath: /Maps/_Mono/Shuttles/gudinov.yml
+  mapPath: /Maps/_Null/Shuttles/Salvage/gudinov.yml
   minPlayers: 0
   stations:
     Gudinov:

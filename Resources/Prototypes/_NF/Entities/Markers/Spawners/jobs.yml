@@ -120,7 +120,7 @@
 - type: entity
   id: SpawnPointStationRepresentative
   parent: SpawnPointHeadOfPersonnel
-  name: militia coordinator
+  name: sector coordinator
   components:
   - type: SpawnPoint
     job_id: StationRepresentative

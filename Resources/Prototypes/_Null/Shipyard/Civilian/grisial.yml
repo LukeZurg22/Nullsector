@@ -7,7 +7,7 @@
 - type: vessel
   id: Grisial
   parent: BaseVessel
-  name: Grisial
+  name: JNK Grisial
   description: A budget bar ship made up largely of ice, comes with a stage and instruments
   price: 25000
   category: Small

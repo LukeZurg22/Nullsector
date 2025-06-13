@@ -193,7 +193,7 @@
 - type: entity
   id: LockerStationRepresentative
   parent: [BaseStructureIndestructible, BaseStructureLockImmuneToEmag, BaseStructureAccessReaderImmuneToEmag, NFLockerBaseSecure, LockerHeadOfPersonnel]
-  name: militia coordinator's locker
+  name: sector coordinator's locker
   components:
   - type: EntityStorageVisuals
     stateBaseClosed: sr

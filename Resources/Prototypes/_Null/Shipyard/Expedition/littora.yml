@@ -7,12 +7,12 @@
 - type: vessel
   id: Littora
   parent: BaseVessel
-  name: SKR Littora
+  name: Littora
   description: A medium-to-large sized expedition ship with salvage equipment.
   price: 95720
   category: Large
   group: Expedition
-  shuttlePath: /Maps/_Mono/Shuttles/Expedition/littora.yml
+  shuttlePath: /Maps/_Null/Shuttles/Expedition/littora.yml
   guidebookPage: null
   class:
   - Expedition
@@ -22,7 +22,7 @@
 - type: gameMap
   id: Littora
   mapName: 'Littora'
-  mapPath: /Maps/_Mono/Shuttles/Expedition/littora.yml
+  mapPath: /Maps/_Null/Shuttles/Expedition/littora.yml
   minPlayers: 0
   stations:
     Littora:

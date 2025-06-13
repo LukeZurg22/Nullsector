@@ -13,7 +13,7 @@
 	{
 	  "name": "substation_static"
 	},
-    {		
+    {
       "name": "substation_wall"
     },
 	{
@@ -30,6 +30,19 @@
     },
     {
       "name": "screen",
+      "delays": [
+        [
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ]
+      ]
+    },
+	{
+      "name": "screen_wall",
       "delays": [
         [
           0.15,

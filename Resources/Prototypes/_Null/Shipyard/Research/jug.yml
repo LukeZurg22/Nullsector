@@ -23,7 +23,7 @@
   price: 33000
   category: Medium
   group: Shipyard
-  shuttlePath: /Maps/_Mono/Shuttles/jug.yml
+  shuttlePath: /Maps/_Null/Shuttles/Research/jug.yml
   guidebookPage: null
   class:
   - Cargo
@@ -34,8 +34,8 @@
 
 - type: gameMap
   id: Jug
-  mapName: 'UNJ Jug'
-  mapPath: /Maps/_Mono/Shuttles/jug.yml
+  mapName: 'Jug'
+  mapPath: /Maps/_Null/Shuttles/Research/jug.yml
   minPlayers: 0
   stations:
     Jug:

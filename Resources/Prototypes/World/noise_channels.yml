@@ -34,7 +34,7 @@
     - 0.0, 0.4
   clippedValue: 0
   remapTo0Through1: true
-  inputMultiplier: 16 # Makes wreck concentration very low noise at scale.
+  inputMultiplier: 22 # Makes wreck concentration very low noise at scale.
 
 - type: noiseChannel
   id: Temperature

@@ -5,12 +5,12 @@
 - type: vessel
   id: Eden
   parent: BaseVessel
-  name: SKR Eden
+  name: NT Eden
   description: A modestly sized botanical garden with a chemistry lab for pushing the bounds of hydroponics.
   price: 49530
   category: Medium
   group: Medical
-  shuttlePath: /Maps/_Mono/Shuttles/eden.yml
+  shuttlePath: /Maps/_Null/Shuttles/Civilian/eden.yml
   guidebookPage: null
   class:
   - Medical
@@ -20,7 +20,7 @@
 - type: gameMap
   id: Eden
   mapName: 'SKR Eden'
-  mapPath: /Maps/_Mono/Shuttles/eden.yml
+  mapPath: /Maps/_Null/Shuttles/Civilian/eden.yml
   minPlayers: 0
   stations:
     Eden:

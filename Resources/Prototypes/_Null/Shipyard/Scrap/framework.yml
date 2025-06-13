@@ -26,7 +26,7 @@
 
 - type: gameMap
   id: Framework
-  mapName: 'UNJ Framework'
+  mapName: 'Framework'
   mapPath: /Maps/_Null/Shuttles/Scrap/framework.yml
   minPlayers: 0
   stations:

@@ -1,7 +1,6 @@
-using Robust.Shared.Serialization;
 using Content.Shared.Inventory;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.Manager.Exceptions;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Chat.TypingIndicator;
 
@@ -12,11 +11,11 @@ namespace Content.Shared.Chat.TypingIndicator;
 [Serializable, NetSerializable]
 public sealed class TypingChangedEvent : EntityEventArgs
 {
-    public readonly bool IsTyping;
+    public readonly TypingIndicatorState State;
 
-    public TypingChangedEvent(bool isTyping)
+    public TypingChangedEvent(TypingIndicatorState state)
     {
-        IsTyping = isTyping;
+        State = state;
     }
 }
 

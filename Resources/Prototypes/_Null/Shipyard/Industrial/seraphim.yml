@@ -5,14 +5,14 @@
 # Shuttle Notes:
 #
 - type: vessel
-  id: Seraphim
+  id: Seraph
   parent: BaseVessel
-  name: SKR Seraphim
+  name: NGC Seraph
   description: A large, unarmed heavy freight transport.
   price: 92530
   category: Large
   group: Shipyard
-  shuttlePath: /Maps/_Mono/Shuttles/seraphim.yml
+  shuttlePath: /Maps/_Null/Shuttles/Industrial/seraph.yml
   guidebookPage: Null
   class:
   - Cargo
@@ -20,16 +20,16 @@
   - AME
 
 - type: gameMap
-  id: Seraphim
-  mapName: 'SKR Seraphim'
-  mapPath: /Maps/_Mono/Shuttles/seraphim.yml
+  id: Seraph
+  mapName: 'Seraph'
+  mapPath: /Maps/_Null/Shuttles/Industrial/seraph.yml
   minPlayers: 0
   stations:
-    Seraphim:
+    Seraph:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Seraphim CIV{1}'
+          mapNameTemplate: 'Seraph CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

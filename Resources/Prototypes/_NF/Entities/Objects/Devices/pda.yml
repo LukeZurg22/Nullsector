@@ -347,7 +347,7 @@
 - type: entity
   parent: [BaseSecurityPDA, BaseCommandContraband]
   id: SrPDA
-  name: militia coordinator PDA
+  name: sector coordinator PDA
   description: Looks like it's left to rust.
   components:
   - type: Pda

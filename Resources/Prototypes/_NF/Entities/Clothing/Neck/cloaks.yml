@@ -12,7 +12,7 @@
 - type: entity
   parent: ClothingNeckCloakHop
   id: ClothingNeckCloakSr
-  name: militia coordinator's cloak
+  name: sector coordinator's cloak
   description: A top of the line cloak for militia coordinators. Made from exquisite fibers and furs, this thing must have cost a fortune! The fact this cloak was even issued shows the trust Central Command is placing in their representative on this outpost.
   components:
   - type: Sprite

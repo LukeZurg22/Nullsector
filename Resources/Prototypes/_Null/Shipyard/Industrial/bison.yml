@@ -1,35 +1,33 @@
 # Author Info
-# GitHub: starch70
-# Discord: _starch_
+# GitHub: Phoenix51505
+# Discord: phoebe_the_phoenix0227
 
-# Shuttle Notes:
-#
 - type: vessel
-  id: Akasono
+  id: Bison
   parent: BaseVessel
-  name: SKR Akasono
-  description: A small entry-level gas deposit mining ship.
-  price: 38250
-  category: Small
+  name: C1R Bison
+  description: A container hauler featuring 4 cargo bays and a comfortable living area for the long haul.
+  price: 45000
+  category: Medium
   group: Shipyard
-  shuttlePath: /Maps/_Mono/Shuttles/akasono.yml
-  guidebookPage: Null
+  shuttlePath: /Maps/_Null/Shuttles/Industrial/bison.yml
+  guidebookPage: null
   class:
-  - Atmospherics
+  - Cargo
   engine:
   - Uranium
 
 - type: gameMap
-  id: Akasono
-  mapName: 'SKR Akasono'
-  mapPath: /Maps/_Mono/Shuttles/akasono.yml
+  id: Bison
+  mapName: 'Bison'
+  mapPath: /Maps/_Null/Shuttles/Industrial/bison.yml
   minPlayers: 0
   stations:
-    Akasono:
+    Bison:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Akasono CIV{1}'
+          mapNameTemplate: 'Bison CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
