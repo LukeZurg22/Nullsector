@@ -48,7 +48,7 @@
   description: gas-new-galactic-description
   color: "#3DA695"
   
-  - type: company
+- type: company
   id: Cerceakaa
   form: Protagonist
   name: Cerceakan Reaches
