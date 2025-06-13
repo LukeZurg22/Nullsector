@@ -1,3 +1,4 @@
+
 # Author Info
 # GitHub: LukeZurg22
 # Discord: lukezurg22
@@ -14,7 +15,7 @@
   price: 30000
   category: Medium
   group: Shipyard
-  shuttlePath: /Maps/_Mono/Shuttles/Civilian/coldcap.yml
+  shuttlePath: /Maps/_Null/Shuttles/Civilian/coldcap.yml
   guidebookPage: null
   class:
   - Civilian
@@ -24,7 +25,7 @@
 - type: gameMap
   id: Coldcap
   mapName: 'UNJ Coldcap'
-  mapPath: /Maps/_Mono/Shuttles/Civilian/coldcap.yml
+  mapPath: /Maps/_Null/Shuttles/Civilian/coldcap.yml
   minPlayers: 0
   stations:
     Coldcap:
