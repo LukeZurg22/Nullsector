@@ -1,0 +1,41 @@
+# Author Info
+# Github: Bluespace-Storm
+# Discord: Bear
+
+# Shuttle Notes: 
+
+
+- type: vessel
+  id: Nourishment
+  parent: BaseVessel
+  name: Nourishment
+  description: A top of the line Restaurant Support Vessel. Includes a Vox dining area and space fly-up counter.
+  price: 69000
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Null/Shuttles/Civilian/nourishment.yml
+  guidebookPage: ShipyardNourishment
+  class:
+  - Civilian
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Nourishment
+  mapName: 'Nourishment'
+  mapPath: /Maps/_Null/Shuttles/Civilian/nourishment.yml
+  minPlayers: 0
+  stations:
+    Nourishment:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Nourishment CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

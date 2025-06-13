@@ -4,23 +4,28 @@
         "x": 32,
         "y": 32
     },
-    "license": "CC-BY-SA-3.0",
-    "copyright": "Sprited by erhardsteinhauer (discord), edited by Whatstone (Discord) for Space Station 14 New Frontier server",
+    "license": "CC-BY-SA-4.0",
+    "copyright": "Made by SketchiiArtist (github).",
     "states": [
         {
-            "name": "state0"
+            "name": "state0",
+  	    "directions": 4
         },
         {
-            "name": "state1"
+            "name": "state1",
+  	    "directions": 4
         },
         {
-            "name": "state2"
+            "name": "state2",
+  	    "directions": 4
         },
         {
-            "name": "state3"
+            "name": "state3",
+  	    "directions": 4
         },
         {
-            "name": "state4"
+            "name": "state4",
+  	    "directions": 4
         }
     ]
 }

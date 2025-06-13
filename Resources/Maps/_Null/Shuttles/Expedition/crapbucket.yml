@@ -1027,8 +1027,6 @@ entities:
       pos: 0.5,4.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 340
 - proto: FirelockEdge
@@ -1263,8 +1261,6 @@ entities:
       pos: 1.5,5.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 340
   - uid: 299
@@ -1321,8 +1317,6 @@ entities:
       pos: -0.5,5.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 340
 - proto: GravityGeneratorMini

@@ -1,0 +1,42 @@
+# Author Info
+# GitHub: revoemagcoconut
+# Discord: walken_talken
+
+# Shuttle Notes:
+# A cheap salvage shuttle with dark moody corridors contrasted by a bright roomy workspace.
+# As a pilot's potential first ship it was designed with some flaws in mind like the paper-thin hull and bubble cockpit.
+
+- type: vessel
+  id: Rockhopper
+  parent: BaseVessel
+  name: Rockhopper
+  description: Salvaging vessel, designed for industry over comfort.
+  price: 28000
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Null/Shuttles/Salvage/rockhopper.yml
+  guidebookPage: null
+  class:
+  - Salvage
+  engine:
+  - Plasma
+
+- type: gameMap
+  id: Rockhopper
+  mapName: 'Rockhopper'
+  mapPath: /Maps/_Null/Shuttles/Salvage/rockhopper.yml
+  minPlayers: 0
+  stations:
+    Rockhopper:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Rockhopper CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

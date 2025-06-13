@@ -887,8 +887,6 @@ entities:
       pos: -4.5,0.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 312
       - 341
@@ -899,8 +897,6 @@ entities:
       pos: -0.5,-2.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 312
       - 341
@@ -911,8 +907,6 @@ entities:
       pos: 1.5,-2.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 312
       - 341
@@ -923,8 +917,6 @@ entities:
       pos: 5.5,2.5
       parent: 2
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 312
       - 341
