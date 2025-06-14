@@ -9,7 +9,7 @@
   parent: BaseVessel
   name: UCE Pulse
   description: An EMS vessel with basic equipment for 2 paramedics.
-  price: 40000
+  price: 31000
   category: Small
   group: Medical
   shuttlePath: /Maps/_Null/Shuttles/Medical/pulse.yml

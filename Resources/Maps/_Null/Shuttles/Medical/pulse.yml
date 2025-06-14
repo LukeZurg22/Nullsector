@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 06/14/2025 01:37:30
-  entityCount: 327
+  time: 06/14/2025 20:41:07
+  entityCount: 319
 maps: []
 grids:
 - 1
@@ -87,21 +87,10 @@ entities:
           decals:
             40: 0,-2
         - node:
-            angle: 1.5707963267948966 rad
             color: '#FFFFFFFF'
             id: Box
           decals:
-            102: 0,1
-        - node:
-            color: '#08528DFF'
-            id: BoxGreyscale
-          decals:
-            54: -1,1
-        - node:
-            color: '#9B0000FF'
-            id: BoxGreyscale
-          decals:
-            53: 1,1
+            118: 0,1
         - node:
             color: '#1A394AFF'
             id: BrickCornerOverlayNE
@@ -148,42 +137,42 @@ entities:
             color: '#FFFFFFFF'
             id: BrickTileWhiteCornerNe
           decals:
-            4: 1,2
+            111: 1,2
         - node:
             color: '#FFFFFFFF'
             id: BrickTileWhiteCornerNw
           decals:
-            1: -1,2
+            110: -1,2
         - node:
             color: '#FFFFFFFF'
             id: BrickTileWhiteCornerSe
           decals:
-            2: 1,1
+            114: 1,1
         - node:
             color: '#FFFFFFFF'
             id: BrickTileWhiteCornerSw
           decals:
-            3: -1,1
+            113: -1,1
         - node:
             color: '#FFFFFFFF'
             id: BrickTileWhiteEndN
           decals:
-            5: 0,3
+            112: 0,3
         - node:
             color: '#FFFFFFFF'
             id: BrickTileWhiteInnerNe
           decals:
-            8: 0,2
+            117: 0,2
         - node:
             color: '#FFFFFFFF'
             id: BrickTileWhiteInnerNw
           decals:
-            7: 0,2
+            116: 0,2
         - node:
             color: '#FFFFFFFF'
             id: BrickTileWhiteLineS
           decals:
-            6: 0,1
+            115: 0,1
         - node:
             angle: 1.5707963267948966 rad
             color: '#FFFFFFFF'
@@ -466,13 +455,13 @@ entities:
             1: 32768
           -1,-3:
             1: 4592
-            0: 60928
+            0: 11776
           -1,-2:
             1: 281
             0: 60546
           0,-3:
             1: 4592
-            0: 60928
+            0: 36352
           0,-2:
             1: 3
             0: 63288
@@ -1105,56 +1094,6 @@ entities:
     - type: Transform
       pos: -0.5,-4.5
       parent: 1
-  - uid: 224
-    components:
-    - type: Transform
-      pos: 2.5,5.5
-      parent: 1
-  - uid: 296
-    components:
-    - type: Transform
-      pos: 2.5,4.5
-      parent: 1
-  - uid: 297
-    components:
-    - type: Transform
-      pos: 2.5,3.5
-      parent: 1
-  - uid: 298
-    components:
-    - type: Transform
-      pos: 2.5,2.5
-      parent: 1
-  - uid: 299
-    components:
-    - type: Transform
-      pos: 2.5,1.5
-      parent: 1
-  - uid: 300
-    components:
-    - type: Transform
-      pos: -1.5,5.5
-      parent: 1
-  - uid: 301
-    components:
-    - type: Transform
-      pos: -1.5,4.5
-      parent: 1
-  - uid: 302
-    components:
-    - type: Transform
-      pos: -1.5,3.5
-      parent: 1
-  - uid: 303
-    components:
-    - type: Transform
-      pos: -1.5,2.5
-      parent: 1
-  - uid: 304
-    components:
-    - type: Transform
-      pos: -1.5,1.5
-      parent: 1
 - proto: CableMV
   entities:
   - uid: 172
@@ -1221,17 +1160,6 @@ entities:
       powerLoad: 5
     - type: Battery
       startingCharge: 0
-- proto: ComputerGunneryConsole
-  entities:
-  - uid: 220
-    components:
-    - type: Transform
-      pos: 1.5,2.5
-      parent: 1
-    - type: ApcPowerReceiver
-      powerLoad: 5
-    - type: Battery
-      startingCharge: 0
 - proto: ComputerShuttle
   entities:
   - uid: 156
@@ -1283,10 +1211,6 @@ entities:
         - device-button-4: Toggle
         163:
         - device-button-5: DoorBolt
-        221:
-        - device-button-6: Toggle
-        218:
-        - device-button-6: Toggle
         107:
         - device-button-6: Toggle
         27:
@@ -1307,6 +1231,14 @@ entities:
         - device-button-6: Toggle
         34:
         - device-button-6: Toggle
+        294:
+        - device-button-6: Toggle
+        224:
+        - device-button-6: Toggle
+        221:
+        - device-button-6: Toggle
+        218:
+        - device-button-6: Toggle
       lastSignals: {}
       ports:
       - device-button-1
@@ -1319,11 +1251,10 @@ entities:
       - device-button-8
 - proto: ComputerStationRecords
   entities:
-  - uid: 223
+  - uid: 220
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -0.5,1.5
+      pos: 1.5,2.5
       parent: 1
     - type: ApcPowerReceiver
       powerLoad: 5
@@ -1365,8 +1296,6 @@ entities:
       pos: 0.5,0.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 246
       - 243
@@ -1376,8 +1305,6 @@ entities:
       pos: 0.5,-3.5
       parent: 1
     - type: DeviceNetwork
-      configurators:
-      - invalid
       deviceLists:
       - 246
       - 243
@@ -1829,17 +1756,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: 5.5,2.5
       parent: 1
-- proto: GunneryServer
-  entities:
-  - uid: 225
-    components:
-    - type: Transform
-      pos: 1.5,1.5
-      parent: 1
-    - type: ApcPowerReceiver
-      powerLoad: 5
-    - type: Battery
-      startingCharge: 0
 - proto: Gyroscope
   entities:
   - uid: 255
@@ -2350,19 +2266,29 @@ entities:
       rot: 3.141592653589793 rad
       pos: -2.5,-9.5
       parent: 1
-- proto: ThrusterLarge
-  entities:
   - uid: 218
     components:
     - type: Transform
       rot: 3.141592653589793 rad
-      pos: -1.5,-9.5
+      pos: 2.5,-9.5
       parent: 1
   - uid: 221
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,-9.5
+      parent: 1
+  - uid: 224
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -0.5,-9.5
+      parent: 1
+  - uid: 294
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -1.5,-9.5
       parent: 1
 - proto: ToolboxMechanicalFilled
   entities:
@@ -2558,6 +2484,30 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,-4.5
       parent: 1
+  - uid: 295
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -1.5,-8.5
+      parent: 1
+  - uid: 296
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -0.5,-8.5
+      parent: 1
+  - uid: 297
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 2.5,-8.5
+      parent: 1
+  - uid: 298
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: 1.5,-8.5
+      parent: 1
 - proto: WallShuttleDiagonal
   entities:
   - uid: 254
@@ -2625,17 +2575,5 @@ entities:
     components:
     - type: Transform
       pos: 0.5,-0.5
-      parent: 1
-- proto: WeaponTurretM220
-  entities:
-  - uid: 294
-    components:
-    - type: Transform
-      pos: -1.5,5.5
-      parent: 1
-  - uid: 295
-    components:
-    - type: Transform
-      pos: 2.5,5.5
       parent: 1
 ...
