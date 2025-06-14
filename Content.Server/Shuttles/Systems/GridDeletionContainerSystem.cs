@@ -39,7 +39,8 @@ public sealed class GridDeletionContainerSystem : EntitySystem
             // to avoid cycles and redundant work within the recursive calls.
             var processedEntities = new HashSet<EntityUid>();
 
-            Logger.Debug($"Grid {ToPrettyString(uid)} is terminating. Ensuring all child entities are deleted recursively.");
+            Logger.Debug(
+                $"Grid {ToPrettyString(uid)} is terminating. Ensuring all child entities are deleted recursively.");
 
             // Start the recursive deletion process for all direct transform children of the grid.
             // We don't process the grid itself (uid) initially because it's already terminating.
@@ -59,10 +60,18 @@ public sealed class GridDeletionContainerSystem : EntitySystem
                 foreach (var childUid in children)
                 {
                     EnsureContainedEntitiesAreDeleted(childUid, uid, processedEntities);
+
+                    // WIP: DUE NOTE THAT THE BELOW IS FOR TESTING ONLY. PEOPLE ARE GETTING DELETED WITH WRECKS.
+                    if (TryComp<MetaDataComponent>(childUid, out var childMetaData))
+                    {
+                        Logger.Debug($"Recursively deleting child entity {childMetaData.EntityName}");
+                    }
+
                 }
             }
 
-            Logger.Debug($"Finished recursive deletion processing for terminating grid {ToPrettyString(uid)}. Processed entity count (excluding grid): {processedEntities.Count - 1}"); // Exclude the grid itself if it got added
+            Logger.Debug(
+                $"Finished recursive deletion processing for terminating grid {ToPrettyString(uid)}. Processed entity count (excluding grid): {processedEntities.Count - 1}"); // Exclude the grid itself if it got added
         }
         finally
         {
@@ -78,7 +87,9 @@ public sealed class GridDeletionContainerSystem : EntitySystem
     /// <param name="entity">The entity to process.</param>
     /// <param name="rootGridUid">The original grid that is terminating.</param>
     /// <param name="processedEntities">Set tracking entities already processed in this deletion event.</param>
-    private void EnsureContainedEntitiesAreDeleted(EntityUid entity, EntityUid rootGridUid, HashSet<EntityUid> processedEntities)
+    private void EnsureContainedEntitiesAreDeleted(EntityUid entity,
+        EntityUid rootGridUid,
+        HashSet<EntityUid> processedEntities)
     {
         // 1. Check if already processed or if the entity doesn't exist anymore.
         // We also skip the root grid itself as it's handled by the engine's termination process.
@@ -128,7 +139,7 @@ public sealed class GridDeletionContainerSystem : EntitySystem
 
         // 4. Queue the current entity for deletion AFTER its children have been processed.
         // We check Exists again as a child's deletion process might have deleted this entity.
-        // We also avoid queueing deletion during client prediction.
+        // We also avoid queuing deletion during client prediction.
         if (Exists(entity) && !_timing.IsFirstTimePredicted)
         {
             // Logger.Debug($"Queueing deletion for entity {ToPrettyString(entity)} during grid {ToPrettyString(rootGridUid)} termination.");

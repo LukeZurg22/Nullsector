@@ -47,8 +47,8 @@ public sealed partial class GameTicker
             return; // Short-circuit if there's nobody 'board.
 
         // Create the manifest text in the same format as the round end summary
-        var manifestLines = new List<string>();
-        var profitLines = new List<string>();
+        var manifestLines = new HashSet<string>();
+        var profitLines = new HashSet<string>();
 
         // Get the NFAdventureRuleSystem to access profit data
         var adventureSystem = EntityManager.System<NFAdventureRuleSystem>();
@@ -81,6 +81,8 @@ public sealed partial class GameTicker
                 ? $"- {player.PlayerOOCName} was {player.PlayerICName} playing as a {roleName}."
                 : $"- {player.PlayerICName} playing as a {roleName}.";
 
+
+            // HashSet.Add() will only add non-duplicate entries.
             manifestLines.Add(playerLine);
 
             // Try to get profit information for this player
@@ -88,10 +90,12 @@ public sealed partial class GameTicker
                 continue; // Short-circuit
 
             var profitInfo = adventureSystem.GetPlayerProfitInfo(player.PlayerGuid.Value, player.PlayerICName);
-            if (profitInfo != null)
-            {
-                profitLines.Add(profitInfo);
-            }
+
+            if (profitInfo == null)
+                continue; // Short-circuit if profit info is null
+
+            // HashSet.Add() will only add non-duplicate entries.
+            profitLines.Add(profitInfo);
         }
 
         // Split into multiple fields if the content is too long for a single Discord field
@@ -100,7 +104,7 @@ public sealed partial class GameTicker
         var title = Loc.GetString("discord-round-end-summary-title");
         var description = Loc.GetString("discord-round-end-summary-description",
             ("round", RoundId),
-            ("count", sortedPlayers.Count));
+            ("count", manifestLines.Count));
         var footerText = Loc.GetString("discord-round-end-summary-id",
             ("name", _baseServer.ServerName),
             ("id", RoundId));

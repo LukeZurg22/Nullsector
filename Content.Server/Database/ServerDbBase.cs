@@ -928,7 +928,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                     await using var db = await GetDb();
                     db.DbContext.AdminLog.AddRange(logs);
                     await db.DbContext.SaveChangesAsync();
-                    _opsLog.Debug($"Successfully saved {logs.Count} admin logs.");
+                    //_opsLog.Debug($"Successfully saved {logs.Count} admin logs.");
                     break;
                 }
                 catch (Exception ex)
