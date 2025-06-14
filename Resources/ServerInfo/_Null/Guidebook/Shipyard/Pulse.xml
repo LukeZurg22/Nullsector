@@ -15,7 +15,7 @@
 
 	[color=#a4885c]IFF Designation:[/color] Medical
 
-  "The Ursadyne Pulse, a light, fast emergancy medical service vessel. It is equipped with a functional medbay and an FLT drive, allowing it to quickly respond to sector medical needs."
+  "The Ursadyne Pulse, a light, fast emergency medical service vessel. It is equipped with a functional medbay and an FLT drive, allowing it to quickly respond to sector medical needs."
 
   # SHIP FEATURES
 
@@ -35,7 +35,7 @@
       - 2: Toggle Ship Lighting
       - 3: Toggle Cockpit Shutters
       - 4: Toggle Blast Doors
-      - 5: Lock Cokcpit Door
+      - 5: Lock Cockpit Door
       - 6: Toggle Thrusters
   - Use the Station Records computer to open up slots for the other crew members.
   - The Holopad can be used to directly contact other ships or stations.
@@ -45,13 +45,10 @@
   <Box>
   <GuideEntityEmbed Entity="LockerWallEVAColorParamedicFilled"/>
   <GuideEntityEmbed Entity="ShuttersNormal"/>
-  <GuideEntityEmbed Entity="ComputerGunneryConsole"/>
-  <GuideEntityEmbed Entity="WeaponTurretM220"/>
   </Box>
 
   - Check that the EVA locker is filled with a hardsuit, air tank, and mini-jetpack.
   - The shuttle console can be used to toggle the shutters.
-  - The Gunnery Console can be used to control the M220 EMP turrets.
 
   ## 2. Medical Service
 
