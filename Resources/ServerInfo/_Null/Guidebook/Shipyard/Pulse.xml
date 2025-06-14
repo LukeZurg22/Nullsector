@@ -1,0 +1,120 @@
+<Document>
+  # UCE PULSE
+  <Box>
+  <GuideEntityEmbed Entity="NFSignEms2"/>
+  </Box>
+    [color=#a4885c]Hull Configuration:[/color] Medium, Starboard Docking, Portside Blast Doors
+
+	[color=#a4885c]Crew Slots:[/color] 2 Paramedics
+
+	[color=#a4885c]Power System:[/color] 1x SUPERPACMAN Uranium Generator
+
+    [color=#a4885c]Atmospherics:[/color] Air canisters
+
+    [color=#a4885c]Weapons:[/color] 2x M220 RUBICON EMP launcher
+
+	[color=#a4885c]IFF Designation:[/color] Medical
+
+  "The Ursadyne Pulse, a light, fast emergancy medical service vessel. It is equipped with a functional medbay and an FLT drive, allowing it to quickly respond to sector medical needs."
+
+  # SHIP FEATURES
+
+  ## 1. Bridge
+
+  ### 1.1. Control Systems
+  <Box>
+  <GuideEntityEmbed Entity="ComputerStationRecords"/>
+  <GuideEntityEmbed Entity="ComputerShuttle"/>
+  <GuideEntityEmbed Entity="NFHolopadShip"/>
+  <GuideEntityEmbed Entity="ComputerCrewMonitoring"/>
+  </Box>
+
+  - Unlock the Shuttle computer using your ID card.
+  - The Shuttle computers network ports can be used to control a number of ship systems.
+      - 1: Toggle Searchlight
+      - 2: Toggle Ship Lighting
+      - 3: Toggle Cockpit Shutters
+      - 4: Toggle Blast Doors
+      - 5: Lock Cokcpit Door
+      - 6: Toggle Thrusters
+  - Use the Station Records computer to open up slots for the other crew members.
+  - The Holopad can be used to directly contact other ships or stations.
+  - The Crew Monitoring computer can be used to monitor the health of the sector inhabitants.
+
+  ### 1.2. Safety Systems
+  <Box>
+  <GuideEntityEmbed Entity="LockerWallEVAColorParamedicFilled"/>
+  <GuideEntityEmbed Entity="ShuttersNormal"/>
+  <GuideEntityEmbed Entity="ComputerGunneryConsole"/>
+  <GuideEntityEmbed Entity="WeaponTurretM220"/>
+  </Box>
+
+  - Check that the EVA locker is filled with a hardsuit, air tank, and mini-jetpack.
+  - The shuttle console can be used to toggle the shutters.
+  - The Gunnery Console can be used to control the M220 EMP turrets.
+
+  ## 2. Medical Service
+
+
+  ### 2.1. Medbay
+  <Box>
+  <GuideEntityEmbed Entity="StasisBed"/>
+  <GuideEntityEmbed Entity="MedicalBed"/>
+  <GuideEntityEmbed Entity="OperatingTable"/>
+  <GuideEntityEmbed Entity="Sink"/>
+  </Box>
+
+  - The medbay is equipped with a Stasis Bed, Medical Bed, and Operating Table.
+  - A sink is included.
+
+
+  ### 2.2 Medical Supplies
+  <Box>
+  <GuideEntityEmbed Entity="LockerWallMedicalDoctorFilled"/>
+  <GuideEntityEmbed Entity="LockerWallColorMedicalFilled"/>
+  <GuideEntityEmbed Entity="ClothingBackpackDuffelSurgeryFilled"/>
+  <GuideEntityEmbed Entity="RollerBedSpawnFolded"/>
+  </Box>
+
+  - The Doctors locker contains a full set of medical equipment
+  - The Medical Locker contains basic topical meds
+  - The Surgery Duffel Bag contains a full set of surgical tools.
+  - The Roller Bed can be used to transport patients.
+
+  ## 3. Engineering
+
+
+  ### 3.1. Power System
+  <Box>
+  <GuideEntityEmbed Entity="SMESBasic"/>
+  <GuideEntityEmbed Entity="SubstationWallBasic"/>
+  <GuideEntityEmbed Entity="APCBasic"/>
+  <GuideEntityEmbed Entity="PortableGeneratorSuperPacmanShuttle"/>
+  <GuideEntityEmbed Entity="LockerWallMaterialsFuelUraniumFilled"/>
+  </Box>
+
+  - Check that the S.U.P.E.R.P.A.C.M.A.N. generator unit is anchored to the floor.
+  - Check that the SMES unit is anchored to the floor.
+  - Check that the Fuel Locker has spare fuel.
+  - While the Thrusters are off, the Generator can be reduced to 50% power to save fuel.
+
+  ### 3.2. Atmospherics
+  <Box>
+  <GuideEntityEmbed Entity="AirCanister"/>
+  <GuideEntityEmbed Entity="AirAlarm"/>
+  </Box>
+
+  - Ensure that a air canister is wrenched to the connector port.
+  - Set the Ships Air Alarms to Filtering (Wide)
+
+  ### 3.3 Other Systems
+  <Box>
+  <GuideEntityEmbed Entity="Gyroscope"/>
+  <GuideEntityEmbed Entity="GravityGeneratorMini"/>
+  <GuideEntityEmbed Entity="WallWeaponCapacitorRecharger"/>
+  </Box>
+
+  - Check that the gyroscope is anchored, powered, and enabled.
+  - Check that the mini gravity generator is anchored, powered, and enabled.
+  - The wall charger can be used to recharge power cells.
+</Document>
