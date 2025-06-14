@@ -8,7 +8,7 @@
 - type: vessel
   id: Nourishment
   parent: BaseVessel
-  name: UNJ Nourishment
+  name: UCE Nourishment
   description: A top of the line Restaurant Support Vessel. Includes a Vox dining area and space fly-up counter.
   price: 69000
   category: Small
