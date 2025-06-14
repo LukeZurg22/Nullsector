@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 05/12/2025 20:55:55
-  entityCount: 180
+  time: 06/14/2025 06:03:03
+  entityCount: 179
 maps: []
 grids:
 - 1
@@ -470,14 +470,6 @@ entities:
     components:
     - type: Transform
       pos: -0.5,-0.5
-      parent: 1
-- proto: ChairOfficeLight
-  entities:
-  - uid: 106
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -0.5,2.5
       parent: 1
 - proto: ChairWood
   entities:
@@ -1049,7 +1041,7 @@ entities:
   - uid: 21
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
+      rot: 3.141592653589793 rad
       pos: 3.5,-1.5
       parent: 1
 - proto: Table
