@@ -111,10 +111,8 @@
   <Box>
   <GuideEntityEmbed Entity="Gyroscope"/>
   <GuideEntityEmbed Entity="GravityGeneratorMini"/>
-  <GuideEntityEmbed Entity="LockerSalvageSpecialistFilledHardsuit"/>
   </Box>
 
   - Check that the gyroscope is anchored, powered, and enabled.
   - Check that the mini gravity generator is anchored, powered, and enabled.
-  - Check that the Salvage Locker has tools, a hardsuit, air tank, and a mini-jetpack.
 </Document>

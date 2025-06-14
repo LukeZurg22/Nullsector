@@ -10,6 +10,7 @@
   - ShipyardIapetus
   - ShipyardInsight
   - ShipyardNourishment
+  - ShipyardPulse
 
 - type: guideEntry
   id: ShipyardArgent
@@ -38,5 +39,10 @@
 
 - type: guideEntry
   id: ShipyardNourishment
-  name: guide-entry-shipyard-insight
+  name: guide-entry-shipyard-nourishment
   text: "/ServerInfo/_Null/Guidebook/Shipyard/Nourishment.xml"
+
+- type: guideEntry
+  id: ShipyardPulse
+  name: guide-entry-shipyard-pulse
+  text: "/ServerInfo/_Null/Guidebook/Shipyard/Pulse.xml"
