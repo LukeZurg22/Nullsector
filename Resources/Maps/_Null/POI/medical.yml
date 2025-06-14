@@ -4,8 +4,8 @@ meta:
   engineVersion: 247.2.0
   forkId: ""
   forkVersion: ""
-  time: 06/12/2025 19:18:58
-  entityCount: 2081
+  time: 06/14/2025 21:35:21
+  entityCount: 2082
 maps: []
 grids:
 - 1
@@ -1855,6 +1855,17 @@ entities:
       scale: 0
       radarColor: '#00DEFEFF'
     - type: CircularShieldRadar
+  - uid: 115
+    components:
+    - type: MetaData
+    - type: Transform
+      pos: 2.4890888,-2.4826505
+      parent: 1
+    - type: RadarBlip
+      enabled: False
+      scale: 0
+      radarColor: '#00DEFEFF'
+    - type: CircularShieldRadar
   - uid: 129
     components:
     - type: MetaData
@@ -2018,6 +2029,7 @@ entities:
       - 1186
       - 1356
       - 1392
+      - 116
   - uid: 674
     components:
     - type: Transform
@@ -2445,7 +2457,7 @@ entities:
       - - ChiefMedicalOfficer
       - - Janitor
     - type: Door
-      secondsUntilStateChange: -2136.4978
+      secondsUntilStateChange: -2275.2708
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -6831,6 +6843,7 @@ entities:
       devices:
       - 1186
       - 1185
+      - 116
   - uid: 2375
     components:
     - type: Transform
@@ -7008,6 +7021,17 @@ entities:
       - 1132
 - proto: Firelock
   entities:
+  - uid: 116
+    components:
+    - type: Transform
+      pos: -5.5,-2.5
+      parent: 1
+    - type: DeviceNetwork
+      configurators:
+      - invalid
+      deviceLists:
+      - 2337
+      - 669
   - uid: 1180
     components:
     - type: Transform
@@ -11010,6 +11034,13 @@ entities:
     - type: Transform
       pos: -6.5,-1.5
       parent: 1
+- proto: KitchenReagentGrinder
+  entities:
+  - uid: 118
+    components:
+    - type: Transform
+      pos: -5.5,-2.5
+      parent: 1
 - proto: LampGold
   entities:
   - uid: 600
@@ -12115,14 +12146,6 @@ entities:
     components:
     - type: Transform
       pos: -4.5,-13.5
-      parent: 1
-- proto: ReagentGrinderIndustrial
-  entities:
-  - uid: 1056
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -5.5,-2.5
       parent: 1
 - proto: Recycler
   entities:
@@ -13281,6 +13304,11 @@ entities:
     - type: Transform
       pos: 1.5,17.5
       parent: 1
+  - uid: 117
+    components:
+    - type: Transform
+      pos: -5.5,-2.5
+      parent: 1
   - uid: 290
     components:
     - type: Transform
@@ -13416,17 +13444,6 @@ entities:
         - Right: Reverse
         - Middle: Off
         1470:
-        - Left: Forward
-        - Right: Reverse
-        - Middle: Off
-  - uid: 1718
-    components:
-    - type: Transform
-      pos: -4.5,-1.5
-      parent: 1
-    - type: DeviceLinkSource
-      linkedPorts:
-        1056:
         - Left: Forward
         - Right: Reverse
         - Middle: Off
@@ -15354,12 +15371,6 @@ entities:
       parent: 1
 - proto: Windoor
   entities:
-  - uid: 497
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -5.5,-2.5
-      parent: 1
   - uid: 1299
     components:
     - type: Transform
@@ -15370,7 +15381,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -13658.883
+      secondsUntilStateChange: -13797.655
       state: Opening
     - type: Airlock
       autoClose: False
