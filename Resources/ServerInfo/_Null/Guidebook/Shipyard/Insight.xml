@@ -1,5 +1,5 @@
 <Document>
-  # INSIGHT
+  # UCE INSIGHT
   <Box>
   <GuideEntityEmbed Entity="SignAnomaly"/>
   <GuideEntityEmbed Entity="SignSalvage"/>
@@ -14,9 +14,9 @@
 
     [color=#a4885c]Weapons:[/color] 4x L85 Autocannons
 
-	[color=#a4885c]IFF Designation:[/color] Civilian
+	[color=#a4885c]IFF Designation:[/color] Science
 
-  "The Ursadyne Insight, a top of the line xenoarchaeology vessel"
+  "Manufactured by the Ursadine Collective, the Insight is a top of the line xenoarchaeology vessel"
 
   # SHIP FEATURES
 

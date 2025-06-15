@@ -9,7 +9,7 @@
   id: Nourishment
   parent: BaseVessel
   name: UCE Nourishment
-  description: A top of the line Restaurant Support Vessel. Includes a Vox dining area and space fly-up counter.
+  description: A luxury Restaurant Vessel. Includes a Vox dining area and space fly-up counter.
   price: 69000
   category: Small
   group: Shipyard
@@ -22,7 +22,7 @@
 
 - type: gameMap
   id: Nourishment
-  mapName: 'Nourishment'
+  mapName: 'UCE Nourishment'
   mapPath: /Maps/_Null/Shuttles/Civilian/nourishment.yml
   minPlayers: 0
   stations:

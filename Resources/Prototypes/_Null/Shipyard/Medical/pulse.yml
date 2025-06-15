@@ -15,7 +15,6 @@
   shuttlePath: /Maps/_Null/Shuttles/Medical/pulse.yml
   guidebookPage: ShipyardPulse
   class:
-  - Civilian
   - Medical
   engine:
   - Uranium

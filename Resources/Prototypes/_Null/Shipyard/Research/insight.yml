@@ -7,7 +7,7 @@
 - type: vessel
   id: Insight
   parent: BaseVessel
-  name: C1R Insight
+  name: UCE Insight
   description: An artifact research vessel with room for 3 crew
   price: 75000
   category: Medium
@@ -21,7 +21,7 @@
 
 - type: gameMap
   id: Insight
-  mapName: 'Insight'
+  mapName: 'UCE Insight'
   mapPath: /Maps/_Null/Shuttles/Research/insight.yml
   minPlayers: 0
   stations:
