@@ -11,6 +11,7 @@
   - ShipyardInsight
   - ShipyardNourishment
   - ShipyardPulse
+  - ShipyardHelio
 
 - type: guideEntry
   id: ShipyardArgent
@@ -46,3 +47,8 @@
   id: ShipyardPulse
   name: guide-entry-shipyard-pulse
   text: "/ServerInfo/_Null/Guidebook/Shipyard/Pulse.xml"
+
+- type: guideEntry
+  id: ShipyardHelio
+  name: guide-entry-shipyard-helio
+  text: "/ServerInfo/_Null/Guidebook/Shipyard/Helio.xml"
