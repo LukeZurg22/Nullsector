@@ -1,0 +1,41 @@
+# Author Info
+# GitHub: Bluespace-Storm
+# Discord: its_bear
+
+# Shuttle Notes:
+#
+
+- type: vessel
+  id: Zenith
+  parent: BaseVessel
+  name: UCE Zenith
+  description: A solar powered, single-person shuttle meant for leisurely travels.
+  price: 22000
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Null/Shuttles/Civilian/zenith.yml
+  guidebookPage: ShipyardZenith
+  class:
+  - Civilian
+  engine:
+  - Solar
+
+- type: gameMap
+  id: Zenith
+  mapName: 'Zenith'
+  mapPath: /Maps/_Null/Shuttles/Civilian/zenith.yml
+  minPlayers: 0
+  stations:
+    Zenith:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Zenith CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]

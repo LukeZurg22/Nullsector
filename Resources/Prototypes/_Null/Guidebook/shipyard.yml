@@ -11,6 +11,7 @@
   - ShipyardInsight
   - ShipyardNourishment
   - ShipyardPulse
+  - ShipyardZenith
 
 - type: guideEntry
   id: ShipyardArgent
@@ -46,3 +47,8 @@
   id: ShipyardPulse
   name: guide-entry-shipyard-pulse
   text: "/ServerInfo/_Null/Guidebook/Shipyard/Pulse.xml"
+
+- type: guideEntry
+  id: ShipyardZenith
+  name: guide-entry-shipyard-zenith
+  text: "/ServerInfo/_Null/Guidebook/Shipyard/zenith.xml"
