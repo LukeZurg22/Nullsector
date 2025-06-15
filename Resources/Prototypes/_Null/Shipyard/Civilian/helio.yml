@@ -6,31 +6,31 @@
 #
 
 - type: vessel
-  id: Zenith
+  id: Helio
   parent: BaseVessel
-  name: UCE Zenith
+  name: UCE Helio
   description: A solar powered, single-person shuttle meant for leisurely travels.
   price: 22000
   category: Small
   group: Shipyard
-  shuttlePath: /Maps/_Null/Shuttles/Civilian/zenith.yml
-  guidebookPage: ShipyardZenith
+  shuttlePath: /Maps/_Null/Shuttles/Civilian/helio.yml
+  guidebookPage: ShipyardHelio
   class:
   - Civilian
   engine:
   - Solar
 
 - type: gameMap
-  id: Zenith
-  mapName: 'Zenith'
-  mapPath: /Maps/_Null/Shuttles/Civilian/zenith.yml
+  id: Helio
+  mapName: 'Helio'
+  mapPath: /Maps/_Null/Shuttles/Civilian/helio.yml
   minPlayers: 0
   stations:
-    Zenith:
+    Helio:
       stationProto: StandardFrontierVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Zenith CIV{1}'
+          mapNameTemplate: 'Helio CIV{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
