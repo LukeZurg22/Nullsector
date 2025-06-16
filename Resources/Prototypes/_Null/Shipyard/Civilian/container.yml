@@ -1,0 +1,41 @@
+# Author Info
+# GitHub: Bluespace-Storm
+# Discord: its_bear
+
+# Shuttle Notes:
+# Made for Jordan Douglas on Null Sector
+
+- type: vessel
+  id: Container
+  parent: BaseVessel
+  name: UCE Container
+  description: Someone has turned this UCE shipping container into a makeshift shuttle.
+  price: 12000
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Null/Shuttles/Civilian/container.yml
+  guidebookPage: ShipyardContainer
+  class:
+  - Civilian
+  engine:
+  - Welding
+
+- type: gameMap
+  id: Container
+  mapName: 'Shipping Container'
+  mapPath: /Maps/_Null/Shuttles/Civilian/container.yml
+  minPlayers: 0
+  stations:
+    Container:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Container UCE{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
