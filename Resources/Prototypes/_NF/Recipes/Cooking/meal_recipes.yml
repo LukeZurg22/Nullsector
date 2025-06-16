@@ -978,6 +978,18 @@
   recipeType:
   - Oven
 
+- type: microwaveMealRecipe
+  id: RecipeTaikoiyaki
+  name: taikoyaki recipe
+  result: FoodBakedTaikoiyaki
+  resultCount: 2
+  time: 5
+  group: Dessert
+  solids:
+    FoodKoibean: 1
+    FoodDoughPastryBaseRaw: 1
+  recipeType: Oven
+
 # NOT ACTUAL FOOD
 
 - type: microwaveMealRecipe

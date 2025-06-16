@@ -97,3 +97,30 @@
   - type: Tag
     tags:
     - Fruit
+
+- type: entity
+  name: taikoiyaki
+  parent: FoodBakedBase
+  id: FoodBakedTaikoiyaki
+  description: It's a sweet dessert with a robust koibean paste filling, looks fishy.
+  components:
+  - type: FlavorProfile
+    flavors:
+       - chewy
+       - sweet
+       - nutty
+  - type: Sprite
+    sprite: _NF/Objects/Consumable/Food/Baked/taikoiyaki.rsi
+    state: taikoiyaki_cooked
+    scale: 1, 1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 15
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 6
+        - ReagentId: Vitamin
+          Quantity: 2
+        - ReagentId: Flavorol
+          Quantity: 2
