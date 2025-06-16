@@ -102,7 +102,7 @@
   name: taikoiyaki
   parent: FoodBakedBase
   id: FoodBakedTaikoiyaki
-  description: It's a sweet dessert with a robust koibean paste filling, looks fishy.
+  description: A stimulating sweet dessert with almost all of the poison cooked out, looks fishy.
   components:
   - type: FlavorProfile
     flavors:
@@ -119,8 +119,8 @@
         maxVol: 15
         reagents:
         - ReagentId: Nutriment
-          Quantity: 6
-        - ReagentId: Vitamin
-          Quantity: 2
+          Quantity: 6.75
         - ReagentId: Flavorol
-          Quantity: 2
+          Quantity: 3
+        - ReagentId: CarpoToxin
+          Quantity: 0.25
