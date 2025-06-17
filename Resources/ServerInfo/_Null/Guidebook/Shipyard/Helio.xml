@@ -1,0 +1,96 @@
+<Document>
+  # UCE HELIO
+  <Box>
+  <GuideEntityEmbed Entity="NFSignBus"/>
+  </Box>
+    [color=#a4885c]Hull Configuration:[/color] Small, Foreside Docking
+
+	[color=#a4885c]Crew Slots:[/color] 1 Captain
+
+	[color=#a4885c]Power System:[/color] Solar Array and 3 SMES batteries
+
+    [color=#a4885c]Atmospherics:[/color] Air canisters
+
+    [color=#a4885c]Weapons:[/color] None
+
+	[color=#a4885c]IFF Designation:[/color] Civilian
+
+  "Manufactured by the Ursadine Collective, the Helio is a small personal transport shuttle. It's evironmentally friendly solar array allows for long term opperation at minimal cost.""
+
+  # SHIP FEATURES
+
+  ## 1. Bridge
+
+  ### 1.1. Control Systems
+  <Box>
+  <GuideEntityEmbed Entity="ComputerShuttle"/>
+  <GuideEntityEmbed Entity="NFHolopadShip"/>
+  </Box>
+
+  - Unlock the Shuttle computer using your ID card.
+  - The Shuttle computers network ports can be used to control a number of ship systems.
+      - 1: Toggle Shutters
+      - 2: Toggle External Lights
+  - The Holopad can be used to directly contact other ships or stations.
+
+  ### 1.2. Safety Systems
+  <Box>
+  <GuideEntityEmbed Entity="LockerWallEVAColorCaptainFilled"/>
+  <GuideEntityEmbed Entity="ShuttersNormal"/>
+  </Box>
+
+  - Check that the EVA locker is filled with a hardsuit, air tank, and mini-jetpack.
+  - The shuttle console can be used to toggle the shutters.
+
+  ## 2. Crew Quarters
+
+  ### 2.1 Dining Area
+  <Box>
+  <GuideEntityEmbed Entity="ShelfWallFreezerWhite"/>
+  <GuideEntityEmbed Entity="ShelfRGlass"/>
+  </Box>
+
+  ### 2.1 Living Area
+  <Box>
+  <GuideEntityEmbed Entity="DresserCaptainFilled"/>
+  <GuideEntityEmbed Entity="Bed"/>
+  <GuideEntityEmbed Entity="ToiletEmpty"/>
+  </Box>
+
+  ## 3. Engineering
+
+  ### 3.1. Power System
+  <Box>
+  <GuideEntityEmbed Entity="SMESBasic"/>
+  <GuideEntityEmbed Entity="SubstationWallBasic"/>
+  <GuideEntityEmbed Entity="APCBasic"/>
+  <GuideEntityEmbed Entity="ComputerSolarControl"/>
+  <GuideEntityEmbed Entity="ComputerPowerMonitoring"/>
+
+  </Box>
+
+  - Check that the SMES unit is anchored to the floor.
+  - While the Thrusters are off, the Generator can be reduced to 50% power to save fuel.
+  - Check that the solar panels are pointed properly
+  - The Power Monitoring computer can be used to check the power levels of the ship.
+
+  ### 3.2. Atmospherics
+  <Box>
+  <GuideEntityEmbed Entity="AirCanister"/>
+  <GuideEntityEmbed Entity="AirAlarm"/>
+  </Box>
+
+  - Ensure that a air canister is wrenched to the connector port.
+  - Set the Ships Air Alarms to Filtering (Wide)
+
+  ### 3.3 Other Systems
+  <Box>
+  <GuideEntityEmbed Entity="Gyroscope"/>
+  <GuideEntityEmbed Entity="GravityGeneratorMini"/>
+  <GuideEntityEmbed Entity="WallWeaponCapacitorRecharger"/>
+  </Box>
+
+  - Check that the gyroscope is anchored, powered, and enabled.
+  - Check that the mini gravity generator is anchored, powered, and enabled.
+  - The wall charger can be used to recharge power cells.
+</Document>

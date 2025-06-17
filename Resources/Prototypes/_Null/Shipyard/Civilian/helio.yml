@@ -1,0 +1,41 @@
+# Author Info
+# GitHub: Bluespace-Storm
+# Discord: its_bear
+
+# Shuttle Notes:
+#
+
+- type: vessel
+  id: Helio
+  parent: BaseVessel
+  name: UCE Helio
+  description: A solar powered, single-person shuttle meant for leisurely travels.
+  price: 22000
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Null/Shuttles/Civilian/helio.yml
+  guidebookPage: ShipyardHelio
+  class:
+  - Civilian
+  engine:
+  - Solar
+
+- type: gameMap
+  id: Helio
+  mapName: 'Helio'
+  mapPath: /Maps/_Null/Shuttles/Civilian/helio.yml
+  minPlayers: 0
+  stations:
+    Helio:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Helio CIV{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
