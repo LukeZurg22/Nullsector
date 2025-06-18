@@ -988,7 +988,8 @@
   solids:
     FoodKoibean: 1
     FoodDoughPastryBaseRaw: 1
-  recipeType: Oven
+  recipeType: 
+  - Oven
 
 # NOT ACTUAL FOOD
 
