@@ -97,3 +97,30 @@
   - type: Tag
     tags:
     - Fruit
+
+- type: entity
+  name: taikoiyaki
+  parent: FoodBakedBase
+  id: FoodBakedTaikoiyaki
+  description: A stimulating sweet dessert with almost all of the poison cooked out, looks fishy.
+  components:
+  - type: FlavorProfile
+    flavors:
+       - chewy
+       - sweet
+       - nutty
+  - type: Sprite
+    sprite: _NF/Objects/Consumable/Food/Baked/taikoiyaki.rsi
+    state: taikoiyaki_cooked
+    scale: 1, 1
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 15
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 6.75
+        - ReagentId: Flavorol
+          Quantity: 3
+        - ReagentId: CarpoToxin
+          Quantity: 0.25
