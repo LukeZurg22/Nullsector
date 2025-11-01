@@ -9,7 +9,6 @@ using Content.Shared.Anomaly.Components;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Cloning;
 using Content.Shared.Damage;
-using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
@@ -55,8 +54,7 @@ namespace Content.Server.Zombies
             base.Initialize();
 
             SubscribeLocalEvent<ZombieComponent, ComponentStartup>(OnStartup);
-            SubscribeLocalEvent<ZombieComponent, EmoteEvent>(OnEmote, before:
-                new[] { typeof(VocalSystem), typeof(BodyEmotesSystem) });
+            SubscribeLocalEvent<ZombieComponent, EmoteEvent>(OnEmote, before: [typeof(VocalSystem), typeof(BodyEmotesSystem)]);
 
             SubscribeLocalEvent<ZombieComponent, MeleeHitEvent>(OnMeleeHit);
             SubscribeLocalEvent<ZombieComponent, MobStateChangedEvent>(OnMobState);
@@ -71,6 +69,8 @@ namespace Content.Server.Zombies
 
             SubscribeLocalEvent<ZombifyOnDeathComponent, MobStateChangedEvent>(OnDamageChanged);
 
+            // TODO: Add OnInject event read, or whatever method of curing besides cloning comes up.
+            //  Also a possible list of component *types* could be better, especially if using reflection to handle them.
         }
 
         private void OnBeforeRemoveAnomalyOnDeath(Entity<PendingZombieComponent> ent, ref BeforeRemoveAnomalyOnDeathEvent args)
@@ -87,7 +87,7 @@ namespace Content.Server.Zombies
 
         private void OnPendingMapInit(EntityUid uid, PendingZombieComponent component, MapInitEvent args)
         {
-            if (_mobState.IsDead(uid))
+            if (_mobState.IsDead(uid) || component.IsInstant)
             {
                 ZombifyEntity(uid);
                 return;
@@ -127,8 +127,8 @@ namespace Content.Server.Zombies
             }
 
             // Heal the zombified
-            var zombQuery = EntityQueryEnumerator<ZombieComponent, DamageableComponent, MobStateComponent>();
-            while (zombQuery.MoveNext(out var uid, out var comp, out var damage, out var mobState))
+            var zombieQuery = EntityQueryEnumerator<ZombieComponent, DamageableComponent, MobStateComponent>();
+            while (zombieQuery.MoveNext(out var uid, out var comp, out var damage, out var mobState))
             {
                 // Process only once per second
                 if (comp.NextTick + TimeSpan.FromSeconds(1) > curTime)
@@ -266,39 +266,40 @@ namespace Content.Server.Zombies
         }
 
         /// <summary>
-        ///     This is the function to call if you want to unzombify an entity.
+        ///     This is the function to call if you want to de-zombify an entity.
         /// </summary>
         /// <param name="source">the entity having the ZombieComponent</param>
-        /// <param name="target">the entity you want to unzombify (different from source in case of cloning, for example)</param>
-        /// <param name="zombiecomp"></param>
+        /// <param name="target">the entity you want to de-zombify (different from source in case of cloning, for example)</param>
+        /// <param name="zombieComponent"></param>
         /// <remarks>
         ///     this currently only restore the name and skin/eye color from before zombified
         ///     TODO: completely rethink how zombies are done to allow reversal.
         /// </remarks>
-        public bool UnZombify(EntityUid source, EntityUid target, ZombieComponent? zombiecomp)
+        public bool UnZombify(EntityUid source, EntityUid target, ZombieComponent? zombieComponent)
         {
-            if (!Resolve(source, ref zombiecomp))
+            if (!Resolve(source, ref zombieComponent))
                 return false;
 
-            foreach (var (layer, info) in zombiecomp.BeforeZombifiedCustomBaseLayers)
+            foreach (var (layer, info) in zombieComponent.BeforeZombifiedCustomBaseLayers)
             {
                 _humanoidAppearance.SetBaseLayerColor(target, layer, info.Color);
                 _humanoidAppearance.SetBaseLayerId(target, layer, info.Id);
             }
-            if (TryComp<HumanoidAppearanceComponent>(target, out var appcomp))
+            // Null Sector: The scars of Zombification run deep!
+            /*if (TryComp<HumanoidAppearanceComponent>(target, out var appearanceComponent))
             {
-                appcomp.EyeColor = zombiecomp.BeforeZombifiedEyeColor;
-            }
-            _humanoidAppearance.SetSkinColor(target, zombiecomp.BeforeZombifiedSkinColor, false);
-            _bloodstream.ChangeBloodReagent(target, zombiecomp.BeforeZombifiedBloodReagent);
+                appearanceComponent.EyeColor = zombieComponent.BeforeZombifiedEyeColor;
+            }*/
+            _humanoidAppearance.SetSkinColor(target, zombieComponent.BeforeZombifiedSkinColor, false);
+            _bloodstream.ChangeBloodReagent(target, zombieComponent.BeforeZombifiedBloodReagent);
 
             _nameMod.RefreshNameModifiers(target);
             return true;
         }
 
-        private void OnZombieCloning(EntityUid uid, ZombieComponent zombiecomp, ref CloningEvent args)
+        private void OnZombieCloning(EntityUid uid, ZombieComponent zombieComponent, ref CloningEvent args)
         {
-            if (UnZombify(args.Source, args.Target, zombiecomp))
+            if (UnZombify(args.Source, args.Target, zombieComponent))
                 args.NameHandled = true;
         }
     }

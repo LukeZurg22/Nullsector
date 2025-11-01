@@ -5,7 +5,7 @@
   parent:
   - BaseC3MobHuman
   - MobNonHumanHostileBase
-  - MobHumanoidInvetorySimplified
+  - MobHumanoidInventorySimplified
   - MobHumanoidHostileAISimpleRanged
   - NFMobRestrictions
   id: MobMercenaryBase

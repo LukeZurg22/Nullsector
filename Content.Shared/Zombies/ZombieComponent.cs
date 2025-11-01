@@ -1,7 +1,7 @@
-using Content.Shared.Antag;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
+using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
@@ -97,7 +97,7 @@ public sealed partial class ZombieComponent : Component
     [DataField("passiveHealing")]
     public DamageSpecifier PassiveHealing = new()
     {
-        DamageDict = new ()
+        DamageDict = new Dictionary<string, FixedPoint2>
         {
             { "Blunt", -0.4 },
             { "Slash", -0.2 },

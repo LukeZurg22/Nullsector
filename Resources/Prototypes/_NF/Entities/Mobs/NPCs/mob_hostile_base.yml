@@ -272,7 +272,7 @@
 # Inventories
 - type: entity # All slots are fillable, most of them are "hidden"
   save: false
-  id: MobHumanoidInvetory
+  id: MobHumanoidInventory
   abstract: true
   components:
   - type: Inventory
@@ -281,7 +281,7 @@
 
 - type: entity # Slots for loot containers: pockets, belt, back
   save: false
-  id: MobHumanoidInvetorySimplified
+  id: MobHumanoidInventorySimplified
   abstract: true
   components:
   - type: Inventory

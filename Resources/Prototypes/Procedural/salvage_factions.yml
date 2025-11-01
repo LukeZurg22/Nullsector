@@ -1,5 +1,19 @@
+# Frontier Below
 - type: salvageFaction
-  id: Xenos # Frontier
+  id: NFZombies
+  desc: nf-salvage-faction-zombies
+  entries:
+    - proto: NFSpawnMobZombie
+      cost: 2
+    - proto: NFSpawnMobZombieSpecial
+      cost: 4
+  configs:
+    DefenseStructure: NFZombiePile
+    Mining: NFZombies
+    Megafauna: NFMobZombieOdysseus
+
+- type: salvageFaction
+  id: Xenos 
   desc: salvage-faction-xenos
   cost: 3
   groups:

@@ -14,12 +14,12 @@ using Content.Server.NPC.Systems;
 using Content.Server.Speech.Components;
 using Content.Server.Temperature.Components;
 using Content.Shared.CombatMode;
-using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage;
+using Content.Shared.FixedPoint;
+using Content.Shared.Ghost.Roles.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
-using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Pulling.Components;
@@ -28,14 +28,13 @@ using Content.Shared.NPC.Systems;
 using Content.Shared.Nutrition.AnimalHusbandry;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Popups;
+using Content.Shared.Prying.Components;
 using Content.Shared.Roles;
+using Content.Shared.Tag;
+using Content.Shared.Traits.Assorted;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Zombies;
-using Content.Shared.Prying.Components;
-using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio.Systems;
-using Content.Shared.Ghost.Roles.Components;
-using Content.Shared.Tag;
 
 namespace Content.Server.Zombies;
 
@@ -74,14 +73,14 @@ public sealed partial class ZombieSystem
 
     /// <summary>
     ///     This is the general purpose function to call if you want to zombify an entity.
-    ///     It handles both humanoid and nonhumanoid transformation and everything should be called through it.
+    ///     It handles both humanoid and non-humanoid transformation and everything should be called through it.
     /// </summary>
     /// <param name="target">the entity being zombified</param>
     /// <param name="mobState"></param>
     /// <remarks>
     ///     ALRIGHT BIG BOYS, GIRLS AND ANYONE ELSE. YOU'VE COME TO THE LAYER OF THE BEAST. THIS IS YOUR WARNING.
     ///     This function is the god function for zombie stuff, and it is cursed. I have
-    ///     attempted to label everything thouroughly for your sanity. I have attempted to
+    ///     attempted to label everything thoroughly for your sanity. I have attempted to
     ///     rewrite this, but this is how it shall lie eternal. Turn back now.
     ///     -emo
     /// </remarks>
@@ -95,7 +94,7 @@ public sealed partial class ZombieSystem
             return;
 
         //you're a real zombie now, son.
-        var zombiecomp = AddComp<ZombieComponent>(target);
+        var zombieComponent = AddComp<ZombieComponent>(target);
 
         //we need to basically remove all of these because zombies shouldn't
         //get diseases, breath, be thirst, be hungry, die in space, have offspring or be paraplegic.
@@ -106,7 +105,7 @@ public sealed partial class ZombieSystem
         RemComp<ReproductiveComponent>(target);
         RemComp<ReproductivePartnerComponent>(target);
         RemComp<LegsParalyzedComponent>(target);
-        RemComp<ComplexInteractionComponent>(target);
+        //RemComp<ComplexInteractionComponent>(target); // Null Sector: Disabled due to vote. Zombies can interact!
 
         //funny voice
         var accentType = "zombie";
@@ -116,21 +115,23 @@ public sealed partial class ZombieSystem
         EnsureComp<ReplacementAccentComponent>(target).Accent = accentType;
 
         //This is needed for stupid entities that fuck up combat mode component
-        //in an attempt to make an entity not attack. This is the easiest way to do it.
-        var combat = EnsureComp<CombatModeComponent>(target);
+        // in an attempt to make an entity not attack. This is the easiest way to do it.
+
+        // NULL SECTOR - Disabled this for now.
+        /*var combat = EnsureComp<CombatModeComponent>(target);
         RemComp<PacifiedComponent>(target);
         _combat.SetCanDisarm(target, false, combat);
-        _combat.SetInCombatMode(target, true, combat);
+        _combat.SetInCombatMode(target, true, combat);*/
 
-        //This is the actual damage of the zombie. We assign the visual appearance
+        //This is the actual damage to the zombie. We assign the visual appearance
         //and range here because of stuff we'll find out later
         var melee = EnsureComp<MeleeWeaponComponent>(target);
-        melee.Animation = zombiecomp.AttackAnimation;
-        melee.WideAnimation = zombiecomp.AttackAnimation;
+        melee.Animation = zombieComponent.AttackAnimation;
+        melee.WideAnimation = zombieComponent.AttackAnimation;
         melee.AltDisarm = false;
         melee.Range = 1.2f;
         melee.Angle = 0.0f;
-        melee.HitSound = zombiecomp.BiteSound;
+        melee.HitSound = zombieComponent.BiteSound;
 
         if (mobState.CurrentState == MobState.Alive)
         {
@@ -147,28 +148,28 @@ public sealed partial class ZombieSystem
         if (TryComp<HumanoidAppearanceComponent>(target, out var huApComp)) //huapcomp
         {
             //store some values before changing them in case the humanoid get cloned later
-            zombiecomp.BeforeZombifiedSkinColor = huApComp.SkinColor;
-            zombiecomp.BeforeZombifiedEyeColor = huApComp.EyeColor;
-            zombiecomp.BeforeZombifiedCustomBaseLayers = new(huApComp.CustomBaseLayers);
+            zombieComponent.BeforeZombifiedSkinColor = huApComp.SkinColor;
+            zombieComponent.BeforeZombifiedEyeColor = huApComp.EyeColor;
+            zombieComponent.BeforeZombifiedCustomBaseLayers = new(huApComp.CustomBaseLayers);
             if (TryComp<BloodstreamComponent>(target, out var stream))
-                zombiecomp.BeforeZombifiedBloodReagent = stream.BloodReagent;
+                zombieComponent.BeforeZombifiedBloodReagent = stream.BloodReagent;
 
-            _humanoidAppearance.SetSkinColor(target, zombiecomp.SkinColor, verify: false, humanoid: huApComp);
+            _humanoidAppearance.SetSkinColor(target, zombieComponent.SkinColor, verify: false, humanoid: huApComp);
 
             // Messing with the eye layer made it vanish upon cloning, and also it didn't even appear right
-            huApComp.EyeColor = zombiecomp.EyeColor;
+            huApComp.EyeColor = zombieComponent.EyeColor;
 
             // this might not resync on clone?
-            _humanoidAppearance.SetBaseLayerId(target, HumanoidVisualLayers.Tail, zombiecomp.BaseLayerExternal, humanoid: huApComp);
-            _humanoidAppearance.SetBaseLayerId(target, HumanoidVisualLayers.HeadSide, zombiecomp.BaseLayerExternal, humanoid: huApComp);
-            _humanoidAppearance.SetBaseLayerId(target, HumanoidVisualLayers.HeadTop, zombiecomp.BaseLayerExternal, humanoid: huApComp);
-            _humanoidAppearance.SetBaseLayerId(target, HumanoidVisualLayers.Snout, zombiecomp.BaseLayerExternal, humanoid: huApComp);
+            _humanoidAppearance.SetBaseLayerId(target, HumanoidVisualLayers.Tail, zombieComponent.BaseLayerExternal, humanoid: huApComp);
+            _humanoidAppearance.SetBaseLayerId(target, HumanoidVisualLayers.HeadSide, zombieComponent.BaseLayerExternal, humanoid: huApComp);
+            _humanoidAppearance.SetBaseLayerId(target, HumanoidVisualLayers.HeadTop, zombieComponent.BaseLayerExternal, humanoid: huApComp);
+            _humanoidAppearance.SetBaseLayerId(target, HumanoidVisualLayers.Snout, zombieComponent.BaseLayerExternal, humanoid: huApComp);
 
             //This is done here because non-humanoids shouldn't get baller damage
             //lord forgive me for the hardcoded damage
             DamageSpecifier dspec = new()
             {
-                DamageDict = new()
+                DamageDict = new Dictionary<string, FixedPoint2>
                 {
                     { "Slash", 13 },
                     { "Piercing", 7 },
@@ -195,11 +196,11 @@ public sealed partial class ZombieSystem
         //NOTE: they are supposed to bleed, just not take damage
         _bloodstream.SetBloodLossThreshold(target, 0f);
         //Give them zombie blood
-        _bloodstream.ChangeBloodReagent(target, zombiecomp.NewBloodReagent);
+        _bloodstream.ChangeBloodReagent(target, zombieComponent.NewBloodReagent);
 
         //This is specifically here to combat insuls, because frying zombies on grilles is funny as shit.
         _inventory.TryUnequip(target, "gloves", true, true);
-        //Should prevent instances of zombies using comms for information they shouldnt be able to have.
+        //Should prevent instances of zombies using comms for information they shouldn't be able to have.
         _inventory.TryUnequip(target, "ears", true, true);
 
         //popup
@@ -213,8 +214,8 @@ public sealed partial class ZombieSystem
             tempComp.ColdDamage.ClampMax(0);
 
         //Heals the zombie from all the damage it took while human
-        if (TryComp<DamageableComponent>(target, out var damageablecomp))
-            _damageable.SetAllDamage(target, damageablecomp, 0);
+        if (TryComp<DamageableComponent>(target, out var damageableComponent))
+            _damageable.SetAllDamage(target, damageableComponent, 0);
         _mobState.ChangeMobState(target, MobState.Alive);
 
         _faction.ClearFactions(target, dirty: false);
@@ -237,11 +238,11 @@ public sealed partial class ZombieSystem
             //Zombie role for player manifest
             _roles.MindAddRole(mindId, "MindRoleZombie", mind: null, silent: true);
 
-            //Greeting message for new bebe zombers
+            //Greeting message for new zombies
             _chatMan.DispatchServerMessage(session, Loc.GetString("zombie-infection-greeting"));
 
-            // Notificate player about new role assignment
-            _audio.PlayGlobal(zombiecomp.GreetSoundNotification, session);
+            // Notify player about new role assignment
+            _audio.PlayGlobal(zombieComponent.GreetSoundNotification, session);
         }
         else
         {
@@ -265,7 +266,7 @@ public sealed partial class ZombieSystem
         }
 
         // Sloth: What the fuck?
-        // How long until compregistry lmao.
+        // How long until component registry lmao.
         RemComp<PullerComponent>(target);
 
         // No longer waiting to become a zombie:
@@ -278,7 +279,7 @@ public sealed partial class ZombieSystem
         //zombies get slowdown once they convert
         _movementSpeedModifier.RefreshMovementSpeedModifiers(target);
 
-        //Need to prevent them from getting an item, they have no hands.
+        // Need to prevent them from getting an item, they have no hands.
         // Also prevents them from becoming a Survivor. They're undead.
         _tag.AddTag(target, "InvalidForGlobalSpawnSpell");
     }

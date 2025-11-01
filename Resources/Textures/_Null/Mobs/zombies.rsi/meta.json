@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "zombie sprited by erhardsteinhauer (discord/github), based on zombie sprites from goonstation13; Spawner sprite based on envirobags from tgstation https://github.com/tgstation/tgstation/blob/master/icons/obj/medical/bodybag.dmi modified by erhardsteinhauer (github)",
+    "states": [
+        {
+            "name": "icon"
+        },
+        {
+            "name": "spawner"
+        }
+    ]
+}

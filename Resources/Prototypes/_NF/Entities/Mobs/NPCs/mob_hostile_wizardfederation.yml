@@ -5,7 +5,7 @@
   parent:
   - MobHumanoidHostileBase
   - MobPassiveRegen
-  - MobHumanoidInvetory
+  - MobHumanoidInventory
   - MobHumanoidHostileAISimpleRanged
   #- MobLaserReflect # Added to prevent laser abuse from players
   - NFMobRestrictions

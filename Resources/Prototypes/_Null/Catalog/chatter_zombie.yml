@@ -1,0 +1,5 @@
+- type: localizedDataset
+  id: zombiechatter
+  values:
+    prefix: advertisement-zombie-
+    count: 7

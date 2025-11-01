@@ -11,3 +11,17 @@
     ClothingBackpackDuffelGenetics: 2
     ClothingShoesBootsWinterGenetics: 2 #Delta V: Add departmental winter boots
     ClothingBackpackMessengerGenetics: 2 # Frontier
+    ClothingHeadHatHoodBioGeneral: 2
+    ClothingOuterBioGeneral: 2
+    ClothingHeadHatHoodBioCmo: 2
+    ClothingOuterBioCmo: 2
+    ClothingHeadHatHoodBioVirology: 2
+    ClothingOuterBioVirology: 2
+    ClothingHeadHatHoodBioJanitor: 2
+    ClothingOuterBioJanitor: 2
+    ClothingHeadHatHoodBioScientist: 2
+    ClothingOuterBioScientist: 2
+    ClothingHeadHatHoodBioSecurity: 2
+    ClothingOuterBioSecurity: 2
+    ClothingHeadHatHoodBioArmoredSyndicate: 1 # Do not raise this! -Z
+    ClothingOuterBioArmoredSyndicate: 1 # Do not raise this! -Z
