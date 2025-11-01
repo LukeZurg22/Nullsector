@@ -485,7 +485,7 @@
     radius: 5
     energy: 2
 
-# region pile
+# Spawner Pile
 - type: entity
   parent: AberrantFleshDigestiveSack
   id: ZombiePile
