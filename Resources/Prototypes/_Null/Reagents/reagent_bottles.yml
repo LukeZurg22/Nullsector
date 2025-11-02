@@ -1,0 +1,29 @@
+- type: entity
+  id: ConcreteChemistryBottle
+  suffix: concrete sludge
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-concrete-sludge
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: ConcreteSludge
+          Quantity: 30
+
+- type: entity
+  id: ChemistryBottleNecropporozidonosol
+  suffix: necropporozidonosol
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-zombie-cure
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: ZombieCure
+          Quantity: 30

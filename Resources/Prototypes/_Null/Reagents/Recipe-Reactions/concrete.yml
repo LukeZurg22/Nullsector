@@ -1,0 +1,41 @@
+# CONCRETE SLUDGE
+- type: reaction
+  id: ConcreteSludge
+  minTemp: 310
+  impact: Medium
+  reactants:
+    SpaceGlue:
+      amount: 1
+    Ash:
+      amount: 3
+  products:
+    ConcreteSludge: 1
+
+# CONGEALING INTO RAW BRICK
+- type: reaction
+  id: CongealSludgeIntoRawBrick
+  impact: Low
+  quantized: true
+  maxTemp: 294 # Room-Temperature
+  reactants:
+    ConcreteSludge:
+      amount: 2
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: BrickRaw
+
+# FIRING RAW BRICK
+- type: constructionGraph
+  id: FiringRawBrick
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: firing brick
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 1473
+  - node: firing brick
+    entity: BrickFired
