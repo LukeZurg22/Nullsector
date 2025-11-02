@@ -1,15 +1,13 @@
 using System.Linq;
-using System.Text.Json.Serialization;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Database;
 using Content.Shared.FixedPoint;
 using Content.Shared.Localizations;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Content.Shared.Chemistry.Reagent;
-using Robust.Shared.Toolshed.TypeParsers;
 
 namespace Content.Shared.EntityEffects;
 
@@ -21,7 +19,8 @@ namespace Content.Shared.EntityEffects;
 [MeansImplicitUse]
 public abstract partial class EntityEffect
 {
-    private protected string _id => this.GetType().Name;
+    private protected string Id => GetType().Name;
+
     /// <summary>
     ///     The list of conditions required for the effect to activate. Not required.
     /// </summary>
@@ -57,32 +56,35 @@ public abstract partial class EntityEffect
         if (effect is null)
             return null;
 
-        return Loc.GetString(ReagentEffectFormat, ("effect", effect), ("chance", Probability),
+        return Loc.GetString(ReagentEffectFormat,
+            ("effect", effect),
+            ("chance", Probability),
             ("conditionCount", Conditions?.Length ?? 0),
             ("conditions",
-                ContentLocalizationManager.FormatList(Conditions?.Select(x => x.GuidebookExplanation(prototype)).ToList() ??
-                                                        new List<string>())));
+                ContentLocalizationManager.FormatList(
+                    Conditions?.Select(x => x.GuidebookExplanation(prototype)).ToList() ??
+                    [])));
     }
 }
 
 public static class EntityEffectExt
 {
-    public static bool ShouldApply(this EntityEffect effect, EntityEffectBaseArgs args,
+    public static bool ShouldApply(this EntityEffect effect,
+        EntityEffectBaseArgs args,
         IRobustRandom? random = null)
     {
-        if (random == null)
-            random = IoCManager.Resolve<IRobustRandom>();
+        random ??= IoCManager.Resolve<IRobustRandom>();
 
         if (effect.Probability < 1.0f && !random.Prob(effect.Probability))
             return false;
 
-        if (effect.Conditions != null)
+        if (effect.Conditions == null)
+            return true; // Short-Circuit
+
+        foreach (var cond in effect.Conditions)
         {
-            foreach (var cond in effect.Conditions)
-            {
-                if (!cond.Condition(args))
-                    return false;
-            }
+            if (!cond.Condition(args))
+                return false;
         }
 
         return true;
@@ -93,11 +95,11 @@ public static class EntityEffectExt
 ///     EntityEffectBaseArgs only contains the target of an effect.
 ///     If a trigger wants to include more info (e.g. the quantity of the chemical triggering the effect), it can be extended (see EntityEffectReagentArgs).
 /// </summary>
-public record class EntityEffectBaseArgs
+public record EntityEffectBaseArgs
 {
     public EntityUid TargetEntity;
 
-    public IEntityManager EntityManager = default!;
+    public readonly IEntityManager EntityManager = default!;
 
     public EntityEffectBaseArgs(EntityUid targetEntity, IEntityManager entityManager)
     {
@@ -106,7 +108,7 @@ public record class EntityEffectBaseArgs
     }
 }
 
-public record class EntityEffectReagentArgs : EntityEffectBaseArgs
+public record EntityEffectReagentArgs : EntityEffectBaseArgs
 {
     public EntityUid? OrganEntity;
 
@@ -120,7 +122,14 @@ public record class EntityEffectReagentArgs : EntityEffectBaseArgs
 
     public FixedPoint2 Scale;
 
-    public EntityEffectReagentArgs(EntityUid targetEntity, IEntityManager entityManager, EntityUid? organEntity, Solution? source, FixedPoint2 quantity, ReagentPrototype? reagent, ReactionMethod? method, FixedPoint2 scale) : base(targetEntity, entityManager)
+    public EntityEffectReagentArgs(EntityUid targetEntity,
+        IEntityManager entityManager,
+        EntityUid? organEntity,
+        Solution? source,
+        FixedPoint2 quantity,
+        ReagentPrototype? reagent,
+        ReactionMethod? method,
+        FixedPoint2 scale) : base(targetEntity, entityManager)
     {
         OrganEntity = organEntity;
         Source = source;
