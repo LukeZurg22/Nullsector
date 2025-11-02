@@ -323,22 +323,23 @@
     sprite: _NF/Clothing/OuterClothing/Hardsuits/scaf.rsi
   - type: Clothing
     sprite: _NF/Clothing/OuterClothing/Hardsuits/scaf.rsi
-  - type: Armor # Kept original scaf stats
+  - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.7
-        Slash: 0.7
-        Piercing: 0.4
-        Heat: 0.9
-        Caustic: 0.9
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.5
+        Heat: 0.5
+        Radiation: 0.4
+        Caustic: 0.4
   - type: ExplosionResistance
-    damageCoefficient: 0.8
+    damageCoefficient: 0.5
   - type: PressureProtection
     highPressureMultiplier: 0.5
     lowPressureMultiplier: 1000
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
+    walkModifier: 0.85
+    sprintModifier: 0.85
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitScaf
