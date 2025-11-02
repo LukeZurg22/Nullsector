@@ -21,6 +21,6 @@ public readonly struct EntityZombifiedEvent
 };
 
 /// <summary>
-///     Event raised when a player zombifies themself using the "turn" action
+///     Event raised when a player turns themselves into a zombie using the "turn" action
 /// </summary>
 public sealed partial class ZombifySelfActionEvent : InstantActionEvent { };

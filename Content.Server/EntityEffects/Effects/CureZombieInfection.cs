@@ -1,21 +1,22 @@
 using Content.Server.Zombies;
 using Content.Shared.EntityEffects;
-using Robust.Shared.Prototypes;
 using Content.Shared.Zombies;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.EntityEffects.Effects;
 
 public sealed partial class CureZombieInfection : EntityEffect
 {
-    [DataField]
+    [DataField("innoculate")]
     public bool Innoculate;
 
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
     {
-        if(Innoculate)
-            return Loc.GetString("reagent-effect-guidebook-innoculate-zombie-infection", ("chance", Probability));
-
-        return Loc.GetString("reagent-effect-guidebook-cure-zombie-infection", ("chance", Probability));
+        return Loc.GetString(
+            Innoculate
+                ? "reagent-effect-guidebook-innoculate-zombie-infection"
+                : "reagent-effect-guidebook-cure-zombie-infection",
+                ("chance", Probability));
     }
 
     // Removes the Zombie Infection Components
@@ -28,10 +29,14 @@ public sealed partial class CureZombieInfection : EntityEffect
         entityManager.RemoveComponent<ZombifyOnDeathComponent>(args.TargetEntity);
         entityManager.RemoveComponent<PendingZombieComponent>(args.TargetEntity);
 
+        // TODO: Add Countdown to cure here or in Content.Server....ZombieSystem.cs
+
+        // If cure is delivered, ensure they can never become zombies again.
         if (Innoculate)
-        {
             entityManager.EnsureComponent<ZombieImmuneComponent>(args.TargetEntity);
-        }
+
+        // Flag CureInjected for Update() call in ZombieSystem.cs to begin de-zombification.
+        if (entityManager.TryGetComponent(args.TargetEntity, out ZombieComponent? zombieComponent))
+            zombieComponent.CureInjected = true;
     }
 }
-
