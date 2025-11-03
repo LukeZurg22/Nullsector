@@ -1,351 +1,222 @@
-# # region tables
-# - type: entityTable
-  # id: TableZombieRandom
-  # table: !type:GroupSelector
-    # children:
-    # - !type:NestedSelector
-      # tableId: TableZombieRandomCommon
-      # weight: 0.7
-    # - !type:NestedSelector
-      # tableId: TableZombieRandomSpecial
-      # weight: 0.3
+- type: entityTable
+  id: SpawnMobZombieRandomCommon
+  table: !type:GroupSelector
+    children:
+    - id: MobZombieRegular
+      amount: 1
+      weight: 0.4
+    - id: MobZombieRegular
+      amount: 1
+      weight: 0.25
+    - id: MobZombieRegular
+      amount: 1
+      weight: 0.16
+    - id: MobZombieRegular
+      amount: 1
+      weight: 0.1
 
-# - type: entityTable
-  # id: TableZombieRandomCommon
-  # table: !type:GroupSelector
-    # children:
-    # - id: NFMobZombieSuit
-      # weight: 0.6
-    # - id: NFMobZombieJumpsuit
-      # weight: 0.4
 
-# - type: entityTable
-  # id: TableZombieRandomSpecial
-  # table: !type:GroupSelector
-    # children:
-    # - id: NFMobZombieSuitRadiation
-      # weight: 0.3
-    # - id: NFMobZombieClown
-      # weight: 0.3
-    # - id: NFMobZombieExploding
-      # weight: 0.15
-    # - id: NFMobZombieSuitFire
-      # weight: 0.125
-    # - id: NFMobZombieSuitAtmos
-      # weight: 0.125
+- type: entityTable
+  id: SpawnMobZombieRandomSpecial
+  table: !type:GroupSelector
+    children:
+    - id: VGRoidSpawnZombieRadiation
+      amount: 1
+      weight: 0.3
+    - id: VGRoidSpawnZombieClown
+      amount: 1
+      weight: 0.3
+    - id: VGRoidSpawnZombieExploding
+      amount: 1
+      weight: 0.15
+    - id: VGRoidSpawnZombieSuitFire
+      amount: 1
+      weight: 0.15
+    - id: VGRoidSpawnZombieSuitAtmos
+      amount: 1
+      weight: 0.1
 
-# - type: entityTable
-  # id: TableMobZombieRadiation
-  # table: !type:GroupSelector
-    # children:
-    # - id: NFMobZombieSuitRadiation
+# Total Random
+- type: entityTable
+  id: TableZombieRandom
+  table: !type:GroupSelector
+    children:
+    - !type:NestedSelector
+      tableId: TableZombieRandomCommon
+      weight: 0.7
+    - !type:NestedSelector
+      tableId: TableZombieRandomSpecial
+      weight: 0.3
 
-# - type: entityTable
-  # id: TableMobZombieExploding
-  # table: !type:GroupSelector
-    # children:
-    # - id: NFMobZombieExploding
+# Random Common
+- type: entityTable
+  id: TableZombieRandomCommon
+  table: !type:GroupSelector
+    children:
+    - id: MobZombieRegular
+      weight: 0.6
+    - id: MobZombiePilot
+      weight: 0.4
 
-# - type: entityTable
-  # id: TableMobZombieSuitFire
-  # table: !type:GroupSelector
-    # children:
-    # - id: NFMobZombieSuitFire
+# Random Special
+- type: entityTable
+  id: TableZombieRandomSpecial
+  table: !type:GroupSelector
+    children:
+    - id: MobZombieRadioactive
+      weight: 0.3
+    - id: MobZombieExplosive
+      weight: 0.3
+    - id: MobZombieFirey
+      weight: 0.15
+    - id: MobZombieFrozen
+      weight: 0.125
+    - id: MobZombieClown
+      weight: 0.125
 
-# - type: entityTable
-  # id: TableMobZombieSuitAtmos
-  # table: !type:GroupSelector
-    # children:
-    # - id: NFMobZombieSuitAtmos
 
-# - type: entityTable
-  # id: TableMobZombieClown
-  # table: !type:GroupSelector
-    # children:
-    # - id: NFMobZombieClown
 
-# - type: entityTable
-  # id: TableMobZombieOdysseus
-  # table: !type:GroupSelector
-    # children:
-    # - id: NFMobZombieOdysseus
+# Spawner Random Common
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobZombie
+  name: zombie spawner common
+  suffix: AI, Hostile, Viral
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: _Null/Mobs/zombies.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: EntityTableSpawner
+    offset: 0.0
+    table: !type:NestedSelector
+      tableId: TableZombieRandomCommon
+      prob: 1.00
 
-# - type: entityTable
-  # id: TableMobZombiePile
-  # table: !type:GroupSelector
-    # children:
-    # - id: NFZombiePile
+# Spawner Random Special
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobZombieSpecial
+  name: zombie spawner special
+  suffix: AI, Hostile, Viral
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: _Null/Mobs/zombies.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: EntityTableSpawner
+    offset: 0.0
+    table: !type:NestedSelector
+      tableId: TableZombieRandomSpecial
+      prob: 1.00
 
-# # region random spawner
-# - type: entity
-  # parent: MarkerBase
-  # id: NFSpawnMobZombie
-  # name: common zombie spawner
-  # suffix: AI, Hostile, Viral
-  # components:
-  # - type: Sprite
-    # layers:
-      # - state: red
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: icon
-      # - sprite: _NF/Markers/general.rsi
-        # state: questionmark
-        # color: red
-  # - type: EntityTableSpawner
-    # offset: 0.0
-    # table: !type:NestedSelector
-      # tableId: TableZombieRandomCommon
-      # prob: 1.00
+# Spawner Random Total
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobZombieRandom
+  name: zombie spawner random
+  suffix: AI, Hostile, Viral
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: _Null/Mobs/zombies.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: EntityTableSpawner
+    offset: 0.1
+    table: !type:NestedSelector
+      tableId: TableZombieRandom
+      prob: 1.00
 
-# - type: entity
-  # parent: MarkerBase
-  # id: NFSpawnMobZombieSpecial
-  # name: special zombie spawner
-  # suffix: AI, Hostile, Viral
-  # components:
-  # - type: Sprite
-    # layers:
-      # - state: red
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: icon
-      # - sprite: _NF/Markers/general.rsi
-        # state: questionmark
-        # color: red
-  # - type: EntityTableSpawner
-    # offset: 0.0
-    # table: !type:NestedSelector
-      # tableId: TableZombieRandomSpecial
-      # prob: 1.00
+# VGRoid Spawners
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieSuit
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieRegular
 
-# - type: entity
-  # parent: MarkerBase
-  # id: NFSpawnMobZombieRandom
-  # name: random zombie spawner
-  # suffix: AI, Hostile, Viral
-  # components:
-  # - type: Sprite
-    # layers:
-      # - state: red
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: icon
-      # - sprite: _NF/Markers/general.rsi
-        # state: questionmark
-        # color: red
-  # - type: EntityTableSpawner
-    # offset: 0.1
-    # table: !type:NestedSelector
-      # tableId: TableZombieRandom
-      # prob: 1.00
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieJumpsuit
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombiePilot
 
-# # region conditional spawners
-# - type: entity
-  # parent: MarkerBase
-  # id: NFSpawnZombieRadiation
-  # name: radioactive zombie spawner
-  # suffix: AI, Hostile, Viral
-  # components:
-  # - type: Sprite
-    # layers:
-      # - state: red
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: icon
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: suit-torn-radiation
-  # - type: EntityTableSpawner
-    # offset: 0.0
-    # table: !type:NestedSelector
-      # tableId: TableMobZombieRadiation
-      # prob: 1.00
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieRadiation
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieRadioactive
 
-# - type: entity
-  # parent: MarkerBase
-  # id: NFSpawnZombieClown
-  # name: zombie clown spawner
-  # suffix: AI, Hostile, Viral
-  # components:
-  # - type: Sprite
-    # layers:
-      # - state: red
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: icon
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: suit-torn-clown
-  # - type: EntityTableSpawner
-    # offset: 0.0
-    # table: !type:NestedSelector
-      # tableId: TableMobZombieClown
-      # prob: 1.00
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieClown
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieClown
 
-# - type: entity
-  # parent: MarkerBase
-  # id: NFSpawnZombieExploding
-  # name: exploding zombie spawner
-  # suffix: AI, Hostile, Viral
-  # components:
-  # - type: Sprite
-    # layers:
-      # - state: red
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: icon
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: suit-torn-cargo
-  # - type: EntityTableSpawner
-    # offset: 0.0
-    # table: !type:NestedSelector
-      # tableId: TableMobZombieExploding
-      # prob: 1.00
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieExploding
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieExplosive
 
-# - type: entity
-  # parent: MarkerBase
-  # id: NFSpawnZombieFire
-  # name: flaming zombie spawner
-  # suffix: AI, Hostile, Viral
-  # components:
-  # - type: Sprite
-    # layers:
-      # - state: red
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: icon
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: suit-torn-fire
-  # - type: EntityTableSpawner
-    # offset: 0.0
-    # table: !type:NestedSelector
-      # tableId: TableMobZombieSuitFire
-      # prob: 1.00
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieSuitFire
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieFirey
 
-# - type: entity
-  # parent: MarkerBase
-  # id: NFSpawnZombieAtmos
-  # name: cold zombie spawner
-  # suffix: AI, Hostile, Viral
-  # components:
-  # - type: Sprite
-    # layers:
-      # - state: red
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: icon
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: suit-torn-atmos-winter
-  # - type: EntityTableSpawner
-    # offset: 0.0
-    # table: !type:NestedSelector
-      # tableId: TableMobZombieSuitAtmos
-      # prob: 1.00
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieSuitAtmos
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieFrozen
 
-# - type: entity
-  # parent: MarkerBase
-  # id: NFSpawnZombieOdysseus
-  # name: zombie in exosuit spawner
-  # suffix: AI, Hostile, Viral
-  # components:
-  # - type: Sprite
-    # layers:
-      # - state: red
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: icon
-      # - sprite: Objects/Specific/Mech/mecha.rsi
-        # state: odysseus
-  # - type: EntityTableSpawner
-    # offset: 0.0
-    # table: !type:NestedSelector
-      # tableId: TableMobZombieOdysseus
-      # prob: 1.00
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieOdysseus
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieBoss
 
-# - type: entity
-  # parent: MarkerBase
-  # id: NFSpawnZombiePile
-  # name: pile of body bags spawner
-  # suffix: Frontier, Zombie Spawner
-  # components:
-  # - type: Sprite
-    # layers:
-      # - state: red
-      # - sprite: _Null/Mobs/zombies.rsi
-        # state: spawner
-  # - type: EntityTableSpawner
-    # table: !type:NestedSelector
-      # tableId: TableMobZombiePile
-      # prob: 1.00
-
-# # region vgroid spawners
-# - type: entity
-  # parent: MarkerBase
-  # id: NFVGRoidSpawnZombieSuit
-  # categories: [ HideSpawnMenu ]
-  # components:
-  # - type: ConditionalSpawner
-    # prototypes:
-    # - NFMobZombieSuit
-
-# - type: entity
-  # parent: MarkerBase
-  # id: NFVGRoidSpawnZombieJumpsuit
-  # categories: [ HideSpawnMenu ]
-  # components:
-  # - type: ConditionalSpawner
-    # prototypes:
-    # - NFMobZombieJumpsuit
-
-# - type: entity
-  # parent: MarkerBase
-  # id: NFVGRoidSpawnZombieRadiation
-  # categories: [ HideSpawnMenu ]
-  # components:
-  # - type: ConditionalSpawner
-    # prototypes:
-    # - NFMobZombieSuitRadiation
-
-# - type: entity
-  # parent: MarkerBase
-  # id: NFVGRoidSpawnZombieClown
-  # categories: [ HideSpawnMenu ]
-  # components:
-  # - type: ConditionalSpawner
-    # prototypes:
-    # - NFMobZombieClown
-
-# - type: entity
-  # parent: MarkerBase
-  # id: NFVGRoidSpawnZombieExploding
-  # categories: [ HideSpawnMenu ]
-  # components:
-  # - type: ConditionalSpawner
-    # prototypes:
-    # - NFMobZombieExploding
-
-# - type: entity
-  # parent: MarkerBase
-  # id: NFVGRoidSpawnZombieSuitFire
-  # categories: [ HideSpawnMenu ]
-  # components:
-  # - type: ConditionalSpawner
-    # prototypes:
-    # - NFMobZombieSuitFire
-
-# - type: entity
-  # parent: MarkerBase
-  # id: NFVGRoidSpawnZombieSuitAtmos
-  # categories: [ HideSpawnMenu ]
-  # components:
-  # - type: ConditionalSpawner
-    # prototypes:
-    # - NFMobZombieSuitAtmos
-
-# - type: entity
-  # parent: MarkerBase
-  # id: NFVGRoidSpawnZombieOdysseus
-  # categories: [ HideSpawnMenu ]
-  # components:
-  # - type: ConditionalSpawner
-    # prototypes:
-    # - NFMobZombieOdysseus
-
-# - type: entity
-  # parent: MarkerBase
-  # id: NFVGRoidSpawnZombiePile
-  # categories: [ HideSpawnMenu ]
-  # components:
-  # - type: ConditionalSpawner
-    # prototypes:
-    # - NFZombiePile
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombiePile
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - ZombiePile

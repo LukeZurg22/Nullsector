@@ -55,9 +55,9 @@
       - id: SpaceCash500
         weight: 0.2
       - id: SpaceCash1000
-        weight: 0.4
+        weight: 0.2
       - id: SpaceCash2500
-        weight: 0.3
+        weight: 0.2
     # Things
     - !type:GroupSelector
       children:
@@ -70,13 +70,14 @@
       rolls: !type:RangeNumberSelector
         range: -1, 1
       children:
+      - id: SyringeDylovene
       - id: PillCharcoal
       - id: PillHyronalin
       - id: PillTricordrazine
       - id: Gauze1
       - id: Brutepack1
       - id: ChemistryBottleMysteryLiquid
-        weight: 0.05
+        weight: 0.07
 
 
 # Loot Spawner

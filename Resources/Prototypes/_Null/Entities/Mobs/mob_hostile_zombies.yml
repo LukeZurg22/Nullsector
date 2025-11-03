@@ -1,0 +1,412 @@
+# Base Zombie Type
+- type: entity
+  abstract: true
+  categories: [ HideSpawnMenu ]
+  id: BaseZombie
+  name: zombie (normal)
+  suffix: AI, Hostile, Viral
+  description: |-
+   Null Hiker's Guide to the Galaxy says: "A zombie is a mythological corporeal body reanimated by biological, or mystical means that transfers its state of being through bites-" Oh! Hope you didn't get bit there! 
+  parent:
+  - MobHumanoidHostileAISimpleMelee
+  - MobHumanoidHostileBase
+  - MobHumanoidInventory
+  - MobPassiveRegenStrong
+  - NFMobRestrictions
+  components:
+    - type: Body
+      prototype: NFHumanNoHands
+    - type: NpcFactionMember
+      factions:
+      - Zombie
+    - type: Damageable
+      damageModifierSet: Zombie
+    - type: MeleeWeapon
+      attackRate: 0.9
+      altDisarm: false
+      angle: 0
+      animation: WeaponArcBite
+      damage:
+        types:
+          Blunt: 2
+          Slash: 5
+          Structural: 45
+      soundHit:
+        path: /Audio/Effects/bite.ogg
+    - type: SolutionContainerManager
+      solutions:
+        melee:
+          maxVol: 10
+    - type: SolutionRegeneration
+      solution: melee
+      generated:
+        reagents:
+        - ReagentId: Toxin
+          Quantity: 0.5
+    - type: MeleeChemicalInjector
+      transferAmount: 0.5
+      solution: melee
+    - type: Butcherable
+      spawned:
+      - id: SpawnZombieLoot
+        amount: 1
+    - type: Bloodstream
+      bloodReagent: ZombieBlood
+      bloodMaxVolume: 250
+      bloodlossDamage:
+        types:
+          Bloodloss:
+            0.5
+      bloodlossHealDamage:
+        types:
+          Bloodloss:
+            -1
+    - type: ReplacementAccent
+      accent: zombie
+    - type: SpamEmitSound
+      minInterval: 3
+      maxInterval: 9
+      sound:
+        collection: ZombieScreams
+        params:
+          variation: 0.125
+    - type: SoundWhileAlive
+    - type: Advertise
+      pack: zombiechatter
+      minimumWait: 30
+      maximumWait: 100
+      nextAdvertisementTime: 10
+    - type: AutoWakeUp
+    - type: StinkyTrait
+    - type: GhostRole
+      name: ghost-role-information-zombie
+      description: ghost-role-information-zombie-description
+      rules: ghost-role-information-zombie-rules
+      raffle:
+        settings: short
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: GhostTakeoverAvailable
+    - type: PendingZombie
+      instantaneous: true
+      
+# Regular Zombie
+- type: entity
+  id: MobZombieRegular
+  parent: BaseZombie
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearBartender, ZombieGearBiogenetics, ZombieGearEngineer, ZombieGearAtmosTech, ZombieGearScientist, ZombieGearFireMarshall, ZombieGearPilot ]
+
+# Radioactive Zombie
+- type: entity
+  id: MobZombieRadioactive
+  parent: BaseZombie
+  name: zombie (radioactive)
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearEngineer ] # Note: One could make custom "radioactive" -looking clothing.
+    - type: RadiationSource
+      intensity: 0.3
+    - type: PointLight
+      radius: 1.5
+      energy: 0.5
+      softness: 0.5
+      color: LightGreen
+      castShadows: false
+
+# Explosive Zombie
+- type: entity
+  id: MobZombieExplosive
+  parent: BaseZombie
+  name: zombie (explosive)
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearScientist ]
+    - type: RadiationSource
+      intensity: 0.3
+    - type: PointLight
+      radius: 1.5
+      energy: 0.5
+      softness: 0.5
+      color: LightGreen
+      castShadows: false
+    - type: SingularityDistortion
+      intensity: 500
+      falloffPower: 5
+    - type: RepulseAttract
+      speed: -15 # Anything above this pushes things too far away from the entity
+      range: 2
+      whitelist:
+        components:
+        - MobMover
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 60
+        behaviors:
+        - !type:PlaySoundBehavior
+          sound:
+            collection: blood
+            params:
+              variation: 0.250
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            ZombieExplosion:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+
+
+# Explosive Effect (this is an entity)
+- type: entity
+  id: ZombieExplosion
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TriggerOnSpawn
+  - type: TimedDespawn
+    lifetime: 5
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 9
+    intensitySlope: 2.5
+    maxIntensity: 2
+    canCreateVacuum: false
+
+# Fire Zombie
+- type: entity
+  id: MobZombieFirey
+  parent: BaseZombie
+  name: zombie (fire marshall bill)
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearBartender, ZombieGearFireMarshall, ZombieGearAtmosTech ]
+    - type: Flammable
+      fireSpread: true
+      canResistFire: true
+      damage:
+        types:
+          Heat: 0
+    - type: IgniteOnMeleeHit # LEMME TELL YA SOMETHIN'!
+      fireStacks: 1
+    - type: IgnitionSource
+      temperature: 800
+      ignited: true
+    - type: PointLight
+      color: "#E25822"
+      radius: 2
+      energy: 1
+      softness: 1
+      castShadows: false
+
+# Frozen Zombie
+- type: entity
+  id: MobZombieFrozen
+  parent: BaseZombie
+  name: zombie (frozen)
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearFireMarshall, ZombieGearAtmosTech ]
+    - type: MeleeWeapon
+      damage:
+        types:
+          Cold: 4
+          Slash: 6
+          Structural: 45
+    - type: SolutionRegeneration
+      solution: melee
+      generated:
+        reagents:
+        - ReagentId: Fresium
+          Quantity: 1
+    - type: PointLight
+      radius: 2
+      energy: 1
+      softness: 0.5
+      color: cyan
+      castShadows: false
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 15
+      rechargeSound:
+        path: /Audio/_NF/Effects/silence.ogg
+    - type: BasicEntityAmmoProvider
+      proto: SplatterChemCold
+      capacity: 1
+      count: 1
+    - type: Gun
+      showExamineText: false
+      fireRate: 0.75
+      selectedMode: SemiAuto
+      availableModes:
+      - SemiAuto
+      soundGunshot: /Audio/Items/Toys/sitcom_laugh.ogg
+
+# Clown Zombie
+- type: entity
+  id: MobZombieClown
+  parent: BaseZombie
+  name: zombie (clown)
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearClown ]
+    - type: Butcherable
+      spawned:
+      - id: SpawnZombieLoot
+        amount: 1
+      - id: ClothingShoesClownModKetchup
+        amount: 1
+    - type: FootstepModifier
+      footstepSoundCollection:
+        collection: squeezeBottleUseSounds
+    - type: RechargeBasicEntityAmmo
+      rechargeCooldown: 15
+      rechargeSound:
+        path: /Audio/_NF/Effects/silence.ogg
+    - type: BasicEntityAmmoProvider
+      proto: FoodPieBananaCream
+      capacity: 1
+      count: 1
+    - type: Gun
+      showExamineText: false
+      fireRate: 0.75
+      selectedMode: SemiAuto
+      availableModes:
+      - SemiAuto
+      soundGunshot: /Audio/Items/Toys/sitcom_laugh.ogg
+    - type: SpamEmitSound
+      minInterval: 3
+      maxInterval: 9
+      sound:
+        collection: ZombieClownScreams
+        params:
+          variation: 0.125
+  
+# Zombie Pilot
+- type: entity
+  id: MobZombiePilot
+  parent: BaseZombie
+  name: zombie (pilot)
+  components:
+  - type: Loadout # startingGear Loadouts
+    prototypes: [ ZombieGearPilot ]
+
+# Zombie Boss
+- type: entity
+  id: MobZombieBoss
+  parent: BaseZombie
+  name: zombie (boss)
+  description: |-
+   A fast, lightly armored medical exosuit: so advanced it practically pilots itself! It appears a zombie is trapped inside the suit.
+  components: # Warning: Odysseus suit didn't render right, so it was removed.
+  - type: Loadout # startingGear Loadouts
+    prototypes: [ ZombieGearBoss ]
+  - type: Damageable
+    damageModifierSet: MobRogueSiliconDamageModifierSet
+  - type: Bloodstream
+    bloodReagent: WeldingFuel
+    bloodMaxVolume: 100
+  - type: Timer
+  - type: TimedSpawner
+    prototypes:
+    - SpawnZombiePile
+    chance: 1
+    intervalSeconds: 180
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      160: Dead
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 155
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MobZombiePilot:
+            min: 1
+            max: 1
+          ZombiePile:
+            min: 1
+            max: 1
+          RipleyChassis:
+            min: 1
+            max: 1
+          RipleyCentralElectronics:
+            min: 1
+            max: 1
+          RipleyPeripheralsElectronics:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
+  - type: MeleeWeapon
+    hidden: true
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 20
+        Structural: 60
+    soundHit:
+      collection: MetalThud
+  - type: PointLight
+    radius: 5
+    energy: 2
+
+# Spawner Pile
+- type: entity
+  parent: AberrantFleshDigestiveSack
+  id: ZombiePile
+  name: pile of body bags
+  description: A stacked pile of reinforced body bags. Some of them are moving!
+  components:
+  - type: TimedSpawner
+    prototypes:
+    - RandomZombieSpawner
+    chance: 1
+    intervalSeconds: 180
+    minimumEntitiesSpawned: 2
+    maximumEntitiesSpawned: 3
+  - type: Sprite
+    sprite: _Null/Mobs/zombies.rsi
+    layers:
+    - state: spawner
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Zombie
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: gib
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: gib
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          FoodMeatRotten:
+            min: 1
+            max: 3
