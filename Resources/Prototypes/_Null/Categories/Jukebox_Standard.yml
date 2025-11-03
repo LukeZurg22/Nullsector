@@ -6,3 +6,9 @@
   name: Alistair Lindsay - A Twisted Path
   path:
     path: /Audio/_Null/Jukebox/twisted_path.ogg
+
+- type: jukebox
+  id: Noosphere
+  name: Noosphere (Pipe Organ Cut) - Guillaume David
+  path:
+    path: /Audio/_Null/Jukebox/noosphere.ogg
