@@ -398,6 +398,8 @@ public sealed partial class ZombieSystem
     /// <remarks>
     ///     this currently only restore the name and skin/eye color from before zombified
     ///     TODO: completely rethink how zombies are done to allow reversal.
+    ///     TODO: Add default accents. So random cured zombie NPCs can be fully cured.
+    ///     TODO: Consider adding the ability to cure random zombies to turn in at Kemak for cash?
     /// </remarks>
     private bool UnZombifyEntity(EntityUid source, EntityUid target, ZombieComponent? zombieComponent, bool isCure = false)
     {
