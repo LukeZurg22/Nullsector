@@ -120,4 +120,4 @@
         maximumDistance: 2500
         addComponents: *dungeonComponents
         protos:
-        - NFVGRoidCaveZombie
+        - NFVGRoidZombieCave

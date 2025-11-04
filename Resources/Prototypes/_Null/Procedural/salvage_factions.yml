@@ -1,6 +1,6 @@
 - type: salvageFaction
   id: Zombies
-  desc: nf-salvage-faction-zombies
+  desc: salvage-faction-zombies
   groups:
   - entries: # Null Sector: a lot of zombies, they move in hordes!
     - id: SpawnMobZombie

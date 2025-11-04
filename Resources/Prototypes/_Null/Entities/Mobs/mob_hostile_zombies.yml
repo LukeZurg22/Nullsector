@@ -311,7 +311,7 @@
   - type: Timer
   - type: TimedSpawner
     prototypes:
-    - SpawnZombiePile
+    - ZombiePile
     chance: 1
     intervalSeconds: 180
     minimumEntitiesSpawned: 1
@@ -373,7 +373,7 @@
   components:
   - type: TimedSpawner
     prototypes:
-    - RandomZombieSpawner
+    - SpawnMobZombieRandom
     chance: 1
     intervalSeconds: 180
     minimumEntitiesSpawned: 2
