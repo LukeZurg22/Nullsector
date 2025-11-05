@@ -1,0 +1,14 @@
+- type: salvageFaction
+  id: Zombies
+  desc: salvage-faction-zombies
+  groups:
+  - entries: # Null Sector: a lot of zombies, they move in hordes!
+    - id: SpawnMobZombie
+      amount: 5
+      maxAmount: 7
+    - id: SpawnMobZombieSpecial
+      amount: 1
+  configs:
+    DefenseStructure: ZombiePile
+    Mining: MobZombieRegular
+    Megafauna: MobZombieBoss

@@ -1,0 +1,184 @@
+# Total Random
+- type: entityTable
+  id: TableZombieRandom
+  table: !type:GroupSelector
+    children:
+    - !type:NestedSelector
+      tableId: TableZombieRandomCommon
+      weight: 0.7
+    - !type:NestedSelector
+      tableId: TableZombieRandomSpecial
+      weight: 0.3
+
+# Random Common
+- type: entityTable
+  id: TableZombieRandomCommon
+  table: !type:GroupSelector
+    children:
+    - id: MobZombieRegular
+      weight: 0.6
+    - id: MobZombiePilot
+      weight: 0.4
+
+# Random Special
+- type: entityTable
+  id: TableZombieRandomSpecial
+  table: !type:GroupSelector
+    children:
+    - id: MobZombieRadioactive
+      weight: 0.3
+    - id: MobZombieExplosive
+      weight: 0.3
+    - id: MobZombieFirey
+      weight: 0.15
+    - id: MobZombieFrozen
+      weight: 0.125
+    - id: MobZombieClown
+      weight: 0.125
+
+
+
+# Spawner Random Common
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobZombie
+  name: zombie spawner common
+  suffix: AI, Hostile, Viral
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: _Null/Mobs/zombies.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: EntityTableSpawner
+    offset: 0.0
+    table: !type:NestedSelector
+      tableId: TableZombieRandomCommon
+      prob: 1.00
+
+# Spawner Random Special
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobZombieSpecial
+  name: zombie spawner special
+  suffix: AI, Hostile, Viral
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: _Null/Mobs/zombies.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: EntityTableSpawner
+    offset: 0.0
+    table: !type:NestedSelector
+      tableId: TableZombieRandomSpecial
+      prob: 1.00
+
+# Spawner Random Total
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobZombieRandom
+  name: zombie spawner random
+  suffix: AI, Hostile, Viral
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: _Null/Mobs/zombies.rsi
+        state: icon
+      - sprite: _NF/Markers/general.rsi
+        state: questionmark
+        color: red
+  - type: EntityTableSpawner
+    offset: 0.1
+    table: !type:NestedSelector
+      tableId: TableZombieRandom
+      prob: 1.00
+
+# VGRoid Spawners
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieSuit
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieRegular
+
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieJumpsuit
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombiePilot
+
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieRadiation
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieRadioactive
+
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieClown
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieClown
+
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieExploding
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieExplosive
+
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieSuitFire
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieFirey
+
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieSuitAtmos
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieFrozen
+
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombieOdysseus
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - MobZombieBoss
+
+- type: entity
+  parent: MarkerBase
+  id: VGRoidSpawnZombiePile
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ConditionalSpawner
+    prototypes:
+    - ZombiePile

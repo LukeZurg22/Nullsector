@@ -13,13 +13,20 @@ public sealed partial class PendingZombieComponent : Component
     /// <summary>
     /// Damage dealt every second to infected individuals.
     /// </summary>
-    [DataField("damage")] public DamageSpecifier Damage = new()
+    [DataField("damage")]
+    public DamageSpecifier Damage = new()
     {
         DamageDict = new ()
         {
             { "Poison", 0.2 },
         }
     };
+
+    /// <summary>
+    /// Forces zombification on initialization.
+    /// </summary>
+    [DataField("instantaneous")]
+    public bool IsInstant = false;
 
     /// <summary>
     /// A multiplier for <see cref="Damage"/> applied when the entity is in critical condition.

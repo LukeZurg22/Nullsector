@@ -20,8 +20,17 @@ public abstract class SharedZombieSystem : EntitySystem
         args.ModifySpeed(mod, mod);
     }
 
+    private const string ZombieNamePrefix = "zombie-name-prefix";
+
     private void OnRefreshNameModifiers(Entity<ZombieComponent> entity, ref RefreshNameModifiersEvent args)
     {
-        args.AddModifier("zombie-name-prefix");
+        if (entity.Comp.CanRemoveZombieName)
+        {
+            args.RemoveModifier(ZombieNamePrefix);
+        }
+        else
+        {
+            args.AddModifier(ZombieNamePrefix);
+        }
     }
 }

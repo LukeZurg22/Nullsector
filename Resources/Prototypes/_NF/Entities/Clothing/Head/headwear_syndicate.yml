@@ -18,7 +18,7 @@
 # Syndicate armored bio suit hood
 - type: entity
   parent:
-  - BaseC3SyndicateContrabandUnredeemable
+  - BaseC2ContrabandUnredeemable
   - ClothingHeadHatHoodBioGeneral
   - ContrabandClothing
   id: ClothingHeadHatHoodBioArmoredSyndicate

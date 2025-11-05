@@ -119,11 +119,19 @@ public sealed class RefreshNameModifiersEvent : IInventoryRelayEvent
     }
 
     /// <summary>
+    /// Removes a modifier from an entity's name.
+    /// </summary>
+    public void RemoveModifier(LocId locId, int priority = 0, params (string, object)[] extraArgs)
+    {
+        _modifiers.Remove((locId, priority, extraArgs));
+    }
+
+    /// <summary>
     /// Returns the final name with all modifiers applied.
     /// </summary>
     public string GetModifiedName()
     {
-        // Start out with the entity's name name
+        // Start out with the entity's name
         var name = BaseName;
 
         // Iterate through all the modifiers in priority order

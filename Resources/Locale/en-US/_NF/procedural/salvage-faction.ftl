@@ -1,5 +1,6 @@
 dungeon-boss-grid-warning = Return to the dungeon.
 
+salvage-faction-zombies = Zombies
 salvage-faction-syndicate = Syndicate
 salvage-faction-cultists = Cultists
 salvage-faction-flesh = Flesh

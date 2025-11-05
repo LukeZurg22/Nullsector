@@ -1,10 +1,8 @@
 using System.IO;
 using System.Linq;
-using Content.Shared.CCVar;
-using Content.Shared.Decals;
+using Content.Shared._Shitmed.Humanoid.Events;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid.Markings;
-using Content.Shared._Shitmed.Humanoid.Events; // Shitmed Change
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Preferences;
@@ -18,6 +16,7 @@ using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Utility;
 using YamlDotNet.RepresentationModel;
+// Shitmed Change
 
 namespace Content.Shared.Humanoid;
 
@@ -255,7 +254,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         if (!Resolve(uid, ref humanoid))
             return;
 
-        if (!_proto.TryIndex<SpeciesPrototype>(humanoid.Species, out var species))
+        if (!_proto.TryIndex(humanoid.Species, out var species))
         {
             return;
         }
@@ -266,6 +265,28 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         }
 
         humanoid.SkinColor = skinColor;
+
+        if (sync)
+            Dirty(uid, humanoid);
+    }
+
+    /// <summary>
+    ///     Null Sector Addition: Sets the eye color of this humanoid mob.
+    /// </summary>
+    /// <param name="uid">The humanoid mob's UID.</param>
+    /// <param name="eyeColor">Skin color to set on the humanoid mob.</param>
+    /// <param name="sync">Whether to synchronize this to the humanoid mob, or not.</param>
+    /// <param name="verify">Whether to verify the skin color can be set on this humanoid or not</param>
+    /// <param name="humanoid">Humanoid component of the entity</param>
+    public virtual void SetEyeColor(EntityUid uid, Color eyeColor, bool sync = true, bool verify = true, HumanoidAppearanceComponent? humanoid = null)
+    {
+        if (!Resolve(uid, ref humanoid))
+            return;
+
+        if (!_proto.TryIndex(humanoid.Species, out _))
+            return;
+
+        humanoid.EyeColor = eyeColor;
 
         if (sync)
             Dirty(uid, humanoid);

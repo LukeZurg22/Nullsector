@@ -1,5 +1,6 @@
+# Frontier Below
 - type: salvageFaction
-  id: Xenos # Frontier
+  id: Xenos 
   desc: salvage-faction-xenos
   cost: 3
   groups:

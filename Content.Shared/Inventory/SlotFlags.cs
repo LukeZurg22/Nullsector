@@ -26,8 +26,8 @@ public enum SlotFlags
     LEGS = 1 << 13, // Null Sector : used for surgery
     FEET = 1 << 14,
     SUITSTORAGE = 1 << 15,
-    WALLET = 1 << 13, // Frontier: using an unused slot, redefine to a new bit if/when it's used (goodbye ushort)
+    WALLET = 1 << 16, // Frontier: using an unused slot, redefine to a new bit if/when it's used (goodbye ushort)
     All = ~NONE,
 
-    WITHOUT_POCKET = All & ~POCKET
+    WITHOUT_POCKET = All & ~POCKET,
 }

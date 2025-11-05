@@ -1080,6 +1080,22 @@
         - ReagentId: Romerol
           Quantity: 15
 
+# Null Sector - Dylovene Syringe
+- type: entity
+  parent: [PrefilledSyringe]
+  suffix: dylovene
+  id: SyringeDylovene
+  components:
+  - type: Label
+    currentLabel: reagent-name-dylovene
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+        - ReagentId: Dylovene
+          Quantity: 15
+
 - type: entity
   parent: [PrefilledSyringe, BaseC3SyndicateContraband] # Frontier: BaseSyndicateContraband<BaseC3SyndicateContraband
   suffix: hyperzine

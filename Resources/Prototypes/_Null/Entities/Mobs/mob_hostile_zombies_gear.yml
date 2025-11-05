@@ -1,0 +1,78 @@
+# Gear
+- type: startingGear
+  id: ZombieGearBartender # Bartender
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBartender
+    shoes: ClothingShoesColorBlack
+    head: ClothingHeadHatTophat
+    eyes: ClothingEyesGlassesSunglasses
+    outerClothing: ClothingOuterArmorBasicSlim
+    pocket2: ClothingBackpackZombieLootA
+
+- type: startingGear
+  id: ZombieGearBiogenetics # Genetics / Bio
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGenetics
+    shoes: ClothingShoesColorWhite
+    head: ClothingHeadHatHoodBioGeneral
+    outerClothing: ClothingOuterBioGeneral
+    pocket2: ClothingBackpackZombieLootA
+
+- type: startingGear
+  id: ZombieGearEngineer # Engineer
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitEngineering
+    shoes: ClothingShoesColorBlack
+    outerClothing: ClothingOuterEVASuitEngineer
+    pocket2: ClothingBackpackZombieLootA
+- type: startingGear
+  id: ZombieGearScientist # Scientist
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitScientistFormal
+    shoes: ClothingShoesBootsWinterSci
+    outerClothing: ClothingOuterWinterSci
+    pocket2: ClothingBackpackZombieLootA
+
+- type: startingGear
+  id: ZombieGearFireMarshall # Fire Marshall Bill, lemme tell ya somethin!
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAncient
+    head: ClothingHeadHelmetAtmosFire
+    shoes: ClothingShoesBootsJack
+    outerClothing: ClothingOuterSuitAtmosFire
+    pocket2: ClothingBackpackZombieLootA
+
+- type: startingGear
+  id: ZombieGearAtmosTech # Atmos Tech
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitAtmos
+    mask: ClothingMaskGasAtmos
+    shoes: ClothingShoesBootsJack
+    outerClothing: ClothingOuterEVASuitAtmosTech
+    pocket2: ClothingBackpackZombieLootA
+
+- type: startingGear
+  id: ZombieGearClown # Clown
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClown
+    mask: ClothingMaskClown
+    shoes: ClothingShoesClownModKetchup
+    pocket2: ClothingBackpackZombieLootA
+
+- type: startingGear
+  id: ZombieGearPilot # Pilot
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPilot
+    head: ClothingHeadHatPilot
+    mask: ClothingMaskPilot
+    shoes: ClothingShoesBootsJack
+    outerClothing: ClothingOuterEVASuitPilot
+    pocket2: ClothingBackpackZombieLootA
+
+- type: startingGear
+  id: ZombieGearBoss # Boss
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCMOTurtle
+    head: ClothingHeadHatHoodBioGeneral
+    shoes: ClothingShoesBootsJack
+    outerClothing: ClothingOuterHardsuitSyndieReverseEngineered

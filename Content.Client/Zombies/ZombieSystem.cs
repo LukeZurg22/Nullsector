@@ -1,7 +1,6 @@
 using System.Linq;
-using Content.Shared.Ghost;
+using Content.Client.StatusIcon;
 using Content.Shared.Humanoid;
-using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Content.Shared.Zombies;
 using Robust.Client.GameObjects;
@@ -12,14 +11,25 @@ namespace Content.Client.Zombies;
 public sealed class ZombieSystem : SharedZombieSystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly StatusIconSystem _statusIconSystem = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<ZombieComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<ZombieComponent, ComponentRemove>(OnRemove);
         SubscribeLocalEvent<ZombieComponent, GetStatusIconsEvent>(GetZombieIcon);
         SubscribeLocalEvent<InitialInfectedComponent, GetStatusIconsEvent>(GetInitialInfectedIcon);
+    }
+
+    /// <summary>
+    /// Removes Zombie Role Icon from player when the component is removed, assumedly cured.
+    /// </summary>
+    private void OnRemove(Entity<ZombieComponent> ent, ref ComponentRemove args)
+    {
+        var iconPrototype = _prototype.Index(ent.Comp.StatusIcon);
+        _statusIconSystem.GetStatusIcons(ent).Remove(iconPrototype);
     }
 
     private void GetZombieIcon(Entity<ZombieComponent> ent, ref GetStatusIconsEvent args)

@@ -1,0 +1,28 @@
+- type: reagent
+  id: ZombieCure
+  name: reagent-name-zombie-cure
+  desc: reagent-desc-zombie-cure
+  group: Medicine
+  physicalDesc: reagent-physical-desc-viscous
+  flavor: sludgy
+  color: "#4B2466"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:CureZombieInfection
+          innoculate: true
+          conditions:
+            - !type:ReagentThreshold
+              min: 20
+        - !type:HealthChange
+          conditions:
+            - !type:ReagentThreshold
+                min: 10
+          damage:
+            groups:
+              Brute: -3
+              Burn: -3
+            types:
+              Poison: -2
+              Caustic: -5

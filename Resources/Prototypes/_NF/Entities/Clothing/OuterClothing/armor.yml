@@ -26,7 +26,7 @@
 # Syndicate armored bio suit
 - type: entity
   parent:
-  - BaseC3SyndicateContraband
+  - BaseC2ContrabandUnredeemable
   - ClothingOuterBioGeneral
   - ContrabandClothing
   id: ClothingOuterBioArmoredSyndicate
@@ -42,9 +42,9 @@
     modifiers:
       coefficients:
         Slash: 1.2
-        Piercing: 0.4
-        Heat: 0.6
-        Caustic: 0.4
+        Piercing: 0.75
+        Heat: 0.7
+        Caustic: 0.5
   - type: ClothingSpeedModifier
     walkModifier: 0.85
     sprintModifier: 0.85

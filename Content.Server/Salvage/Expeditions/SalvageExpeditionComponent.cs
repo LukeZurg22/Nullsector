@@ -6,6 +6,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.List;
 
+// ReSharper disable InvalidXmlDocComment
+
 namespace Content.Server.Salvage.Expeditions;
 
 /// <summary>
