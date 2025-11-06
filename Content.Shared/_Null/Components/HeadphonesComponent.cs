@@ -1,8 +1,9 @@
 using Robust.Shared.GameStates;
+
 namespace Content.Shared._Null.Components;
 
 /// <summary>
-/// Designates this entity as holding a salvage expedition.
+/// Designates this entity as capable headphones.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class HeadphonesComponent : Component

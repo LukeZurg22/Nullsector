@@ -5,7 +5,7 @@ namespace Content.Shared._Null.Systems;
 
 public sealed class UserToggleRoundUsername : EntitySystem
 {
-    [Dependency] private   readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
     public bool DisplayUsernameInSummary = true;
 
     public new void Initialize()

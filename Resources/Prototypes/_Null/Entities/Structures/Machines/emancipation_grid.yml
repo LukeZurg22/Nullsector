@@ -2,7 +2,7 @@
   id: EmancipationGrid
   parent: BaseMachinePowered
   name: emancipation grid
-  description: Automatically disintegrates trash and nasty substances on a vessel.
+  description: Advanced armadan-grade technology that typically rids a vessel of all trash and spilled liquid substances. The bane of any garbage enjoyer, and the bounty of every military in the galaxy. Due warning, this machine can be a bit... overzealous!
   placement:
     mode: SnapgridCenter
   components:
@@ -53,3 +53,4 @@
       containers:
         machine_board: !type:Container
         machine_parts: !type:Container
+    - type: EmancipationGrid
