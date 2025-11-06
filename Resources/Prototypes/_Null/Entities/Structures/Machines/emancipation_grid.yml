@@ -53,3 +53,13 @@
       containers:
         machine_board: !type:Container
         machine_parts: !type:Container
+    - type: EmancipationGrid
+      sound:
+        path: /Audio/Effects/zzzt.ogg
+        params:
+          volume: -3
+      # whitelist: # This default Whitelist is implicit in the component. Trash Tags & SpaceGarbage components are auto-selected.
+        # tags:
+        # - Trash
+        # components:
+        # - SpaceGarbage

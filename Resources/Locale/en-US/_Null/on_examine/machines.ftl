@@ -1,0 +1,1 @@
+emancipation-grid-examined = Processed {$amount} item(s)!
