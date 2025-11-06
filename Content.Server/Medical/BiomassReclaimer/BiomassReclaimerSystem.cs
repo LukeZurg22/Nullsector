@@ -1,7 +1,7 @@
 using System.Numerics;
 using Content.Server.Body.Components;
-using Content.Server.Construction;
 using Content.Server.Botany.Components;
+using Content.Server.Construction;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Materials;
 using Content.Server.Power.Components;
@@ -11,6 +11,7 @@ using Content.Shared.CCVar;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Climbing.Events;
 using Content.Shared.Construction.Components;
+using Content.Shared.Contraband;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
@@ -18,9 +19,9 @@ using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Jittering;
+using Content.Shared.Materials;
 using Content.Shared.Medical;
 using Content.Shared.Mind;
-using Content.Shared.Materials;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
@@ -28,13 +29,12 @@ using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Throwing;
 using Robust.Server.Player;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Content.Shared.Contraband; // Frontier
+
+// Frontier
 
 namespace Content.Server.Medical.BiomassReclaimer
 {
@@ -93,7 +93,7 @@ namespace Content.Server.Medical.BiomassReclaimer
                 }
 
                 var actualYield = (int) (reclaimer.CurrentExpectedYield); // can only have integer biomass
-                reclaimer.CurrentExpectedYield = reclaimer.CurrentExpectedYield - actualYield; // store non-integer leftovers
+                reclaimer.CurrentExpectedYield -= actualYield; // store non-integer leftovers
                 _material.SpawnMultipleFromMaterial(actualYield, BiomassPrototype, Transform(uid).Coordinates);
 
                 reclaimer.BloodReagent = null;

@@ -1,7 +1,5 @@
-using System.Threading;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Storage;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Medical.BiomassReclaimer
@@ -46,7 +44,7 @@ namespace Content.Server.Medical.BiomassReclaimer
         /// <summary>
         /// Entities that can be randomly spawned while processing a mob.
         /// </summary>
-        public List<EntitySpawnEntry> SpawnedEntities = new();
+        public List<EntitySpawnEntry> SpawnedEntities = [];
 
         /// <summary>
         /// How many units of biomass it produces for each unit of mass.
@@ -99,7 +97,7 @@ namespace Content.Server.Medical.BiomassReclaimer
         public float BaseProcessingTimePerUnitMass = 0.5f;
 
         /// <summary>
-        /// The machine part that increses the processing speed.
+        /// The machine part that increases the processing speed.
         /// </summary>
         [DataField("machinePartProcessSpeed", customTypeSerializer: typeof(PrototypeIdSerializer<MachinePartPrototype>))]
         public string MachinePartProcessingSpeed = "Manipulator";
