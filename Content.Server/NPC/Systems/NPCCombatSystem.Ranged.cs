@@ -1,10 +1,17 @@
+using System.Linq;
 using Content.Server.NPC.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.Interaction;
+using Content.Shared.Physics;
+using Content.Shared.Tag;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
+using Robust.Server.GameObjects;
 using Robust.Shared.Map;
+using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+
+// ReSharper disable InconsistentNaming
 
 namespace Content.Server.NPC.Systems;
 
@@ -12,12 +19,16 @@ public sealed partial class NPCCombatSystem
 {
     [Dependency] private readonly SharedCombatModeSystem _combat = default!;
     [Dependency] private readonly RotateToFaceSystem _rotate = default!;
+    [Dependency] private readonly MapSystem _mapSystem = default!;
 
     private EntityQuery<CombatModeComponent> _combatQuery;
     private EntityQuery<NPCSteeringComponent> _steeringQuery;
     private EntityQuery<RechargeBasicEntityAmmoComponent> _rechargeQuery;
     private EntityQuery<PhysicsComponent> _physicsQuery;
     private EntityQuery<TransformComponent> _xformQuery;
+    private EntityQuery<FixturesComponent> _fixturesQuery;
+    private EntityQuery<TagComponent> _tagQuery;
+
 
     // TODO: Don't predict for hitscan
     private const float ShootSpeed = 20f;
@@ -34,6 +45,8 @@ public sealed partial class NPCCombatSystem
         _rechargeQuery = GetEntityQuery<RechargeBasicEntityAmmoComponent>();
         _steeringQuery = GetEntityQuery<NPCSteeringComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
+        _fixturesQuery = GetEntityQuery<FixturesComponent>();
+        _tagQuery = GetEntityQuery<TagComponent>();
 
         SubscribeLocalEvent<NPCRangedCombatComponent, ComponentStartup>(OnRangedStartup);
         SubscribeLocalEvent<NPCRangedCombatComponent, ComponentShutdown>(OnRangedShutdown);
@@ -133,7 +146,34 @@ public sealed partial class NPCCombatSystem
             {
                 comp.LOSAccumulator += UnoccludedCooldown;
                 // For consistency with NPC steering.
-                comp.TargetInLOS = _interaction.InRangeUnobstructed(uid, comp.Target, distance + 0.1f);
+                comp.TargetInLOS = _interaction.InRangeUnobstructed(uid,
+                    comp.Target,
+                    distance + 0.1f,
+                    predicate: entity =>
+                    {
+                        if (!_fixturesQuery.TryGetComponent(entity, out var fixtures))
+                            return false; // Don't ignore - Short-Circuit
+
+                        // Null Sector - Start (Enemies shooting through windows)
+                        const int glassMask = (int)(CollisionGroup.GlassLayer | CollisionGroup.GlassAirlockLayer);
+                        const string WallTag = "Wall";
+
+                        // Avoid walls. Checking Wall Collision Mask causes turret to ignore windows.
+                        if (_tagQuery.TryGetComponent(entity, out var tagComponent)
+                            && tagComponent.Tags.Any(tag => tag.Id.Equals(WallTag)))
+                        {
+                            return false;
+                        }
+
+                        // TODO: See about improving this by using Opaque mask only.
+
+                        // If there's only glass, allow peeking through.
+                        if (fixtures.Fixtures.Values.Any(f => (f.CollisionLayer & glassMask) != 0))
+                            return true;
+                        // Null Sector - End
+
+                        return true;
+                    });
             }
 
             if (!comp.TargetInLOS)
@@ -168,12 +208,16 @@ public sealed partial class NPCCombatSystem
             var goalRotation = (targetSpot - worldPos).ToWorldAngle();
             var rotationSpeed = comp.RotationSpeed;
 
-            if (!_rotate.TryRotateTo(uid, goalRotation, frameTime, comp.AccuracyThreshold, rotationSpeed?.Theta ?? double.MaxValue, xform))
+            if (!_rotate.TryRotateTo(uid,
+                    goalRotation,
+                    frameTime,
+                    comp.AccuracyThreshold,
+                    rotationSpeed?.Theta ?? double.MaxValue,
+                    xform))
             {
                 continue;
             }
 
-            // TODO: LOS
             // TODO: Ammo checks
             // TODO: Burst fire
             // TODO: Cycling
@@ -184,16 +228,9 @@ public sealed partial class NPCCombatSystem
             if (!Enabled || !_gun.CanShoot(gun))
                 continue;
 
-            EntityCoordinates targetCordinates;
-
-            if (_mapManager.TryFindGridAt(xform.MapID, targetPos, out var gridUid, out var mapGrid))
-            {
-                targetCordinates = new EntityCoordinates(gridUid, mapGrid.WorldToLocal(targetSpot));
-            }
-            else
-            {
-                targetCordinates = new EntityCoordinates(xform.MapUid!.Value, targetSpot);
-            }
+            var entityCoordinates = _mapManager.TryFindGridAt(xform.MapID, targetPos, out var gridUid, out var mapGrid)
+                ? new EntityCoordinates(gridUid, _mapSystem.WorldToLocal(gridUid, mapGrid, targetSpot))
+                : new EntityCoordinates(xform.MapUid!.Value, targetSpot);
 
             comp.Status = CombatStatus.Normal;
 
@@ -202,8 +239,9 @@ public sealed partial class NPCCombatSystem
                 return;
             }
 
-            _gun.SetTarget(gun, comp.Target); // Frontier - This ensures that the bullet won't fly over the target if it's downed
-            _gun.AttemptShoot(uid, gunUid, gun, targetCordinates);
+            // Frontier - This ensures that the bullet won't fly over the target if it's downed
+            _gun.SetTarget(gun, comp.Target);
+            _gun.AttemptShoot(uid, gunUid, gun, entityCoordinates);
         }
     }
 }
