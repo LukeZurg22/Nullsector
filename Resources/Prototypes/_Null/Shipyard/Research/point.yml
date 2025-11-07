@@ -1,0 +1,35 @@
+# Ported from Frontier, tuned to no longer be Scrap Vessel. Corrected fuel category and made Guideline-compliant.
+- type: vessel
+  id: Point
+  parent: BaseVessel
+  name: UCE Point
+  description: Two wrecks welded together, yielding a cramped but effective vessel somehow capable of research. 
+  price: 16100
+  category: Small
+  group: Shipyard
+  shuttlePath: /Maps/_Null/Shuttles/Research/point.yml
+  guidebookPage: Null
+  class:
+  - Science
+  engine:
+  - Uranium
+
+- type: gameMap
+  id: Point
+  mapName: 'UCE Point'
+  mapPath: /Maps/_Null/Shuttles/Research/point.yml
+  minPlayers: 0
+  stations:
+    Point:
+      stationProto: StandardFrontierVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Point {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 1, 1 ] # One slot open by default, because in this house we aren't anti-social.
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 0, 0 ]
