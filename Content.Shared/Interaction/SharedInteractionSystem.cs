@@ -779,7 +779,6 @@ namespace Content.Shared.Interaction
             bool popup = false,
             bool overlapCheck = true)
         {
-            Ignored combinedPredicate = e => e == origin.Owner || (predicate?.Invoke(e) ?? false);
             var inRange = true;
             MapCoordinates originPos = default;
             var targetPos = _transform.ToMapCoordinates(otherCoordinates);
@@ -852,7 +851,7 @@ namespace Content.Shared.Interaction
             // Do a raycast to check if relevant
             if (inRange)
             {
-                var rayPredicate = GetPredicate(originPos, other, targetPos, targetRot, collisionMask, combinedPredicate);
+                var rayPredicate = GetPredicate(originPos, other, targetPos, targetRot, collisionMask, CombinedPredicate);
                 inRange = InRangeUnobstructed(originPos, targetPos, range, collisionMask, rayPredicate, ShouldCheckAccess(origin));
             }
 
@@ -863,6 +862,7 @@ namespace Content.Shared.Interaction
             }
 
             return inRange;
+            bool CombinedPredicate(EntityUid e) => e == origin.Owner || (predicate?.Invoke(e) ?? false);
         }
 
         public bool InRangeUnobstructed(
