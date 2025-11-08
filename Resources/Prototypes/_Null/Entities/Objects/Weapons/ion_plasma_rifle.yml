@@ -2,7 +2,7 @@
   name: ion-plasma laser rifle
   parent: [BaseWeaponPowerCell]
   id: WeaponLaserIonPlasma
-  description: This modified laser rifle fires nearly harmless beams in the 40-watt range.
+  description: This experimental rifle emits powerful ionized plasma particles, heavily disrupting any electrical signals they come into contact with.
   components:
   - type: Sprite
     sprite: _Null/Objects/Weapons/ionised_plasma_rifle.rsi
