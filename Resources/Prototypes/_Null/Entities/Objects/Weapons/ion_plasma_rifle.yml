@@ -1,0 +1,99 @@
+- type: entity
+  name: ion-plasma laser rifle
+  parent: [BaseItem]
+  id: WeaponLaserIonPlasma
+  description: This modified laser rifle fires nearly harmless beams in the 40-watt range, for target practice.
+  components:
+  - type: Sprite
+    sprite: _Null/Weapons/ionised_plasma_rifle.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+  - type: AmmoCounter
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineIonBattery
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineIonBattery
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeLightRifle
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeLightRifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Appearance
+  - type: Clothing
+    sprite: _Null/Weapons/ionised_plasma_rifle.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: GunWieldBonus
+    minAngle: -20
+    maxAngle: -20
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+  - type: HitscanBatteryAmmoProvider
+    proto: IonLaser
+    fireCost: 62.5
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,3
+  - type: StaticPrice
+    price: 800
+   # Goobstation edit start
+  - type: EmitSoundOnPickup
+    sound:
+      collection: RiflesPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: RiflesDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: RiflesDrop
+  # Goobstation edit end
+
+# Magazines
+- type: entity
+  id: MagazineIonBattery
+  name: "reinforced ion-plasma battery"
+  parent: [ BaseItem, BaseC1Contraband, RecyclableItemSteelTiny ]
+  components:
+  - type: Tag
+    tags:
+      - MagazineIonBattery
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    capacity: 25
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Magazine/Rifle/rifle_mag.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+  - type: Appearance
