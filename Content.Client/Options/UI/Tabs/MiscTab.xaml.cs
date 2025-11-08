@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Content.Client.UserInterface.Screens;
+using Content.Shared._Mono.CCVar;
 using Content.Shared._Null.CCVar;
 using Content.Shared.CCVar;
 using Content.Shared.HUD;
@@ -59,6 +60,8 @@ public sealed partial class MiscTab : Control
         Control.AddOptionCheckBox(CCVars.StaticStorageUI, StaticStorageUI);
         Control.AddOptionCheckBox(CCVars.DetailedExamine, DetailedExamineCheckBox); // Goobstation Change
         Control.AddOptionCheckBox(CCVars.DetailedExamineChat, DetailedExamineChatCheckBox); // Null Sector Change For Goob Addition
+        Control.AddOptionCheckBox(MonoCVars.AreaEchoEnabled, AreaEchoCheckBox); // Mono
+        Control.AddOptionCheckBox(MonoCVars.AreaEchoHighResolution, AreaEchoHighResolutionCheckBox); // Mono
         Control.Initialize();
     }
 }

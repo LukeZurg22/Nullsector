@@ -1,0 +1,94 @@
+- type: entity
+  name: ion-plasma laser rifle
+  parent: [BaseWeaponPowerCell]
+  id: WeaponLaserIonPlasma
+  description: This experimental rifle emits powerful ionized plasma particles, heavily disrupting any electrical signals they come into contact with.
+  components:
+  - type: Sprite
+    sprite: _Null/Objects/Weapons/ionised_plasma_rifle.rsi
+    layers:
+    - state: mag-unshaded-0
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,3
+  - type: Clothing
+    sprite: _Null/Weapons/ionised_plasma_rifle.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: AmmoCounter
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: PowerCellIonPlasma
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
+        whitelist:
+          tags:
+          - IonCell # Only accepts Ion Cells, which are specifically made *for this gun*. Other cells shouldn't apply.
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Appearance
+  - type: Wieldable
+  # - type: GunWieldBonus
+    # minAngle: -20
+    # maxAngle: -20
+  - type: Gun
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+  - type: StaticPrice
+    price: 800
+  - type: EmitSoundOnPickup # Goobstation edit start
+    sound:
+      collection: LasersPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: LasersDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: LasersDrop # Goobstation edit end
+
+# Ammunition
+- type: entity
+  name: ion-plasma heavy munitions cell
+  description: A poweful plasma-infused ion cell specially tailored for highly advanced equipment.
+  id: PowerCellIonPlasma
+  parent: BasePowerCell
+  components:
+    - type: Sprite
+      sprite: _Null/Objects/Power/cells.rsi
+      layers:
+      - map: [ "enum.PowerCellVisualLayers.Base" ]
+        state: heavy
+      - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+        state: o2
+        shader: unshaded
+    - type: Tag
+      tags:
+        - IonCell
+    - type: Battery
+      maxCharge: 500
+      startingCharge: 500
+    - type: MachinePart # Frontier
+      part: PowerCell   # Frontier
+      rating: 5         # Excellent power cell.
+    - type: HitscanBatteryAmmoProvider
+      proto: IonLaser
+      fireCost: 64

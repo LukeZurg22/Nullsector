@@ -1942,3 +1942,19 @@
   technologyPrerequisites:
   - NFAdvancedCleaning
   position: 3, 28
+
+- type: technology
+  id: IonWeaponryResearch
+  name: research-technology-ion-weaponry
+  entityIcon: WeaponLaserIonPlasma
+  discipline: ArsenalMercenary
+  secondarydiscipline: Experimental
+  tier: 3
+  cost: 25000
+  recipeUnlocks:
+  - WeaponLaserIonPlasma
+  - PowerCellIonPlasma
+  prerequisiteLineType: Diagonal
+  technologyPrerequisites:
+  - NFFission
+  position: 3, 32

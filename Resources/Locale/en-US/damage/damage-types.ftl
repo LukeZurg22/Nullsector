@@ -12,3 +12,6 @@ damage-type-shock = Shock
 damage-type-slash = Slash
 damage-type-structural = Structural
 damage-type-holy = Holy
+
+# Null Sector
+damage-type-ion = Ion
