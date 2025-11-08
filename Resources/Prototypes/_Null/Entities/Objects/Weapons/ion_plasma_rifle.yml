@@ -84,11 +84,11 @@
       tags:
         - IonCell
     - type: Battery
-      maxCharge: 600
-      startingCharge: 600
+      maxCharge: 500
+      startingCharge: 500
     - type: MachinePart # Frontier
       part: PowerCell   # Frontier
-      rating: 5         # Extremely good power cell.
+      rating: 5         # Excellent power cell.
     - type: HitscanBatteryAmmoProvider
       proto: IonLaser
       fireCost: 64
