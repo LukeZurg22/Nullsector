@@ -7,6 +7,8 @@
   - type: Sprite
     sprite: _Null/Objects/Weapons/ionised_plasma_rifle.rsi
     layers:
+    - state: mag-unshaded-0
+      map: ["enum.GunVisualLayers.Mag"]
     - state: base
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-unshaded-4
@@ -27,22 +29,21 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: PowerCellSmall
+        startingItem: PowerCellIonPlasma
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-          - PowerCell
-          - PowerCellSmall
+          - IonCell # Only accepts Ion Cells, which are specifically made *for this gun*. Other cells shouldn't apply.
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
     steps: 5
-    zeroVisible: false
+    zeroVisible: true
   - type: Appearance
-  # - type: Wieldable
+  - type: Wieldable
   # - type: GunWieldBonus
     # minAngle: -20
     # maxAngle: -20
@@ -52,9 +53,6 @@
       - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
- # - type: HitscanBatteryAmmoProvider
-   # proto: IonLaser
-   # fireCost: 62.5
   - type: StaticPrice
     price: 800
   - type: EmitSoundOnPickup # Goobstation edit start
@@ -67,28 +65,30 @@
     sound:
       collection: LasersDrop # Goobstation edit end
 
-# Magazines
-# - type: entity
-  # id: MagazineIonBattery
-  # name: "reinforced ion-plasma battery"
-  # parent: [ BaseItem, BaseC1Contraband, RecyclableItemSteelTiny ]
-  # components:
-  # - type: Tag
-    # tags:
-      # - MagazineIonBattery
-  # - type: Item
-    # size: Small
-  # - type: BallisticAmmoProvider
-    # capacity: 25
-  # - type: Sprite
-    # sprite: Objects/Weapons/Guns/Ammunition/Magazine/Rifle/rifle_mag.rsi
-    # layers:
-    # - state: base
-      # map: ["enum.GunVisualLayers.Base"]
-    # - state: mag-1
-      # map: ["enum.GunVisualLayers.Mag"]
-  # - type: MagazineVisuals
-    # magState: mag
-    # steps: 2
-    # zeroVisible: false
-  # - type: Appearance
+# Ammunition
+- type: entity
+  name: ion-plasma heavy munitions cell
+  description: A poweful plasma-infused ion cell specially tailored for highly advanced equipment.
+  id: PowerCellIonPlasma
+  parent: BasePowerCell
+  components:
+    - type: Sprite
+      sprite: _Null/Objects/Power/cells.rsi
+      layers:
+      - map: [ "enum.PowerCellVisualLayers.Base" ]
+        state: heavy
+      - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
+        state: o2
+        shader: unshaded
+    - type: Tag
+      tags:
+        - IonCell
+    - type: Battery
+      maxCharge: 600
+      startingCharge: 600
+    - type: MachinePart # Frontier
+      part: PowerCell   # Frontier
+      rating: 5         # Extremely good power cell.
+    - type: HitscanBatteryAmmoProvider
+      proto: IonLaser
+      fireCost: 64
