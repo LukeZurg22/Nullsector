@@ -148,6 +148,7 @@
   - PowerCellHigh
   # - PowerCellHyperNF
   - PowerCellMicroreactor
+  - PowerCellIonPlasma
 # Mercenary techfab
 ## Armor
   - TelescopicShield
@@ -209,7 +210,8 @@
   - WeaponDisablerSMG
   - WeaponLaserCannon
   - WeaponXrayCannon
-  - WeaponAntiqueLaser # Null Sector
+  - WeaponAntiqueLaser      # Null Sector
+  - WeaponLaserIonPlasma    # Null Sector
 ## Ammo boxes
   - BoxBeanbag
   - BoxShellTranquilizer
