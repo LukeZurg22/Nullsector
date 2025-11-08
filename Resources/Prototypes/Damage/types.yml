@@ -77,6 +77,12 @@
   armorCoefficientPrice: 2
   armorFlatPrice: 10
 
+- type: damageType
+  id: Ion # Null Sector Addition - 202501107
+  name: damage-type-ion
+  armorCoefficientPrice: 10
+  armorFlatPrice: 60
+
 # Damage represent structures internal integrity.
 # Exclusive for structures such as walls, airlocks and others.
 - type: damageType

@@ -123,6 +123,21 @@
     state: impact_blue
 
 - type: hitscan
+  id: IonLaser
+  damage:
+    types:
+      Ion: 15
+  muzzleFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: muzzle_blue
+  travelFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: beam_blue
+  impactFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: impact_blue
+
+- type: hitscan
   id: RedShuttleLaser
   maxLength: 60
   damage:
