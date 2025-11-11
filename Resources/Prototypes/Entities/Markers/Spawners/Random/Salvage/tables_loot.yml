@@ -102,6 +102,7 @@
       tableId: RandomInstrumentTable
     - !type:NestedSelector
       tableId: RingTableCommon
+    - id: Binoculars
     - id: CassetteTapesSpawner
       weight: 0.3
     - id: CassettePlayer

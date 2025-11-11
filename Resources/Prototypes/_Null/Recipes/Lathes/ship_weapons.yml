@@ -1,1 +1,9 @@
 # Add Flatpack for WeaponTurretMining
+- type: latheRecipe
+  id: MiningLaserFlatpack
+  parent: BaseWeaponRecipeLong
+  result: MiningLaserFlatpack
+  materials:
+    Steel: 10000
+    Glass: 40000
+    Plastic: 5000

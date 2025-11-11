@@ -1958,3 +1958,17 @@
   technologyPrerequisites:
   - NFFission
   position: 3, 32
+
+- type: technology
+  id: MiningLaserResearch
+  name: research-technology-mining-laser
+  entityIcon: WeaponTurretMining
+  discipline: Salvage
+  tier: 3
+  cost: 25000
+  recipeUnlocks:
+  - MiningLaserFlatpack
+  prerequisiteLineType: Diagonal
+  technologyPrerequisites:
+  - NFAdvancedSalvageCyborg
+  position: 5, 5

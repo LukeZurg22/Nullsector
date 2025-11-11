@@ -15,6 +15,7 @@
     LavalandWeaponKineticMachete: 3
     LavalandWeaponKineticHammer: 2
     SeismicCharge: 1
+    Binoculars: 1
 
 - type: vendingMachineInventory
   id: NFSalvageEquipmentPOIInventory
@@ -33,3 +34,4 @@
     LavalandWeaponKineticMachete: 3
     LavalandWeaponKineticHammer: 2
     SeismicCharge: 1
+    Binoculars: 1
