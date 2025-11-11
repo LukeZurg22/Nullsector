@@ -8,7 +8,7 @@
 - type: pointOfInterest
   id: Mysterious
   parent: BasePOI
-  name: Strange Signal
+  name: Strange Signal (☠)
   minimumDistance: 2000
   maximumDistance: 3500
   spawnGamePreset: [ NFPirate ]

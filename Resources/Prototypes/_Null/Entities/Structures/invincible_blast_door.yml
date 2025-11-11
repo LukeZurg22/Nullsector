@@ -108,7 +108,7 @@
       map: ["enum.DoorVisualLayers.Base"]
   - type: ContainerFill
     containers:
-    board: [ DoorElectronicsCentralCommand ]
+      board: [ DoorElectronicsCentralCommand ]
   - type: Door
     closeTimeOne: 0.4
     closeTimeTwo: 0.4
