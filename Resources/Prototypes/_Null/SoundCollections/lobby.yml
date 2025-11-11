@@ -1,7 +1,8 @@
 - type: soundCollection
-  id: MonoLobbyMusic
+  id: NullLobbyMusic
   files:
     - /Audio/Lobby/scp_isd.ogg
     - /Audio/Lobby/when_day_breaks.ogg
     - /Audio/Lobby/bucsi_singularity.ogg
     - /Audio/Lobby/across_the_void.ogg
+    - /Audio/Expedition/the_devil_you_know.ogg
