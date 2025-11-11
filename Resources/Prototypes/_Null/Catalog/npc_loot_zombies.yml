@@ -68,7 +68,7 @@
     # Meds
     - !type:GroupSelector
       rolls: !type:RangeNumberSelector
-        range: -1, 1
+        range: -1, 2
       children:
       - id: SyringeDylovene
       - id: PillCharcoal
@@ -78,7 +78,7 @@
       - id: Brutepack1
       - id: ChemistryBottleMysteryLiquid
         weight: 0.07
-
+      - id: FentanylSolidified
 
 # Loot Spawner
 - type: entity
