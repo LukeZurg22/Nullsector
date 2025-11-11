@@ -67,7 +67,10 @@
     coverage: EYES
   - type: StaticPrice # Frontier
     price: 135 # Frontier
-
+  - type: Tag
+    tags:
+    - HudMeson
+    
 - type: entity
   parent: ClothingEyesBase
   id: ClothingEyesGlasses

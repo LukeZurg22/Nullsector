@@ -1,10 +1,10 @@
 - type: constructionGraph
-  id: HudMedSec
+  id: HudMedMeson
   start: start
   graph:
     - node: start
       edges:
-        - to: medsecHud
+        - to: medmesonHud
           steps:
             - tag: HudMedical
               name: medical hud
@@ -12,10 +12,10 @@
                 sprite: Clothing/Eyes/Hud/med.rsi
                 state: icon
               doAfter: 5
-            - tag: HudSecurity
-              name: security hud
+            - tag: MedMeson
+              name: meson-engineering goggles
               icon:
-                sprite: Clothing/Eyes/Hud/sec.rsi
+                sprite: Clothing/Eyes/Glasses/meson.rsi
                 state: icon
               doAfter: 5
             - material: Cable
@@ -30,5 +30,5 @@
             - material: Capacitor
               amount: 2
               doAfter: 5
-    - node: medsecHud
-      entity: ClothingEyesHudMedSec
+    - node: medmesonHud
+      entity: ClothingEyesHudMedicalMeson

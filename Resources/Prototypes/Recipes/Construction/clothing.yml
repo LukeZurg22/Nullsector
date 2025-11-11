@@ -86,6 +86,17 @@
   icon: { sprite: Clothing/Eyes/Hud/medsec.rsi, state: icon }
   objectType: Item
 
+- type: construction # Null Sector
+  name: medmeson hud
+  id: ClothingEyesHudMedMeson
+  graph: HudMedMeson
+  startNode: start
+  targetNode: medmesonHud
+  category: construction-category-clothing
+  description: Two huds joined by arms
+  icon: { sprite: Clothing/Eyes/Hud/medmeson.rsi, state: icon }
+  objectType: Item
+
 - type: construction
   name: ducky slippers
   id: ClothingShoeSlippersDuck
