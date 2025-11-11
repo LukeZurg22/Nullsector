@@ -18,3 +18,10 @@
   name: Crazy Donkey - Morsmordre
   path:
     path: /Audio/_Null/Jukebox/morsmordre.ogg
+
+
+- type: jukebox
+  id: PlanetXMarksTheSpot
+  name: Doctor Steel - Planet X Marks the Spot
+  path:
+    path: /Audio/Expedition/planetxmarksthespot.ogg
