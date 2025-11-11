@@ -1,0 +1,1 @@
+research-technology-mining-laser = PGI-3K Mining Advancements

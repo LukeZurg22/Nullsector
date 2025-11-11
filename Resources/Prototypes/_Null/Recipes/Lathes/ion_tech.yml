@@ -6,7 +6,7 @@
     Steel: 10000
     Glass: 5000
     Plastic: 5000
-    Gold: 2000
+    Gold: 200
 
 - type: latheRecipe
   id: PowerCellIonPlasma
