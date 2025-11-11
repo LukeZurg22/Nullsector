@@ -9,6 +9,12 @@
 
 - type: jukebox
   id: Noosphere
-  name: Noosphere (Pipe Organ Cut) - Guillaume David
+  name: Guillaume David - Noosphere (Pipe Organ Cut)
   path:
     path: /Audio/_Null/Jukebox/noosphere.ogg
+
+- type: jukebox
+  id: Morsmordre
+  name: Crazy Donkey - Morsmordre
+  path:
+    path: /Audio/_Null/Jukebox/morsmordre.ogg
