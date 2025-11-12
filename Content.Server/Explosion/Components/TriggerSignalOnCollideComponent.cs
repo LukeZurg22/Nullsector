@@ -1,17 +1,23 @@
 using Content.Server.DeviceLinking.Systems;
+using Content.Server.Explosion.EntitySystems;
 using Content.Shared.DeviceLinking;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Server.DeviceLinking.Components;
+namespace Content.Server.Explosion.Components;
 
-/// <summary>
-///     Simple switch that will fire ports when toggled on or off. A button is just a switch that signals on the
-///     same port regardless of its state.
-/// </summary>
-[RegisterComponent, Access(typeof(SignalSwitchSystem))]
-public sealed partial class SignalSwitchComponent : Component
+[RegisterComponent, Access(typeof(SignalSwitchSystem), typeof(TriggerSystem))]
+public sealed partial class TriggerSignalOnCollideComponent : Component
 {
+    [DataField("fixtureID", required: true)]
+    public string FixtureID = string.Empty;
+
+    /// <summary>
+    ///     Doesn't trigger if the other colliding fixture is non-hard.
+    /// </summary>
+    [DataField("ignoreOtherNonHard")]
+    public bool IgnoreOtherNonHard = true;
+
     /// <summary>
     ///     The port that gets signaled when the switch turns on.
     /// </summary>

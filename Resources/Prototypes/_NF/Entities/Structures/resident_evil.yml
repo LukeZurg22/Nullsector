@@ -1,0 +1,43 @@
+- type: entity # Null Sector
+  parent: BaseWall
+  id: WallResidentEvilIndestructible
+  name: spooky manor wall
+  description: Skub knows this wall is too hard to destroy. # Frontier
+  suffix: indestructible
+  components:
+    - type: Tag
+      tags:
+        - Wall
+    - type: Sprite
+      sprite: Structures/Walls/wood.rsi
+      #color: "#cdf3cd"
+    - type: Icon
+      sprite: Structures/Walls/wood.rsi
+    - type: IconSmooth
+      key: woods
+      base: wood
+    # - type: IconSmooth
+      # key: walls
+      # base: plastitanium
+
+- type: entity # Null Sector
+  parent: BaseWall
+  id: WindowResidentEvilIndestructible
+  name: spooky manor window
+  description: Skub knows this wall is too hard to destroy. # Frontier
+  suffix: indestructible
+  components:
+    - type: Tag
+      tags:
+        - Wall # Fix this
+    - type: Sprite
+      sprite: Structures/Walls/wood.rsi
+      color: "#cdf3cd"
+    - type: Icon
+      sprite: Structures/Walls/wood.rsi
+    - type: IconSmooth
+      key: woods
+      base: wood
+    # - type: IconSmooth
+      # key: walls
+      # base: plastitanium
