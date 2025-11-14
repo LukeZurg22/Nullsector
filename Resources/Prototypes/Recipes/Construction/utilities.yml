@@ -713,6 +713,24 @@
     sprite: Structures/Piping/Atmospherics/manifold.rsi
     state: pipeManifold
 
+# ATMOS (DIRECTIONLESS) FAN
+- type: construction
+  name: tiny directionless fan
+  description: A tiny fan that releases a gust of air.
+  id: AtmosDeviceFanTiny
+  graph: FanConstruction
+  startNode: start
+  targetNode: tinyfan
+  category: construction-category-utilities
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  icon:
+    sprite: Structures/Piping/Atmospherics/tinyfan.rsi
+    state: icon
+  conditions:
+  - !type:NoUnstackableInTile
+
+
 # ATMOS UNARY
 - type: construction
   name: air vent

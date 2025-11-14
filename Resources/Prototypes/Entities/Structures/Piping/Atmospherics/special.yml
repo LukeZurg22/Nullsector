@@ -13,6 +13,24 @@
   - type: Sprite
     sprite: Structures/Piping/Atmospherics/tinyfan.rsi
     state: icon
+  - type: InteractionOutline
+  - type: Destructible              # Null Sector - 20251113
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 12
+      behaviors:
+      - !type:SpillBehavior { }
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Damageable                # Null Sector - 20251113
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Pullable
+  - type: Construction
+    graph: FanConstruction
+    node: tinyfan
+  - type: Anchorable
   - type: Fixtures
     fixtures:
       fix1:
