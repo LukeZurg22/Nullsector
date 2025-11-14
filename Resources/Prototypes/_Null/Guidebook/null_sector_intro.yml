@@ -1,0 +1,4 @@
+- type: guideEntry
+  id: NullSectorIntro
+  name: guide-entry-null-intro
+  text: "/ServerInfo/_Null/Guidebook/NullSectorIntro.xml"

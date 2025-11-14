@@ -329,6 +329,26 @@
     guides:
     - Survival
 
+- type: entity # Null Sector
+  id: BookNullAndYou
+  parent: BaseGuidebook
+  name: the null sector and you
+  description: A small pocket manual of the Null Sector's most critical knowledge, given for free for the aspiring wanderer, trader, miner, scientist, or mercenary.
+  components:
+  - type: Sprite
+    layers:
+    - state: paper
+    - state: cover_strong
+      color: "#FFB439"
+    - state: decor_wingette
+      color: "#404040"
+    - state: icon_glow
+      color: red
+    - state: icon_null
+  - type: GuideHelp
+    guides:
+    - NullSectorIntro
+
 - type: entity
   id: BookChemicalCompendium
   parent: BaseGuidebook

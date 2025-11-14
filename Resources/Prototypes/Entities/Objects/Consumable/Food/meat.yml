@@ -459,6 +459,8 @@
           Quantity: 4
         - ReagentId: Fat
           Quantity: 4
+        - ReagentId: Romerol # Null Sector
+          Quantity: 0.01
 
 - type: entity
   name: raw spider meat

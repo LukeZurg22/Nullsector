@@ -84,8 +84,8 @@
       tags:
         - IonCell
     - type: Battery
-      maxCharge: 500
-      startingCharge: 500
+      maxCharge: 700
+      startingCharge: 700
     - type: MachinePart # Frontier
       part: PowerCell   # Frontier
       rating: 5         # Excellent power cell.

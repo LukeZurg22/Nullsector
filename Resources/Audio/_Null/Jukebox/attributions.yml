@@ -7,3 +7,13 @@
   license: "CC-BY-NC-SA-3.0"
   copyright: "Noosphere (Pipe Organ Cut) - Guillaume David"
   source: "https://www.youtube.com/watch?v=KCR7ovEwtCA"
+
+- files: ["morsmordre.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Crazy Donkey - Morsmordre"
+  source: "https://www.youtube.com/watch?v=eYTpGDqsS0E"
+
+- files: ["front_hall_police_station.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Resident Evil 2 OST - The Front Hall"
+  source: "https://www.youtube.com/watch?v=D30IAZAhLmA"
