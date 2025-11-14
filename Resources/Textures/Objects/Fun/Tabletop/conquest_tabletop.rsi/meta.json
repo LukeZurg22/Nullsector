@@ -1,0 +1,15 @@
+﻿{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "LukeZurg22",
+    "size": {
+        "x": 512,
+        "y": 512
+    },
+    "metaAtlas": false,
+    "states": [
+        {
+            "name": "board"
+        }
+    ]
+}
