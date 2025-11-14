@@ -1,0 +1,28 @@
+# A Null Sector Board Game
+- type: entity
+  parent: BaseBoardEntity
+  id: ConquestBoard
+  name: conquest board
+  description: A fast, competitive war game centered around the tormentuous state of galactic politics. It's even Armadan-approved!
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/Tabletop/conquest.rsi
+    state: board
+  - type: TabletopGame
+    boardName: tabletop-parchis-board-name
+    size: 574, 574
+    setup:
+      !type:TabletopConquestSetup
+      boardPrototype: ConquestBoardTabletop
+
+# Conquest tabletop item (item only visible in tabletop game)
+- type: entity
+  id: ConquestBoardTabletop
+  name: conquest
+  parent: BaseBoardTabletop
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/Tabletop/conquest_tabletop.rsi
+    state: board
+
