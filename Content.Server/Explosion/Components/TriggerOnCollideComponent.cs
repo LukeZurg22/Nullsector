@@ -4,10 +4,10 @@ namespace Content.Server.Explosion.Components
     public sealed partial class TriggerOnCollideComponent : Component
     {
 		[DataField("fixtureID", required: true)]
-		public string FixtureID = String.Empty;
+		public string FixtureID = string.Empty;
 
         /// <summary>
-        ///     Doesn't trigger if the other colliding fixture is nonhard.
+        ///     Doesn't trigger if the other colliding fixture is non-hard.
         /// </summary>
         [DataField("ignoreOtherNonHard")]
         public bool IgnoreOtherNonHard = true;

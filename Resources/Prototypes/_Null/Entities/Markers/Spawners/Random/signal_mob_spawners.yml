@@ -1,0 +1,15 @@
+- type: entity
+  id: SignalSpawnerCarp
+  parent: SignalSpawner
+  suffix: Carp
+  components:
+  - type: SpawnOnTrigger
+    proto: MobCarp
+
+- type: entity
+  id: SignalSpawnerPunk
+  parent: SignalSpawner
+  suffix: Punk
+  components:
+  - type: SpawnOnTrigger
+    proto: MobPunkGangerMeleeT1

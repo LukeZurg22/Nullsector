@@ -7,10 +7,10 @@ using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Maps;
 using Content.Shared.Paper;
 using Content.Shared.Physics;
+using Content.Shared.Speech.Muting;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
-using Content.Shared.Speech.Muting;
 
 namespace Content.Server.Abilities.Mime
 {
@@ -82,7 +82,7 @@ namespace Content.Server.Abilities.Mime
             // Get the tile in front of the mime
             var offsetValue = xform.LocalRotation.ToWorldVec();
             var coords = xform.Coordinates.Offset(offsetValue).SnapToGrid(EntityManager, _mapMan);
-            var tile = coords.GetTileRef(EntityManager, _mapMan);
+            var tile = _turf.GetTileRef(coords);
             if (tile == null)
                 return;
 

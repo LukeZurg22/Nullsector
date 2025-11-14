@@ -6,7 +6,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 namespace Content.Server.DeviceLinking.Components;
 
 /// <summary>
-///     Simple switch that will fire ports when toggled on or off. A button is jsut a switch that signals on the
+///     Simple switch that will fire ports when toggled on or off. A button is just a switch that signals on the
 ///     same port regardless of its state.
 /// </summary>
 [RegisterComponent, Access(typeof(SignalSwitchSystem))]

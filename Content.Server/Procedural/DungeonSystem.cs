@@ -1,7 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Content.Server.Construction;
-using Robust.Shared.CPUJob.JobQueues.Queues;
 using Content.Server.Decals;
 using Content.Server.GameTicking.Events;
 using Content.Shared.CCVar;
@@ -10,11 +8,9 @@ using Content.Shared.GameTicking;
 using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Procedural;
-using Content.Shared.Tag;
-using Robust.Server.GameObjects;
-using Robust.Shared.Collections;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
+using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.EntitySerialization;
 using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
@@ -37,6 +33,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
     [Dependency] private readonly DecalSystem _decals = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly TileSystem _tile = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly MapLoaderSystem _loader = default!;
     [Dependency] private readonly SharedMapSystem _maps = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -214,6 +211,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
             this,
             _lookup,
             _tile,
+            _turf,
             _transform,
             gen,
             grid,
@@ -248,6 +246,7 @@ public sealed partial class DungeonSystem : SharedDungeonSystem
             this,
             _lookup,
             _tile,
+            _turf,
             _transform,
             gen,
             grid,

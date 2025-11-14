@@ -147,8 +147,15 @@ public sealed partial class ZombieSystem
         if (!Resolve(target, ref mobState, logMissing: false))
             return;
 
+
         // You're a real zombie now, son.
         var zombieComponent = AddComp<ZombieComponent>(target);
+
+        // If the zombie is designated as non-infectious in the prototype, then add non-spreader component.
+        //  this could be done better with a boolean toggle, but who cares.
+        if (TryComp<PendingZombieComponent>(target, out var pendingZombieComponent) && !pendingZombieComponent.Infectious)
+            AddComp<NonSpreaderZombieComponent>(target);
+
         zombieComponent.BeforeComponentData =
         [
             (false, typeof(RespiratorComponent), null),
@@ -288,8 +295,9 @@ public sealed partial class ZombieSystem
 
         #endregion
 
-        //This is specifically here to combat insulated gloves, because frying zombies on grilles is funny as shit.
+        //This is specifically here to combat insulated gloves, because frying zombies on grilles is funny.
         _inventory.TryUnequip(target, "gloves", true, true);
+
         //Should prevent instances of zombies using comms for information they shouldn't be able to have.
             // Null Sector: Zombies will be permitted to hear comms, due to Semi-Intelligence vote.
             //_inventory.TryUnequip(target, "ears", true, true);
@@ -303,6 +311,7 @@ public sealed partial class ZombieSystem
         //Make the zombie not die in the cold. Good for space zombies
         if (TryComp<TemperatureComponent>(target, out var tempComp))
         {
+            // Store old cold resistance to restore later
             zombieComponent.BeforeColdDamage = _serializationManager.CreateCopy(tempComp.ColdDamage, notNullableOverride: true);
             tempComp.ColdDamage.ClampMax(0);
         }

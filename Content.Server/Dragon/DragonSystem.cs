@@ -1,7 +1,6 @@
 using Content.Server.Objectives.Components;
 using Content.Server.Objectives.Systems;
 using Content.Server.Popups;
-using Content.Server.Roles;
 using Content.Shared.Actions;
 using Content.Shared.Dragon;
 using Content.Shared.Maps;
@@ -13,7 +12,6 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Zombies;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 
 namespace Content.Server.Dragon;
@@ -21,7 +19,6 @@ namespace Content.Server.Dragon;
 public sealed partial class DragonSystem : EntitySystem
 {
     [Dependency] private readonly CarpRiftsConditionSystem _carpRifts = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileDef = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly NpcFactionSystem _faction = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
@@ -30,6 +27,7 @@ public sealed partial class DragonSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly TurfSystem _turf = default!;
 
     private EntityQuery<CarpRiftsConditionComponent> _objQuery;
 
@@ -159,7 +157,7 @@ public sealed partial class DragonSystem : EntitySystem
         // cant put a rift on solars
         foreach (var tile in _map.GetTilesIntersecting(xform.GridUid.Value, grid, new Circle(_transform.GetWorldPosition(xform), RiftTileRadius), false))
         {
-            if (!tile.IsSpace(_tileDef))
+            if (!_turf.IsSpace(tile))
                 continue;
 
             _popup.PopupEntity(Loc.GetString("carp-rift-space-proximity", ("proximity", RiftTileRadius)), uid, uid);

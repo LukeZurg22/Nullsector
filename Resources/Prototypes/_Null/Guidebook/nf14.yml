@@ -1,6 +1,6 @@
 # This entire file and many of its references are derived from New Frontiers, retrofitted to suit the Null Sector.
 - type: guideEntry
-  id: NF14
+  id: NullSectorIntro
   name: guide-entry-null-main
   text: "/ServerInfo/_Null/Guidebook/NullSectorIntro.xml"
   priority: -1

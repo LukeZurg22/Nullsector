@@ -29,6 +29,12 @@ public sealed partial class PendingZombieComponent : Component
     public bool IsInstant = false;
 
     /// <summary>
+    /// Determines whether this Zombie can infect other entities. If they are immune, this has no affect.
+    /// </summary>
+    [DataField("infectious")]
+    public bool Infectious = true;
+
+    /// <summary>
     /// A multiplier for <see cref="Damage"/> applied when the entity is in critical condition.
     /// </summary>
     [DataField("critDamageMultiplier")]

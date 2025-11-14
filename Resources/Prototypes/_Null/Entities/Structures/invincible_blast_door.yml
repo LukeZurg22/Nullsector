@@ -99,12 +99,16 @@
   description: This one cannot be destroyed.
   components:
   - type: AccessReader
+    access: [["CentralCommand"]]
     containerAccessProvider: board
   - type: Sprite
     sprite: Structures/Doors/Airlocks/highsec/highsec.rsi
     layers:
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCentralCommand ]
   - type: Door
     closeTimeOne: 0.4
     closeTimeTwo: 0.4
@@ -124,11 +128,8 @@
   - type: Appearance
   - type: RadiationBlocker
     resistance: 8
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronics ]
   - type: InteractionPopup
     interactSuccessString: comp-window-knock
     messagePerceivedByOthers: comp-window-knock
     interactSuccessSound:
-      path: /Audio/Effects/glass_knock.ogg
+      path: /Audio/Effects/glass_knock.ogg # Change sound to clink sound

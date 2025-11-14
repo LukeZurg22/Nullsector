@@ -1170,7 +1170,7 @@ entities:
     - type: Transform
       pos: -6.4079437,12.119837
       parent: 1
-- proto: FrontierUplinkCoin
+- proto: SplenduriumCoin
   entities:
   - uid: 98
     components:

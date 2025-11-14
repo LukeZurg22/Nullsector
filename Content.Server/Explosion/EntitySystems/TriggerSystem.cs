@@ -1,23 +1,28 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Body.Systems;
+using Content.Server.DeviceLinking.Systems;
+using Content.Server.Electrocution;
 using Content.Server.Explosion.Components;
 using Content.Server.Flash;
-using Content.Server.Electrocution;
 using Content.Server.Pinpointer;
-using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Flash.Components;
 using Content.Server.Radio.EntitySystems;
+using Content.Server.Station.Systems;
+using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Explosion.Components;
 using Content.Shared.Explosion.Components.OnTrigger;
+using Content.Shared.Flash.Components;
+using Content.Shared.Humanoid;
 using Content.Shared.Implants.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Payload.Components;
+using Content.Shared.Projectiles;
 using Content.Shared.Radio;
 using Content.Shared.Slippery;
 using Content.Shared.StepTrigger.Systems;
@@ -29,12 +34,11 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
-using Content.Server.Station.Systems;
-using Content.Shared.Humanoid;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Content.Shared.Body.Components; // Frontier: Gib organs
-using Content.Shared.Projectiles; // Frontier: embed triggers
+// Frontier: Gib organs
+
+// Frontier: embed triggers
 
 namespace Content.Server.Explosion.EntitySystems
 {
@@ -79,6 +83,7 @@ namespace Content.Server.Explosion.EntitySystems
         [Dependency] private readonly InventorySystem _inventory = default!;
         [Dependency] private readonly ElectrocutionSystem _electrocution = default!;
         [Dependency] private readonly StationSystem _station = default!; // Frontier: medical insurance
+        [Dependency] private readonly DeviceLinkSystem _deviceLink = default!;
 
         public override void Initialize()
         {
@@ -94,6 +99,7 @@ namespace Content.Server.Explosion.EntitySystems
 
             SubscribeLocalEvent<TriggerOnSpawnComponent, MapInitEvent>(OnSpawnTriggered);
             SubscribeLocalEvent<TriggerOnCollideComponent, StartCollideEvent>(OnTriggerCollide);
+            SubscribeLocalEvent<TriggerSignalOnCollideComponent, StartCollideEvent>(OnTriggerCollide);
             SubscribeLocalEvent<TriggerOnActivateComponent, ActivateInWorldEvent>(OnActivate);
             SubscribeLocalEvent<TriggerImplantActionComponent, ActivateImplantEvent>(OnImplantTrigger);
             SubscribeLocalEvent<TriggerOnStepTriggerComponent, StepTriggeredOffEvent>(OnStepTriggered);
@@ -282,6 +288,22 @@ namespace Content.Server.Explosion.EntitySystems
         {
             if (args.OurFixtureId == component.FixtureID && (!component.IgnoreOtherNonHard || args.OtherFixture.Hard))
                 Trigger(uid, args.OtherEntity);
+        }
+
+        private void OnTriggerCollide(EntityUid uid, TriggerSignalOnCollideComponent comp, ref StartCollideEvent args)
+        {
+            if (args.OurFixtureId != comp.FixtureID || (comp.IgnoreOtherNonHard && !args.OtherFixture.Hard))
+                return; // Short-Circuit
+            comp.State = !comp.State;
+            _deviceLink.InvokePort(uid, comp.State ? comp.OnPort : comp.OffPort);
+            // only send status if it's a toggle switch and not a button
+            if (comp.OnPort != comp.OffPort)
+            {
+                _deviceLink.SendSignal(uid, comp.StatusPort, comp.State);
+            }
+            Trigger(uid, args.OtherEntity);
+            _audio.PlayPvs(comp.ClickSound, uid, AudioParams.Default.WithVariation(0.125f).WithVolume(8f));
+
         }
 
         private void OnSpawnTriggered(EntityUid uid, TriggerOnSpawnComponent component, MapInitEvent args)

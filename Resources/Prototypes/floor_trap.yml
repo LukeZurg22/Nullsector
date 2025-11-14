@@ -24,6 +24,21 @@
         - HideContextMenu
 
 - type: entity
+  name: remote signal mob spawner
+  id: SignalSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Mobs/Ghosts/revenant.rsi
+      state: icon
+  - type: TriggerOnSignal
+  - type: SpawnOnTrigger
+    proto: MobCarp
+  - type: DeleteOnTrigger
+
+- type: entity
   parent: CollideFloorTrap
   id: CollideFloorTrapSpawn
   name: floor trap spawn

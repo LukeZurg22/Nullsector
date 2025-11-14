@@ -1,7 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Server.Decals;
-using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Server.Shuttles.Systems;
@@ -20,7 +19,6 @@ using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
 using IDunGenLayer = Content.Shared.Procedural.IDunGenLayer;
 
 namespace Content.Server.Procedural.DungeonJob;
@@ -39,6 +37,7 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
     private readonly EntityLookupSystem _lookup;
     private readonly TagSystem _tags;
     private readonly TileSystem _tile;
+    private readonly TurfSystem _turf;
     private readonly SharedMapSystem _maps;
     private readonly SharedTransformSystem _transform;
 
@@ -68,6 +67,7 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
         DungeonSystem dungeon,
         EntityLookupSystem lookup,
         TileSystem tile,
+        TurfSystem turf,
         SharedTransformSystem transform,
         DungeonConfig gen,
         MapGridComponent grid,
@@ -88,6 +88,7 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
         _dungeon = dungeon;
         _lookup = lookup;
         _tile = tile;
+        _turf = turf;
         _tags = _entManager.System<TagSystem>();
         _maps = _entManager.System<SharedMapSystem>();
         _transform = transform;
