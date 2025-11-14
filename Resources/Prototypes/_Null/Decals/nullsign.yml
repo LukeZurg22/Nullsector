@@ -1,0 +1,91 @@
+﻿- type: decal
+  id: NullSign1
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign1
+
+- type: decal
+  id: NullSign2
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign2
+
+- type: decal
+  id: NullSign3
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign3
+
+- type: decal
+  id: NullSign4
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign4
+
+- type: decal
+  id: NullSign5
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign5
+
+- type: decal
+  id: NullSign6
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign6
+
+- type: decal
+  id: NullSign7
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign7
+
+- type: decal
+  id: NullSign8
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign8
+
+- type: decal
+  id: NullSign9
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign9
+
+- type: decal
+  id: NullSign10
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign10
+
+- type: decal
+  id: NullSign11
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign11
+
+- type: decal
+  id: NullSign12
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign12
+    
+- type: decal
+  id: NullSign13
+  tags: ["station"]
+  sprite:
+    sprite: Decals/null_sign.rsi
+    state: nullsign13
+
