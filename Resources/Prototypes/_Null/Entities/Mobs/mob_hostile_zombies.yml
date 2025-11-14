@@ -1,3 +1,4 @@
+# WARNING: TO BETTER NAVIGATE THIS FILE, FOLD ALL COLLAPSABLES IN NP++!
 # Base Zombie Type
 - type: entity
   abstract: true
@@ -6,7 +7,7 @@
   name: zombie (normal)
   suffix: AI, Hostile, Viral
   description: |-
-   Null Hiker's Guide to the Galaxy says: "A zombie is a mythological corporeal body reanimated by biological, or mystical means that transfers its state of being through bites-" Oh! Hope you didn't get bit there! 
+   Null Hiker's Guide to the Galaxy says: "A zombie is a mythological corporeal body reanimated by biological, or mystical means that transfers its state of being through bites-" Oh! Hope you didn't get bit there!
   parent:
   - MobHumanoidHostileAISimpleMelee
   - MobHumanoidHostileBase
@@ -87,9 +88,9 @@
     - type: RandomHumanoidAppearance
       randomizeName: true
     - type: GhostTakeoverAvailable
-    - type: PendingZombie
+    - type: PendingZombie # TODO: Annotate damage here & change system.
       instantaneous: true
-      
+
 # Regular Zombie
 - type: entity
   id: MobZombieRegular
@@ -283,7 +284,7 @@
         collection: ZombieClownScreams
         params:
           variation: 0.125
-  
+
 # Zombie Pilot
 - type: entity
   id: MobZombiePilot
@@ -368,7 +369,7 @@
 - type: entity
   parent: AberrantFleshDigestiveSack
   id: ZombiePile
-  name: pile of body bags
+  name: body bag pile
   description: A stacked pile of reinforced body bags. Some of them are moving!
   components:
   - type: TimedSpawner
@@ -410,3 +411,75 @@
           FoodMeatRotten:
             min: 1
             max: 3
+
+# Regular Zombie (non-infectous)
+- type: entity
+  id: MobInfectiouslosZombieRegular
+  parent: MobZombieRegular
+  suffix: AI, Hostile, Non-Infectious
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearBartenderLootlos, ZombieGearBiogeneticsLootlos, ZombieGearEngineerLootlos, ZombieGearScientistLootlos, ZombieGearPilotLootlos ]
+    - type: PendingZombie
+      instantaneous: true
+      infectious: false
+
+# Radioactive Zombie (non-infectous)
+- type: entity
+  id: MobInfectiouslosZombieRadioactive
+  parent: MobZombieRadioactive
+  suffix: AI, Hostile, Non-Infectious
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearEngineerLootlos ]
+    - type: PendingZombie
+      instantaneous: true
+      infectious: false
+
+# Explosive Zombie (non-infectous)
+- type: entity
+  id: MobInfectiouslosZombieExplosive
+  parent: MobZombieExplosive
+  suffix: AI, Hostile, Non-Infectious
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearScientistLootlos ]
+    - type: PendingZombie
+      instantaneous: true
+      infectious: false
+
+# Fiery Zombie (non-infectous)
+- type: entity
+  id: MobInfectiouslosZombieFiery
+  parent: MobZombieFirey
+  suffix: AI, Hostile, Non-Infectious
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearFireMarshallLootlos ]
+    - type: PendingZombie
+      instantaneous: true
+      infectious: false
+
+# Frozen Zombie (non-infectous)
+- type: entity
+  id: MobInfectiouslosZombieFrozen
+  parent: MobZombieFrozen
+  suffix: AI, Hostile, Non-Infectious
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearFireMarshallLootlos, ZombieGearAtmosTechLootlos ]
+    - type: PendingZombie
+      instantaneous: true
+      infectious: false
+
+# Clown Zombie (non-infectous)
+- type: entity
+  id: MobInfectiouslosZombieClown
+  parent: MobZombieClown
+  suffix: AI, Hostile, Non-Infectious
+  components:
+    - type: Loadout # startingGear Loadouts
+      prototypes: [ ZombieGearClownLootlos ]
+    - type: PendingZombie
+      instantaneous: true
+      infectious: false
