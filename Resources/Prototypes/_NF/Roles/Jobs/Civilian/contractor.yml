@@ -16,3 +16,5 @@
 
 - type: startingGear
   id: ContractorGear
+  equipment:
+    pocket2: BookNullAndYou
