@@ -293,3 +293,5 @@
     - Trash
   - type: SpaceGarbage
   - type: GoblinPreciousTrash # Frontier
+  - type: StaticPrice
+    price: 1
