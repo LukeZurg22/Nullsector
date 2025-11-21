@@ -1935,7 +1935,7 @@
   discipline: Service
   secondarydiscipline: Experimental
   tier: 3
-  cost: 25000
+  cost: 15000
   recipeUnlocks:
   - EmancipationGridCircuitboardRecipe
   prerequisiteLineType: Diagonal
