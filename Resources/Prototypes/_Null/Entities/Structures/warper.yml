@@ -61,8 +61,8 @@
   suffix: quietburg
   components:
   - type: Warper
-    sourceId: quietburgtop
-    destinationId: quietburgbottom
+    id: quietburgtop
+    destination: quietburgbottom
 
 - type: entity
   id: WarperQuietburgBottom
@@ -71,7 +71,7 @@
   suffix: quietburg
   components:
   - type: Warper
-    sourceId: quietburgbottom
+    id: quietburgbottom
 
 - type: entity
   id: WarperQuietburgReturn
@@ -80,4 +80,4 @@
   suffix: return
   components:
   - type: Warper
-    destinationId: quietburgtop
+    id: quietburgtop
