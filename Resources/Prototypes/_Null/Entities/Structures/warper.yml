@@ -1,0 +1,63 @@
+# Absolutely-Necessary-Abstract-ProtoType(TM)
+- type: entity
+  id: BaseWarper
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/warper.rsi # Texture replacement planned.
+    noRot: true
+    netsync: false
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Tag
+    tags:
+      - Structure
+  - type: InteractionOutline
+
+- type: entity
+  parent: BaseLadder
+  id: WarperTopGeneric
+  name: entrance
+  suffix: top
+  description: It goes down.
+  components:
+  - type: Sprite
+    offset: 0, 0.5
+    layers:
+      - state: stair_down
+      - state: warningtape_down
+        shader: unshaded
+  - type: Warper        # For Teleporting Between Layers
+
+- type: entity
+  parent: BaseLadder
+  id: WarperBottomGeneric
+  name: entrance
+  suffix: bottom
+  description: It goes up.
+  components:
+  - type: Sprite
+    offset: 0, 0.5
+    layers:
+      - state: stair_up
+      - state: warningtape_up
+        shader: unshaded
+  - type: Warper        # For Teleporting Between Layers
+  - type: WarpPoint     # For Ghosts to Teleport To The Ladder
+
+- type: entity
+  id: WarperDungeon
+  description:
+  parent: LadderTop
+  suffix: dungeon
+  components:
+  - type: Warper
+    id: dlvl0down
+    destinationId: dlvl1up
+  - type: WarpPoint         # For the ghosts.
+    location: Vault Entrance
