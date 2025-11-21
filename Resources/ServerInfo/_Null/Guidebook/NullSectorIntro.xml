@@ -1,10 +1,13 @@
 <Document>
   # Null-Rogue Combined-Sectors Program
 
-You are yet another crewman inhabiting the Null Sector! You're one of the lucky survivors hoping with the development of the furthest reaches of space, fighting back to survive any Armada interventions that may happen along the way!
+  You are an inhabitant of the Null Sector, emerging from your asteroid dwelling or from a local resting safe-spot.
+  You're one of the luckier ones, as most have been taken by the Armada. Your goal is to explore these reaches of space, gather the wherewithal to survive, and to fight any invaders for your right to live. Not everything is explained: adventure is all about finding what's out there, for better or worse.
 
-[color=#33bbff]If you'd like a hand, ask on the radio, or talk to somebody.[/color]
-The [color=#dd0000]Valet[/color] or [color=#009933]Sector Coordinator[/color] should be able to help, they're to the lower-right of medbay.
+  [color=#009933]If you'd like a hand, ask on the radio, or talk to somebody.[/color]
+If a [color=#dd0000]Valet[/color] or [color=#33bbff]Sector Coordinator[/color] (SC) is available, they may help. The SC's office is to the southeast of medbay.
+
+  Nearby the SC's office are the Automated Trade Machines (ATMs), and Shipyard terminals.
 
 ## Economy
   <Box>
@@ -12,21 +15,34 @@ The [color=#dd0000]Valet[/color] or [color=#009933]Sector Coordinator[/color] sh
     <GuideEntityEmbed Entity="SpaceCash1000"/>
     <GuideEntityEmbed Entity="ComputerShipyard"/>
   </Box>
-  Any money that you make is [bold]yours[/bold], and will be available in future shifts if deposited at a [color=#44cc00]Bank ATM[/color] on Lark Station, the Expeditionary Lodge, or Tinnia's Rest.
+  Any money that you make is [bold]yours[/bold], and will be available in future shifts if deposited at a [color=#44cc00]Bank ATM[/color] on Lark Station, the Expeditionary Lodge, or any other Point of Interest (PoI) that has an ATM.
 
-To make money, why not:
-- Join a ship's crew? Ask on the radio if anyone needs extra crew, and work to help your captain.
-- Get a job on station? Ask the [color=#009933]Sector Coordinator[/color] (follow the SC signs) if anything needs doing.
-- Use a [color=#cccc00]shipyard console[/color] to purchase your own ship?
+  To make money, why not:
+  - Join a ship's crew? Ask on the radio if anyone needs extra crew, and work to help your captain.
+  - Get a job on station? Ask the [color=#009933]Sector Coordinator[/color] (follow the SC signs) if anything needs doing.
+  - Use a [color=#cccc00]shipyard console[/color] to purchase your own ship?
 
-## Amenities
+  Money allows one to spend it on various amenities, weapons, new ships and more. For most, it is their primary objective. For others, it is just another resource to consider.
+
+  ## Amenities
+    <Box>
+      <GuideEntityEmbed Entity="VendingMachineAstroVend"/>
+      <GuideEntityEmbed Entity="MachineCryoSleepPod"/>
+    </Box>
+    Some provisions (e.g. air tanks, salvage equipment) are available from vendors on Lark Station, but most amenities (medical services, food) should be offered by players on shuttles or at the Trade Depot.
+
+  Be sure to stock up on spare fuel before any extended voyages, and take advantage of the [color=#33bbff]medical implanter[/color] in your loadout, or from a NanoMed vendor.
+
+  Shifts in the Null Sector typically last for [color=#33bbff]Seven Hours[/color]. Though you are not obligated to stay. If you need to end your ventures early or take a break, use the [color=#33bbff]cryo sleep chambers[/color] in the medbay on Lark or Kemak Stations.
+
+  When a shift ends, it is typically due to an oncoming automated Armadan scout vessel on its routine patrol. Anyone who wants to make sure they live to tell the tale should sell their vessel as soon as the warning is sounded from the Lark Relay.
+
+  ### Food
   <Box>
-    <GuideEntityEmbed Entity="VendingMachineAstroVend"/>
-    <GuideEntityEmbed Entity="MachineCryoSleepPod"/>
+    <GuideEntityEmbed Entity="FoodBurgerMcrib"/>
+    <GuideEntityEmbed Entity="FoodSnackPopcorn"/>
   </Box>
-  Some provisions (e.g. air tanks, salvage equipment) are available from vendors on Lark Station, but most amenities (medical services, food) should be offered by players on shuttles or at the Trade Depot.
 
-Be sure to stock up at the Trade Depot if going out on an extended voyage, and take advantage of the [color=#33bbff]medical insurance tracker[/color] in your loadout, or from the NanoMed vendor in medbay.
+  Expedition-goers will have it easy, as food and food-prep materials are quick to find out there. Everyone else has to scavenge for food, create it using biomass at kemak, or eat crap organs and die. It is scarce for those who don't know where to look, so treasure what you have.
 
-Shifts in the Null Sector typically last for [color=#33bbff]Seven Hours[/color]. Though you are not obligated to stay. If you need to end your ventures early or take a break, use the [color=#33bbff]cryo sleep chambers[/color] in the medbay on Lark Station.
 </Document>
