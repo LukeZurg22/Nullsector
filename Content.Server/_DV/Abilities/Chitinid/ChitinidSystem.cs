@@ -2,6 +2,8 @@ using Content.Server.Nutrition.Components;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Events;
 using Content.Shared.Audio;
+using Content.Shared.Charges.Components;
+using Content.Shared.Charges.Systems;
 using Content.Shared.Damage;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
@@ -16,6 +18,7 @@ namespace Content.Server.Abilities.Chitinid;
 public sealed partial class ChitinidSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly SharedChargesSystem _charges = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -44,15 +47,17 @@ public sealed partial class ChitinidSystem : EntitySystem
             if (chitinid.AmountAbsorbed >= chitinid.MaximumAbsorbed || _mobState.IsDead(uid))
                 continue;
 
-            if (_damageable.TryChangeDamage(uid, chitinid.Healing, damageable: damageable) is {} delta)
-            {
-                chitinid.AmountAbsorbed += -delta.GetTotal().Float();
-                if (chitinid.ChitziteAction != null && chitinid.AmountAbsorbed >= chitinid.MaximumAbsorbed)
-                {
-                    _actions.SetCharges(chitinid.ChitziteAction, 1); // You get the charge back and that's it. Tough.
-                    _actions.SetEnabled(chitinid.ChitziteAction, true);
-                }
-            }
+            if (_damageable.TryChangeDamage(uid, chitinid.Healing, damageable: damageable) is not { } delta)
+                continue;
+            chitinid.AmountAbsorbed += -delta.GetTotal().Float();
+
+            if (chitinid.ChitziteAction == null || chitinid.AmountAbsorbed < chitinid.MaximumAbsorbed)
+                continue;
+
+            // Null Sector: "This may or may not break. I am not quite sure." -LZ22
+            if (TryComp<LimitedChargesComponent>(chitinid.ChitziteAction.Value, out var comp))
+                _charges.SetCharges((chitinid.ChitziteAction.Value, comp), 1); // You get a charge and that's it. Tough.
+            _actions.SetEnabled(chitinid.ChitziteAction, true);
         }
 
         var entQuery = EntityQueryEnumerator<CoughingUpChitziteComponent, ChitinidComponent>();
