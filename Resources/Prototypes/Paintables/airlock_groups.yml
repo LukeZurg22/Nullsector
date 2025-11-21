@@ -14,7 +14,7 @@
     hydroponics: AirlockHydroponics
     maintenance: AirlockMaint
     medical: AirlockMedical
-    salvage: AirlockSalvage
+    #salvage: AirlockSalvage  # Null Sector set to Cargo (we aint got these!)
     science: AirlockScience
     security: AirlockSecurity
     virology: AirlockVirology
