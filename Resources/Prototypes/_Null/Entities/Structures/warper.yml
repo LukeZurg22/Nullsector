@@ -1,6 +1,8 @@
 # Absolutely-Necessary-Abstract-ProtoType(TM)
 - type: entity
   id: BaseWarper
+  name: warper
+  description: A warper that allows one to transfix themselves to another point in space, and simply appear there on a whim. The displacement itself is involuntary once it starts.
   abstract: true
   placement:
     mode: SnapgridCenter
@@ -18,12 +20,15 @@
     tags:
       - Structure
   - type: InteractionOutline
+  - type: Warper        # For Teleporting Between Layers
+  - type: WarpPoint     # For Ghosts to Teleport-To
 
+# Generic Top Warper
 - type: entity
-  parent: BaseLadder
-  id: WarperTopGeneric
-  name: entrance
-  suffix: top
+  parent: BaseWarper
+  id: BaseWarperTop
+  #abstract: true
+  suffix: entrance
   description: It goes down.
   components:
   - type: Sprite
@@ -32,13 +37,13 @@
       - state: stair_down
       - state: warningtape_down
         shader: unshaded
-  - type: Warper        # For Teleporting Between Layers
 
+# Generic Bottom Warper
 - type: entity
-  parent: BaseLadder
-  id: WarperBottomGeneric
-  name: entrance
-  suffix: bottom
+  parent: BaseWarper
+  id: BaseWarperBottom
+  #abstract: true
+  suffix: return
   description: It goes up.
   components:
   - type: Sprite
@@ -47,17 +52,32 @@
       - state: stair_up
       - state: warningtape_up
         shader: unshaded
-  - type: Warper        # For Teleporting Between Layers
-  - type: WarpPoint     # For Ghosts to Teleport To The Ladder
 
+# ===Dedicated Spawners===
 - type: entity
-  id: WarperDungeon
-  description:
-  parent: LadderTop
-  suffix: dungeon
+  id: WarperQuietburgTop
+  parent: BaseWarperTop
+  name: quietburg warper
+  suffix: quietburg
   components:
   - type: Warper
-    id: dlvl0down
-    destinationId: dlvl1up
-  - type: WarpPoint         # For the ghosts.
-    location: Vault Entrance
+    sourceId: quietburgtop
+    destinationId: quietburgbottom
+
+- type: entity
+  id: WarperQuietburgBottom
+  parent: BaseWarperBottom
+  name: quietburg
+  suffix: quietburg
+  components:
+  - type: Warper
+    sourceId: quietburgbottom
+
+- type: entity
+  id: WarperQuietburgReturn
+  name: quietburg return
+  parent: BaseWarperBottom
+  suffix: return
+  components:
+  - type: Warper
+    destinationId: quietburgtop
