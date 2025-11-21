@@ -12,14 +12,14 @@ public sealed partial class WarperComponent : Component
     /// Warp destination unique identifier.
     /// This is specifically set on a Ladder / Entrance with intent to
     /// -read- this ID to travel-to. It is NOT the ID of the -current- Ladder / Entrance.
-    [ViewVariables(VVAccess.ReadWrite), DataField("sourceId")]
-    public string? SourceId { get; set; }
+    [ViewVariables(VVAccess.ReadWrite), DataField("id")]
+    public string? CurrentId { get; set; } = string.Empty;
 
     /// Warp destination unique identifier.
     /// This is specifically set on a Ladder / Entrance with intent to
     /// -read- this ID to travel-to. It is NOT the ID of the -current- Ladder / Entrance.
-    [ViewVariables(VVAccess.ReadWrite), DataField("destinationId")]
-    public string? DestinationId { get; set; }
+    [ViewVariables(VVAccess.ReadWrite), DataField("destination")]
+    public string? DestinationId { get; set; } = string.Empty;
 
     [ViewVariables(VVAccess.ReadWrite), DataField("hostileFactions")]
     public List<string> HostileFactions { get; set; } =

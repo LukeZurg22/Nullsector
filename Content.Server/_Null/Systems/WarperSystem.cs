@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using Content.Server._Null.Components;
@@ -36,7 +35,6 @@ public sealed class WarperSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly EntityManager _entityManager = default!;
     [Dependency] private readonly TagSystem _tags = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
 
@@ -49,14 +47,18 @@ public sealed class WarperSystem : EntitySystem
 
     private void OnExamined(Entity<WarperComponent> ent, ref ExaminedEvent args)
     {
-        args.PushMarkup(ent.Comp.DestinationId != null
-            ? Loc.GetString($"warper-on-examine", ("location", ent.Comp.DestinationId))
-            : Loc.GetString($"warper-cancelled-no-destination"));
+        // Show source ID destination ID message.
+        args.PushMarkup(string.Concat(!string.IsNullOrEmpty(ent.Comp.CurrentId)
+                ? Loc.GetString($"warper-on-examine-source", ("location", ent.Comp.CurrentId))
+                : Loc.GetString($"warper-cancelled-no-source"),
+            !string.IsNullOrEmpty(ent.Comp.DestinationId)
+                ? Loc.GetString($"warper-on-examine-destination", ("location", ent.Comp.DestinationId))
+                : Loc.GetString($"warper-cancelled-no-destination")));
     }
 
     private void OnActivate(Entity<WarperComponent> ent, ref ActivateInWorldEvent args)
     {
-        DoWarp(ent, args.Target, args.User);
+        TryWarp(ent, args.Target, args.User);
     }
 
 
@@ -69,19 +71,19 @@ public sealed class WarperSystem : EntitySystem
     {
         foreach (var warper in EntityManager.EntityQuery<WarperComponent>())
         {
-            if (useSourceId && warper.SourceId == null)
+            if (useSourceId && warper.CurrentId == null)
                 continue;
             if (warper.DestinationId == null)
                 continue;
 
             if (useSourceId)
             {
-                if (warper.SourceId!.Equals(id))
+                if (warper.DestinationId!.Equals(id))
                     return new Entity<WarperComponent>(warper.Owner, warper);
             }
             else
             {
-                if (warper.DestinationId.Equals(id))
+                if (warper.CurrentId!.Equals(id))
                     return new Entity<WarperComponent>(warper.Owner, warper);
             }
         }
@@ -135,7 +137,7 @@ public sealed class WarperSystem : EntitySystem
 
         var hostileFactions = warper.Comp.HostileFactions;
         int monsterCount = 0, aliveCount = 0;
-        foreach (var mob in _entityManager.EntityQuery<NpcFactionMemberComponent>())
+        foreach (var mob in EntityManager.EntityQuery<NpcFactionMemberComponent>())
         {
             // NPCs not on the same map - skipped // TODO: Rewrite this to accomodate grid, instead.
             if (Transform(mob.Owner).GridUid == Transform(warper).GridUid)
@@ -165,17 +167,18 @@ public sealed class WarperSystem : EntitySystem
         return false;
     }
 
-    private void DoWarp(Entity<WarperComponent> warper, EntityUid user, EntityUid victim)
+    private void TryWarp(Entity<WarperComponent> warper, EntityUid user, EntityUid victim)
     {
         if (!CanWarp(warper, user))
             return;
 
-        _audio.PlayPvs(warper.Comp.TeleportSound, user);
+        if (string.IsNullOrEmpty(warper.Comp.DestinationId))
+        {
+            DisplayLocale(user, "warper-cancelled-no-destination");
+            return;
+        }
 
-        Debug.Assert(warper.Comp.DestinationId != null, "warper.Comp.DestinationId != null");
         var destination = GetWarper(warper.Comp.DestinationId);
-        Debug.Assert(destination != null, nameof(destination) + " != null");
-
         var entityManager = IoCManager.Resolve<IEntityManager>();
         entityManager.TryGetComponent(destination, out TransformComponent? destXform);
         if (destXform is null)
@@ -196,12 +199,12 @@ public sealed class WarperSystem : EntitySystem
                 // Normal ghosts cannot interact, so if we're here this is already an admin ghost.
                 Logger.DebugS("warper",
                     $"Player tried to warp to '{warper.Comp.DestinationId}', which is not on a running map");
-                var message = Loc.GetString("warper-goes-nowhere", ("warper", warper));
-                _popupSystem.PopupEntity(message, user);
+                DisplayLocale(user, "warper-map-invalid");
                 return;
             }
         }
 
+        _audio.PlayPvs(warper.Comp.TeleportSound, user);
         var transform = entityManager.GetComponent<TransformComponent>(victim);
         transform.Coordinates = destXform.Coordinates;
         transform.AttachToGridOrMap();
@@ -252,7 +255,7 @@ public sealed class WarperSystem : EntitySystem
             }
 
             var evt = new ActivateInWorldEvent(player, warper.Value.Comp.Owner, false);
-            warpSystem.DoWarp(warper.Value, evt.Target, evt.User);
+            warpSystem.TryWarp(warper.Value, evt.Target, evt.User);
         }
     }
 }

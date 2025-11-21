@@ -27,9 +27,7 @@
 - type: entity
   parent: BaseWarper
   id: BaseWarperTop
-  #abstract: true
   suffix: entrance
-  description: It goes down.
   components:
   - type: Sprite
     offset: 0, 0.5
@@ -42,9 +40,7 @@
 - type: entity
   parent: BaseWarper
   id: BaseWarperBottom
-  #abstract: true
   suffix: return
-  description: It goes up.
   components:
   - type: Sprite
     offset: 0, 0.5
@@ -80,4 +76,4 @@
   suffix: return
   components:
   - type: Warper
-    id: quietburgtop
+    destination: quietburgtop
