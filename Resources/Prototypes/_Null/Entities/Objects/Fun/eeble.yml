@@ -1,0 +1,13 @@
+- type: entity
+  parent: [BaseItem, BaseC1Contraband] # The Armada despises fun.
+  id: EebleTrinket
+  name: eeble
+  description: It's an eeble in a jar.
+  components:
+  - type: Sprite
+    sprite: _Null/Objects/Fun/eeble.rsi
+    state: eeble
+  - type: Item
+    size: Tiny
+  - type: StaticPrice
+    price: 100
