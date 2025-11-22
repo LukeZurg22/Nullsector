@@ -1,3 +1,4 @@
+using Content.Shared._Null.Systems;
 using Content.Shared.Destructible;
 using Content.Shared.Mining;
 using Content.Shared.Mining.Components;
@@ -11,7 +12,7 @@ namespace Content.Server.Mining;
 /// <summary>
 /// This handles creating ores when the entity is destroyed.
 /// </summary>
-public sealed class MiningSystem : EntitySystem
+public sealed class MiningSystem : SharedMiningSystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IRobustRandom _random = default!;

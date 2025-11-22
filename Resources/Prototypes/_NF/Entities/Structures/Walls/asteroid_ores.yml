@@ -1,0 +1,593 @@
+- type: entity
+  parent: AsteroidRock
+  id: NFAsteroidRockOre
+  abstract: true
+  components: &softRockComps
+  - type: MiningScannerViewable
+  - type: Sprite
+    sprite: _TC14/Structures/Walls/stone.rsi
+    layers:
+    - map: [ "enum.CornerLayers.SE" ]
+      state: stone0
+    - map: [ "enum.CornerLayers.SW" ]
+      state: stone0
+    - map: [ "enum.CornerLayers.NE" ]
+      state: stone0
+    - map: [ "enum.CornerLayers.NW" ]
+      state: stone0
+  - type: OreVein
+    gatherDestructionWhitelist:
+      components:
+      - MiningGatheringHard
+
+- type: entity
+  parent: IronRock
+  id: NFIronRockOre
+  abstract: true
+  components: *softRockComps
+
+- type: entity
+  parent: WallRock
+  id: NFWallRockOre
+  abstract: true
+  components: *softRockComps
+- type: entity
+  parent: WallRockBasalt
+  id: NFWallRockBasaltOre
+  abstract: true
+  components: *softRockComps
+
+- type: entity
+  parent: WallRockSnow
+  id: NFWallRockSnowOre
+  abstract: true
+  components: *softRockComps
+
+- type: entity
+  parent: WallRockSand
+  id: NFWallRockSandOre
+  abstract: true
+  components: *softRockComps
+
+- type: entity
+  parent: WallRockChromite
+  id: NFWallRockChromiteOre
+  abstract: true
+  components: *softRockComps
+
+- type: entity
+  parent: WallRockAndesite
+  id: NFWallRockAndesiteOre
+  abstract: true
+  components: *softRockComps
+
+# region Upstream
+- type: entity
+  id: AsteroidRockBananiumCrab
+  parent: AsteroidRockBananium
+  suffix: Bananium Crab
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: OreBananiumCrabNF
+
+- type: entity
+  id: AsteroidRockCoalCrab
+  parent: AsteroidRockCoal
+  suffix: Coal Crab
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: OreCoalCrabNF
+
+- type: entity
+  id: AsteroidRockGoldCrab
+  parent: AsteroidRockGold
+  suffix: Gold Crab
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: OreGoldCrabNF
+
+- type: entity
+  id: AsteroidRockPlasmaCrab
+  parent: AsteroidRockPlasma
+  suffix: Plasma Crab
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: OrePlasmaCrabNF
+
+- type: entity
+  id: AsteroidRockSaltCrab
+  parent: AsteroidRockSalt
+  suffix: Salt Crab
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: OreSaltCrabNF
+# endregion Upstream
+
+# region Ore
+- type: entity
+  id: AsteroidRockBluespace
+  parent: NFAsteroidRockOre
+  description: An ore vein with bluespace.
+  suffix: Bluespace
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreBluespace
+    layers:
+      - state: rock_coal
+        sprite: Structures/Walls/rock.rsi
+        map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+        visible: false
+
+- type: entity
+  id: IronRockBluespace
+  parent: NFIronRockOre
+  description: An ore vein with bluespace.
+  suffix: Bluespace
+  components:
+    - type: IconSmooth
+      key: walls
+      base: stone
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreBluespace
+      layers:
+        - state: rock_tin
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockBluespace
+  parent: NFWallRockOre
+  description: An ore vein with bluespace.
+  suffix: Bluespace
+  components:
+  - type: EntityRemap
+    mask:
+      AsteroidRock: AsteroidRockBluespace
+      WallRockBasalt: WallRockBasaltBluespace
+      WallRockChromite: WallRockChromiteBluespace
+      WallRockSand: WallRockSandBluespace
+      WallRockSnow: WallRockSnowBluespace
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreBluespace
+    layers:
+      - state: rock_bluespace
+        sprite: Structures/Walls/rock.rsi
+        map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+        visible: false
+
+- type: entity
+  id: WallRockBasaltBluespace
+  parent: NFWallRockBasaltOre
+  description: An ore vein with bluespace.
+  suffix: Bluespace
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreBluespace
+      layers:
+      - state: rock_bluespace
+        sprite: Structures/Walls/rock.rsi
+        map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+        visible: false
+
+- type: entity
+  id: WallRockSnowBluespace
+  parent: NFWallRockSnowOre
+  description: An ore vein with bluespace.
+  suffix: Bluespace
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreBluespace
+      layers:
+        - state: rock_bluespace
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockSandBluespace
+  parent: NFWallRockSandOre
+  description: An ore vein with bluespace.
+  suffix: Bluespace
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreBluespace
+      layers:
+      - state: rock_bluespace
+        sprite: Structures/Walls/rock.rsi
+        map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+        visible: false
+
+- type: entity
+  id: WallRockChromiteBluespace
+  parent: NFWallRockChromiteOre
+  description: An ore vein with bluespace.
+  suffix: Bluespace
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreBluespace
+      layers:
+        - state: rock_bluespace
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockAndesiteBluespace
+  parent: NFWallRockAndesiteOre
+  description: An ore vein with bluespace.
+  suffix: Bluespace
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreBluespace
+      layers:
+      - state: rock_bluespace
+        sprite: Structures/Walls/rock.rsi
+        map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+        visible: false
+# endregion Ore
+
+# region Scrap with Ore
+- type: entity
+  id: WallRockScrapPile
+  parent: NFWallRockAndesiteOre
+  name: scrap pile
+  description: A pile of scrap.
+  suffix: Scrap
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreScrap
+  - type: IconSmooth
+    key: walls
+    base: scrap
+  - type: Icon
+    sprite: _Null/Structures/Walls/scrap.rsi
+    state: full
+  - type: Sprite
+    sprite: _Null/Structures/Walls/scrap.rsi
+    layers:
+    - map: [ "enum.CornerLayers.SE" ]
+      state: scrap0
+    - map: [ "enum.CornerLayers.SW" ]
+      state: scrap0
+    - map: [ "enum.CornerLayers.NE" ]
+      state: scrap0
+    - map: [ "enum.CornerLayers.NW" ]
+      state: scrap0
+    - state: rock_scrap
+      sprite: Structures/Walls/rock.rsi
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+  # - type: RandomSprite # Non-functional with smoothing, at the moment.
+    # available:
+      # - scraprock_variant:
+          # scraprock01: ""
+          # scraprock02: ""
+          # scraprock03: ""
+          # scraprock04: ""
+          # scraprock05: ""
+          # scraprock06: ""
+          # scraprock07: ""
+
+- type: entity
+  id: WallRockScrapPileBot
+  parent: WallRockScrapPile
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+
+- type: entity
+  id: WallRockScrapPileCoal
+  parent: WallRockScrapPile
+  description: An ore vein with coal.
+  suffix: Coal
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreCoal
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_coal
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileCoalBot
+  parent: WallRockScrapPileCoal
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+
+- type: entity
+  id: WallRockScrapPileGold
+  parent: WallRockScrapPile
+  description: An ore vein with gold.
+  suffix: Gold
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreGold
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_gold
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileGoldBot
+  parent: WallRockScrapPileGold
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+
+- type: entity
+  id: WallRockScrapPileDiamond
+  parent: WallRockScrapPile
+  description: An ore vein with diamond.
+  suffix: Diamond
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreDiamond
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_diamond
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileDiamondBot
+  parent: WallRockScrapPileDiamond
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+
+- type: entity
+  id: WallRockScrapPilePlasma
+  parent: WallRockScrapPile
+  description: An ore vein with plasma.
+  suffix: Plasma
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOrePlasma
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_phoron
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPilePlasmaBot
+  parent: WallRockScrapPilePlasma
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+
+- type: entity
+  id: WallRockScrapPileQuartz
+  parent: WallRockScrapPile
+  description: An ore vein with quartz.
+  suffix: Quartz
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreSpaceQuartz
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_quartz
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileQuartzBot
+  parent: WallRockScrapPileQuartz
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+
+- type: entity
+  id: WallRockScrapPileSilver
+  parent: WallRockScrapPile
+  description: An ore vein with silver.
+  suffix: Silver
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreSilver
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_silver
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileSilverBot
+  parent: WallRockScrapPileSilver
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+
+- type: entity
+  id: WallRockScrapPileIron
+  parent: WallRockScrapPile
+  description: An ore vein with iron.
+  suffix: Iron
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreSteel
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_tin
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileIronBot
+  parent: WallRockScrapPileIron
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+
+- type: entity
+  id: WallRockScrapPileUranium
+  parent: WallRockScrapPile
+  description: An ore vein with uranium.
+  suffix: Uranium
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreUranium
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_uranium
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileUraniumBot
+  parent: WallRockScrapPileUranium
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+
+- type: entity
+  id: WallRockScrapPileBananium
+  parent: WallRockScrapPile
+  description: An ore vein with bananium.
+  suffix: Bananium
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreBananium
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_bananium
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileBananiumBot
+  parent: WallRockScrapPileBananium
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+
+- type: entity
+  id: WallRockScrapPileSalt
+  parent: WallRockScrapPile
+  description: An ore vein with salt.
+  suffix: Salt
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreSalt
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_salt
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileSaltBot
+  parent: WallRockScrapPileSalt
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_scrap
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileArtifactFragment
+  parent: WallRockScrapPile
+  description: A scrap pile. What's that sticking out of it?
+  suffix: Artifact Fragment
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreArtifactFragment
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_artifact_fragment
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileArtifactFragmentBot
+  parent: WallRockScrapPileArtifactFragment
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_artifact_fragment
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileBluespace
+  parent: WallRockScrapPile
+  description: An ore vein with bluespace.
+  suffix: Bluespace
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: NFOreBluespace
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_bluespace
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: WallRockScrapPileBluespaceBot
+  parent: WallRockScrapPileBluespace
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreScrapBot
+    layers:
+    - sprite: Structures/Walls/rock.rsi
+      state: rock_bluespace
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+      visible: false
+
+- type: entity
+  id: AsteroidScrapPileMining
+  parent: WallRockScrapPile
+  suffix: higher ore yield .33
+  components:
+  - type: OreVein
+    oreChance: 0.33
+    oreRarityPrototypeId: RandomOreDistributionStandard
+# endregion Scrap with Ore
