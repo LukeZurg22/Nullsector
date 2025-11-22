@@ -53,19 +53,10 @@
       currentOre: NFOreCoal # Frontier: NF prefix
     - type: Sprite
       layers:
-        - map: [ "enum.CornerLayers.SE" ]
-          state: stone0
-        - map: [ "enum.CornerLayers.SW" ]
-          state: stone0
-        - map: [ "enum.CornerLayers.NE" ]
-          state: stone0
-        - map: [ "enum.CornerLayers.NW" ]
-          state: stone0
         - state: rock_coal
           sprite: Structures/Walls/rock.rsi
           map: [ "enum.MiningScannerVisualLayers.Overlay" ]
           visible: false
-
 
 - type: entity
   id: AsteroidRockGold
