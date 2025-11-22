@@ -1,9 +1,8 @@
-using Content.Shared.Atmos;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Guidebook;
 using Robust.Shared.Audio;
 
-namespace Content.Server.Atmos.Piping.Unary.Components
+namespace Content.Shared.Atmos.Piping.Unary.Components
 {
     [RegisterComponent]
     public sealed partial class GasCanisterComponent : Component, IGasMixtureHolder

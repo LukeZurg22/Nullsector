@@ -14,7 +14,10 @@ public sealed class GasCanisterAppearanceSystem : VisualizerSystem<GasCanisterCo
 
     protected override void OnAppearanceChange(EntityUid uid, GasCanisterComponent component, ref AppearanceChangeEvent args)
     {
-        if (!AppearanceSystem.TryGetData<string>(uid, PaintableVisuals.Prototype, out var protoName, args.Component) || args.Sprite is not { } old)
+        if (!AppearanceSystem.TryGetData<string>(uid,
+                PaintableVisuals.Prototype,
+                out var protoName,
+                args.Component) || args.Sprite is null)
             return;
 
         if (!_prototypeManager.HasIndex(protoName))

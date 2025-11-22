@@ -1,10 +1,11 @@
+using System.Numerics;
 using Content.Server.Atmos.Piping.Components;
 using Content.Server.Atmos.Piping.EntitySystems;
-using Content.Server.Atmos.Piping.Unary.Components;
 using Content.Server.Charges;
 using Content.Server.Decals;
 using Content.Server.Destructible;
 using Content.Server.Popups;
+using Content.Shared.Atmos.Piping.Unary.Components;
 using Content.Shared.Charges.Components;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Database;
@@ -68,7 +69,7 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
         if (ent.Comp.DecalMode == DecalPaintMode.Add)
         {
             // Offset painting for adding decals
-            position = position.Offset(new(-0.5f));
+            position = position.Offset(new Vector2(-0.5f));
 
             if (!_decals.TryAddDecal(ent.Comp.SelectedDecal, position, out _, ent.Comp.SelectedDecalColor, Angle.FromDegrees(ent.Comp.SelectedDecalAngle), 0, false))
                 return;
