@@ -5,12 +5,12 @@
   suffix: Low Ore Yield
   description: A rocky asteroid.
   components:
-  - type: Icon
-    sprite: _TC14/Structures/Walls/stone.rsi
-    state: full
-  #- type: SmoothEdge # Null Sector - No sprites made for this yet. It's cool, though.
-  - type: Sprite
-    color: "#C56251FF"
+    - type: Icon
+      sprite: _TC14/Structures/Walls/stone.rsi
+      state: full
+    #- type: SmoothEdge # Null Sector - No sprites made for this yet. It's cool, though.
+    - type: Sprite
+      color: "#C56251FF"
 
 - type: entity
   id: IronRockMining
