@@ -118,6 +118,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOreBluespace
+  - type: Sprite
     layers:
       - state: rock_coal
         sprite: Structures/Walls/rock.rsi
@@ -136,6 +137,7 @@
     - type: OreVein
       oreChance: 1.0
       currentOre: NFOreBluespace
+    - type: Sprite
       layers:
         - state: rock_tin
           sprite: Structures/Walls/rock.rsi
@@ -158,6 +160,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOreBluespace
+  - type: Sprite
     layers:
       - state: rock_bluespace
         sprite: Structures/Walls/rock.rsi
@@ -173,6 +176,7 @@
     - type: OreVein
       oreChance: 1.0
       currentOre: NFOreBluespace
+    - type: Sprite
       layers:
       - state: rock_bluespace
         sprite: Structures/Walls/rock.rsi
@@ -188,6 +192,7 @@
     - type: OreVein
       oreChance: 1.0
       currentOre: NFOreBluespace
+    - type: Sprite
       layers:
         - state: rock_bluespace
           sprite: Structures/Walls/rock.rsi
@@ -203,6 +208,7 @@
     - type: OreVein
       oreChance: 1.0
       currentOre: NFOreBluespace
+    - type: Sprite
       layers:
       - state: rock_bluespace
         sprite: Structures/Walls/rock.rsi
@@ -218,6 +224,7 @@
     - type: OreVein
       oreChance: 1.0
       currentOre: NFOreBluespace
+    - type: Sprite
       layers:
         - state: rock_bluespace
           sprite: Structures/Walls/rock.rsi
@@ -233,6 +240,7 @@
     - type: OreVein
       oreChance: 1.0
       currentOre: NFOreBluespace
+    - type: Sprite
       layers:
       - state: rock_bluespace
         sprite: Structures/Walls/rock.rsi
@@ -300,6 +308,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOreCoal
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_coal
@@ -323,6 +332,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOreGold
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_gold
@@ -346,6 +356,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: OreDiamond
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_diamond
@@ -369,6 +380,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOrePlasma
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_phoron
@@ -392,6 +404,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOreSpaceQuartz
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_quartz
@@ -415,6 +428,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOreSilver
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_silver
@@ -438,6 +452,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOreSteel
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_tin
@@ -461,6 +476,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOreUranium
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_uranium
@@ -484,6 +500,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOreBananium
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_bananium
@@ -507,6 +524,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOreSalt
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_salt
@@ -520,6 +538,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: OreScrapBot
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_scrap
@@ -535,6 +554,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: OreArtifactFragment
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_artifact_fragment
@@ -548,6 +568,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: OreScrapBot
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_artifact_fragment
@@ -563,6 +584,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: NFOreBluespace
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_bluespace
@@ -576,6 +598,7 @@
   - type: OreVein
     oreChance: 1.0
     currentOre: OreScrapBot
+  - type: Sprite
     layers:
     - sprite: Structures/Walls/rock.rsi
       state: rock_bluespace
