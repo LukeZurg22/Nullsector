@@ -1,0 +1,187 @@
+# Sand variants
+- type: entity
+  id: WallRockSand
+  name: sandstone
+  parent: WallRock
+  components:
+    - type: Icon
+      sprite: Structures/Walls/rock.rsi
+      state: rock_sand
+    - type: Sprite
+      color: "#BC8304FF"
+
+- type: entity
+  id: WallRockSandCoal
+  parent: NFWallRockSandOre # Frontier: WallRockSand<NFWallRockSandOre
+  description: An ore vein rich with coal.
+  suffix: Coal
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreCoal # Frontier: NF prefix
+    - type: Sprite
+      layers:
+        - state: rock_coal
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockSandGold
+  parent: NFWallRockSandOre # Frontier: WallRockSand<NFWallRockSandOre
+  description: An ore vein rich with gold.
+  suffix: Gold
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreGold # Frontier: NF prefix
+    - type: Sprite
+      layers:
+        - state: rock_gold
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockSandDiamond
+  parent: NFWallRockSandOre # Frontier: WallRockSand<NFWallRockSandOre
+  description: An ore vein rich with diamonds.
+  suffix: Diamond
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: OreDiamond
+    - type: Sprite
+      layers:
+        - state: rock_diamond
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockSandPlasma
+  parent: NFWallRockSandOre # Frontier: WallRockSand<NFWallRockSandOre
+  description: An ore vein rich with plasma.
+  suffix: Plasma
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOrePlasma # Frontier: NF prefix
+    - type: Sprite
+      layers:
+        - state: rock_phoron
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockSandQuartz
+  parent: NFWallRockSandOre # Frontier: WallRockSand<NFWallRockSandOre
+  description: An ore vein rich with quartz.
+  suffix: Quartz
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreSpaceQuartz # Frontier: NF prefix
+    - type: Sprite
+      layers:
+        - state: rock_quartz
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockSandSilver
+  parent: NFWallRockSandOre # Frontier: WallRockSand<NFWallRockSandOre
+  description: An ore vein rich with silver.
+  suffix: Silver
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreSilver # Frontier: NF prefix
+    - type: Sprite
+      layers:
+        - state: rock_silver
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockSandTin
+  parent: NFWallRockSandOre # Frontier: WallRockSand<NFWallRockSandOre
+  description: An ore vein rich with iron.
+  suffix: Iron
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreSteel # Frontier: NF prefix
+    - type: Sprite
+      layers:
+        - state: rock_tin
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockSandUranium
+  parent: NFWallRockSandOre # Frontier: WallRockSand<NFWallRockSandOre
+  description: An ore vein rich with uranium.
+  suffix: Uranium
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreUranium # Frontier: NF prefix
+    - type: Sprite
+      layers:
+        - state: rock_uranium
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockSandBananium
+  parent: NFWallRockSandOre # Frontier: WallRockSand<NFWallRockSandOre
+  description: An ore vein rich with bananium.
+  suffix: Bananium
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreBananium # Frontier: NF prefix
+    - type: Sprite
+      layers:
+        - state: rock_bananium
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockSandArtifactFragment
+  parent: NFWallRockSandOre # Frontier: WallRockSand<NFWallRockSandOre
+  description: A rock wall. What's that sticking out of it?
+  suffix: Artifact Fragment
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: OreArtifactFragment
+    - type: Sprite
+      layers:
+        - state: rock_artifact_fragment
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false
+
+- type: entity
+  id: WallRockSandSalt
+  parent: NFWallRockSandOre # Frontier: WallRockSand<NFWallRockSandOre
+  description: An ore vein rich with salt.
+  suffix: Salt
+  components:
+    - type: OreVein
+      oreChance: 1.0
+      currentOre: NFOreSalt # Frontier: NF prefix
+    - type: Sprite
+      layers:
+        - state: rock_salt
+          sprite: Structures/Walls/rock.rsi
+          map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+          visible: false

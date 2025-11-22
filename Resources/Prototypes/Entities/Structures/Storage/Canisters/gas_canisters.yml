@@ -10,10 +10,10 @@
     - type: Transform
       noRot: true
     - type: Sprite
-      sprite: _NF/Structures/Storage/canister.rsi # Frontier
+      sprite: _NF/Structures/Storage/canister.rsi
       noRot: true
       layers:
-        - state: air # Frontier
+        - state: air
     - type: Appearance
     - type: GenericVisualizer
       visuals:
@@ -35,6 +35,9 @@
             1: { state: can-o1, shader: "unshaded" }
             2: { state: can-o2, shader: "unshaded" }
             3: { state: can-o3, shader: "unshaded" }
+    - type: ActivatableUI
+      key: enum.GasCanisterUiKey.Key
+    - type: ActivatableUIRequiresLock
     - type: UserInterface
       interfaces:
         enum.GasCanisterUiKey.Key:
@@ -113,10 +116,8 @@
     - type: GuideHelp
       guides:
       - GasCanisters
-    - type: Climbable # mono
-    - type: FootstepModifier # mono
-      footstepSoundCollection:
-        collection: FootstepHull
+    - type: Paintable
+      group: Canisters
 
 - type: entity
   parent: GasCanister

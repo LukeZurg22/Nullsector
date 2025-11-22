@@ -1,22 +1,22 @@
 using System.Linq;
 using Content.Server.Flash.Components;
-using Content.Shared.Flash.Components;
 using Content.Server.Light.EntitySystems;
 using Content.Server.Popups;
 using Content.Server.Stunnable;
 using Content.Shared._Goobstation.Flashbang;
 using Content.Shared.Charges.Components;
 using Content.Shared.Charges.Systems;
+using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Flash;
+using Content.Shared.Flash.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
+using Content.Shared.StatusEffect;
 using Content.Shared.Tag;
 using Content.Shared.Traits.Assorted;
 using Content.Shared.Weapons.Melee.Events;
-using Content.Shared.StatusEffect;
-using Content.Shared.Examine;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
@@ -29,7 +29,7 @@ namespace Content.Server.Flash
     {
         [Dependency] private readonly AppearanceSystem _appearance = default!;
         [Dependency] private readonly AudioSystem _audio = default!;
-        [Dependency] private readonly SharedChargesSystem _charges = default!;
+        [Dependency] private readonly SharedChargesSystem _sharedCharges = default!;
         [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
         [Dependency] private readonly ExamineSystemShared _examine = default!;
@@ -84,15 +84,15 @@ namespace Content.Server.Flash
                 return false;
 
             TryComp<LimitedChargesComponent>(uid, out var charges);
-            if (_charges.IsEmpty(uid, charges))
+            if (_sharedCharges.IsEmpty((uid, charges)))
                 return false;
 
-            _charges.UseCharge(uid, charges);
+            _sharedCharges.TryUseCharge((uid, charges));
             _audio.PlayPvs(comp.Sound, uid);
             comp.Flashing = true;
             _appearance.SetData(uid, FlashVisuals.Flashing, true);
 
-            if (_charges.IsEmpty(uid, charges))
+            if (_sharedCharges.IsEmpty((uid, charges)))
             {
                 _appearance.SetData(uid, FlashVisuals.Burnt, true);
                 _tag.AddTag(uid, "Trash");

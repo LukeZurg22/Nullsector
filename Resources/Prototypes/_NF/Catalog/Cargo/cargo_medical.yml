@@ -99,7 +99,7 @@
     sprite: _NF/Objects/Storage/Barrels/yellow.rsi
     state: icon
   product: ChemicalBarrelSulfur
-#  cost: 7000
+  cost: 7000
   category: cargoproduct-category-name-medical
   group: market
 
@@ -111,7 +111,7 @@
     sprite: _NF/Objects/Storage/Barrels/black.rsi
     state: icon
   product: ChemicalBarrelSilicon
-#  cost: 7000
+  cost: 7000
   category: cargoproduct-category-name-medical
   group: market
 
@@ -123,7 +123,7 @@
     sprite: _NF/Objects/Storage/Barrels/white.rsi
     state: icon
   product: ChemicalBarrelHydrogen
-#  cost: 7000
+  cost: 7000
   category: cargoproduct-category-name-medical
   group: market
 
@@ -147,7 +147,7 @@
     sprite: _NF/Objects/Storage/Barrels/grey.rsi
     state: icon
   product: ChemicalBarrelSodium
-#  cost: 7000
+  cost: 7000
   category: cargoproduct-category-name-medical
   group: market
 
@@ -159,7 +159,7 @@
     sprite: _NF/Objects/Storage/Barrels/yellow.rsi
     state: icon
   product: ChemicalBarrelPotassium
-#  cost: 7000
+  cost: 7000
   category: cargoproduct-category-name-medical
   group: market
 
@@ -171,7 +171,7 @@
     sprite: _NF/Objects/Storage/Barrels/green.rsi
     state: icon
   product: ChemicalBarrelRadium
-#  cost: 7000
+  cost: 7000
   category: cargoproduct-category-name-medical
   group: market
 
@@ -183,7 +183,7 @@
     sprite: _NF/Objects/Storage/Barrels/grey.rsi
     state: icon
   product: ChemicalBarrelIron
-#  cost: 7000
+  cost: 7000
   category: cargoproduct-category-name-medical
   group: market
 

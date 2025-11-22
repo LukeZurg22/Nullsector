@@ -1,0 +1,79 @@
+# Absolutely-Necessary-Abstract-ProtoType(TM)
+- type: entity
+  id: BaseWarper
+  name: warper
+  description: A warper that allows one to transfix themselves to another point in space, and simply appear there on a whim. The displacement itself is involuntary once it starts.
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Null/Structures/warper.rsi # Texture replacement planned.
+    noRot: true
+    netsync: false
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: Tag
+    tags:
+      - Structure
+  - type: InteractionOutline
+  - type: Warper        # For Teleporting Between Layers
+  - type: WarpPoint     # For Ghosts to Teleport-To
+
+# Generic Top Warper
+- type: entity
+  parent: BaseWarper
+  id: BaseWarperTop
+  suffix: entrance
+  components:
+  - type: Sprite
+    offset: 0, 0.5
+    layers:
+      - state: stair_down
+      - state: warningtape_down
+        shader: unshaded
+
+# Generic Bottom Warper
+- type: entity
+  parent: BaseWarper
+  id: BaseWarperBottom
+  suffix: return
+  components:
+  - type: Sprite
+    offset: 0, 0.5
+    layers:
+      - state: stair_up
+      - state: warningtape_up
+        shader: unshaded
+
+# ===Dedicated Spawners===
+- type: entity
+  id: WarperQuietburgTop
+  parent: BaseWarperTop
+  name: quietburg warper
+  suffix: quietburg
+  components:
+  - type: Warper
+    id: quietburgtop
+    destination: quietburgbottom
+
+- type: entity
+  id: WarperQuietburgBottom
+  parent: BaseWarperBottom
+  name: quietburg
+  suffix: quietburg
+  components:
+  - type: Warper
+    id: quietburgbottom
+
+- type: entity
+  id: WarperQuietburgReturn
+  name: quietburg return
+  parent: BaseWarperBottom
+  suffix: return
+  components:
+  - type: Warper
+    destination: quietburgtop
