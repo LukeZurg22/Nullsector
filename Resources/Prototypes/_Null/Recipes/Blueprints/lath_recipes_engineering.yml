@@ -1,4 +1,8 @@
 ## Engineering
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: BlueprintMaterialSiloMachineBoard
+  result: BlueprintMaterialSiloMachineBoard
 
 - type: latheRecipe
   parent: NFBaseBlueprintLatheRecipe
