@@ -145,6 +145,7 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NFNfsdTechfabDeprecatedEmag
+  - type: OreSiloClient
 
 - type: entity
   id: MercenaryTechFab

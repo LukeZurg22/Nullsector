@@ -1027,6 +1027,20 @@
       Steel: 1
 
 - type: entity
+  id: MaterialSiloMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: material silo machine board
+  components:
+  - type: Sprite
+    state: supply
+  - type: MachineBoard
+    prototype: MachineMaterialSilo
+    requirements: # Frontier
+      MatterBin: 4 # Frontier: stackRequirements<requirements
+    stackRequirements:
+      Cable: 1
+
+- type: entity
   id: OreProcessorMachineCircuitboard
   parent: BaseMachineCircuitboard
   name: ore processor machine board
@@ -1240,6 +1254,21 @@
         Capacitor: 2 # Frontier stackRequirements<requirements
       stackRequirements:
         Steel: 5
+
+- type: entity
+  id: MailTeleporterMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: mail teleporter machine board
+  description: A machine printed circuit board for a mail teleporter.
+  components:
+  - type: Sprite
+    state: supply
+  - type: MachineBoard
+    prototype: CargoMailTeleporter
+    requirements: # Frontier
+      Capacitor: 2 # Frontier: stackRequirements<requirements
+    stackRequirements:
+      Steel: 5
 
 - type: entity
   id: SodaDispenserMachineCircuitboard

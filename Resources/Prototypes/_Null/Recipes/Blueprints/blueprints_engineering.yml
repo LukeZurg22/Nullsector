@@ -2,8 +2,8 @@
 - type: entity
   parent: NFBaseBlueprintEngineering
   id: BlueprintMaterialSiloMachineBoard
-  name: resource silo blueprint
-  description: A blueprint with a schematic of a silo machine. It can be inserted into an autolathe or a techfab.
+  name: material silo blueprint
+  description: A blueprint with a schematic of a material silo machine. It can be inserted into an autolathe or a techfab.
   components:
   - type: Blueprint
     providedRecipes:

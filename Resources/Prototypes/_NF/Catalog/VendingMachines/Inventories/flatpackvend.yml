@@ -22,6 +22,7 @@
     PowerCellRechargerFlatpack: 4294967295 # Infinite
     WeaponCapacitorRechargerFlatpack: 4294967295 # Infinite
     BorgChargerFlatpack: 4294967295 # Infinite
+    MaterialSiloFlatpack: 4294967295 # Infinite
     MachineFlatpackerFlatpack: 4294967295 # Infinite
     NFHolopadShipFlatpack: 4294967295 # Infinite
     AirlockFlatpack: 4294967295 # Infinite

@@ -1,4 +1,4 @@
-# This File is from Frontier
+# This File is from Frontier, but heavy modified by Null Sector.
 # This is in one giant hellfile to better enable adjusting position.
 # If a research tech cannot be researched, it is likely due to the secondary discipline, or the lack thereof! Technologies
 # as of 20250802 still have dependencies on the technology type before them.
@@ -2002,3 +2002,19 @@
   technologyPrerequisites:
   - NFAdvancedSalvageCyborg
   position: 5, 5
+
+- type: technology
+  id: MaterialSiloResearch
+  name: research-technology-material-silo
+  entityIcon: MachineMaterialSilo
+  discipline: Salvage
+  secondarydiscipline: Experimental
+  tier: 3
+  cost: 25000
+  recipeUnlocks:
+  - MaterialSiloMachineCircuitboard
+  - BlueprintMaterialSiloMachineBoard
+  prerequisiteLineType: Diagonal
+  technologyPrerequisites:
+  - MiningLaserResearch
+  position: 6, 5

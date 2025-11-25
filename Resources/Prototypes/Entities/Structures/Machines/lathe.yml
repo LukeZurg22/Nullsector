@@ -17,6 +17,7 @@
         - MachineMask
         layer:
         - MachineLayer
+  - type: OreSiloClient
   - type: Lathe
   - type: MaterialStorage
     whitelist: # Frontier
@@ -66,7 +67,7 @@
   - type: ReagentSpeed
     solution: lube
     modifiers:
-      SpaceLube: 0.5 # Frontier: 0.25<0.5 (we double dip on time with lube and machine parts)
+      SpaceLube: 0.5 # Frontier: 0.25<0.5 (we double-dip on time with lube and machine parts)
       SpaceGlue: 5
   - type: SolutionContainerManager
     solutions:
@@ -116,9 +117,10 @@
   - type: MaterialStorage
     whitelist:
       tags:
-      - Sheet
-      - RawMaterial
-      - Ingot
+        - Sheet
+        - RawMaterial
+        - Ingot
+  - type: OreSiloClient
   - type: Lathe
     idleState: icon
     runningState: building
@@ -193,9 +195,10 @@
   - type: MaterialStorage
     whitelist:
       tags:
-      - Sheet
-      - RawMaterial
-      - Ingot
+        - Sheet
+        - RawMaterial
+        - Ingot
+  - type: OreSiloClient
   - type: Lathe
     idleState: icon
     runningState: building
@@ -226,9 +229,7 @@
     - NFScience # Frontier
     - NFPouches # Frontier
     - SMSurgery # Shitmed Change
-    # WD EDIT START
-    - VisionGoggles
-    # WD EDIT END
+    - VisionGoggles # WD EDIT
   - type: EmagLatheRecipes
     emagDynamicPacks:
     - SecurityAmmo
@@ -301,9 +302,10 @@
   - type: MaterialStorage
     whitelist:
       tags:
-      - Sheet
-      - RawMaterial
-      - Ingot
+        - Sheet
+        - RawMaterial
+        - Ingot
+  - type: OreSiloClient
   - type: RequireProjectileTarget
 
 - type: entity
@@ -355,6 +357,7 @@
       - Sheet
       - RawMaterial
       - Ingot
+  - type: OreSiloClient
   - type: GuideHelp
     guides:
     - Robotics
@@ -440,9 +443,10 @@
   - type: MaterialStorage
     whitelist:
       tags:
-      - Sheet
-      - RawMaterial
-      - Ingot
+        - Sheet
+        - RawMaterial
+        - Ingot
+  - type: OreSiloClient
 
 - type: entity
   id: AmmoTechFab
@@ -519,6 +523,7 @@
     board: MedicalTechFabCircuitboard
   - type: StealTarget
     stealGroup: MedicalTechFabCircuitboard
+  - type: OreSiloClient
 
 - type: entity
   parent: BaseLathe
@@ -565,9 +570,10 @@
   - type: MaterialStorage
     whitelist:
       tags:
-      - Sheet
-      - RawMaterial
-      - Ingot
+        - Sheet
+        - RawMaterial
+        - Ingot
+  - type: OreSiloClient
 
 - type: entity
   id: Biogenerator
@@ -753,6 +759,7 @@
       - RawMaterial
       - Plastic
       - Ingot # Frontier
+  - type: OreSiloClient
 
 # Shitmed Change Start
 - type: entity
