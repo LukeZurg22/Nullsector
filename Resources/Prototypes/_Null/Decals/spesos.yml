@@ -1,0 +1,6 @@
+﻿- type: decal
+  id: Pipes
+  tags: ["station", "markings"]
+  sprite:
+    sprite: Decals/pipes.rsi
+    state: pipes
