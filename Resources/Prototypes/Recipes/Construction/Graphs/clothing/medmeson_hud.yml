@@ -12,7 +12,7 @@
                 sprite: Clothing/Eyes/Hud/med.rsi
                 state: icon
               doAfter: 5
-            - tag: MedMeson
+            - tag: HudMeson
               name: meson-engineering goggles
               icon:
                 sprite: Clothing/Eyes/Glasses/meson.rsi
