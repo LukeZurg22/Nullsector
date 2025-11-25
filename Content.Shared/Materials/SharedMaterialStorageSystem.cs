@@ -120,7 +120,6 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         return GetStoredMaterials((uid, component), localOnly).Values.Sum();
     }
 
-    // TODO: Revisit this if we ever decide to do things with storage limits. As it stands, the feature is unused.
     /// <summary>
     /// Tests if a specific amount of volume will fit in the storage.
     /// </summary>
