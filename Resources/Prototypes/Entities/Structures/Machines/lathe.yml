@@ -281,7 +281,7 @@
     - NFScienceBoardsStatic # Frontier
     - NFServiceBoardsStatic # Frontier
     - NFSalvageBoardsStatic # Frontier
-    dynamicPacks:
+    dynamicPacks: # Packs Unlocked from Research
     - EngineeringBoards
     - CargoBoards
     - MedicalBoards
@@ -294,7 +294,7 @@
     - NFMedicalBoards # Frontier + Shitmed Change
     - NFServiceBoards # Frontier
     - MonoAdvancedShuttleComponents # Mono & Null Sector
-    - NFBlueprints
+    - NFBlueprints # Null Sector
   - type: EmagLatheRecipes
     emagDynamicPacks: [] # Frontier: empty list
     # - SecurityBoards # Frontier

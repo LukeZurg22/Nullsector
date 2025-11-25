@@ -1,0 +1,24 @@
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintRped
+  result: NFBlueprintRped
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintSuperCapacitorStockPart
+  result: NFBlueprintSuperCapacitorStockPart
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintPicoManipulatorStockPart
+  result: NFBlueprintPicoManipulatorStockPart
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintSuperMatterBinStockPart
+  result: NFBlueprintSuperMatterBinStockPart
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintClothingShoesBootsMagAdv
+  result: NFBlueprintClothingShoesBootsMagAdv

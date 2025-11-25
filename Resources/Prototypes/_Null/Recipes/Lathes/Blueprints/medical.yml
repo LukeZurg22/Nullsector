@@ -1,0 +1,19 @@
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintBluespaceBeaker
+  result: NFBlueprintBluespaceBeaker
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintSyringeBluespace
+  result: NFBlueprintSyringeBluespace
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintJugBluespace
+  result: NFBlueprintJugBluespace
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintVialBluespace
+  result: NFBlueprintVialBluespace
