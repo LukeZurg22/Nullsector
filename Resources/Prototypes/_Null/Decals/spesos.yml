@@ -1,6 +1,6 @@
 ﻿- type: decal
-  id: Pipes
+  id: Speso
   tags: ["station", "markings"]
   sprite:
-    sprite: Decals/pipes.rsi
-    state: pipes
+    sprite: Decals/speso.rsi
+    state: speso
