@@ -50,7 +50,8 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
     {
-        if (!args.WasModified<PaintableGroupCategoryPrototype>() || !args.WasModified<PaintableGroupPrototype>() || !args.WasModified<DecalPrototype>())
+        if (!args.WasModified<PaintableGroupCategoryPrototype>() || !args.WasModified<PaintableGroupPrototype>() ||
+            !args.WasModified<DecalPrototype>())
             return;
 
         CachePrototypes();
@@ -79,12 +80,10 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
         Decals.Clear();
         foreach (var decalPrototype in Proto.EnumeratePrototypes<DecalPrototype>().OrderBy(x => x.ID))
         {
-            if (!decalPrototype.Tags.Contains("station")
-                && !decalPrototype.Tags.Contains("markings")
-                || decalPrototype.Tags.Contains("dirty"))
+            if (decalPrototype.Tags.Contains("dirty"))
                 continue;
-
-            Decals.Add(new SprayPainterDecalEntry(decalPrototype.ID, decalPrototype.Sprite));
+            if (decalPrototype.Tags.Contains("station") && decalPrototype.Tags.Contains("markings"))
+                Decals.Add(new SprayPainterDecalEntry(decalPrototype.ID, decalPrototype.Sprite));
         }
     }
 
