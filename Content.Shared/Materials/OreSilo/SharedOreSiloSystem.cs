@@ -1,5 +1,6 @@
 using Content.Shared.Power.EntitySystems;
 using JetBrains.Annotations;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Materials.OreSilo;
 

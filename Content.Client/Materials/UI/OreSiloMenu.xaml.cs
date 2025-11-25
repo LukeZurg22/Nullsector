@@ -37,7 +37,7 @@ public sealed partial class OreSiloMenu : FancyWindow
         {
             items.Add(new ItemList.Item(ClientList)
             {
-                Metadata = ent
+                Metadata = ent,
             });
         }
 

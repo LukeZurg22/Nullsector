@@ -20,12 +20,11 @@ public sealed class MachineBoardTest
         //These have their own construction thing going on here
         "MachineParticleAcceleratorEndCapCircuitboard",
         "MachineParticleAcceleratorFuelChamberCircuitboard",
-        "MachineParticleAcceleratorFuelChamberCircuitboard",
         "MachineParticleAcceleratorPowerBoxCircuitboard",
         "MachineParticleAcceleratorEmitterStarboardCircuitboard",
         "MachineParticleAcceleratorEmitterForeCircuitboard",
         "MachineParticleAcceleratorEmitterPortCircuitboard",
-        "ParticleAcceleratorComputerCircuitboard"
+        "ParticleAcceleratorComputerCircuitboard",
     };
 
     /// <summary>
@@ -58,7 +57,8 @@ public sealed class MachineBoardTest
                         $"Machine board {p.ID}'s corresponding machine has an invalid prototype.");
                     Assert.That(mProto.TryGetComponent<MachineComponent>(out var mComp, compFact),
                         $"Machine board {p.ID}'s corresponding machine {mId} does not have MachineComponent");
-                    Assert.That(mComp.Board, Is.EqualTo(p.ID),
+                    Assert.That(mComp.Board,
+                        Is.EqualTo(p.ID),
                         $"Machine {mId}'s BoardPrototype is not equal to it's corresponding machine board, {p.ID}");
                 });
             }
@@ -98,7 +98,8 @@ public sealed class MachineBoardTest
                         $"Computer board \"{p.ID}\"'s corresponding computer has an invalid prototype.");
                     Assert.That(cProto.TryGetComponent<ComputerComponent>(out var cComp, compFact),
                         $"Computer board {p.ID}'s corresponding computer \"{cId}\" does not have ComputerComponent");
-                    Assert.That(cComp.BoardPrototype, Is.EqualTo(p.ID),
+                    Assert.That(cComp.BoardPrototype,
+                        Is.EqualTo(p.ID),
                         $"Computer \"{cId}\"'s BoardPrototype is not equal to it's corresponding computer board, \"{p.ID}\"");
                 });
             }
@@ -134,7 +135,8 @@ public sealed class MachineBoardTest
                 {
                     foreach (var component in board.ComponentRequirements.Keys)
                     {
-                        Assert.That(entMan.ComponentFactory.TryGetRegistration(component, out _), $"Invalid component requirement {component} specified on machine board entity {p}");
+                        Assert.That(entMan.ComponentFactory.TryGetRegistration(component, out _),
+                            $"Invalid component requirement {component} specified on machine board entity {p}");
                     }
                 });
             }
@@ -183,8 +185,8 @@ public sealed class MachineBoardTest
         {
             HashSet<EntProtoId> machinePartEntities = new();
             foreach (var p in protoMan.EnumeratePrototypes<MachinePartPrototype>()
-                                .Where(p => !pair.IsTestPrototype(p))
-                                .Where(p => !_ignoredPrototypes.Contains(p.ID)))
+                         .Where(p => !pair.IsTestPrototype(p))
+                         .Where(p => !_ignoredPrototypes.Contains(p.ID)))
             {
                 machinePartEntities.Add(p.StockPartPrototype);
             }
@@ -192,9 +194,9 @@ public sealed class MachineBoardTest
             Assert.Multiple(() =>
             {
                 foreach (var p in protoMan.EnumeratePrototypes<EntityPrototype>()
-                            .Where(p => !p.Abstract)
-                            .Where(p => !pair.IsTestPrototype(p))
-                            .Where(p => !_ignoredPrototypes.Contains(p.ID)))
+                             .Where(p => !p.Abstract)
+                             .Where(p => !pair.IsTestPrototype(p))
+                             .Where(p => !_ignoredPrototypes.Contains(p.ID)))
                 {
                     if (!p.TryGetComponent<MachineBoardComponent>(out var mbc, compFact))
                         continue;
@@ -203,19 +205,22 @@ public sealed class MachineBoardTest
                     {
                         if (_invalidStackTypes.Contains(stackReq))
                         {
-                            Assert.Fail($"Entity {p.ID} has a stackRequirement for {stackReq}, which should be converted into a machine part requirement.");
+                            Assert.Fail(
+                                $"Entity {p.ID} has a stackRequirement for {stackReq}, which should be converted into a machine part requirement.");
                             continue;
                         }
 
                         if (!protoMan.TryIndex(stackReq, out var stack))
                         {
-                            Assert.Fail($"Entity {p.ID} has a stackRequirement for {stackReq}, which could not be resolved.");
+                            Assert.Fail(
+                                $"Entity {p.ID} has a stackRequirement for {stackReq}, which could not be resolved.");
                             continue;
                         }
 
                         if (machinePartEntities.Contains(stack.Spawn))
                         {
-                            Assert.Fail($"Entity {p.ID} has a stackRequirement for {stackReq}, which is a machine part, and should be in requirements.");
+                            Assert.Fail(
+                                $"Entity {p.ID} has a stackRequirement for {stackReq}, which is a machine part, and should be in requirements.");
                             continue;
                         }
                     }
@@ -224,7 +229,8 @@ public sealed class MachineBoardTest
                     {
                         if (_invalidTags.Contains(tagReq))
                         {
-                            Assert.Fail($"Entity {p.ID} has a tagRequirement for {tagReq}, which should be converted into a machine part requirement.");
+                            Assert.Fail(
+                                $"Entity {p.ID} has a tagRequirement for {tagReq}, which should be converted into a machine part requirement.");
                             continue;
                         }
                     }
@@ -233,7 +239,8 @@ public sealed class MachineBoardTest
                     {
                         if (_invalidComponents.Contains(compReq))
                         {
-                            Assert.Fail($"Entity {p.ID} has a componentRequirement for {compReq}, which should be converted into a machine part requirement.");
+                            Assert.Fail(
+                                $"Entity {p.ID} has a componentRequirement for {compReq}, which should be converted into a machine part requirement.");
                             continue;
                         }
                     }

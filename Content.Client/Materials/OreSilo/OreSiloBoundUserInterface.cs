@@ -1,8 +1,9 @@
+using Content.Client.Materials.UI;
 using Content.Shared.Materials.OreSilo;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
-namespace Content.Client.Materials.UI;
+namespace Content.Client.Materials.OreSilo;
 
 [UsedImplicitly]
 public sealed class OreSiloBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)

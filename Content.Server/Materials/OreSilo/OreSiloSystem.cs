@@ -4,7 +4,7 @@ using Content.Shared.Materials.OreSilo;
 using Robust.Server.GameStates;
 using Robust.Shared.Player;
 
-namespace Content.Server.Materials;
+namespace Content.Server.Materials.OreSilo;
 
 /// <inheritdoc/>
 public sealed class OreSiloSystem : SharedOreSiloSystem
@@ -47,7 +47,7 @@ public sealed class OreSiloSystem : SharedOreSiloSystem
             var name = Identity.Name(client, EntityManager);
             var beacon = _navMap.GetNearestBeaconString(client.Owner, onlyName: true);
 
-            var txt = Loc.GetString("ore-silo-ui-nf-itemlist-entry", // Frontier: use NF key
+            var txt = Loc.GetString("ore-silo-ui-itemlist-entry-beaconless", // Frontier: use NF key
                 ("name", name),
                 // ("beacon", beacon), // Frontier
                 ("linked", ent.Comp.Clients.Contains(client)),
@@ -61,10 +61,10 @@ public sealed class OreSiloSystem : SharedOreSiloSystem
         {
             var netEnt = GetNetEntity(client);
             var name = Identity.Name(client, EntityManager);
-            var beacon = _navMap.GetNearestBeaconString(client, onlyName: true);
+            var beacon = _navMap.GetNearestBeaconString(client);
             var inRange = CanTransmitMaterials((ent, ent, xform), client);
 
-            var txt = Loc.GetString("ore-silo-ui-nf-itemlist-entry", // Frontier: use NF key
+            var txt = Loc.GetString("ore-silo-ui-itemlist-entry-beaconless",
                 ("name", name),
                 // ("beacon", beacon), // Frontier
                 ("linked", ent.Comp.Clients.Contains(client)),

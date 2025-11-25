@@ -1,19 +1,21 @@
 ﻿using System.Linq;
 using Content.Server.Administration.Logs;
-using Content.Shared.Materials;
-using Content.Shared.Popups;
-using Content.Shared.Stacks;
-using Content.Server.Storage.Components; // Frontier
-using Content.Server.Cargo.Systems; // Frontier
+using Content.Server.Cargo.Systems;
 using Content.Server.Power.Components;
 using Content.Server.Stack;
+using Content.Server.Storage.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Construction;
 using Content.Shared.Database;
+using Content.Shared.Materials;
+using Content.Shared.Popups;
+using Content.Shared.Stacks;
 using JetBrains.Annotations;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+
+// Frontier
 
 namespace Content.Server.Materials;
 
@@ -54,11 +56,12 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
     {
         foreach (var (materialProto, amount) in component.Storage)
         {
-            if (!_prototypeManager.TryIndex<MaterialPrototype>(materialProto, out var material))
+            if (!_prototypeManager.TryIndex(materialProto, out var material))
             {
                 Log.Error("Failed to index material prototype " + materialProto);
                 continue;
             }
+
             ev.Price += material.Price * amount;
         }
     }
@@ -80,14 +83,16 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
         if (!_actionBlocker.CanInteract(player, uid))
             return;
 
-        if (!component.CanEjectStoredMaterials || !_prototypeManager.TryIndex<MaterialPrototype>(msg.Material, out var material))
+        if (!component.CanEjectStoredMaterials ||
+            !_prototypeManager.TryIndex<MaterialPrototype>(msg.Material, out var material))
             return;
 
         var volume = 0;
 
         if (material.StackEntity != null)
         {
-            if (!_prototypeManager.Index<EntityPrototype>(material.StackEntity).TryGetComponent<PhysicalCompositionComponent>(out var composition, EntityManager.ComponentFactory))
+            if (!_prototypeManager.Index<EntityPrototype>(material.StackEntity)
+                    .TryGetComponent<PhysicalCompositionComponent>(out var composition, EntityManager.ComponentFactory))
                 return;
 
             var volumePerSheet = composition.MaterialComposition.FirstOrDefault(kvp => kvp.Key == msg.Material).Value;
@@ -128,14 +133,18 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
         if (!base.TryInsertMaterialEntity(user, toInsert, receiver, storage, material, composition))
             return false;
         _audio.PlayPvs(storage.InsertingSound, receiver);
-        _popup.PopupEntity(Loc.GetString("machine-insert-item", ("user", user), ("machine", receiver),
-            ("item", toInsert)), receiver);
-        //QueueDel(toInsert); // Frontier
+        _popup.PopupEntity(Loc.GetString("machine-insert-item",
+                ("user", user),
+                ("machine", receiver),
+                ("item", toInsert)),
+            receiver);
+        // QueueDel(toInsert); // Frontier
 
         // Logging
         TryComp<StackComponent>(toInsert, out var stack);
         var count = stack?.Count ?? 1;
-        _adminLogger.Add(LogType.Action, LogImpact.Low,
+        _adminLogger.Add(LogType.Action,
+            LogImpact.Low,
             $"{ToPrettyString(user):player} inserted {count} {ToPrettyString(toInsert):inserted} into {ToPrettyString(receiver):receiver}");
         Del(toInsert); // Frontier: delete immediately, don't queue
         return true;
@@ -157,15 +166,25 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
             return false;
         // Cache old count
         var initialCount = TryComp<StackComponent>(toInsert, out var stack) ? stack.Count : 1;
-        if (!base.TryInsertMaxPossibleMaterialEntity(user, toInsert, receiver, out empty, storage, material, composition))
+        if (!base.TryInsertMaxPossibleMaterialEntity(user,
+                toInsert,
+                receiver,
+                out empty,
+                storage,
+                material,
+                composition))
             return false;
         _audio.PlayPvs(storage.InsertingSound, receiver);
-        _popup.PopupEntity(Loc.GetString("machine-insert-item", ("user", user), ("machine", receiver),
-            ("item", toInsert)), receiver);
+        _popup.PopupEntity(Loc.GetString("machine-insert-item",
+                ("user", user),
+                ("machine", receiver),
+                ("item", toInsert)),
+            receiver);
 
         // Logging
         var newCount = stack?.Count ?? 0;
-        _adminLogger.Add(LogType.Action, LogImpact.Low,
+        _adminLogger.Add(LogType.Action,
+            LogImpact.Low,
             $"{ToPrettyString(user):player} inserted {initialCount - newCount} item(s) from {ToPrettyString(toInsert):inserted} into {ToPrettyString(receiver):receiver}");
         if (empty)
             Del(toInsert);
@@ -190,13 +209,16 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
     ///     1 biomass = 1 biomass in its stack,
     ///     but 100 plasma = 1 sheet of plasma, etc.
     /// </summary>
-    public List<EntityUid> SpawnMultipleFromMaterial(int amount, string material, EntityCoordinates coordinates, out int overflowMaterial)
+    public List<EntityUid> SpawnMultipleFromMaterial(int amount,
+        string material,
+        EntityCoordinates coordinates,
+        out int overflowMaterial)
     {
         overflowMaterial = 0;
         if (!_prototypeManager.TryIndex<MaterialPrototype>(material, out var stackType))
         {
             Log.Error("Failed to index material prototype " + material);
-            return new List<EntityUid>();
+            return [];
         }
 
         return SpawnMultipleFromMaterial(amount, stackType, coordinates, out overflowMaterial);
@@ -209,7 +231,9 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
     ///     but 100 plasma = 1 sheet of plasma, etc.
     /// </summary>
     [PublicAPI]
-    public List<EntityUid> SpawnMultipleFromMaterial(int amount, MaterialPrototype materialProto, EntityCoordinates coordinates)
+    public List<EntityUid> SpawnMultipleFromMaterial(int amount,
+        MaterialPrototype materialProto,
+        EntityCoordinates coordinates)
     {
         return SpawnMultipleFromMaterial(amount, materialProto, coordinates, out _);
     }
@@ -220,23 +244,27 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
     ///     1 biomass = 1 biomass in its stack,
     ///     but 100 plasma = 1 sheet of plasma, etc.
     /// </summary>
-    public List<EntityUid> SpawnMultipleFromMaterial(int amount, MaterialPrototype materialProto, EntityCoordinates coordinates, out int overflowMaterial)
+    public List<EntityUid> SpawnMultipleFromMaterial(int amount,
+        MaterialPrototype materialProto,
+        EntityCoordinates coordinates,
+        out int overflowMaterial)
     {
         overflowMaterial = 0;
 
         if (amount <= 0 || materialProto.StackEntity == null)
-            return new List<EntityUid>();
+            return [];
 
         var entProto = _prototypeManager.Index<EntityPrototype>(materialProto.StackEntity);
-        if (!entProto.TryGetComponent<PhysicalCompositionComponent>(out var composition, EntityManager.ComponentFactory))
-            return new List<EntityUid>();
+        if (!entProto.TryGetComponent<PhysicalCompositionComponent>(out var composition,
+                EntityManager.ComponentFactory))
+            return [];
 
         var materialPerStack = composition.MaterialComposition[materialProto.ID];
         var amountToSpawn = amount / materialPerStack;
         overflowMaterial = amount - amountToSpawn * materialPerStack;
 
         if (amountToSpawn == 0)
-            return new List<EntityUid>();
+            return [];
 
         return _stackSystem.SpawnMultiple(materialProto.StackEntity, amountToSpawn, coordinates);
     }
@@ -259,7 +287,7 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
         MaterialStorageComponent? component = null)
     {
         if (!Resolve(entity, ref component))
-            return new List<EntityUid>();
+            return [];
 
         coordinates ??= Transform(entity).Coordinates;
 
@@ -286,7 +314,7 @@ public sealed class MaterialStorageSystem : SharedMaterialStorageSystem
         MaterialStorageComponent? component = null)
     {
         if (!Resolve(entity, ref component))
-            return new List<EntityUid>();
+            return [];
 
         coordinates ??= Transform(entity).Coordinates;
 
