@@ -1,5 +1,5 @@
 ﻿- type: decal
-  id: Speso
+  id: speso
   tags: ["station", "markings"]
   sprite:
     sprite: Decals/speso.rsi
