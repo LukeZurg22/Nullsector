@@ -1015,6 +1015,7 @@
   tier: 1
   cost: 7500
   recipeUnlocks:
+  - NFBlueprintAdvMopItem
   - AdvMopItem
   technologyPrerequisites:
   - NFAdvancedSpray
@@ -1937,6 +1938,7 @@
   tier: 3
   cost: 15000
   recipeUnlocks:
+  - BlueprintEmancipationBoard
   - EmancipationGridCircuitboardRecipe
   prerequisiteLineType: Diagonal
   technologyPrerequisites:

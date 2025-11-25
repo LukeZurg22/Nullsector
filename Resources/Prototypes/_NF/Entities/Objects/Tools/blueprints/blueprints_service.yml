@@ -1,4 +1,3 @@
-
 - type: entity
   parent: NFBaseBlueprintService
   id: NFBlueprintAdvMopItem
@@ -8,6 +7,16 @@
   - type: Blueprint
     providedRecipes:
     - AdvMopItem
+
+- type: entity # Null Sector
+  parent: NFBaseBlueprintService
+  id: BlueprintEmancipationBoard
+  name: emancipation grid circuitboard blueprint
+  description: A blueprint with a schematic of an emancipation grid board. It can be inserted into an autolathe or a techfab.
+  components:
+  - type: Blueprint
+    providedRecipes:
+    - EmancipationGridCircuitboardRecipe
 
 - type: entity
   parent: NFBaseBlueprintService

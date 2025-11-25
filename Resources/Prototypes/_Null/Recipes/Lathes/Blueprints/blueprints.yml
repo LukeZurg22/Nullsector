@@ -146,23 +146,6 @@
   id: NFBlueprintClothingShoesBootsMagAdv
   result: NFBlueprintClothingShoesBootsMagAdv
 
-## Service
-
-- type: latheRecipe
-  parent: NFBaseBlueprintLatheRecipe
-  id: NFBlueprintAdvMopItem
-  result: NFBlueprintAdvMopItem
-
-- type: latheRecipe
-  parent: NFBaseBlueprintLatheRecipe
-  id: NFBlueprintPlantAnalyzerEmpty
-  result: NFBlueprintPlantAnalyzerEmpty
-
-- type: latheRecipe
-  parent: NFBaseBlueprintLatheRecipe
-  id: NFBlueprintPlantBagOfHolding
-  result: NFBlueprintPlantBagOfHolding
-
 ## Armory
 
 - type: latheRecipe

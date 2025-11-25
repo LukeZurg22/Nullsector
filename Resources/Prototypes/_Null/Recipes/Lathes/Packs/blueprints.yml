@@ -1,3 +1,4 @@
+# Todo: Overhaul this to accomodate all researchable items.
 - type: latheRecipePack
   id: NFBlueprints
   recipes:
@@ -35,6 +36,7 @@
   - NFBlueprintAdvMopItem
   - NFBlueprintPlantAnalyzerEmpty
   - NFBlueprintPlantBagOfHolding
+  - BlueprintEmancipationBoard
   # Armory
   - NFBlueprintWeaponLaserSvalinn
   - NFBlueprintPortableRecharger
