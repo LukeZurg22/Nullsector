@@ -38,7 +38,7 @@
 
   <Box>
     <GuideEntityEmbed Entity="ContrabandForensicsModule" Caption="forensics module"/>
-    <GuideEntityEmbed Entity="FrontierUplinkCoin"/>
+    <GuideEntityEmbed Entity="SplenduriumCoin"/>
   </Box>
 
   [bold]Remember to use any DNA you find to track down and prosecute the smugglers.[/bold] It is one of your duties as an NFSD officer to keep sector commerce legal.

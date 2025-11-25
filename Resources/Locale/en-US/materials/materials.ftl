@@ -2,7 +2,9 @@
 materials-glass = glass
 materials-reinforced-glass = reinforced glass
 materials-plasma-glass = plasma glass
+materials-uranium-glass = uranium glass
 materials-reinforced-plasma-glass = reinforced plasma glass
+materials-reinforced-uranium-glass = reinforced uranium glass
 
 # Metals
 materials-steel = steel
