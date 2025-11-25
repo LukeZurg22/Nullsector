@@ -408,7 +408,7 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
         if (HasComp<UnremoveableComponent>(toInsert))
             return false;
 
-        int multiplier;
+        var multiplier = 0;
         if (storage.StorageLimit is not null && TryComp<StackComponent>(toInsert, out var stack))
         {
             var availableVolume = (int)storage.StorageLimit - GetTotalMaterialAmount(receiver, storage);
@@ -417,7 +417,8 @@ public abstract class SharedMaterialStorageSystem : EntitySystem
             {
                 volumePerSheet += vol;
             }
-            multiplier = availableVolume / volumePerSheet;
+            if (volumePerSheet != 0)
+                multiplier = availableVolume / volumePerSheet;
             if (multiplier >= stack.Count)
             {
                 empty = true;

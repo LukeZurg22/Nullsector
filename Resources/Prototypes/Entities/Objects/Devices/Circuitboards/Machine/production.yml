@@ -1264,7 +1264,7 @@
   - type: Sprite
     state: supply
   - type: MachineBoard
-    prototype: CargoMailTeleporter
+    prototype: MailTeleporter
     requirements: # Frontier
       Capacitor: 2 # Frontier: stackRequirements<requirements
     stackRequirements:
