@@ -167,7 +167,7 @@
 - type: entity
   parent: [ClothingEyesBase, ShowMedicalIcons, ClothingEyesGlassesMeson]
   id: ClothingEyesHudMedicalMeson
-  name: medical-meson hud
+  name: medical engineering goggles
   description: Green-tinted heads-up display using a proprietary polymer that provides protection from eye damage of all types and scans the humanoids in view to provides accurate data about their health status.
   components:
   - type: Sprite
