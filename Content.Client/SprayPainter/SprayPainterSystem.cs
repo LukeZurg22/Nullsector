@@ -22,9 +22,9 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
 {
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
 
-    public List<SprayPainterDecalEntry> Decals = [];
-    public Dictionary<string, List<string>> PaintableGroupsByCategory = new();
-    public Dictionary<string, Dictionary<string, EntProtoId>> PaintableStylesByGroup = new();
+    public readonly List<SprayPainterDecalEntry> Decals = [];
+    public readonly Dictionary<string, List<string>> PaintableGroupsByCategory = new();
+    public readonly Dictionary<string, Dictionary<string, EntProtoId>> PaintableStylesByGroup = new();
 
     public override void Initialize()
     {
@@ -50,7 +50,8 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
     {
-        if (!args.WasModified<PaintableGroupCategoryPrototype>() || !args.WasModified<PaintableGroupPrototype>() || !args.WasModified<DecalPrototype>())
+        if (!args.WasModified<PaintableGroupCategoryPrototype>() || !args.WasModified<PaintableGroupPrototype>() ||
+            !args.WasModified<DecalPrototype>())
             return;
 
         CachePrototypes();
@@ -79,12 +80,10 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
         Decals.Clear();
         foreach (var decalPrototype in Proto.EnumeratePrototypes<DecalPrototype>().OrderBy(x => x.ID))
         {
-            if (!decalPrototype.Tags.Contains("station")
-                && !decalPrototype.Tags.Contains("markings")
-                || decalPrototype.Tags.Contains("dirty"))
+            if (decalPrototype.Tags.Contains("dirty"))
                 continue;
-
-            Decals.Add(new SprayPainterDecalEntry(decalPrototype.ID, decalPrototype.Sprite));
+            if (decalPrototype.Tags.Contains("station") && decalPrototype.Tags.Contains("markings"))
+                Decals.Add(new SprayPainterDecalEntry(decalPrototype.ID, decalPrototype.Sprite));
         }
     }
 
@@ -110,15 +109,15 @@ public sealed class SprayPainterSystem : SharedSprayPainterSystem
 
             _lastPaintingDecals = _entity.Comp.DecalMode;
 
-            string modeLocString = _entity.Comp.DecalMode switch
+            var modeLocalization = _entity.Comp.DecalMode switch
             {
                 DecalPaintMode.Add => "spray-painter-item-status-add",
                 DecalPaintMode.Remove => "spray-painter-item-status-remove",
-                _ => "spray-painter-item-status-off"
+                _ => "spray-painter-item-status-off",
             };
 
             _label.SetMarkupPermissive(Robust.Shared.Localization.Loc.GetString("spray-painter-item-status-label",
-                ("mode", Robust.Shared.Localization.Loc.GetString(modeLocString))));
+                ("mode", Robust.Shared.Localization.Loc.GetString(modeLocalization))));
         }
     }
 }
