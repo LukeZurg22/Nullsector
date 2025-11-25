@@ -47,6 +47,7 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NFServiceTechfabDeprecatedEmagStatic
+  - type: OreSiloClient
 
 - type: entity
   parent: [ BlueprintReceiverBase, BaseLatheLube ]
@@ -77,6 +78,7 @@
     - NFEngineeringTechfabDeprecatedStatic
     dynamicPacks:
     - NFEngineeringTechfabDeprecated
+  - type: OreSiloClient
 
 - type: entity
   parent: [ BlueprintReceiverBase, BaseLatheLube ]
@@ -110,6 +112,7 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NFSalvageTechfabDeprecatedEmag
+  - type: OreSiloClient
 
 - type: entity
   id: NfsdTechFab
@@ -142,6 +145,7 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NFNfsdTechfabDeprecatedEmag
+  - type: OreSiloClient
 
 - type: entity
   id: MercenaryTechFab
@@ -174,6 +178,7 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NFMercenaryTechfabDeprecatedEmag
+  - type: OreSiloClient
 
 - type: entity
   id: MercenaryTechFabHacked
@@ -216,6 +221,7 @@
     - NFHackedMercenaryTechfabDeprecatedStatic
     dynamicPacks:
     - NFHackedMercenaryTechfabDeprecated
+  - type: OreSiloClient
 
 - type: entity
   parent: [BaseStructureDisableToolUse, BaseLathe]
@@ -293,6 +299,7 @@
     dynamicPacks:
     - NFBlueprints
   - type: RequireProjectileTarget
+  - type: OreSiloClient
 
 - type: entity
   id: ScrapProcessor
@@ -327,6 +334,7 @@
     productValueModifier: null
     staticPacks:
     - NFScrapStatic
+  - type: OreSiloClient
 
 - type: entity
   id: BiogeneratorFill

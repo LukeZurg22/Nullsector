@@ -1,0 +1,19 @@
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintOreBagOfHolding
+  result: NFBlueprintOreBagOfHolding
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintMiningDrillDiamond
+  result: NFBlueprintMiningDrillDiamond
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintAdvancedMineralScannerEmpty
+  result: NFBlueprintAdvancedMineralScannerEmpty
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintClothingOuterHardsuitMaximPrototype
+  result: NFBlueprintClothingOuterHardsuitMaximPrototype

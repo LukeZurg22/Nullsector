@@ -1,0 +1,19 @@
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintAdvMopItem
+  result: NFBlueprintAdvMopItem
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintPlantAnalyzerEmpty
+  result: NFBlueprintPlantAnalyzerEmpty
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintPlantBagOfHolding
+  result: NFBlueprintPlantBagOfHolding
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe # Null Sector
+  id: BlueprintEmancipationBoard
+  result: BlueprintEmancipationBoard

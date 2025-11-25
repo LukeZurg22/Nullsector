@@ -1,0 +1,14 @@
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintWeaponLaserSvalinn
+  result: NFBlueprintWeaponLaserSvalinn
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: NFBlueprintPortableRecharger
+  result: NFBlueprintPortableRecharger
+
+- type: latheRecipe
+  parent: NFBaseBlueprintLatheRecipe
+  id: BlueprintClothingOuterHardsuitScaf
+  result: BlueprintClothingOuterHardsuitScaf

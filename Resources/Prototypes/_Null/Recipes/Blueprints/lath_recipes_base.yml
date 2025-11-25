@@ -1,0 +1,11 @@
+# Base
+
+- type: latheRecipe
+  abstract: true
+  id: NFBaseBlueprintLatheRecipe
+  completetime: 4
+  materials:
+    Paper: 500
+
+# Recipes
+

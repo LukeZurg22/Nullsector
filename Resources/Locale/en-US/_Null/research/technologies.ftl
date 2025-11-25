@@ -145,4 +145,5 @@ research-technology-shuttle-armaments-shields = Weaponized Shield Emitters
 research-technology-shuttle-armaments-advanced-shields = Circiabonic Shield Emitters
 research-technology-automated-cleaning = Automated Waste Emancipation
 research-technology-antique-weapons = Antique Weapon Restoration
-research-technology-ion-weaponry = Advance Ion-Plasmic Field Mechanics
+research-technology-ion-weaponry = Advanced Ion-Plasmic Field Mechanics
+research-technology-material-silo = Advanced Material Allocation

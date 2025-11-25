@@ -1,4 +1,4 @@
-# This File is from Frontier
+# This File is from Frontier, but heavy modified by Null Sector.
 # This is in one giant hellfile to better enable adjusting position.
 # If a research tech cannot be researched, it is likely due to the secondary discipline, or the lack thereof! Technologies
 # as of 20250802 still have dependencies on the technology type before them.
@@ -86,6 +86,7 @@
   recipeUnlocks:
   - WelderExperimental
   - ClothingMaskWeldingGas
+  - NFBlueprintWelderExperimental
   technologyPrerequisites:
   - NFAdvancedParts
   position: 1, 4
@@ -134,6 +135,7 @@
   cost: 2500
   recipeUnlocks:
   - RPED
+  - NFBlueprintRped
   technologyPrerequisites:
   - NFIndustrialEngineering
   position: 2, 2
@@ -180,6 +182,9 @@
   - PowerDrill
   - JawsOfLife
   - SignallerAdvanced
+  - NFBlueprintPowerDrill
+  - NFBlueprintJawsOfLife
+  - NFBlueprintSignallerAdvanced
   technologyPrerequisites:
   - NFAdvancedWelderTechnology
   position: 2, 4
@@ -196,6 +201,7 @@
   recipeUnlocks:
   - ShipyardRCD
   - ShipyardRCDAmmo
+  - NFBlueprintShipyardRCDAmmo
   technologyPrerequisites:
   - NFMechanicalCompression
   position: 3, 1
@@ -214,6 +220,11 @@
   - ClothingBackpackDuffelHolding
   - ClothingBackpackMessengerHolding
   - ConstructionBagOfHolding
+  - NFBlueprintClothingBackpackHolding
+  - NFBlueprintClothingBackpackSatchelHolding
+  - NFBlueprintClothingBackpackMessengerHolding
+  - NFBlueprintClothingBackpackDuffelHolding
+  - NFBlueprintConstructionBagOfHolding
   technologyPrerequisites:
   - NFMiscellaneousItemsOrganization
   position: 3, 3
@@ -365,6 +376,9 @@
   - SuperCapacitorStockPart
   - SuperMatterBinStockPart
   - PicoManipulatorStockPart
+  - NFBlueprintSuperCapacitorStockPart
+  - NFBlueprintSuperMatterBinStockPart
+  - NFBlueprintPicoManipulatorStockPart
   technologyPrerequisites:
   - NFAdvancedAnomalyResearch
   position: 3, 12
@@ -527,6 +541,7 @@
   cost: 20000
   recipeUnlocks:
   - ClothingOuterHardsuitScaf
+  - BlueprintClothingOuterHardsuitScaf
   technologyPrerequisites:
   - NFHardsuitsArmored
   position: 5, 15
@@ -571,6 +586,10 @@
   - SyringeBluespace
   - JugBluespace
   - VialBluespace
+  - NFBlueprintBluespaceBeaker
+  - NFBlueprintSyringeBluespace
+  - NFBlueprintJugBluespace
+  - NFBlueprintVialBluespace
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
   - NFReinforcedJug
@@ -1015,6 +1034,7 @@
   tier: 1
   cost: 7500
   recipeUnlocks:
+  - NFBlueprintAdvMopItem
   - AdvMopItem
   technologyPrerequisites:
   - NFAdvancedSpray
@@ -1056,6 +1076,7 @@
   tier: 1
   cost: 2500
   recipeUnlocks:
+  - NFBlueprintPlantAnalyzerEmpty
   - PlantAnalyzer
   position: 0, 30
 
@@ -1080,6 +1101,7 @@
   tier: 1
   cost: 2500
   recipeUnlocks:
+  - NFBlueprintPlantBagOfHolding
   - PlantBagOfHolding
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
@@ -1277,6 +1299,7 @@
   cost: 7500
   recipeUnlocks:
   - PowerCellMicroreactor
+  - NFBlueprintPowerCellMicroreactor
   technologyPrerequisites:
   - NFAdvancedSMES
   position: 2, 32
@@ -1290,6 +1313,7 @@
   cost: 10000
   recipeUnlocks:
   - PortableRecharger
+  - NFBlueprintPortableRecharger
   technologyPrerequisites:
   - NFAdvancedCharging
   position: 2, 33
@@ -1342,6 +1366,7 @@
   cost: 5000
   recipeUnlocks:
   - PortableGeneratorDKJrMachineCircuitboard
+  - NFBlueprintPortableGeneratorDKJr
   technologyPrerequisites:
   - NFPowerGeneration
   position: 4, 34
@@ -1635,6 +1660,8 @@
   recipeUnlocks:
   - MiningDrillDiamond
   - AdvancedMineralScannerEmpty
+  - NFBlueprintMiningDrillDiamond
+  - NFBlueprintAdvancedMineralScannerEmpty
   technologyPrerequisites:
   - NFExcavation
   position: 2, 5
@@ -1663,6 +1690,7 @@
   recipeUnlocks:
   - OreBagOfHolding
   - BorgModuleAdvancedMining
+  - NFBlueprintOreBagOfHolding
   technologyPrerequisites:
   - NFMassExcavation
   position: 3, 5
@@ -1893,6 +1921,7 @@
   cost: 30000
   recipeUnlocks:
   - WeaponAntiqueLaser
+  - NFBlueprintWeaponLaserSvalinn
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
   - NFAdvancedSalvageWeapons
@@ -1937,6 +1966,7 @@
   tier: 3
   cost: 15000
   recipeUnlocks:
+  - BlueprintEmancipationBoard
   - EmancipationGridCircuitboardRecipe
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
@@ -1972,3 +2002,19 @@
   technologyPrerequisites:
   - NFAdvancedSalvageCyborg
   position: 5, 5
+
+- type: technology
+  id: MaterialSiloResearch
+  name: research-technology-material-silo
+  entityIcon: MachineMaterialSilo
+  discipline: Salvage
+  secondarydiscipline: Experimental
+  tier: 3
+  cost: 25000
+  recipeUnlocks:
+  - MaterialSiloMachineCircuitboard
+  - BlueprintMaterialSiloMachineBoard
+  prerequisiteLineType: Diagonal
+  technologyPrerequisites:
+  - MiningLaserResearch
+  position: 6, 5

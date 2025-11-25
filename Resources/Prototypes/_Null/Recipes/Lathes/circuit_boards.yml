@@ -1,3 +1,12 @@
+# Material Silo
+- type: latheRecipe
+  id: MaterialSiloMachineCircuitboard
+  parent: BaseCircuitboardRecipe
+  result: MaterialSiloMachineCircuitboard
+  materials:
+    Steel: 800
+    Glass: 900
+
 - type: latheRecipe
   id: SalvageTechFabCircuitboardNF
   parent: BaseCircuitboardRecipe
