@@ -8,7 +8,7 @@ namespace Content.Server._Null.Systems;
 [SuppressMessage("ReSharper", "InconsistentNaming")]
 public interface INullExtensionSystem
 {
-    bool AreAkinEntitiesPresentOnGrid<T>(Entity<T> ent) where T : IComponent;
+    bool SimilarEntitiesArePresentOnGrid<T>(Entity<T> ent) where T : IComponent;
     EntProtoId? GetProtoID(EntityUid ent);
 }
 
@@ -21,7 +21,7 @@ public sealed partial class NullExtensionSystem : EntitySystem, INullExtensionSy
         IoCManager.Register<INullExtensionSystem>();
     }
 
-    public bool AreAkinEntitiesPresentOnGrid<T>(Entity<T> ent) where T : IComponent
+    public bool SimilarEntitiesArePresentOnGrid<T>(Entity<T> ent) where T : IComponent
     {
         var query = AllEntityQuery<T>();
 

@@ -80,7 +80,7 @@ public sealed class EmancipationGridSystem : EntitySystem
             new SoundPathSpecifier(EmancipationGridComponent.DefaultOutputSound,
                 EmancipationGridComponent.DefaultAudioParameters);
 
-        if (_nullExt.AreAkinEntitiesPresentOnGrid(device))
+        if (_nullExt.SimilarEntitiesArePresentOnGrid(device))
         {
             _popup.PopupEntity(Loc.GetString("emancipation-grid-alone-popup"), device, PopupType.Medium);
             this.Stop(EntityManager, device);
@@ -95,7 +95,7 @@ public sealed class EmancipationGridSystem : EntitySystem
     private void HandlePowerChange(Entity<EmancipationGridComponent> device, ref PowerChangedEvent args)
     {
         device.Comp.IsPowered = this.IsPowered(device.Owner, EntityManager);
-        if (_nullExt.AreAkinEntitiesPresentOnGrid(device) || !device.Comp.IsPowered)
+        if (_nullExt.SimilarEntitiesArePresentOnGrid(device) || !device.Comp.IsPowered)
         {
             _popup.PopupEntity(Loc.GetString("emancipation-grid-alone-popup"), device, PopupType.Medium);
             this.Stop(EntityManager, device);
@@ -145,7 +145,7 @@ public sealed class EmancipationGridSystem : EntitySystem
             return;
 
         // Doesn't matter whether it is powered or not, if there are other Emancipation Grids, this turns-off NOW.
-        if (_nullExt.AreAkinEntitiesPresentOnGrid(ent))
+        if (_nullExt.SimilarEntitiesArePresentOnGrid(ent))
         {
             _popup.PopupEntity(Loc.GetString("emancipation-grid-alone-popup"), ent, PopupType.Medium);
             this.Stop(EntityManager, ent);
