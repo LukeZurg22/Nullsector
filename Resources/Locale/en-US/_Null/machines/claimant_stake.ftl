@@ -2,6 +2,7 @@ claimant-stake-default-user = nobody identifiable
 claimant-stake-alone-popup = Only one claimant stake allowed per hull!
 claimant-stake-invalid-wreck-popup = This is not a valid wreckage!
 claimant-stake-no-power-popup = There is not enough power available!
+claimant-stake-shutdown-popup = Claimant stake shutting down!
 claimant-stake-claim-success = Wreck successfully claimed!
 claimant-stake-disabling-popup = Claimant stake shutting down!
 claimant-stake-repeat-claim-popup = This wreckage already has been claimed!
