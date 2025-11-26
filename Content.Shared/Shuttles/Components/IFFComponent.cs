@@ -1,3 +1,5 @@
+using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Null.Systems;
 using Content.Shared.Shuttles.Systems;
 using Robust.Shared.GameStates;
 
@@ -7,7 +9,8 @@ namespace Content.Shared.Shuttles.Components;
 /// Handles what a grid should look like on radar.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedShuttleSystem))]
+[Access(typeof(SharedShuttleSystem), typeof(SharedClaimantStakeSystem))]
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 public sealed partial class IFFComponent : Component
 {
     public static readonly Color SelfColor = Color.MediumSpringGreen;
@@ -26,9 +29,27 @@ public sealed partial class IFFComponent : Component
     [ViewVariables(VVAccess.ReadWrite), DataField, AutoNetworkedField]
     public Color Color = IFFColor;
 
+    [SuppressMessage("ReSharper", "InconsistentNaming")]
+    public void SetColor(string HEX)
+    {
+        // Add # to ensure the hex conversion works.
+        if (!HEX.StartsWith('#'))
+        {
+            HEX = '#' + HEX;
+        }
+        // Accounts for alpha values. Alpha is maximized.
+        if (HEX.Length <= 7)
+        {
+            HEX += "FF";
+        }
+        var color = Color.FromHex(HEX);
+        SetColor(color);
+    }
+    public void SetColor(Color color) => Color = color;
+
     // Frontier: POI IFF protection
     /// <summary>
-    /// Whether or not this entity's IFF can be changed.
+    /// Whether this entity's IFF can be changed.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField(serverOnly: true)]
     public bool ReadOnly;
@@ -36,6 +57,7 @@ public sealed partial class IFFComponent : Component
 }
 
 [Flags]
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 public enum IFFFlags : byte
 {
     None = 0,
