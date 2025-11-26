@@ -1,0 +1,1 @@
+emancipation-grid-examined-user = This is a claimant stake belonging to {$user}!
