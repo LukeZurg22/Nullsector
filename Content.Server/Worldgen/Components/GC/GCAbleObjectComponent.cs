@@ -1,3 +1,4 @@
+using Content.Server._Null.Systems;
 using Content.Server.Worldgen.Prototypes;
 using Content.Server.Worldgen.Systems.GC;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
@@ -5,11 +6,11 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 namespace Content.Server.Worldgen.Components.GC;
 
 /// <summary>
-///     This is used for whether or not a GCable object is "dirty". Firing GCDirtyEvent on the object is the correct way to
+///     This is used for whether a GCable object is "dirty". Firing GCDirtyEvent on the object is the correct way to
 ///     set this up.
 /// </summary>
 [RegisterComponent]
-[Access(typeof(GCQueueSystem))]
+[Access(typeof(GCQueueSystem), typeof(ClaimantStakeSystem))]
 public sealed partial class GCAbleObjectComponent : Component
 {
     /// <summary>
