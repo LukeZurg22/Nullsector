@@ -27,6 +27,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Item;
 using Content.Shared.Popups;
 using Robust.Shared.Prototypes;
+
 //using Content.Shared.Mood;
 
 namespace Content.Shared._Shitmed.Medical.Surgery;
@@ -244,14 +245,6 @@ public abstract partial class SharedSurgerySystem
                 args.ValidTools[tool] = speed;
             }
         }
-    }
-
-    private EntProtoId? GetProtoId(EntityUid entityUid)
-    {
-        if (!TryComp<MetaDataComponent>(entityUid, out var metaData))
-            return null;
-
-        return metaData.EntityPrototype?.ID;
     }
 
     // I wonder if theres not a function that can do this already.

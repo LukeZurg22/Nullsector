@@ -249,9 +249,9 @@ public sealed class ShuttleConsoleLockSystem : SharedShuttleConsoleLockSystem
         var deedFound = false;
         var query = EntityQueryEnumerator<ShuttleDeedComponent>();
 
-        while (query.MoveNext(out var entity, out var deed))
+        while (query.MoveNext(out _, out var deed))
         {
-            var deedShuttleId = deed.ShuttleUid.HasValue ? deed.ShuttleUid.Value.ToString() : null;
+            var deedShuttleId = deed.ShuttleUid?.ToString();
 
             // Check if this deed was purchased with this specific voucher and matches the shuttle ID
             if (deed.PurchasedWithVoucher &&
@@ -302,9 +302,9 @@ public sealed class ShuttleConsoleLockSystem : SharedShuttleConsoleLockSystem
         var deedFound = false;
         var query = EntityQueryEnumerator<ShuttleDeedComponent>();
 
-        while (query.MoveNext(out var entity, out var deed))
+        while (query.MoveNext(out _, out var deed))
         {
-            var deedShuttleId = deed.ShuttleUid.HasValue ? deed.ShuttleUid.Value.ToString() : null;
+            var deedShuttleId = deed.ShuttleUid?.ToString();
 
             // Check if this deed was purchased with this specific voucher and matches the shuttle ID
             if (deed.PurchasedWithVoucher &&
