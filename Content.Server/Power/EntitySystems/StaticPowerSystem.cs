@@ -14,10 +14,7 @@ public static class StaticPowerSystem
         if (receiver == null && !entManager.TryGetComponent(uid, out receiver))
             return true;
 
-        if (receiver.PowerDisabled)
-            return false;
-
-        return receiver.Powered;
+        return !receiver.PowerDisabled && receiver.Powered;
     }
 
     public static void Toggle<T>(this EntitySystem system, IEntityManager entManager, Entity<T> ent) where T : IComponent
