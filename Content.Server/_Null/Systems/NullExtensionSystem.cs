@@ -1,6 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
 using Robust.Shared.Prototypes;
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 namespace Content.Server._Null.Systems;
 
 [SuppressMessage("ReSharper", "InconsistentNaming")]
@@ -10,6 +12,7 @@ public interface INullExtensionSystem
     EntProtoId? GetProtoID(EntityUid ent);
 }
 
+[SuppressMessage("Usage", "RA0030:Consider using the non-generic variant of this method")]
 public sealed partial class NullExtensionSystem : EntitySystem, INullExtensionSystem
 {
     public override void Initialize()
@@ -17,6 +20,7 @@ public sealed partial class NullExtensionSystem : EntitySystem, INullExtensionSy
         base.Initialize();
         IoCManager.Register<INullExtensionSystem>();
     }
+
     public bool AreAkinEntitiesPresentOnGrid<T>(Entity<T> ent) where T : IComponent
     {
         var query = AllEntityQuery<T>();
@@ -29,6 +33,9 @@ public sealed partial class NullExtensionSystem : EntitySystem, INullExtensionSy
             if (other.GetType() != ent.Comp.GetType())
                 continue;
 
+            if (Transform(other.Owner).GridUid != Transform(ent.Owner).GridUid)
+                continue;
+
             return true;
         }
 
@@ -37,9 +44,6 @@ public sealed partial class NullExtensionSystem : EntitySystem, INullExtensionSy
 
     public EntProtoId? GetProtoID(EntityUid ent)
     {
-        if (!TryComp<MetaDataComponent>(ent, out var metaData))
-            return null;
-
-        return metaData.EntityPrototype?.ID;
+        return !TryComp<MetaDataComponent>(ent, out var metaData) ? null : metaData.EntityPrototype?.ID;
     }
 }
