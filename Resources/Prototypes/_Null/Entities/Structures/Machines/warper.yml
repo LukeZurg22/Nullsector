@@ -30,7 +30,7 @@
   suffix: entrance
   components:
   - type: Sprite
-    offset: 0, 0.5
+    #offset: 0, 0.5
     layers:
       - state: stair_down
       - state: warningtape_down
@@ -43,7 +43,7 @@
   suffix: return
   components:
   - type: Sprite
-    offset: 0, 0.5
+    #offset: 0, 0.5
     layers:
       - state: stair_up
       - state: warningtape_up
