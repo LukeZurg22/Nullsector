@@ -69,9 +69,6 @@ public sealed partial class ZombieSystem : SharedZombieSystem
         SubscribeLocalEvent<IncurableZombieComponent, MapInitEvent>(OnPendingMapInit);
 
         SubscribeLocalEvent<ZombifyOnDeathComponent, MobStateChangedEvent>(OnDamageChanged);
-
-        // TODO: Add OnCure event read, or whatever method of curing besides cloning comes up.
-        //  Also a possible list of component *types* could be better, especially if using reflection to handle them.
     }
 
     private void OnBeforeRemoveAnomalyOnDeath(Entity<PendingZombieComponent> ent,

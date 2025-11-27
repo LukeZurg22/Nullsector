@@ -31,4 +31,5 @@
     AirlockGlassShuttleFlatpack: 4294967295 # Infinite
     ComputerWithdrawBankATMFlatpack: 4294967295 # Infinite
     TelevisionFlatpack: 4294967295 # Infinite
-    GaslockFlatpack: 4 # Null Sector - This is a brand new implementation that has some pushback. This is finite to give the benefit of the doubt, but may be made infinite later if it proves to be a fair addition.
+    GaslockFlatpack: 4 # Null Sector - This is a new implementation with some pushback. This is finite to give the benefit of the doubt, but may be made infinite later if it proves to be a fair addition.
+    ClaimantStakeFlatpack: 3 # Null Sector

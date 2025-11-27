@@ -3,7 +3,6 @@ using Content.Server._Null.Components;
 using Content.Server.Construction;
 using Content.Server.Explosion.Components;
 using Content.Server.Materials;
-using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
@@ -13,6 +12,8 @@ using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Components;
+
+#pragma warning disable CS0618 // Type or member is obsolete
 
 namespace Content.Server._Null.Systems;
 
@@ -25,6 +26,7 @@ public sealed class EmancipationGridSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly MaterialStorageSystem _material = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly INullExtensionSystem _nullExt = default!;
 
     public override void Initialize()
     {
@@ -66,23 +68,6 @@ public sealed class EmancipationGridSystem : EntitySystem
         ent.Comp.EmancipatedGrid = null;
     }
 
-    private bool AreOtherEmancipationGridsPresent(Entity<EmancipationGridComponent> device)
-    {
-        // Checking to ensure there aren't other emancipation grids, else it will simply not work!
-        var emancipationGrids = AllEntityQuery<EmancipationGridComponent>();
-        while (emancipationGrids.MoveNext(out var otherDeviceComponent))
-        {
-            if (otherDeviceComponent == device.Comp)
-                continue;
-            if (otherDeviceComponent.EmancipatedGrid != Transform(device).GridUid)
-                continue; // Short-Circuit
-            _popup.PopupEntity(Loc.GetString("emancipation-grid-alone-popup"), device, PopupType.Medium);
-            return true;
-        }
-
-        return false;
-    }
-
     private void OnComponentInit(Entity<EmancipationGridComponent> device, ref ComponentInit args)
     {
         EnsureComp<TriggerOnActivateComponent>(device);
@@ -95,25 +80,31 @@ public sealed class EmancipationGridSystem : EntitySystem
             new SoundPathSpecifier(EmancipationGridComponent.DefaultOutputSound,
                 EmancipationGridComponent.DefaultAudioParameters);
 
-        if (AreOtherEmancipationGridsPresent(device))
+        if (_nullExt.SimilarEntitiesArePresentOnGrid(device))
         {
-            Stop(device);
+            _popup.PopupEntity(Loc.GetString("emancipation-grid-alone-popup"), device, PopupType.Medium);
+            this.Disable(EntityManager, device);
+            device.Comp.EmancipatedGrid = null;
             return;
         }
 
-        Start(device);
+        this.Enable(EntityManager, device);
+        device.Comp.EmancipatedGrid = Transform(device).GridUid; // Set current grid
     }
 
     private void HandlePowerChange(Entity<EmancipationGridComponent> device, ref PowerChangedEvent args)
     {
         device.Comp.IsPowered = this.IsPowered(device.Owner, EntityManager);
-        if (AreOtherEmancipationGridsPresent(device) || !device.Comp.IsPowered)
+        if (_nullExt.SimilarEntitiesArePresentOnGrid(device) || !device.Comp.IsPowered)
         {
-            Stop(device);
+            _popup.PopupEntity(Loc.GetString("emancipation-grid-alone-popup"), device, PopupType.Medium);
+            this.Disable(EntityManager, device);
+            device.Comp.EmancipatedGrid = null;
             return;
         }
 
-        Start(device);
+        this.Enable(EntityManager, device);
+        device.Comp.EmancipatedGrid = Transform(device).GridUid; // Set current grid
     }
 
     private void HandleItemDeletion(EmancipationGridComponent emancipationComponent, EntityUid entityToDelete)
@@ -154,9 +145,10 @@ public sealed class EmancipationGridSystem : EntitySystem
             return;
 
         // Doesn't matter whether it is powered or not, if there are other Emancipation Grids, this turns-off NOW.
-        if (AreOtherEmancipationGridsPresent(ent))
+        if (_nullExt.SimilarEntitiesArePresentOnGrid(ent))
         {
-            Stop(ent);
+            _popup.PopupEntity(Loc.GetString("emancipation-grid-alone-popup"), ent, PopupType.Medium);
+            this.Disable(EntityManager, ent);
             args.Handled = true;
             return;
         }
@@ -164,7 +156,8 @@ public sealed class EmancipationGridSystem : EntitySystem
         // if the device isn't powered, simply turn it on.
         if (!ent.Comp.IsPowered)
         {
-            Start(ent);
+            this.Enable(EntityManager, ent);
+            ent.Comp.EmancipatedGrid = Transform(ent).GridUid; // Set current grid
             args.Handled = true;
             return;
         }
@@ -174,7 +167,8 @@ public sealed class EmancipationGridSystem : EntitySystem
         var actualYield = (int)ent.Comp.CurrentExpectedYield; // Can only have an integer of biomass, for comparisons.
         if (actualYield == 0) // If it has nothing, then clearly, we must turn this thing off.
         {
-            Stop(ent);
+            this.Disable(EntityManager, ent);
+            ent.Comp.EmancipatedGrid = null;
             args.Handled = true;
             return;
         }
@@ -190,28 +184,6 @@ public sealed class EmancipationGridSystem : EntitySystem
         _audio.PlayPvs(ent.Comp.SoundUse, Transform(ent).Coordinates); // Play "Use" sound at machine.
 
         args.Handled = true;
-    }
-
-    /// <summary>
-    /// Boots the Emancipation grid and assigns the Grid ID to its component.
-    /// </summary>
-    /// <param name="device"></param>
-    private void Start(Entity<EmancipationGridComponent> device)
-    {
-        device.Comp.EmancipatedGrid = Transform(device).GridUid; // Set current grid
-        if (TryComp<ApcPowerReceiverComponent>(device, out var power))
-            power.PowerDisabled = false;
-    }
-
-    /// <summary>
-    /// Effectively shuts down the Emancipation Grid.
-    /// </summary>
-    /// <param name="device"></param>
-    private void Stop(Entity<EmancipationGridComponent> device)
-    {
-        device.Comp.EmancipatedGrid = null;
-        if (TryComp<ApcPowerReceiverComponent>(device, out var power))
-            power.PowerDisabled = true;
     }
 
     #endregion
