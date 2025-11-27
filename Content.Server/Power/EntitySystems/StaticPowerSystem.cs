@@ -14,31 +14,28 @@ public static class StaticPowerSystem
         if (receiver == null && !entManager.TryGetComponent(uid, out receiver))
             return true;
 
-        return !receiver.PowerDisabled && receiver.Powered;
+        return receiver.Powered;
     }
 
-    public static void Toggle<T>(this EntitySystem system, IEntityManager entManager, Entity<T> ent) where T : IComponent
+    public static void Toggle<T>(this EntitySystem system, IEntityManager entManager, Entity<T> ent)
+        where T : IComponent
     {
         if (IsPowered(system, ent.Owner, entManager))
-            Stop(system, entManager, ent);
+            Disable(system, entManager, ent);
         else
-            Start(system, entManager, ent);
+            Enable(system, entManager, ent);
     }
 
-    public static void Stop<T>(this EntitySystem system, IEntityManager entManager, Entity<T> ent) where T : IComponent
+    public static void Disable<T>(this EntitySystem system, IEntityManager entManager, Entity<T> ent) where T : IComponent
     {
         if (entManager.TryGetComponent<ApcPowerReceiverComponent>(ent, out var receiver))
-            Stop(system, entManager, ent, receiver);
+            Disable(entManager, ent, receiver);
     }
 
     /// <summary>
     /// Forces power to be disabled.
     /// </summary>
-    public static void Stop(
-        this EntitySystem system,
-        IEntityManager entManager,
-        EntityUid uid,
-        ApcPowerReceiverComponent? receiver = null)
+    public static void Disable(IEntityManager entManager, EntityUid uid, ApcPowerReceiverComponent? receiver = null)
     {
         if (receiver == null && !entManager.TryGetComponent(uid, out receiver))
             return;
@@ -48,7 +45,7 @@ public static class StaticPowerSystem
     /// <summary>
     /// Lifts the enforced power disable, if there is any.
     /// </summary>
-    public static void Start(
+    public static void Enable(
         this EntitySystem system,
         IEntityManager entManager,
         EntityUid uid,

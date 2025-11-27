@@ -25,18 +25,13 @@ public sealed partial class NullExtensionSystem : EntitySystem, INullExtensionSy
     {
         var query = AllEntityQuery<T>();
 
-        while (query.MoveNext(out var other))
+        while (query.MoveNext(out var otherComponent))
         {
-            if (other.Equals(ent.Comp))
+            if (otherComponent.Owner.Equals(ent.Owner)) // If they are the same entity, skip.
                 continue;
 
-            if (other.GetType() != ent.Comp.GetType())
-                continue;
-
-            if (Transform(other.Owner).GridUid != Transform(ent.Owner).GridUid)
-                continue;
-
-            return true;
+            if (Transform(otherComponent.Owner).GridUid == Transform(ent.Owner).GridUid)
+                return true; // Both entities differ, and both share the same grid.
         }
 
         return false;

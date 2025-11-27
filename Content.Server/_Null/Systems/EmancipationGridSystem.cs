@@ -83,12 +83,12 @@ public sealed class EmancipationGridSystem : EntitySystem
         if (_nullExt.SimilarEntitiesArePresentOnGrid(device))
         {
             _popup.PopupEntity(Loc.GetString("emancipation-grid-alone-popup"), device, PopupType.Medium);
-            this.Stop(EntityManager, device);
+            this.Disable(EntityManager, device);
             device.Comp.EmancipatedGrid = null;
             return;
         }
 
-        this.Start(EntityManager, device);
+        this.Enable(EntityManager, device);
         device.Comp.EmancipatedGrid = Transform(device).GridUid; // Set current grid
     }
 
@@ -98,12 +98,12 @@ public sealed class EmancipationGridSystem : EntitySystem
         if (_nullExt.SimilarEntitiesArePresentOnGrid(device) || !device.Comp.IsPowered)
         {
             _popup.PopupEntity(Loc.GetString("emancipation-grid-alone-popup"), device, PopupType.Medium);
-            this.Stop(EntityManager, device);
+            this.Disable(EntityManager, device);
             device.Comp.EmancipatedGrid = null;
             return;
         }
 
-        this.Start(EntityManager, device);
+        this.Enable(EntityManager, device);
         device.Comp.EmancipatedGrid = Transform(device).GridUid; // Set current grid
     }
 
@@ -148,7 +148,7 @@ public sealed class EmancipationGridSystem : EntitySystem
         if (_nullExt.SimilarEntitiesArePresentOnGrid(ent))
         {
             _popup.PopupEntity(Loc.GetString("emancipation-grid-alone-popup"), ent, PopupType.Medium);
-            this.Stop(EntityManager, ent);
+            this.Disable(EntityManager, ent);
             args.Handled = true;
             return;
         }
@@ -156,7 +156,7 @@ public sealed class EmancipationGridSystem : EntitySystem
         // if the device isn't powered, simply turn it on.
         if (!ent.Comp.IsPowered)
         {
-            this.Start(EntityManager, ent);
+            this.Enable(EntityManager, ent);
             ent.Comp.EmancipatedGrid = Transform(ent).GridUid; // Set current grid
             args.Handled = true;
             return;
@@ -167,7 +167,7 @@ public sealed class EmancipationGridSystem : EntitySystem
         var actualYield = (int)ent.Comp.CurrentExpectedYield; // Can only have an integer of biomass, for comparisons.
         if (actualYield == 0) // If it has nothing, then clearly, we must turn this thing off.
         {
-            this.Stop(EntityManager, ent);
+            this.Disable(EntityManager, ent);
             ent.Comp.EmancipatedGrid = null;
             args.Handled = true;
             return;
