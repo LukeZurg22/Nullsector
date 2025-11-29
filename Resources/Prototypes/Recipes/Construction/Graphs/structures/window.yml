@@ -22,6 +22,12 @@
               amount: 2
               doAfter: 2
 
+        - to: woodWindow
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2
+
         - to: reinforcedPlasmaWindow
           steps:
             - material: ReinforcedPlasmaGlass

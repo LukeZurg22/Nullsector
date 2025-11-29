@@ -467,6 +467,25 @@
   placementMode: SnapgridCenter
   canRotate: false
 
+- type: construction # Null Sector
+  name: tinted window
+  id: OldstyleWindow
+  graph: Window
+  startNode: start
+  targetNode: woodWindow
+  category: construction-category-structures
+  description: For a hint of that old-style rustic view.
+  canBuildInImpassable: true
+  conditions:
+    - !type:EmptyOrWindowValidInTile
+    - !type:NoWindowsInTile
+  icon:
+    sprite: _Null/Structures/Windows/wood_window.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+
 - type: construction
   name: clockwork window
   id: ClockworkWindow
