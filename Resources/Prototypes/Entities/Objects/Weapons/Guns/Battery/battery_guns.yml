@@ -136,6 +136,11 @@
     fireRate: 2.5
   - type: Item
     sprite: Objects/Weapons/Guns/Battery/svalinn.rsi
+    size: Small
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+    storedOffset: 0,-8
   - type: MagazineVisuals
     magState: mag
     steps: 5
