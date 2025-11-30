@@ -1,0 +1,14 @@
+<Document>
+  # CLAM
+  <Box>
+    <GuideEntityEmbed Entity="ShuttleMapClam"/>
+  </Box>
+
+  [color=#a4885c]Ship Size:[/color] Small
+
+  [color=#a4885c]Recommended Crew:[/color] 2-3
+
+  [color=#a4885c]Initial Generator Type:[/color] Uranium
+  
+  A buccaneer-themed combat vessel fit with a kitchen and bar, and a small resting space. Additionally comes with ample bridge protection, but should those fail it also includes a spare weapons control room with padded armor. The entirety of the ship is surrounded in clam-like sets of additional shielding, owing to its name.
+</Document>

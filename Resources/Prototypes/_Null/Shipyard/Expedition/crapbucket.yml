@@ -13,11 +13,16 @@
   category: Small
   group: Expedition
   shuttlePath: /Maps/_Null/Shuttles/Expedition/crapbucket.yml
-  guidebookPage: null
+  guidebookPage: ShipyardCrapbucket
   class:
   - Pirate
   engine:
   - Uranium
+
+- type: guideEntry
+  id: ShipyardCrapbucket
+  name: guide-entry-shipyard-crapbucket
+  text: "/ServerInfo/_Null/Guidebook/Shipyard/Crapbucket.xml"
 
 - type: gameMap
   id: Crapbucket

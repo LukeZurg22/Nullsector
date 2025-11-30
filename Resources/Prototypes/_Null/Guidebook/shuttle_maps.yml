@@ -82,6 +82,22 @@
 
 - type: entity
   parent: ShuttleMapBase
+  id: ShuttleMapClam
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: clam
+
+- type: entity
+  parent: ShuttleMapBase
+  id: ShuttleMapCrapbucket
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: crapbucket
+
+- type: entity
+  parent: ShuttleMapBase
   id: ShuttleMapClemency
   categories: [ HideSpawnMenu ]
   components:
@@ -106,6 +122,14 @@
 
 - type: entity
   parent: ShuttleMapBase
+  id: ShuttleMapLittora
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: littora
+
+- type: entity
+  parent: ShuttleMapBase
   id: ShuttleMapMoonlight
   categories: [ HideSpawnMenu ]
   components:
@@ -127,3 +151,11 @@
   components:
   - type: Sprite
     state: nugget
+
+- type: entity
+  parent: ShuttleMapBase
+  id: ShuttleMapTorque
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: torque

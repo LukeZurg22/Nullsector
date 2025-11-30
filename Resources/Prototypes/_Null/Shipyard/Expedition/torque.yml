@@ -13,11 +13,16 @@
   category: Large
   group: Expedition
   shuttlePath: /Maps/_Null/Shuttles/Expedition/torque.yml
-  guidebookPage: null
+  guidebookPage: ShipyardTorque
   class:
   - Expedition
   engine:
   - AME
+
+- type: guideEntry
+  id: ShipyardTorque
+  name: guide-entry-shipyard-torque
+  text: "/ServerInfo/_Null/Guidebook/Shipyard/Torque.xml"
 
 - type: gameMap
   id: Torque

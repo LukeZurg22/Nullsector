@@ -13,11 +13,16 @@
   category: Large
   group: Expedition
   shuttlePath: /Maps/_Null/Shuttles/Expedition/littora.yml
-  guidebookPage: null
+  guidebookPage: ShipyardLittora
   class:
   - Expedition
   engine:
   - AME
+
+- type: guideEntry
+  id: ShipyardLittora
+  name: guide-entry-shipyard-littora
+  text: "/ServerInfo/_Null/Guidebook/Shipyard/Littora.xml"
 
 - type: gameMap
   id: Littora

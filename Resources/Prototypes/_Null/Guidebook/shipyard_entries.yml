@@ -9,8 +9,11 @@
   - ShipyardArachnid
   - ShipyardArchon
   - ShipyardBison
+  - ShipyardBossman
   - ShipyardBucket
   - ShipyardCamper
+  - ShipyardClam
+  - ShipyardCrapbucket
   - ShipyardClemency
   - ShipyardColdcap
   - ShipyardDuran
@@ -18,8 +21,10 @@
   - ShipyardIapetus
   - ShipyardInsight
   - ShipyardJudiciary
+  - ShipyardLittora
   - ShipyardMoonlight
   - ShipyardNourishment
   - ShipyardNugget
   - ShipyardPulse
   - ShipyardSabine
+  - ShipyardTorque

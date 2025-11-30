@@ -11,11 +11,16 @@
   category: Small
   group: Expedition
   shuttlePath: /Maps/_Null/Shuttles/Expedition/clam.yml
-  guidebookPage: null
+  guidebookPage: ShipyardClam
   class:
   - Pirate
   engine:
   - Uranium
+
+- type: guideEntry
+  id: ShipyardClam
+  name: guide-entry-shipyard-clam
+  text: "/ServerInfo/_Null/Guidebook/Shipyard/Clam.xml"
 
 - type: gameMap
   id: Clam
