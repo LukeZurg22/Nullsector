@@ -42,7 +42,8 @@ namespace Content.Client.Chemistry.UI
 
             ReagentList.Children.Clear();
             //Sort inventory by reagentLabel
-            inventory.Sort((x, y) => x.ReagentLabel.CompareTo(y.ReagentLabel));
+            inventory.Sort((x, y)
+                => string.Compare(x.ReagentLabel, y.ReagentLabel, StringComparison.Ordinal));
 
             foreach (var item in inventory)
             {
@@ -59,7 +60,7 @@ namespace Content.Client.Chemistry.UI
         /// <param name="state">State data sent by the server.</param>
         public void UpdateState(BoundUserInterfaceState state)
         {
-            var castState = (ReagentDispenserBoundUserInterfaceState) state;
+            var castState = (ReagentDispenserBoundUserInterfaceState)state;
             UpdateContainerInfo(castState);
             UpdateReagentsList(castState.Inventory);
 
@@ -77,8 +78,10 @@ namespace Content.Client.Chemistry.UI
         /// Update the fill state and list of reagents held by the current reagent container, if applicable.
         /// <para>Also highlights a reagent if it's dispense button is being mouse hovered.</para>
         /// </summary>
-        /// <param name="state">State data for the dispenser.</param>
-        /// or null if no button is being hovered.</param>
+        /// <param name="state">
+        /// State data for the dispenser,
+        /// or null if no button is being hovered.
+        /// </param>
         public void UpdateContainerInfo(ReagentDispenserBoundUserInterfaceState state)
         {
             ContainerInfo.Children.Clear();
@@ -87,7 +90,8 @@ namespace Content.Client.Chemistry.UI
             {
                 ContainerInfoName.Text = "";
                 ContainerInfoFill.Text = "";
-                ContainerInfo.Children.Add(new Label { Text = Loc.GetString("reagent-dispenser-window-no-container-loaded-text") });
+                ContainerInfo.Children.Add(new Label
+                    { Text = Loc.GetString("reagent-dispenser-window-no-container-loaded-text") });
                 return;
             }
 
@@ -116,7 +120,7 @@ namespace Content.Client.Chemistry.UI
                     {
                         nameLabel,
                         quantityLabel,
-                    }
+                    },
                 });
             }
         }

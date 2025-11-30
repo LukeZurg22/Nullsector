@@ -20,19 +20,31 @@
       "name": "bison"
     },
     {
+      "name": "bossman"
+    },
+    {
       "name": "bucket"
     },
     {
       "name": "camper"
     },
     {
+      "name": "clam"
+    },
+    {
       "name": "clemency"
+    },
+    {
+      "name": "coldcap"
+    },
+    {
+      "name": "crapbucket"
     },
     {
       "name": "duran"
     },
     {
-      "name": "coldcap"
+      "name": "littora"
     },
     {
       "name": "moonlight"
@@ -42,6 +54,9 @@
     },
     {
       "name": "nugget"
+    },
+    {
+      "name": "torque"
     }
   ]
 }

@@ -13,11 +13,16 @@
   category: small
   group: Expedition
   shuttlePath: /Maps/_Null/Shuttles/Expedition/bossman.yml
-  guidebookPage: null
+  guidebookPage: ShipyardBossman
   class:
   - Expedition
   engine:
   - Uranium
+
+- type: guideEntry
+  id: ShipyardBossman
+  name: guide-entry-shipyard-bossman
+  text: "/ServerInfo/_Null/Guidebook/Shipyard/Bossman.xml"
 
 - type: gameMap
   id: Bossman
