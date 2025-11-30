@@ -119,7 +119,11 @@ public sealed partial class ZombieSystem
             RemComp(target, componentType);
 
             var newComponent = _serializationManager.CreateCopy(oldComponent, notNullableOverride: true);
-            AddComp(target, (Component)newComponent!);
+
+            if (newComponent != null)
+            {
+                AddComp(target, (Component)newComponent);
+            }
         }
     }
 
