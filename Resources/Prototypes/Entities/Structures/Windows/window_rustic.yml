@@ -1,0 +1,17 @@
+- type: entity
+  parent: Window
+  id: RusticWindow
+  name: rustic window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Null/Structures/Windows/wood_window.rsi
+  - type: Icon
+    sprite: _Null/Structures/Windows/wood_window.rsi
+  - type: IconSmooth
+    base: window
+  - type: Construction
+    graph: Window
+    node: woodWindow
+  - type: StaticPrice
+    price: 35

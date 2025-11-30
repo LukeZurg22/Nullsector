@@ -1,14 +1,26 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-  "copyright": "Copyright 2023 Jonas Ljunsgtröm",
+  "copyright": "Made for Null Sector, Copyright 2025 by Sketch.",
     "size": {
         "x": 32,
-        "y": 64
+        "y": 32
     },
     "states": [
-	{
+        {
             "name": "warningtape_down",
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "warningtape_up",
             "delays": [
                 [
                     0.2,
@@ -24,9 +36,6 @@
         },
         {
             "name": "stair_up"
-        },
-        {
-            "name": "warningtape_up"
         }
     ]
 }

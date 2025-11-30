@@ -1,0 +1,40 @@
+# Author Info
+# GitHub: LukeZurg22
+# Discord: @lukezurg22
+
+# Shuttle Notes:
+#
+- type: vessel
+  id: Brigand
+  parent: BaseVessel
+  name: Brigand
+  description: A competent and reliable expeditionary vessel designed for comfortable long-range missions.
+  price: 69221
+  category: Medium
+  group: Expedition
+  shuttlePath: /Maps/_NF/Shuttles/Expedition/brigand.yml
+  guidebookPage: null
+  class:
+  - Expedition
+  engine:
+  - AME
+
+- type: gameMap
+  id: Brigand
+  mapName: 'Brigand'
+  mapPath: /Maps/_NF/Shuttles/Expedition/brigand.yml
+  minPlayers: 0
+  stations:
+    Brigand:
+      stationProto: StandardFrontierExpeditionVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Brigand EXP{1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: StationJobs
+          availableJobs:
+            Contractor: [ 0, 0 ]
+            Pilot: [ 0, 0 ]
+            Mercenary: [ 1, 1 ]

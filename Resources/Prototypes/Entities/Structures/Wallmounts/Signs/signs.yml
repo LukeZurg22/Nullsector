@@ -985,7 +985,7 @@
   parent: BaseSign
   id: SignZomlab
   name: zombie lab sign
-  description: The final remains of a shut-down Nanotrasen research project that aimed to harness the powers of Romerol. I wonder how that went...
+  description: The indicator that nearby lies a research project aiming to harness the powers of Romerol. I wonder how that will go...
   components:
   - type: Sprite
     state: zomlab

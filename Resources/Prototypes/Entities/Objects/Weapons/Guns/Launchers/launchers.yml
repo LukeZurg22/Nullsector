@@ -248,6 +248,8 @@
   parent: BaseItem
   id: WeaponGrapplingGun
   components:
+    - type: Item
+      storedRotation: -90
     - type: AmmoCounter
     - type: GrapplingGun
     - type: Gun

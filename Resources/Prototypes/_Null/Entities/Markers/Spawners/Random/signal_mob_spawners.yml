@@ -13,3 +13,11 @@
   components:
   - type: SpawnOnTrigger
     proto: MobPunkGangerMeleeT1
+
+- type: entity
+  id: SignalSpawnerZombieInfectiouslos
+  parent: SignalSpawner
+  suffix: non-infectious zombie
+  components:
+  - type: SpawnOnTrigger
+    proto: SpawnMobZombieInfectiouslos

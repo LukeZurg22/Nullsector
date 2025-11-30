@@ -21,23 +21,21 @@
       # base: plastitanium
 
 - type: entity # Null Sector
-  parent: BaseWall
+  parent: PlastitaniumWindowIndestructible
   id: WindowResidentEvilIndestructible
   name: spooky manor window
-  description: Skub knows this wall is too hard to destroy. # Frontier
+  description: It's held together by industrial-strength superglue, and prayers from supervillains.
   suffix: indestructible
   components:
-    - type: Tag
-      tags:
-        - Wall # Fix this
     - type: Sprite
-      sprite: Structures/Walls/wood.rsi
-      color: "#cdf3cd"
+      drawdepth: WallTops
+      sprite: _Null/Structures/Windows/wood_window.rsi
     - type: Icon
-      sprite: Structures/Walls/wood.rsi
+      sprite: _Null/Structures/Windows/wood_window.rsi
+      state: full
     - type: IconSmooth
-      key: woods
-      base: wood
-    # - type: IconSmooth
-      # key: walls
-      # base: plastitanium
+      key: walls # Frontier: windows<walls
+      base: window
+    # - type: Icon
+      # sprite: _Null/Structures/Windows/wood_window.rsi
+      # state: full

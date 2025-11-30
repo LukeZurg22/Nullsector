@@ -108,6 +108,10 @@
   color: "#8a9a5b"
   recognizable: true
   physicalDesc: reagent-physical-desc-fuzzy
+  plantMetabolism:
+  - !type:PlantAffectGrowth
+    probability: 0.75
+    amount: 1
   metabolisms:
     Poison:
       effects:
