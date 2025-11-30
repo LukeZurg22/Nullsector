@@ -5,7 +5,6 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.Audio.Jukebox;
 
-
 public sealed class JukeboxSystem : SharedJukeboxSystem
 {
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
@@ -34,9 +33,9 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
         if (!obj.WasModified<JukeboxPrototype>())
             return;
 
-        var query = AllEntityQuery<JukeboxComponent, UserInterfaceComponent>();
+        var jukeboxQuery = AllEntityQuery<JukeboxComponent, UserInterfaceComponent>();
 
-        while (query.MoveNext(out var uid, out _, out var ui))
+        while (jukeboxQuery.MoveNext(out var uid, out _, out var ui))
         {
             if (!_uiSystem.TryGetOpenUi<JukeboxBoundUserInterface>((uid, ui), JukeboxUiKey.Key, out var bui))
                 continue;
@@ -59,7 +58,10 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
             return;
 
         if (!TryComp<AppearanceComponent>(uid, out var appearance) ||
-            !_appearanceSystem.TryGetData<JukeboxVisualState>(uid, JukeboxVisuals.VisualState, out var visualState, appearance))
+            !_appearanceSystem.TryGetData<JukeboxVisualState>(uid,
+                JukeboxVisuals.VisualState,
+                out var visualState,
+                appearance))
         {
             visualState = JukeboxVisualState.On;
         }
@@ -81,7 +83,10 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
         UpdateAppearance(uid, visualState, component, args.Sprite);
     }
 
-    private void UpdateAppearance(EntityUid uid, JukeboxVisualState visualState, JukeboxComponent component, SpriteComponent sprite)
+    private void UpdateAppearance(EntityUid uid,
+        JukeboxVisualState visualState,
+        JukeboxComponent component,
+        SpriteComponent sprite)
     {
         SetLayerState(JukeboxVisualLayers.Base, component.OffState, sprite);
 
@@ -101,17 +106,21 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
         }
     }
 
-    private void PlayAnimation(EntityUid uid, JukeboxVisualLayers layer, string? state, float animationTime, SpriteComponent sprite)
+    private void PlayAnimation(EntityUid uid,
+        JukeboxVisualLayers layer,
+        string? state,
+        float animationTime,
+        SpriteComponent sprite)
     {
         if (string.IsNullOrEmpty(state))
             return;
 
-        if (!_animationPlayer.HasRunningAnimation(uid, state))
-        {
-            var animation = GetAnimation(layer, state, animationTime);
-            sprite.LayerSetVisible(layer, true);
-            _animationPlayer.Play(uid, animation, state);
-        }
+        if (_animationPlayer.HasRunningAnimation(uid, state))
+            return; // Short-circuit
+
+        var animation = GetAnimation(layer, state, animationTime);
+        sprite.LayerSetVisible(layer, true);
+        _animationPlayer.Play(uid, animation, state);
     }
 
     private static Animation GetAnimation(JukeboxVisualLayers layer, string state, float animationTime)
@@ -120,16 +129,16 @@ public sealed class JukeboxSystem : SharedJukeboxSystem
         {
             Length = TimeSpan.FromSeconds(animationTime),
             AnimationTracks =
+            {
+                new AnimationTrackSpriteFlick
                 {
-                    new AnimationTrackSpriteFlick
+                    LayerKey = layer,
+                    KeyFrames =
                     {
-                        LayerKey = layer,
-                        KeyFrames =
-                        {
-                            new AnimationTrackSpriteFlick.KeyFrame(state, 0f)
-                        }
+                        new AnimationTrackSpriteFlick.KeyFrame(state, 0f)
                     }
                 }
+            }
         };
     }
 

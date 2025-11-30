@@ -83,10 +83,10 @@ public sealed class JukeboxBoundUserInterface : BoundUserInterface
     {
         var sentTime = time;
 
-        // You may be wondering, what the fuck is this
-        // Well we want to be able to predict the playback slider change, of which there are many ways to do it
+        // You may be wondering: "What is this?"
+        // Well, we want to be able to predict the playback slider change, of which there are many ways to do it
         // We can't just use SendPredictedMessage because it will reset every tick and audio updates every frame
-        // so it will go BRRRRT
+        // so it will go BRR
         // Using ping gets us close enough that it SHOULD, MOST OF THE TIME, fall within the 0.1 second tolerance
         // that's still on engine so our playback position never gets corrected.
         if (EntMan.TryGetComponent(Owner, out JukeboxComponent? jukebox) &&
