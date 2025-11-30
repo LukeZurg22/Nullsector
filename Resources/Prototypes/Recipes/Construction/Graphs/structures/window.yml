@@ -110,7 +110,7 @@
         - to: start
           completed:
             - !type:SpawnPrototype
-              prototype: WoodPlank
+              prototype: MaterialWoodPlank1
               amount: 2
             - !type:DeleteEntity {}
           steps:
