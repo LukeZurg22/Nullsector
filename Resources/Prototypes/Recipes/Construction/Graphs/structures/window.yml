@@ -104,6 +104,25 @@
             - tool: Anchoring
               doAfter: 2
 
+    - node: woodWindow
+      entity: RusticWindow
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: WoodPlank
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 1
+            - tool: Prying
+              doAfter: 2
+            - tool: Screwing
+              doAfter: 1
+            - tool: Anchoring
+              doAfter: 2
+
     - node: tintedWindow
       entity: TintedWindow
       edges:

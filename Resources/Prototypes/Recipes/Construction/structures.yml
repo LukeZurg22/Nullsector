@@ -468,8 +468,8 @@
   canRotate: false
 
 - type: construction # Null Sector
-  name: tinted window
-  id: OldstyleWindow
+  name: rustic window
+  id: RusticWindow
   graph: Window
   startNode: start
   targetNode: woodWindow

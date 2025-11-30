@@ -1,6 +1,6 @@
 - type: entity
   parent: Window
-  id: OldstyleWindow
+  id: RusticWindow
   name: rustic window
   components:
   - type: Sprite
