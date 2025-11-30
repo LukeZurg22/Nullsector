@@ -28,6 +28,14 @@
   suffix: indestructible
   components:
     - type: Sprite
+      drawdepth: WallTops
       sprite: _Null/Structures/Windows/wood_window.rsi
     - type: Icon
       sprite: _Null/Structures/Windows/wood_window.rsi
+      state: full
+    - type: IconSmooth
+      key: walls # Frontier: windows<walls
+      base: window
+    # - type: Icon
+      # sprite: _Null/Structures/Windows/wood_window.rsi
+      # state: full

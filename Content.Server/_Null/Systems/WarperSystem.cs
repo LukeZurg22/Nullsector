@@ -13,10 +13,10 @@ using Content.Shared.NPC.Components;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
 using Robust.Server.Audio;
+using Robust.Server.GameObjects;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Systems;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 
@@ -33,7 +33,7 @@ namespace Content.Server._Null.Systems;
 public sealed class WarperSystem : EntitySystem
 {
     [Dependency] private readonly PopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly PhysicsSystem _physics = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly TagSystem _tags = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
