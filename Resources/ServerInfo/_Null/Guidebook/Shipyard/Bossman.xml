@@ -1,0 +1,14 @@
+<Document>
+  # Bossman
+  <Box>
+    <GuideEntityEmbed Entity="ShuttleMapBossman"/>
+  </Box>
+
+  [color=#a4885c]Ship Size:[/color] Small
+
+  [color=#a4885c]Recommended Crew:[/color] 1
+
+  [color=#a4885c]Initial Generator Type:[/color] Uranium
+
+  A hastily-reintroduced expeditionary vessel designed for quick in-and-out engagements. Its frame is beaten and battered— requiring extensive repair.
+</Document>

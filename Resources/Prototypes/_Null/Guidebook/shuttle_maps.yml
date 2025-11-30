@@ -58,6 +58,14 @@
 
 - type: entity
   parent: ShuttleMapBase
+  id: ShuttleMapBossman
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: bossman
+
+- type: entity
+  parent: ShuttleMapBase
   id: ShuttleMapBucket
   categories: [ HideSpawnMenu ]
   components:

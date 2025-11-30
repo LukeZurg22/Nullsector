@@ -9,6 +9,7 @@ guide-entry-shipyard-framework = The Humble Framework (Civil/Scrap)
 
 # Expedition
 guide-entry-shipyard-archon = Archon (Expedition)
+guide-entry-shipyard-bossman = Bossman (Expedition)
 guide-entry-shipyard-crapbucket = Crapbucket (Expedition)
 guide-entry-shipyard-foxhunt = Foxhunt (Expedition)
 guide-entry-shipyard-littora = Littora (Expedition)
