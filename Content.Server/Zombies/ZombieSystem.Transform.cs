@@ -38,6 +38,7 @@ using Content.Shared.Weapons.Melee;
 using Content.Shared.Zombies;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Serialization.Manager;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Zombies;
 
@@ -237,6 +238,13 @@ public sealed partial class ZombieSystem
 
             // Messing with the eye layer made it vanish upon cloning, and also it didn't even appear right
             huApComp.EyeColor = zombieComponent.EyeColor;
+
+            var eyeLayer = huApComp.BaseLayers.FirstOrNull(d => d.Value.ID.Equals("MobHumanoidEyes"));
+            if (eyeLayer.HasValue)
+            {
+                // TODO: Extract Eye information and add new layer to Sprite Component. Take RSI path of Eye Layer and
+                //  mark as unshaded.
+            }
 
             // this might not resync on clone?
             _humanoidAppearance.SetBaseLayerId(target,
@@ -494,7 +502,6 @@ public sealed partial class ZombieSystem
 
         // Dynamically add components.
         DynamicAddComponents(target, zombieComponent);
-
 
         // Load old hand status. Copying the component is not enough.
         if (zombieComponent.BeforeHands.Count > 0)
