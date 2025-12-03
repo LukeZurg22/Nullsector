@@ -14,4 +14,6 @@ public sealed partial class CompanyComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public string CompanyName = string.Empty;
+
+    public const string NonExistentCompanyName = "None";
 }
