@@ -1,0 +1,40 @@
+- type: dataset
+  id: NamesFirstNiekroniakLeader
+  values:
+  - Ensignate
+  - Lieutenant
+  - Subsidiary
+  
+- type: dataset
+  id: NamesFirstNiekroniak
+  values:
+  - Anak
+  - Ryak
+  - Velak
+  - Ceasak
+
+- type: dataset
+  id: NamesMiddleNiekroniak
+  values:
+  - Sho'um
+  - Cemmia
+  - Henzia
+  - Humia
+  - Saria
+  - Kro'ia
+  - Nie'ia
+  - Leria
+  - Cemmak
+
+- type: dataset
+  id: NamesLastNiekroniak
+  values:
+  - Akh
+  - Cemmak
+  - Einak
+  - Henzak
+  - Shanak
+  - Shonak
+  - Pavak
+  - Varchak
+  - Zavak
