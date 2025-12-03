@@ -29,7 +29,7 @@ public sealed partial class PointOfInterestPrototype : IPrototype, IInheritingPr
     public string Name { get; private set; } = "";
 
     /// <summary>
-    ///     Should we set the warppoint name based on the grid name.
+    ///     Should we set the warp point name based on the grid name.
     /// </summary>
     [DataField]
     public bool NameWarp { get; set; } = true;
