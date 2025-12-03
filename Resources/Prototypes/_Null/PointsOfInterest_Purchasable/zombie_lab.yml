@@ -1,0 +1,62 @@
+# Author Info
+# GitHub: LukeZurg22
+# Discord: lukezurg22
+
+# Maintainer Info
+# GitHub: ???
+# Discord: ???
+#
+- type: buyablePoI
+  id: PoIZombie
+  parent: BaseBuyablePOI
+  name: Mors Research Centre
+  description: A research center revolved around necromantic activities
+  price: 85000
+  minimumDistance: 2000
+  maximumDistance: 3500
+  group: Monolith # Determines which variant of Nullith this will appear. Only one category remains, for now.
+  gridPath: /Maps/_Null/POI_Purchasable/zombie_lab.yml
+  guidebookPage: null
+  hideWarp: false
+  category: # See enum.PoIType or NSB
+  - Laboratory
+  addComponents:
+  - type: IFF
+    color: "#87ABBA"
+    #flags: [HideLabel, Hide]
+    readOnly: false
+  - type: SolarPoweredGrid
+    trackOnInit: true
+    doNotCull: true
+
+# NOTE: Guidebook entries, much like for ships, can be made. Still a work in progress as of 20251202.
+# - type: guideEntry
+  # id: BPoIZombieLab
+  # name: guide-entry-bpoi-zombie-lab
+  # text: "/ServerInfo/_Null/Guidebook/Shipyard/Coldcap.xml"
+
+# NOTE FROM LZ22: "I don't know if this is needed. Likely not, but it will be left here commented for reference in the meantime. If becomes irrelevant, feel free to remove.
+# - type: gameMap
+  # id: EventRepairRelay
+  # mapName: 'Mors Research Centre'
+  # mapPath: /Maps/_Null/POI_Purchasable/zombie_lab.yml
+  # minPlayers: 0
+  # stations:
+    # EventRepairRelay:
+      # stationProto: StandardFrontierStation
+      # components:
+        # - type: StationTransit
+          # routes:
+            # MinorPointsOfInterest: 55
+        # - type: StationNameSetup
+          # mapNameTemplate: 'Lark Repair Orbital'
+        # - type: ExtraStationInformation
+          # iconPath: /Textures/_Null/Miscellaneous/repair_icon-256x256.png
+          # stationSubtext: 'lark-orbital-name'
+          # stationDescription: 'lark-orbital-description'
+        # # - type: StationJobs
+          # # availableJobs:
+            # # Contractor: [ -1, -1 ]
+            # # Pilot: [ -1, -1 ]
+          # # tags:
+          # # - Lark
