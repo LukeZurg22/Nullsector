@@ -50,16 +50,16 @@ public sealed class VesselPrototype : IPrototype, IInheritingPrototype
     ///     The purpose of the vessel. (e.g. Service, Cargo, Engineering etc.)
     /// </summary>
     [DataField("class")]
-    public List<VesselClass> Classes = new();
+    public List<VesselClass> Classes = [];
 
     /// <summary>
     ///     The engine type that powers the vessel. (e.g. AME, Plasma, Solar etc.)
     /// </summary>
     [DataField("engine")]
-    public List<VesselEngine> Engines = new();
+    public List<VesselEngine> Engines = [];
 
     /// <summary>
-    ///     The access required to buy the product. (e.g. Command, Mail, Bailiff, etc.)
+    /// The access required to buy the product. (e.g. Command, Mail, Bailiff, etc.)
     /// </summary>
     [DataField]
     public string Access = string.Empty;

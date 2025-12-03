@@ -1,14 +1,15 @@
-using Robust.Shared.GameStates;
-using Robust.Shared.Audio;
-using Content.Shared.Containers.ItemSlots;
-using Robust.Shared.Prototypes;
-using Content.Shared.Radio;
-using Content.Shared.Access;
 using Content.Shared._NF.Bank.Components;
+using Content.Shared._Null.Nullith;
+using Content.Shared.Access;
+using Content.Shared.Containers.ItemSlots;
+using Content.Shared.Radio;
+using Robust.Shared.Audio;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._NF.Shipyard.Components;
 
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedShipyardSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(SharedNullithSystem))]
 public sealed partial class ShipyardConsoleComponent : Component
 {
     public static string TargetIdCardSlotId = "ShipyardConsole-targetId";
