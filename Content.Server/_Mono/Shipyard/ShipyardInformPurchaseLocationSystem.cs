@@ -10,7 +10,7 @@ namespace Content.Server._Mono.Shipyard;
 /// <summary>
 /// A system that tells players which direction their newly purchased ship is located
 /// </summary>
-public sealed class ShipyardDirectionSystem : EntitySystem
+public sealed class ShipyardInformPurchaseLocationSystem : EntitySystem
 {
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -21,11 +21,11 @@ public sealed class ShipyardDirectionSystem : EntitySystem
     /// Sends a message to the player indicating the literal coordinates of their newly purchased hull.
     /// </summary>
     /// <param name="player"></param>
-    /// <param name="hull"></param>
-    public void SendShipLocationMessage(EntityUid player, EntityUid hull)
+    /// <param name="purchase"></param>
+    public void SendShipLocationMessage(EntityUid player, EntityUid purchase)
     {
         // Try to get player's and ship's locations.
-        if (!TryGetPositions(player, hull, out _, out var shipPos))
+        if (!TryGetPositions(player, purchase, out _, out var shipPos))
             return;
 
         // Send message to player

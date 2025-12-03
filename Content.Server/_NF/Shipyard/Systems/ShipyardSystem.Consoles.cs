@@ -312,7 +312,7 @@ public sealed partial class ShipyardSystem
             SendPurchaseMessage(shipyardConsoleUid, player, name, secretChannel, secret: true);
 
         // Mono -> Null Sector [    fixed it for ya' :)    ]
-        _entitySystemManager.GetEntitySystem<ShipyardDirectionSystem>()
+        _entitySystemManager.GetEntitySystem<ShipyardInformPurchaseLocationSystem>()
             .SendShipDirectionMessage(player, shuttleUid);
 
         PlayConfirmSound(player, shipyardConsoleUid, component);
