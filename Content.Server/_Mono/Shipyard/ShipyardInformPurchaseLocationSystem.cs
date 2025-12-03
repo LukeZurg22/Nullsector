@@ -25,13 +25,13 @@ public sealed class ShipyardInformPurchaseLocationSystem : EntitySystem
     public void SendShipLocationMessage(EntityUid player, EntityUid purchase)
     {
         // Try to get player's and ship's locations.
-        if (!TryGetPositions(player, purchase, out _, out var shipPos))
+        if (!TryGetPositions(player, purchase, out _, out var shipPos, true))
             return;
 
         // Send message to player
-        var message = Loc.GetString(
-            "nullith-location-message", // Null Sector - For use with the Nullith. Localized vaguely to accomodate ships, if needed.
-            ("location", shipPos));
+        // Null Sector - For use with the Nullith. Localized vaguely to accomodate ships, if needed.
+        var message = Loc.GetString("nullith-location-message",
+            ("location", $"{Math.Round(shipPos.X, 2)}, {Math.Round(shipPos.Y, 2)}"));
 
         SendMessageToPlayer(player, message);
     }
@@ -83,7 +83,11 @@ public sealed class ShipyardInformPurchaseLocationSystem : EntitySystem
     /// [Null Sector] Attempts to get the Player and Ship positions from provided Player and Ship Entities.
     /// </summary>
     /// <returns>Two Vector2 output-variables: player and ship positions.</returns>
-    private bool TryGetPositions(EntityUid player, EntityUid ship, out Vector2 playerPos, out Vector2 shipPos)
+    private bool TryGetPositions(EntityUid player,
+        EntityUid ship,
+        out Vector2 playerPos,
+        out Vector2 shipPos,
+        bool ignoreMap = false)
     {
         playerPos = Vector2.NaN;
         shipPos = Vector2.NaN;
@@ -93,7 +97,7 @@ public sealed class ShipyardInformPurchaseLocationSystem : EntitySystem
             return false;
 
         // Make sure both entities are on the same map
-        if (playerTransform.MapID != shipTransform.MapID)
+        if (!ignoreMap && playerTransform.MapID != shipTransform.MapID)
             return false;
 
         // Get positions of both entities

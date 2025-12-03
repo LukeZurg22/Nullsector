@@ -15,5 +15,12 @@ public sealed partial class CompanyComponent : Component
     [DataField, AutoNetworkedField]
     public string CompanyName = string.Empty;
 
+    // TODO: Make this useful for something. Chiefly Company stamps, such as the dynamic stamp in NullithSystem.Consoles.cs
+    /// <summary>
+    /// Assigns the Company's official color for use in stamping, and possible IFF changes. [UNUSED!!!]
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public Color CompanyColor;
+
     public const string NonExistentCompanyName = "None";
 }
