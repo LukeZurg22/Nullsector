@@ -25,7 +25,7 @@
   - type: Sprite
     noRot: false
     sprite: _Null/Objects/Fun/nullith.rsi
-    drawdepth: Mobs
+    drawdepth: SmallMobs
   - type: PointLight
     enabled: true
     color: "#FFFFFF"
@@ -41,8 +41,8 @@
   - type: NullithConsole
     targetIdSlot:
       name: id-card-console-target-id
-      ejectSound: /Audio/Machines/id_swipe.ogg
-      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectSound: /Audio/Items/bottle_clunk_2.ogg
+      insertSound: /Audio/Items/bottle_clunk.ogg
       ejectOnBreak: true
       swap: true
       whitelist:
