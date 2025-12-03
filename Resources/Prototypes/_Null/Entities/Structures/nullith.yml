@@ -31,9 +31,36 @@
     color: "#FFFFFF"
     radius: 12.0
     energy: 7.5
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.NullithConsoleUiKey.Monolith
+  - type: UserInterface
+    interfaces:
+      enum.NullithConsoleUiKey.Monolith:
+        type: NullithConsoleBoundUserInterface
+  - type: NullithConsole
+    targetIdSlot:
+      name: id-card-console-target-id
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      swap: true
+      whitelist:
+        components:
+        - IdCard
+        - NullithVoucher
+      #newAccessLevels: [Captain] # Not providing any new access levels, for now as of 20251202.
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+      ShipyardConsole-targetId: !type:ContainerSlot
+  #- type: PurchasablePoIListing # Forces specific entries.
+  - type: Computer
+    board: Null # a null-type of board. Not the literal "Null" sector.
     # WIP : Add power generation.
    
-# Null Sector : Monolith Implementations
+# Null Sector : Various Monolith Implementations
 - type: entity
   id: MonolithNullith
   parent: Monolith
