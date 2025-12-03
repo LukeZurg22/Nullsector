@@ -46,6 +46,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+
 // Frontier
 
 namespace Content.Server.Cargo.Systems;
@@ -312,7 +313,7 @@ public sealed class PricingSystem : EntitySystem
 
     // Begin Frontier - GetPrice variant that uses predicate
     /// <summary>
-    /// Appraises an entity, returning its price. Respects predicate - an entity that is excluded will be removed from the 
+    /// Appraises an entity, returning its price. Respects predicate - an entity that is excluded will be removed from the
     /// </summary>
     /// <param name="uid">The entity to appraise.</param>
     /// <param name="includeContents">Whether to examine its contents.</param>
@@ -482,7 +483,7 @@ public sealed class PricingSystem : EntitySystem
     // End of modified code
 
     /// <summary>
-    /// Appraises a grid, this is mainly meant to be used by yarrs.
+    /// Appraises a grid. This is primarily for pirates.
     /// </summary>
     /// <param name="grid">The grid to appraise.</param>
     /// <param name="predicate">An optional predicate that controls whether or not the entity is counted toward the total.</param>
