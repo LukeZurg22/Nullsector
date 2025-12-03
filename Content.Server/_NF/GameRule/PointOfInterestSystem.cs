@@ -259,8 +259,9 @@ public sealed class PointOfInterestSystem : EntitySystem
     /// <summary>
     /// [Null Sector] For purchasable Points of Interest, and Locality's sake.
     /// </summary>
-    public void GeneratePurchased(MapId mapUid, BuyablePoIPrototype proto)
+    public void GeneratePurchased(MapId mapUid, BuyablePoIPrototype proto, out EntityUid? poiEntityUid)
     {
+        poiEntityUid = null;
         /*
          * For purchasable points of interest which may be in any number, and ignorant of the optional stations
          * that are (un)naturally spawned elsewhere.
@@ -278,7 +279,7 @@ public sealed class PointOfInterestSystem : EntitySystem
         {
             return;
         }
-
+        poiEntityUid = optionalUid;
         AddStationCoordsToSet(offset);
         return;
 
