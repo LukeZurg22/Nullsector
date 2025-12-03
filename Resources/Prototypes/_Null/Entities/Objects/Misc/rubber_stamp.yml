@@ -3,11 +3,12 @@
   name: company stamp
   parent: RubberStampBase # Frontier: remove BaseCommandContraband
   id: RubberStampCompanyGeneric
+  # -> referenced in NullithSystem.cs
   categories: [ DoNotMap ]
   components:
   - type: Stamp
-    stampedName: null       # Name is changed in code.
-    stampedColor: "#000000" # Black, color is changed in code.
+    stampedName: stamp-component-stamped-name-default   # Name is changed in code.
+    stampedColor: "#000000"                             # Black, color is changed in code.
     stampState: "paper_stamp-company"
   - type: Sprite
     sprite: _Null/Objects/Misc/stamps.rsi

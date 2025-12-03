@@ -1,6 +1,6 @@
 - type: entity
   id: PaperMonolithDeed
-  name: nullith-deed-name
+  name: deed
   description: An affidavit of ownership proving an individual's claim to a location.
   parent: Paper
   components:
