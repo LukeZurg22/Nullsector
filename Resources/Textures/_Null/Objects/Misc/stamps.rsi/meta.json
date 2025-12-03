@@ -8,6 +8,9 @@
     },
     "states": [
         {
+            "name": "stamp-company-generic"
+        },
+        {
             "name": "stamp-nexwealth"
         }
     ]
