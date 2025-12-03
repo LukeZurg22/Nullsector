@@ -16,7 +16,7 @@
         - ReagentId: IceCream
           Quantity: 30
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: bowl
   - type: DamageOnLand
@@ -71,7 +71,7 @@
     flavors:
     - blooddrop
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: blooddrop
   - type: SolutionContainerManager
@@ -97,7 +97,7 @@
     - creamy
     - caramel
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: caramel
   - type: SolutionContainerManager
@@ -120,7 +120,7 @@
     flavors:
     - coffee
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: coffee
   - type: SolutionContainerManager
@@ -144,7 +144,7 @@
     - sweet
     - tea
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: greentea
   - type: SolutionContainerManager
@@ -168,7 +168,7 @@
     - sweet
     - sour
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: lemon
   - type: SolutionContainerManager
@@ -192,7 +192,7 @@
     - sweet
     - orange
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: orange
   - type: SolutionContainerManager
@@ -218,7 +218,7 @@
     - grape
     - sour
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: rainbow
   - type: SolutionContainerManager
@@ -243,7 +243,7 @@
     - caramel
     - creamy
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: saltedcaramel
   - type: SolutionContainerManager
@@ -269,7 +269,7 @@
     - vanilla
     - strawberry
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: spaghetti
   - type: SolutionContainerManager
@@ -292,7 +292,7 @@
     flavors:
     - strawberry
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: strawberry
   - type: SolutionContainerManager
@@ -318,7 +318,7 @@
     - chocolate
     - vanilla
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: bananasplit
   - type: SolutionContainerManager
@@ -341,7 +341,7 @@
     flavors:
     - chocolate
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: choco
   - type: SolutionContainerManager
@@ -364,7 +364,7 @@
     flavors:
     - coconut
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: coconut
   - type: SolutionContainerManager
@@ -387,7 +387,7 @@
     flavors:
     - space time
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: cosmos
   - type: SolutionContainerManager
@@ -412,7 +412,7 @@
     - silver
     - mining
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: gilded
   - type: SolutionContainerManager
@@ -435,7 +435,7 @@
     flavors:
     - hazelnut
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: hazelnut
   - type: SolutionContainerManager
@@ -460,7 +460,7 @@
     - lust
     - chocolate
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: loversdelight
   - type: SolutionContainerManager
@@ -484,7 +484,7 @@
     - chocolate
     - mint
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: mintchoco
   - type: SolutionContainerManager
@@ -507,7 +507,7 @@
     flavors:
     - star
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: napalm
   - type: SolutionContainerManager
@@ -530,7 +530,7 @@
     flavors:
     - strawberry
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: nebula
   - type: SolutionContainerManager
@@ -556,7 +556,7 @@
     - chocolate
     - vanilla
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: neapolitan
   - type: SolutionContainerManager
@@ -581,7 +581,7 @@
     - nuts
     - chocolate
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: rockyroad
   - type: SolutionContainerManager
@@ -604,7 +604,7 @@
     flavors:
     - strawberry
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: starlight
   - type: SolutionContainerManager
@@ -627,7 +627,7 @@
     flavors:
     - vanilla
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: vanilla
   - type: SolutionContainerManager
@@ -652,7 +652,7 @@
     - emptiness
     - despair
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: void
   - type: SolutionContainerManager
@@ -675,7 +675,7 @@
     flavors:
     - walnut
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: walnut
   - type: SolutionContainerManager
@@ -698,7 +698,7 @@
     flavors:
     - watermelon
   - type: Sprite
-    sprite: Floof/Objects/Consumable/Food/icecream.rsi
+    sprite: _Floof/Objects/Consumable/Food/icecream.rsi
     layers:
     - state: watermelon
   - type: SolutionContainerManager
