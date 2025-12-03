@@ -11,6 +11,7 @@
   parent: BaseBuyablePOI
   name: Mors Research Centre
   description: A research center revolved around necromantic activities
+  title: poi-title-zombie
   price: 85000
   minimumDistance: 2000
   maximumDistance: 3500
@@ -22,7 +23,7 @@
   - Laboratory
   addComponents:
   - type: IFF
-    color: "#87ABBA"
+    color: "#608250"
     #flags: [HideLabel, Hide]
     readOnly: false
   - type: SolarPoweredGrid
