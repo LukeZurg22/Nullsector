@@ -308,7 +308,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
     }
 
-    // returns false if it has ShipyardPreserveOnSaleComponent, true otherwise
+    ///<returns>False if provided uId has ShipyardPreserveOnSaleComponent, and true if otherwise.</returns>
     private bool LacksPreserveOnSaleComp(EntityUid uid)
     {
         return !TryComp<ShipyardSellConditionComponent>(uid, out var comp) || comp.PreserveOnSale == false;

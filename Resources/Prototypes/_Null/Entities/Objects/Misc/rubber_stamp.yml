@@ -1,3 +1,19 @@
+# Generic Stamps aren't implemented in a dynamic way. This is the next best thing until that is implemented.
+- type: entity
+  name: company stamp
+  parent: RubberStampBase # Frontier: remove BaseCommandContraband
+  id: RubberStampCompanyGeneric
+  # -> referenced in NullithSystem.cs
+  categories: [ DoNotMap ]
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-default   # Name is changed in code.
+    stampedColor: "#000000"                             # Black, color is changed in code.
+    stampState: "paper_stamp-company"
+  - type: Sprite
+    sprite: _Null/Objects/Misc/stamps.rsi
+    state: stamp-company-generic
+
 - type: entity
   name: nexwealth's rubber stamp
   parent: RubberStampBase # Frontier: remove BaseCommandContraband

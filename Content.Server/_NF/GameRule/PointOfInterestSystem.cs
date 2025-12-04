@@ -1,17 +1,19 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using Content.Server._NF.Station.Systems;
 using Content.Server._NF.Trade;
 using Content.Server.GameTicking;
 using Content.Server.Maps;
 using Content.Server.Station.Systems;
 using Content.Shared._NF.CCVar;
+using Content.Shared._Null.Nullith;
 using Content.Shared.GameTicking;
 using Robust.Shared.Configuration;
+using Robust.Shared.EntitySerialization.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Content.Server._NF.Station.Systems;
-using Robust.Shared.EntitySerialization.Systems;
 
 namespace Content.Server._NF.GameRule;
 
@@ -19,6 +21,9 @@ namespace Content.Server._NF.GameRule;
 /// This handles the dungeon and trading post spawning, as well as round end capitalism summary
 /// </summary>
 //[Access(typeof(NfAdventureRuleSystem))]
+[SuppressMessage("ReSharper", "SuggestVarOrType_BuiltInTypes")]
+[SuppressMessage("ReSharper", "SuggestVarOrType_SimpleTypes")]
+[SuppressMessage("ReSharper", "InconsistentNaming")]
 public sealed class PointOfInterestSystem : EntitySystem
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
@@ -30,7 +35,7 @@ public sealed class PointOfInterestSystem : EntitySystem
     [Dependency] private readonly StationRenameWarpsSystems _renameWarps = default!;
     [Dependency] private readonly StationSystem _station = default!;
 
-    private List<Vector2> _stationCoords = new();
+    private readonly List<Vector2> _stationCoords = [];
 
     public override void Initialize()
     {
@@ -49,13 +54,15 @@ public sealed class PointOfInterestSystem : EntitySystem
         _stationCoords.Add(coords);
     }
 
-    public void GenerateDepots(MapId mapUid, List<PointOfInterestPrototype> depotPrototypes, out List<EntityUid> depotStations)
+    public void GenerateDepots(MapId mapUid,
+        List<PointOfInterestPrototype> depotPrototypes,
+        out List<EntityUid> depotStations)
     {
         //For depots, we want them to fill a circular type dystance formula to try to keep them as far apart as possible
         //Therefore, we will be taking our range properties and treating them as magnitudes of a direction vector divided
         //by the number of depots set in our corresponding cvar
 
-        depotStations = new List<EntityUid>();
+        depotStations = [];
         var depotCount = _cfg.GetCVar(NFCCVars.CargoDepots);
         var rotation = 2 * Math.PI / depotCount;
         var rotationOffset = _random.NextAngle() / depotCount;
@@ -83,7 +90,8 @@ public sealed class PointOfInterestSystem : EntitySystem
                 overrideName += $" {(char)('A' + i)}"; // " A" ... " Z"
             else
                 overrideName += $" {i + 1}"; // " 27", " 28"...
-            if (TrySpawnPoiGrid(mapUid, proto, offset, out var depotUid, overrideName: overrideName) && depotUid is { Valid: true } depot)
+            if (TrySpawnPoiGrid(mapUid, proto, offset, out var depotUid, overrideName: overrideName) &&
+                depotUid is { Valid: true } depot)
             {
                 // Nasty jank: set up destination in the station.
                 var depotStation = _station.GetOwningStation(depot);
@@ -94,19 +102,22 @@ public sealed class PointOfInterestSystem : EntitySystem
                     else
                         destComp.DestinationProto = "CargoOther";
                 }
+
                 depotStations.Add(depot);
                 AddStationCoordsToSet(offset); // adjust list of actual station coords
             }
         }
     }
 
-    public void GenerateMarkets(MapId mapUid, List<PointOfInterestPrototype> marketPrototypes, out List<EntityUid> marketStations)
+    public void GenerateMarkets(MapId mapUid,
+        List<PointOfInterestPrototype> marketPrototypes,
+        out List<EntityUid> marketStations)
     {
         //For market stations, we are going to allow for a bit of randomness and a different offset configuration. We dont
         //want copies of this one, since these can be more themed and duplicate names, for instance, can make for a less
         //ideal world
 
-        marketStations = new List<EntityUid>();
+        marketStations = [];
         var marketCount = _cfg.GetCVar(NFCCVars.MarketStations);
         _random.Shuffle(marketPrototypes);
         int marketsAdded = 0;
@@ -135,13 +146,15 @@ public sealed class PointOfInterestSystem : EntitySystem
         }
     }
 
-    public void GenerateOptionals(MapId mapUid, List<PointOfInterestPrototype> optionalPrototypes, out List<EntityUid> optionalStations)
+    public void GenerateOptionals(MapId mapUid,
+        List<PointOfInterestPrototype> optionalPrototypes,
+        out List<EntityUid> optionalStations)
     {
         //Stations that do not have a defined grouping in their prototype get a default of "Optional" and get put into the
         //generic random rotation of POIs. This should include traditional places like Tinnia's rest, the Science Lab, The Pit,
         //and most RP places. This will essentially put them all into a pool to pull from, and still does not use the RNG function.
 
-        optionalStations = new List<EntityUid>();
+        optionalStations = [];
         var optionalCount = _cfg.GetCVar(NFCCVars.OptionalStations);
         _random.Shuffle(optionalPrototypes);
         int optionalsAdded = 0;
@@ -169,14 +182,16 @@ public sealed class PointOfInterestSystem : EntitySystem
         }
     }
 
-    public void GenerateRequireds(MapId mapUid, List<PointOfInterestPrototype> requiredPrototypes, out List<EntityUid> requiredStations)
+    public void GenerateRequireds(MapId mapUid,
+        List<PointOfInterestPrototype> requiredPrototypes,
+        out List<EntityUid> requiredStations)
     {
         //Stations are required are ones that are vital to function but otherwise still follow a generic random spawn logic
         //Traditionally these would be stations like Expedition Lodge, NFSD station, Prison/Courthouse POI, etc.
-        //There are no limit to these, and any prototype marked alwaysSpawn = true will get pulled out of any list that isnt Markets/Depots
+        //There are no limit to these, and any prototype marked alwaysSpawn = true will get pulled out of any list that isn't Markets/Depots
         //And will always appear every time, and also will not be included in other optional/dynamic lists
 
-        requiredStations = new List<EntityUid>();
+        requiredStations = [];
 
         if (_ticker.CurrentPreset is null)
             return;
@@ -198,20 +213,23 @@ public sealed class PointOfInterestSystem : EntitySystem
         }
     }
 
-    public void GenerateUniques(MapId mapUid, Dictionary<string, List<PointOfInterestPrototype>> uniquePrototypes, out List<EntityUid> uniqueStations)
+    public void GenerateUniques(MapId mapUid,
+        Dictionary<string, List<PointOfInterestPrototype>> uniquePrototypes,
+        out List<EntityUid> uniqueStations)
     {
-        //Unique locations are semi-dynamic groupings of POIs that rely each independantly on the SpawnChance per POI prototype
-        //Since these are the remainder, and logically must have custom-designated groupings, we can then know to subdivide
-        //our random pool into these found groups.
-        //To do this with an equal distribution on a per-POI, per-round percentage basis, we are going to ensure a random
-        //pick order of which we analyze our weighted chances to spawn, and if successful, remove every entry of that group
-        //entirely.
+        // Unique locations are semi-dynamic groupings of POIs that rely each independently on the SpawnChance per POI prototype
+        // Since these are the remainder, and logically must have custom-designated groupings, we can then know to subdivide
+        // our random pool into these found groups.
+        // To do this with an equal distribution on a per-POI, per-round percentage basis, we are going to ensure a random
+        // pick order of which we analyze our weighted chances to spawn, and if successful, remove every entry of that group
+        // entirely.
 
-        uniqueStations = new List<EntityUid>();
+        uniqueStations = [];
 
         if (_ticker.CurrentPreset is null)
             return;
-        var currentPreset = _ticker.CurrentPreset!.ID;
+
+        var currentPreset = _ticker.CurrentPreset.ID;
 
         foreach (var prototypeList in uniquePrototypes.Values)
         {
@@ -224,22 +242,95 @@ public sealed class PointOfInterestSystem : EntitySystem
                     continue;
 
                 var chance = _random.NextFloat(0, 1);
-                if (chance <= proto.SpawnChance)
-                {
-                    var offset = GetRandomPOICoord(proto.MinimumDistance, proto.MaximumDistance);
+                if (!(chance <= proto.SpawnChance))
+                    continue; // If it cannot spawn, then oh well. Short-Circuit.
 
-                    if (TrySpawnPoiGrid(mapUid, proto, offset, out var optionalUid) && optionalUid is { Valid: true } uid)
-                    {
-                        uniqueStations.Add(uid);
-                        AddStationCoordsToSet(offset);
-                        break;
-                    }
+                var offset = GetRandomPOICoord(proto.MinimumDistance, proto.MaximumDistance);
+                if (TrySpawnPoiGrid(mapUid, proto, offset, out var optionalUid) && optionalUid is { Valid: true } uid)
+                {
+                    uniqueStations.Add(uid);
+                    AddStationCoordsToSet(offset);
+                    break;
                 }
             }
         }
     }
 
-    private bool TrySpawnPoiGrid(MapId mapUid, PointOfInterestPrototype proto, Vector2 offset, out EntityUid? gridUid, string? overrideName = null)
+    /// <summary>
+    /// [Null Sector] For purchasable Points of Interest, and Locality's sake.
+    /// </summary>
+    public void GeneratePurchased(MapId mapUid, BuyablePoIPrototype proto, out EntityUid? poiEntityUid)
+    {
+        poiEntityUid = null;
+        /*
+         * For purchasable points of interest which may be in any number, and ignorant of the optional stations
+         * that are (un)naturally spawned elsewhere.
+         */
+
+        if (_ticker.CurrentPreset is null)
+            return;
+
+        // There is no game mode safety check. The safety check at this point is dictated by the presence of the object
+        //  that permits one to purchase a POI.
+
+        var offset = GetRandomPOICoord(proto.MinimumDistance, proto.MaximumDistance);
+
+        if (!TrySpawnBoughtPoI(mapUid, proto, offset, out var optionalUid) && optionalUid is { Valid: true } _)
+        {
+            return;
+        }
+        poiEntityUid = optionalUid;
+        AddStationCoordsToSet(offset);
+        return;
+
+        bool TrySpawnBoughtPoI(MapId map,
+            BuyablePoIPrototype boughtPoIProto,
+            Vector2 locOffset,
+            out EntityUid? gridUid,
+            string? overrideName = null)
+        {
+            gridUid = null;
+            if (!_map.TryLoadGrid(map,
+                    boughtPoIProto.GridPath,
+                    out var loadedGrid,
+                    offset: locOffset,
+                    rot: _random.NextAngle()))
+                return false;
+            gridUid = loadedGrid.Value;
+            List<EntityUid> gridList = [loadedGrid.Value];
+
+            string stationName = string.IsNullOrEmpty(overrideName) ? boughtPoIProto.Name : overrideName;
+
+            EntityUid? stationUid = null;
+            if (_proto.TryIndex<GameMapPrototype>(boughtPoIProto.ID, out var stationProto))
+            {
+                stationUid = _station.InitializeNewStation(stationProto.Stations[boughtPoIProto.ID], gridList, stationName);
+            }
+
+            var meta = EnsureComp<MetaDataComponent>(loadedGrid.Value);
+            _meta.SetEntityName(loadedGrid.Value, stationName, meta);
+
+            EntityManager.AddComponents(loadedGrid.Value, boughtPoIProto.AddComponents);
+
+            // Rename warp points after set up if needed
+            if (boughtPoIProto.NameWarp)
+            {
+                bool? hideWarp = boughtPoIProto.HideWarp ? true : null;
+                if (stationUid != null)
+                    _renameWarps.SyncWarpPointsToStation(stationUid.Value, forceAdminOnly: hideWarp);
+                else
+                    _renameWarps.SyncWarpPointsToGrids(gridList, forceAdminOnly: hideWarp);
+            }
+
+            return true;
+        }
+    }
+
+    private bool TrySpawnPoiGrid(MapId mapUid,
+        PointOfInterestPrototype proto,
+        Vector2 offset,
+        out EntityUid? gridUid,
+        string? overrideName = null)
     {
         gridUid = null;
         if (!_map.TryLoadGrid(mapUid, proto.GridPath, out var loadedGrid, offset: offset, rot: _random.NextAngle()))
@@ -274,20 +365,13 @@ public sealed class PointOfInterestSystem : EntitySystem
     private Vector2 GetRandomPOICoord(float unscaledMinRange, float unscaledMaxRange)
     {
         int numRetries = int.Max(_cfg.GetCVar(NFCCVars.POIPlacementRetries), 0);
-        float minDistance = float.Max(_cfg.GetCVar(NFCCVars.MinPOIDistance), 0); // Constant at the end to avoid NaN weirdness
+        float minDistance =
+            float.Max(_cfg.GetCVar(NFCCVars.MinPOIDistance), 0); // Constant at the end to avoid NaN weirdness
 
         Vector2 coords = _random.NextVector2(unscaledMinRange, unscaledMaxRange);
         for (int i = 0; i < numRetries; i++)
         {
-            bool positionIsValid = true;
-            foreach (var station in _stationCoords)
-            {
-                if (Vector2.Distance(station, coords) < minDistance)
-                {
-                    positionIsValid = false;
-                    break;
-                }
-            }
+            bool positionIsValid = _stationCoords.All(station => !(Vector2.Distance(station, coords) < minDistance));
 
             // We have a valid position
             if (positionIsValid)

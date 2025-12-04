@@ -1,15 +1,16 @@
 using Content.Client._NF.Shipyard.UI;
-using Content.Shared.Containers.ItemSlots;
 using Content.Shared._NF.Shipyard.BUI;
 using Content.Shared._NF.Shipyard.Events;
+using Content.Shared.Containers.ItemSlots;
 using static Robust.Client.UserInterface.Controls.BaseButton;
+#pragma warning disable CS0618 // Type or member is obsolete
 
 namespace Content.Client._NF.Shipyard.BUI;
 
 public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
 {
     private ShipyardConsoleMenu? _menu;
-    private ShipyardRulesPopup? _rulesWindow;
+    //private ShipyardRulesPopup? _rulesWindow;
     public int Balance { get; private set; }
 
     public int? ShipSellValue { get; private set; }
@@ -40,7 +41,10 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         _menu.TargetIdButton.OnPressed += _ => SendMessage(new ItemSlotButtonPressedEvent("ShipyardConsole-targetId"));
     }
 
-    private void Populate(List<string> availablePrototypes, List<string> unavailablePrototypes, bool freeListings, bool validId)
+    private void Populate(List<string> availablePrototypes,
+        List<string> unavailablePrototypes,
+        bool freeListings,
+        bool validId)
     {
         if (_menu == null)
             return;
@@ -60,8 +64,11 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
 
         Balance = cState.Balance;
         ShipSellValue = cState.ShipSellValue;
-        var castState = (ShipyardConsoleInterfaceState) state;
-        Populate(castState.ShipyardPrototypes.available, castState.ShipyardPrototypes.unavailable, castState.FreeListings, castState.IsTargetIdPresent);
+        var castState = (ShipyardConsoleInterfaceState)state;
+        Populate(castState.ShipyardPrototypes.available,
+            castState.ShipyardPrototypes.unavailable,
+            castState.FreeListings,
+            castState.IsTargetIdPresent);
         _menu?.UpdateState(castState);
     }
 
@@ -69,7 +76,8 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
     {
         base.Dispose(disposing);
 
-        if (!disposing) return;
+        if (!disposing)
+            return;
 
         _menu?.Dispose();
     }
@@ -84,6 +92,7 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
         var vesselId = row.Vessel.ID;
         SendMessage(new ShipyardConsolePurchaseMessage(vesselId));
     }
+
     private void SellShip(ButtonEventArgs args)
     {
         //reserved for a sanity check, but im not sure what since we check all the important stuffs on server already

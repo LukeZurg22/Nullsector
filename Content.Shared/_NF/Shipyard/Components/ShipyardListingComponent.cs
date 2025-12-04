@@ -13,5 +13,5 @@ public sealed partial class ShipyardListingComponent : Component
     ///   All VesselPrototype IDs that should be listed in this shipyard console.
     /// </summary>
     [ViewVariables, DataField(customTypeSerializer: typeof(PrototypeIdListSerializer<VesselPrototype>))]
-    public List<string> Shuttles = new();
+    public List<string> Shuttles = [];
 }

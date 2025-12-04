@@ -18,8 +18,8 @@ public enum ShipyardConsoleUiKey : byte
     Sr,
     Medical,
     Service, // Null Sector
-    // Add ships to this key if they are only available from mothership consoles. Shipyards using it are inherently empty and are populated using the ShipyardListingComponent.
-    Custom
+    /// Add ships to this key if they are only available from mothership consoles. Shipyards using it are inherently empty and are populated using the ShipyardListingComponent.
+    Custom,
 }
 
 public abstract class SharedShipyardSystem : EntitySystem
@@ -37,8 +37,8 @@ public abstract class SharedShipyardSystem : EntitySystem
 
     private void OnHandleState(EntityUid uid, ShipyardConsoleComponent component, ref ComponentHandleState args)
     {
-        if (args.Current is not ShipyardConsoleComponentState state) return;
-
+        if (args.Current is not ShipyardConsoleComponentState state)
+            return;
     }
 
     private void OnGetState(EntityUid uid, ShipyardConsoleComponent component, ref ComponentGetState args)

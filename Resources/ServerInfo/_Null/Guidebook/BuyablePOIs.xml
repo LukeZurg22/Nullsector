@@ -1,0 +1,17 @@
+<Document>
+  # Buyable POIs
+
+  <Box>
+    <GuideEntityEmbed Entity="MonolithNullith"/>
+  </Box>
+
+  This section covers the Buyable Points of Interest (BPoI’s) from the Monolith structure. This was written as of 20251202, meaning the actual content may change over time. Unlike standard PoI’s, BPoI’s must be deliberately purchased in order to appear in the map, and will not persist between rounds.
+  
+  Once a BPoI is bought:
+  - 1. It cannot be sold.
+  - 2. A customized deed is either faxed to your ship, or spawned at the Monolith.
+  - 3. A customized stamp with your very own title is spawned at the monolith.
+  
+  Note that it will not have the same protections as Primary Stations. Though server rules still apply, a good example would be that you can blow it up if nobody else is onboard.
+
+</Document>

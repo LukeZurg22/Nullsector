@@ -1,0 +1,23 @@
+- type: buyablePoI
+  id: BaseBuyablePOI
+  abstract: true
+  price: 100000 # Default price, which should be changed per-case.
+  minimumDistance: 2000
+  maximumDistance: 4000
+  addComponents:
+  - type: IFF
+    color: "#ffa600"
+    readOnly: true
+  # Prevent gravity changes
+  - type: ForceAnchor
+
+- type: buyablePoI
+  id: BaseBuyableUnanchoredPOI
+  abstract: true
+  price: 100000 # Default price, which should be changed per-case.
+  minimumDistance: 2000
+  maximumDistance: 4000
+  addComponents:
+  - type: IFF
+    color: "#ffa600"
+    readOnly: true

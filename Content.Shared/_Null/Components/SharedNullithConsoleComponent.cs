@@ -1,5 +1,4 @@
-using Content.Shared._NF.Bank.Components;
-using Content.Shared._Null.Nullith;
+using Content.Shared._NF.Shipyard;
 using Content.Shared.Access;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Radio;
@@ -7,12 +6,15 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._NF.Shipyard.Components;
+namespace Content.Shared._Null.Components;
 
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedNullithSystem))]
-public sealed partial class ShipyardConsoleComponent : Component
+[RegisterComponent, NetworkedComponent, Access(typeof(SharedShipyardSystem))]
+public sealed partial class NullithConsoleComponent : Component
 {
-    public static string TargetIdCardSlotId = "ShipyardConsole-targetId";
+    /// <summary>
+    /// The ID of the Card Slot the user inserts their ID card into.
+    /// </summary>
+    public const string TargetIdCardSlotId = "ShipyardConsole-targetId";
 
     [DataField("targetIdSlot")]
     public ItemSlot TargetIdSlot = new();
@@ -23,10 +25,10 @@ public sealed partial class ShipyardConsoleComponent : Component
 
     [DataField("soundConfirm")]
     public SoundSpecifier ConfirmSound =
-        new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg");
+        new SoundPathSpecifier("/Audio/Effects/Shuttle/hyperspace_end.ogg");
 
     /// <summary>
-    /// The comms channel that announces the ship purchase. The purchase is *always* announced
+    /// The comms channel that announces the PoI purchase. The purchase is *always* announced
     /// on this channel.
     /// </summary>
     [DataField("shipyardChannel")]
@@ -34,34 +36,21 @@ public sealed partial class ShipyardConsoleComponent : Component
 
     /// <summary>
     /// A second comms channel that announces the ship purchase, with some information redacted.
-    /// Currently used for black market and syndicate shipyards to alert the NFSD.
     /// </summary>
     [DataField("secretShipyardChannel")]
     public ProtoId<RadioChannelPrototype>? SecretShipyardChannel = null;
 
     /// <summary>
-    /// If non-empty, specifies the new job title that should be given to the owner of the ship.
-    /// </summary>
-    [DataField]
-    public string? NewJobTitle = null;
-
-    /// <summary>
     /// Access levels to be added to the owner's ID card.
     /// </summary>
     [DataField]
-    public List<ProtoId<AccessLevelPrototype>> NewAccessLevels = new();
+    public List<ProtoId<AccessLevelPrototype>> NewAccessLevels = [];
 
     /// <summary>
     /// Indicates that the deeds that come from this console can be copied and transferred.
     /// </summary>
     [DataField]
     public bool CanTransferDeed = true;
-
-    /// <summary>
-    /// The accounts to receive payment, and the tax rate to apply for ship sales from this console.
-    /// </summary>
-    [DataField]
-    public Dictionary<SectorBankAccount, float> TaxAccounts = new();
 
     /// <summary>
     /// If true, the base sale rate is ignored before calculating taxes.
