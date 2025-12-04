@@ -1,0 +1,5 @@
+- type: guideEntry
+  id: BuyablePOIs
+  name: guide-entry-buyable-pois
+  text: "/ServerInfo/_Null/Guidebook/BuyablePOIs.xml"
+  filterEnabled: True
