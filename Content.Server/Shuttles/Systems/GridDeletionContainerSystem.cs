@@ -39,8 +39,7 @@ public sealed class GridDeletionContainerSystem : EntitySystem
             // to avoid cycles and redundant work within the recursive calls.
             var processedEntities = new HashSet<EntityUid>();
 
-            Logger.Debug(
-                $"Grid {ToPrettyString(uid)} is terminating. Ensuring all child entities are deleted recursively.");
+            //Logger.Debug($"Grid {ToPrettyString(uid)} is terminating. Ensuring all child entities are deleted recursively.");
 
             // Start the recursive deletion process for all direct transform children of the grid.
             // We don't process the grid itself (uid) initially because it's already terminating.
@@ -68,8 +67,7 @@ public sealed class GridDeletionContainerSystem : EntitySystem
                 }
             }
 
-            Logger.Debug(
-                $"Finished recursive deletion processing for terminating grid {ToPrettyString(uid)}. Processed entity count (excluding grid): {processedEntities.Count - 1}"); // Exclude the grid itself if it got added
+            //Logger.Debug($"Finished recursive deletion processing for terminating grid {ToPrettyString(uid)}. Processed entity count (excluding grid): {processedEntities.Count - 1}"); // Exclude the grid itself if it got added
         }
         finally
         {

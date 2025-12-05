@@ -1,0 +1,30 @@
+Subject: [PATCH] Commented Grid Deletion Messages
+---
+Index: Content.Server/Shuttles/Systems/GridDeletionContainerSystem.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Content.Server/Shuttles/Systems/GridDeletionContainerSystem.cs b/Content.Server/Shuttles/Systems/GridDeletionContainerSystem.cs
+--- a/Content.Server/Shuttles/Systems/GridDeletionContainerSystem.cs	(date 1764912913751)
++++ b/Content.Server/Shuttles/Systems/GridDeletionContainerSystem.cs	(revision a3a3469c32ce483dd869ce26b04c2c3ab26e520c)
+@@ -39,7 +39,8 @@
+             // to avoid cycles and redundant work within the recursive calls.
+             var processedEntities = new HashSet<EntityUid>();
+ 
+-            //Logger.Debug($"Grid {ToPrettyString(uid)} is terminating. Ensuring all child entities are deleted recursively.");
++            Logger.Debug(
++                $"Grid {ToPrettyString(uid)} is terminating. Ensuring all child entities are deleted recursively.");
+ 
+             // Start the recursive deletion process for all direct transform children of the grid.
+             // We don't process the grid itself (uid) initially because it's already terminating.
+@@ -67,7 +68,8 @@
+                 }
+             }
+ 
+-            //Logger.Debug($"Finished recursive deletion processing for terminating grid {ToPrettyString(uid)}. Processed entity count (excluding grid): {processedEntities.Count - 1}"); // Exclude the grid itself if it got added
++            Logger.Debug(
++                $"Finished recursive deletion processing for terminating grid {ToPrettyString(uid)}. Processed entity count (excluding grid): {processedEntities.Count - 1}"); // Exclude the grid itself if it got added
+         }
+         finally
+         {
